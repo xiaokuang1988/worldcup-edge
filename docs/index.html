@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Cup Edge | 合规世界杯分析台</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#dashboard" aria-label="World Cup Edge home">
+        <span class="brand-mark">W</span>
+        <span>
+          <strong>World Cup Edge</strong>
+          <small>日本合规分析版</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#dashboard">分析</a>
+        <a href="#legal">合规入口</a>
+        <a href="#sources">资讯源</a>
+        <a href="#risk">风控</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="dashboard">
+        <img src="./assets/worldcup-analytics-hero.png" alt="" class="hero-image" />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">FIFA World Cup 2026 analysis console</p>
+          <h1>世界杯赛前分析与合规购买决策台</h1>
+          <p class="hero-copy">
+            用球队状态、进攻效率、防守稳定性和伤停风险生成建议；购买入口只指向日本正规渠道，不接入、不宣传海外非法线上博彩。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#matches">查看推荐</a>
+            <a class="button ghost" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">打开 WINNER 官方</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Current model summary">
+          <div>
+            <span class="label">模型状态</span>
+            <strong>演示数据</strong>
+          </div>
+          <div>
+            <span class="label">合规策略</span>
+            <strong>只链接官方/许可渠道</strong>
+          </div>
+          <div>
+            <span class="label">今日建议</span>
+            <strong id="top-pick">等待筛选</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="workspace" id="matches">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Match intelligence</p>
+            <h2>比赛筛选与建议</h2>
+          </div>
+          <div class="controls" aria-label="Filters">
+            <label>
+              <span>风险偏好</span>
+              <select id="riskMode">
+                <option value="balanced">均衡</option>
+                <option value="low">保守</option>
+                <option value="high">激进</option>
+              </select>
+            </label>
+            <label>
+              <span>最低信心</span>
+              <input id="confidenceRange" type="range" min="50" max="90" value="62" />
+            </label>
+            <output id="confidenceValue">62%</output>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="match-list" aria-label="Matches" id="matchList"></section>
+          <section class="insight-panel" aria-label="Selected match insight">
+            <div class="panel-header">
+              <div>
+                <span class="label">Selected match</span>
+                <h3 id="selectedTitle">选择一场比赛</h3>
+              </div>
+              <span class="badge" id="selectedBadge">Live model</span>
+            </div>
+            <div class="score-ring" id="scoreRing">
+              <span id="scoreValue">--</span>
+              <small>confidence</small>
+            </div>
+            <dl class="metrics" id="metrics"></dl>
+            <div class="recommendation">
+              <span class="label">专业建议</span>
+              <p id="recommendationText">请从左侧选择一场比赛。</p>
+            </div>
+            <div class="action-row">
+              <a class="button primary" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">去 WINNER 核对</a>
+              <button class="button ghost" id="refreshAdvice" type="button">重新计算</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="legal-band" id="legal">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Legal routes in Japan</p>
+            <h2>日本合规购买入口</h2>
+          </div>
+          <p class="section-note">以下只放官方或可核验入口。未确认日本合法性的海外平台不做链接。</p>
+        </div>
+        <div class="legal-grid">
+          <a class="legal-card" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">
+            <span>官方购买</span>
+            <strong>スポーツくじ WINNER</strong>
+            <p>单场预测、赛事结果类官方体育彩票入口。</p>
+          </a>
+          <a class="legal-card" href="https://www.toto-dream.com/" target="_blank" rel="noreferrer">
+            <span>官方站点</span>
+            <strong>スポーツくじ toto / BIG</strong>
+            <p>销售日程、开奖结果、规则和公告。</p>
+          </a>
+          <a class="legal-card warning" href="https://www.npa.go.jp/bureau/safetylife/hoan/onlinecasino/onlinecasino.html" target="_blank" rel="noreferrer">
+            <span>风险核验</span>
+            <strong>警察厅：线上赌博风险</strong>
+            <p>核对海外线上博彩、导流和广告宣传的法律风险。</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="source-band" id="sources">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Information sources</p>
+            <h2>资讯平台</h2>
+          </div>
+          <button class="button compact" id="copySources" type="button">复制数据源清单</button>
+        </div>
+        <div class="source-list" id="sourceList"></div>
+      </section>
+
+      <section class="risk-band" id="risk">
+        <div>
+          <p class="eyebrow">Compliance guardrail</p>
+          <h2>平台风控原则</h2>
+        </div>
+        <div class="risk-copy">
+          <p>
+            本页面是分析与导航工具，不代理下注、不托管资金、不承诺收益。后续如果接 API，优先接官方赛程、球队数据、伤停和日本合规彩票平台公开信息。
+          </p>
+          <p>
+            日本国内从海外线上博彩网站进行 sports betting 有犯罪风险；页面不会加入“开户注册”“返利”“开户链接”或未经确认的博彩站跳转。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>World Cup Edge MVP</span>
+      <span>Last checked: 2026-06-12 JST</span>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
