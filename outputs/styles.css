@@ -403,7 +403,7 @@ output {
 }
 
 .score-ring span {
-  font-size: 46px;
+  font-size: 42px;
   font-weight: 950;
 }
 
@@ -443,10 +443,53 @@ output {
   background: rgba(241, 200, 91, 0.09);
 }
 
-.recommendation p {
+.recommendation-body {
   margin: 8px 0 0;
   color: #f6ead0;
   line-height: 1.7;
+}
+
+.recommendation ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: #d8ccb0;
+  line-height: 1.55;
+}
+
+.recommendation li + li {
+  margin-top: 6px;
+}
+
+.result-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px clamp(16px, 4vw, 44px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #0b1714;
+}
+
+.recent-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recent-results a,
+.recent-results span,
+.empty-state {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #d7e5dd;
+  font-size: 13px;
+}
+
+.empty-state {
+  display: block;
+  padding: 18px;
 }
 
 .legal-band {
@@ -542,7 +585,8 @@ output {
   }
 
   .section-head,
-  .risk-band {
+  .risk-band,
+  .result-strip {
     align-items: start;
     flex-direction: column;
   }

@@ -1,111 +1,14 @@
-const matches = [
-  {
-    id: "jpn-ger",
-    title: "日本 vs 德国",
-    date: "2026-06-14",
-    market: "WINNER 单场结果",
-    baseConfidence: 68,
-    pick: "日本不败方向",
-    style: "高压反击 + 边路速度",
-    factors: ["日本转换速度", "德国控球压迫", "定位球风险"],
-    metrics: {
-      attack: 76,
-      defense: 71,
-      form: 74,
-      volatility: 42
-    }
-  },
-  {
-    id: "arg-fra",
-    title: "阿根廷 vs 法国",
-    date: "2026-06-16",
-    market: "冠军/淘汰赛方向",
-    baseConfidence: 63,
-    pick: "小注观察，优先等首发",
-    style: "中路创造力对抗纵深冲击",
-    factors: ["巨星状态", "阵容年龄结构", "反击空间"],
-    metrics: {
-      attack: 84,
-      defense: 78,
-      form: 69,
-      volatility: 61
-    }
-  },
-  {
-    id: "bra-eng",
-    title: "巴西 vs 英格兰",
-    date: "2026-06-18",
-    market: "进球数/胜平负",
-    baseConfidence: 71,
-    pick: "总进球 2-3 区间",
-    style: "边锋个人能力对抗中场控制",
-    factors: ["巴西边路单点", "英格兰定位球", "节奏变化"],
-    metrics: {
-      attack: 82,
-      defense: 75,
-      form: 77,
-      volatility: 48
-    }
-  },
-  {
-    id: "esp-por",
-    title: "西班牙 vs 葡萄牙",
-    date: "2026-06-20",
-    market: "单场比分方向",
-    baseConfidence: 66,
-    pick: "平局保护",
-    style: "控球耐心对抗禁区效率",
-    factors: ["西班牙控球", "葡萄牙射门效率", "替补深度"],
-    metrics: {
-      attack: 79,
-      defense: 76,
-      form: 72,
-      volatility: 53
-    }
-  }
-];
-
-const sources = [
-  {
-    type: "官方赛程",
-    name: "FIFA World Cup 2026",
-    url: "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026",
-    note: "赛事、赛程和官方新闻。"
-  },
-  {
-    type: "日本代表",
-    name: "JFA 日本サッカー協会",
-    url: "https://www.jfa.jp/",
-    note: "日本队新闻、名单、比赛信息。"
-  },
-  {
-    type: "合规彩票",
-    name: "スポーツくじ WINNER",
-    url: "https://www.toto-dream.com/winner/index.html",
-    note: "日本官方体育彩票入口。"
-  },
-  {
-    type: "合规核验",
-    name: "警察庁オンラインカジノ注意",
-    url: "https://www.npa.go.jp/bureau/safetylife/hoan/onlinecasino/onlinecasino.html",
-    note: "核对线上博彩与广告导流风险。"
-  },
-  {
-    type: "实时资讯",
-    name: "Yahoo!ニュース スポーツ",
-    url: "https://news.yahoo.co.jp/categories/sports",
-    note: "日本本地体育新闻聚合。"
-  },
-  {
-    type: "赔率替代",
-    name: "公开信息源待接入",
-    url: "https://www.toto-dream.com/",
-    note: "优先使用官方销售日程和公开结果，不采集灰站赔率。"
-  }
-];
+const fallbackData = {
+  generatedAt: "2026-06-13T00:00:00+09:00",
+  sourcePolicy: "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
+  sources: [],
+  upcoming: [],
+  recentResults: []
+};
 
 const state = {
-  selectedId: matches[0].id,
+  data: fallbackData,
+  selectedId: null,
   riskMode: "balanced",
   minConfidence: 62,
   wobble: 0
@@ -125,34 +28,72 @@ const topPick = document.querySelector("#top-pick");
 const sourceList = document.querySelector("#sourceList");
 const copySources = document.querySelector("#copySources");
 const refreshAdvice = document.querySelector("#refreshAdvice");
+const officialLink = document.querySelector("#officialLink");
+const dataStatus = document.querySelector("#dataStatus");
+const recentResults = document.querySelector("#recentResults");
+
+function safeDate(isoString) {
+  try {
+    return new Intl.DateTimeFormat("zh-CN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "Asia/Tokyo"
+    }).format(new Date(isoString));
+  } catch {
+    return isoString;
+  }
+}
+
+async function loadData() {
+  try {
+    const response = await fetch(`./data/live-matches.json?ts=${Date.now()}`);
+    if (!response.ok) throw new Error(`data returned ${response.status}`);
+    state.data = await response.json();
+    dataStatus.textContent = `官方数据：${safeDate(state.data.generatedAt)} 更新`;
+  } catch (error) {
+    dataStatus.textContent = "官方数据读取失败，请重新部署或刷新数据";
+    console.error(error);
+  }
+
+  state.selectedId = state.data.upcoming[0]?.id || null;
+  renderSources();
+  renderRecentResults();
+  render();
+}
 
 function adjustedConfidence(match) {
   const riskAdjustment = {
-    low: -6,
+    low: -5,
     balanced: 0,
-    high: 5
+    high: 4
   }[state.riskMode];
-
-  const volatilityPenalty = state.riskMode === "low" ? Math.round(match.metrics.volatility / 12) : 0;
-  return Math.max(45, Math.min(92, match.baseConfidence + riskAdjustment - volatilityPenalty + state.wobble));
+  const volatilityPenalty = state.riskMode === "low" ? Math.round(match.prediction.metrics.volatility / 14) : 0;
+  return Math.max(45, Math.min(90, match.prediction.confidence + riskAdjustment - volatilityPenalty + state.wobble));
 }
 
 function recommendationFor(match, confidence) {
-  if (confidence >= 72) {
-    return `${match.pick}。信心较高，但仍建议控制仓位；先核对 WINNER 官方销售项、截止时间和最新首发。`;
-  }
+  const prediction = match.prediction;
+  const base = `比分倾向：${match.homeZh} ${prediction.score} ${match.awayZh}；方向：${prediction.winnerLean}，${prediction.totalLabel}。`;
+  const official = `先打开 WINNER 官方，确认该场是否仍在销售、截止时间、可选比分和払戻倍率。`;
 
+  if (confidence >= 74) {
+    return `${base} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
+  }
   if (confidence >= 62) {
-    return `${match.pick}。适合作为观察型选择，不建议重仓；若临场伤停或赔率变化明显，降低投入。`;
+    return `${base} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
   }
-
-  return `模型信心不足，建议跳过或只做赛前观察。重点看 ${match.factors[0]} 与 ${match.factors[1]} 是否在临场信息中确认。`;
+  return `${base} 模型波动较大，建议跳过或小额观察。${official}`;
 }
 
 function renderMatches() {
   matchList.innerHTML = "";
-  const visible = matches.filter((match) => adjustedConfidence(match) >= state.minConfidence);
+  const matches = state.data.upcoming || [];
+  if (!matches.length) {
+    matchList.innerHTML = `<div class="empty-state">没有读取到 WINNER 官方比赛数据。</div>`;
+    return;
+  }
 
+  const visible = matches.filter((match) => adjustedConfidence(match) >= state.minConfidence);
   const list = visible.length ? visible : matches;
   list.forEach((match) => {
     const confidence = adjustedConfidence(match);
@@ -161,14 +102,16 @@ function renderMatches() {
     button.type = "button";
     button.innerHTML = `
       <div>
-        <p class="teams">${match.title}</p>
+        <p class="teams">${match.homeZh} vs ${match.awayZh}</p>
         <div class="match-meta">
-          <span>${match.date}</span>
+          <span>${match.tournament}</span>
+          <span>${match.date} ${match.time}</span>
           <span>${match.market}</span>
-          <span>${match.style}</span>
         </div>
         <div class="factors">
-          ${match.factors.map((factor) => `<span>${factor}</span>`).join("")}
+          <span>官方状态：${match.officialStatus}</span>
+          <span>预测比分：${match.prediction.score}</span>
+          <span>${match.prediction.totalLabel}</span>
         </div>
       </div>
       <div class="confidence-pill">${confidence}%</div>
@@ -182,23 +125,41 @@ function renderMatches() {
 }
 
 function renderInsight() {
+  const matches = state.data.upcoming || [];
   const match = matches.find((item) => item.id === state.selectedId) || matches[0];
+  if (!match) {
+    selectedTitle.textContent = "等待官方数据";
+    selectedBadge.textContent = "WINNER";
+    scoreValue.textContent = "--";
+    recommendationText.textContent = "请先运行数据更新脚本，或等待 GitHub Pages 数据刷新。";
+    topPick.textContent = "暂无";
+    metrics.innerHTML = "";
+    return;
+  }
+
   const confidence = adjustedConfidence(match);
   const angle = Math.round((confidence / 100) * 360);
+  const prediction = match.prediction;
 
-  selectedTitle.textContent = match.title;
-  selectedBadge.textContent = match.market;
-  scoreValue.textContent = confidence;
+  selectedTitle.textContent = `${match.homeZh} vs ${match.awayZh}`;
+  selectedBadge.textContent = `${match.date} ${match.time}`;
+  scoreValue.textContent = prediction.score;
   scoreRing.style.background = `conic-gradient(var(--green) 0deg, var(--green) ${angle}deg, rgba(255, 255, 255, 0.1) ${angle}deg)`;
-  recommendationText.textContent = recommendationFor(match, confidence);
-  topPick.textContent = `${match.title}：${match.pick}`;
+  recommendationText.innerHTML = `
+    <strong>${recommendationFor(match, confidence)}</strong>
+    <ul>
+      ${prediction.reasons.map((reason) => `<li>${reason}</li>`).join("")}
+    </ul>
+  `;
+  topPick.textContent = `${match.homeZh} vs ${match.awayZh}：${prediction.score}`;
+  officialLink.href = match.officialUrl;
 
   metrics.innerHTML = "";
   [
-    ["进攻效率", match.metrics.attack],
-    ["防守稳定", match.metrics.defense],
-    ["近期状态", match.metrics.form],
-    ["波动风险", match.metrics.volatility]
+    ["官方源", `${prediction.metrics.official}%`],
+    ["进攻均值", prediction.metrics.attack],
+    ["防守均值", prediction.metrics.defense],
+    ["信心分", `${confidence}%`]
   ].forEach(([label, value]) => {
     const item = document.createElement("div");
     item.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
@@ -208,7 +169,7 @@ function renderInsight() {
 
 function renderSources() {
   sourceList.innerHTML = "";
-  sources.forEach((source) => {
+  (state.data.sources || []).forEach((source) => {
     const link = document.createElement("a");
     link.className = "source-item";
     link.href = source.url;
@@ -220,6 +181,24 @@ function renderSources() {
       <p>${source.note}</p>
     `;
     sourceList.appendChild(link);
+  });
+}
+
+function renderRecentResults() {
+  recentResults.innerHTML = "";
+  const results = state.data.recentResults || [];
+  if (!results.length) {
+    recentResults.innerHTML = `<span>近期官方结果读取中</span>`;
+    return;
+  }
+
+  results.forEach((result) => {
+    const link = document.createElement("a");
+    link.href = result.officialUrl;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.textContent = `${result.homeZh} ${result.score} ${result.awayZh}`;
+    recentResults.appendChild(link);
   });
 }
 
@@ -240,12 +219,12 @@ confidenceRange.addEventListener("input", (event) => {
 });
 
 refreshAdvice.addEventListener("click", () => {
-  state.wobble = Math.floor(Math.random() * 7) - 3;
+  state.wobble = Math.floor(Math.random() * 5) - 2;
   render();
 });
 
 copySources.addEventListener("click", async () => {
-  const text = sources.map((source) => `${source.name}: ${source.url}`).join("\n");
+  const text = (state.data.sources || []).map((source) => `${source.name}: ${source.url}`).join("\n");
   await navigator.clipboard.writeText(text);
   copySources.textContent = "已复制";
   window.setTimeout(() => {
@@ -253,5 +232,4 @@ copySources.addEventListener("click", async () => {
   }, 1400);
 });
 
-renderSources();
-render();
+loadData();

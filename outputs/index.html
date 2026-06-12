@@ -32,7 +32,7 @@
           <p class="eyebrow">FIFA World Cup 2026 analysis console</p>
           <h1>世界杯赛前分析与合规购买决策台</h1>
           <p class="hero-copy">
-            用球队状态、进攻效率、防守稳定性和伤停风险生成建议；购买入口只指向日本正规渠道，不接入、不宣传海外非法线上博彩。
+            接入 WINNER 官方比赛列表与正规资讯源，生成赛前比分倾向；购买入口只指向日本正规渠道，不接入、不宣传海外非法线上博彩。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#matches">查看推荐</a>
@@ -42,7 +42,7 @@
         <aside class="hero-panel" aria-label="Current model summary">
           <div>
             <span class="label">模型状态</span>
-            <strong>演示数据</strong>
+            <strong id="dataStatus">官方数据读取中</strong>
           </div>
           <div>
             <span class="label">合规策略</span>
@@ -90,19 +90,24 @@
             </div>
             <div class="score-ring" id="scoreRing">
               <span id="scoreValue">--</span>
-              <small>confidence</small>
+              <small>score pick</small>
             </div>
             <dl class="metrics" id="metrics"></dl>
             <div class="recommendation">
               <span class="label">专业建议</span>
-              <p id="recommendationText">请从左侧选择一场比赛。</p>
+              <div class="recommendation-body" id="recommendationText">请从左侧选择一场比赛。</div>
             </div>
             <div class="action-row">
-              <a class="button primary" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">去 WINNER 核对</a>
+              <a class="button primary" id="officialLink" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">去 WINNER 核对</a>
               <button class="button ghost" id="refreshAdvice" type="button">重新计算</button>
             </div>
           </section>
         </div>
+      </section>
+
+      <section class="result-strip" aria-label="Recent official results">
+        <span class="label">近期 WINNER 官方结果</span>
+        <div id="recentResults" class="recent-results"></div>
       </section>
 
       <section class="legal-band" id="legal">
@@ -150,7 +155,7 @@
         </div>
         <div class="risk-copy">
           <p>
-            本页面是分析与导航工具，不代理下注、不托管资金、不承诺收益。后续如果接 API，优先接官方赛程、球队数据、伤停和日本合规彩票平台公开信息。
+            本页面是分析与导航工具，不代理下注、不托管资金、不承诺收益。页面读取本项目生成的官方数据 JSON；数据源优先级为 WINNER 官方销售/结果页、FIFA/JFA 等官方赛事源和日本正规资讯源。
           </p>
           <p>
             日本国内从海外线上博彩网站进行 sports betting 有犯罪风险；页面不会加入“开户注册”“返利”“开户链接”或未经确认的博彩站跳转。
@@ -161,7 +166,7 @@
 
     <footer class="footer">
       <span>World Cup Edge MVP</span>
-      <span>Last checked: 2026-06-12 JST</span>
+      <span>Last checked: 2026-06-13 JST</span>
     </footer>
 
     <script src="./app.js"></script>
