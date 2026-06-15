@@ -214,16 +214,41 @@ function renderRecentResults() {
 }
 
 function parseBetLines(text) {
+  const unitPrice = 200;
   return text
     .split(/\n+/)
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
+      const normalized = line.replace(/\s+/g, " ");
+      const scoreMatch = normalized.match(/(\d+)\s*[:：-]\s*(\d+)/);
+      const unitMatch = normalized.match(/(\d+)\s*注/);
+      const oddsMatch = normalized.match(/(?:赔率|払戻倍率|倍率)\s*[:：]?\s*([0-9.]+)/i);
+      const resultMatch = normalized.match(/(未开奖|未発表|中|命中|当たり|当選|外れ|不中|ハズレ|lose|lost|win|hit)/i);
+
+      if (scoreMatch && unitMatch) {
+        const scoreStart = scoreMatch.index ?? 0;
+        const match = normalized.slice(0, scoreStart).replace(/\s*vs\s*/i, " vs ").trim();
+        const units = Number(unitMatch[1]);
+        return {
+          match,
+          pick: `${scoreMatch[1]}-${scoreMatch[2]}`,
+          units,
+          stake: units * unitPrice,
+          odds: oddsMatch ? Number(oddsMatch[1]) : null,
+          result: resultMatch?.[1] || "未开奖"
+        };
+      }
+
       const parts = line.split(/[,，\t]/).map((part) => part.trim());
+      const unitsFromPart = parts[2]?.match(/(\d+)\s*注/);
+      const stake = unitsFromPart ? Number(unitsFromPart[1]) * unitPrice : Number(parts[2] || 0);
       return {
         match: parts[0] || "",
-        pick: parts[1] || "",
-        stake: Number(parts[2] || 0),
+        pick: (parts[1] || "").replace(/[:：]/g, "-"),
+        units: unitsFromPart ? Number(unitsFromPart[1]) : Math.round(stake / unitPrice),
+        stake,
+        odds: null,
         result: parts[3] || "未开奖"
       };
     })
@@ -241,12 +266,19 @@ function renderBetSummary() {
   const settled = bets.filter((bet) => bet.result !== "未开奖");
   const hit = settled.filter((bet) => /中|当|hit|win/i.test(bet.result)).length;
   const stake = bets.reduce((sum, bet) => sum + (Number.isFinite(bet.stake) ? bet.stake : 0), 0);
+  const units = bets.reduce((sum, bet) => sum + (Number.isFinite(bet.units) ? bet.units : 0), 0);
+  const potential = bets.reduce((sum, bet) => {
+    if (!Number.isFinite(bet.odds) || !Number.isFinite(bet.stake)) return sum;
+    return sum + bet.stake * bet.odds;
+  }, 0);
   const rate = settled.length ? Math.round((hit / settled.length) * 100) : 0;
   betSummary.innerHTML = `
     <strong>${bets.length}</strong> 条记录，
+    合计 <strong>${units}</strong> 注，
     已开奖 <strong>${settled.length}</strong>，
     命中率 <strong>${rate}%</strong>，
-    记录金额 <strong>${stake.toLocaleString()}円</strong>。
+    投入 <strong>${stake.toLocaleString()}円</strong>
+    ${potential ? `，理论最高返还 <strong>${Math.round(potential).toLocaleString()}円</strong>` : ""}。
   `;
 }
 
