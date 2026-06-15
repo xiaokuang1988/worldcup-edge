@@ -110,6 +110,26 @@
         <div id="recentResults" class="recent-results"></div>
       </section>
 
+      <section class="account-band" id="account">
+        <div>
+          <p class="eyebrow">WINNER account link</p>
+          <h2>下单记录连接</h2>
+          <p>
+            公开网页不能直接读取你的 WINNER 登录态。当前先支持本机导入购买记录，数据只保存在你手机/电脑浏览器 localStorage。
+            真正自动连接需要单独做一个你授权的后端或本地连接器。
+          </p>
+        </div>
+        <div class="bet-import">
+          <label for="betImport">购买记录</label>
+          <textarea id="betImport" rows="5" placeholder="例：西班牙 vs 佛得角, 2-0, 200, 未开奖"></textarea>
+          <div class="action-row">
+            <button class="button primary" id="saveBets" type="button">保存记录</button>
+            <button class="button ghost" id="clearBets" type="button">清空</button>
+          </div>
+          <p id="betSummary" class="bet-summary"></p>
+        </div>
+      </section>
+
       <section class="legal-band" id="legal">
         <div class="section-head">
           <div>
@@ -166,7 +186,7 @@
 
     <footer class="footer">
       <span>World Cup Edge MVP</span>
-      <span>Last checked: 2026-06-13 JST</span>
+      <span>Last checked: 2026-06-15 JST</span>
     </footer>
 
     <script src="./app.js"></script>

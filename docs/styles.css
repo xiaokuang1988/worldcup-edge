@@ -460,6 +460,30 @@ output {
   margin-top: 6px;
 }
 
+.score-candidates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.score-candidates span {
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  border: 1px solid rgba(49, 208, 127, 0.35);
+  border-radius: 8px;
+  background: rgba(49, 208, 127, 0.1);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.score-candidates small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .result-strip {
   display: flex;
   align-items: center;
@@ -490,6 +514,53 @@ output {
 .empty-state {
   display: block;
   padding: 18px;
+}
+
+.account-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 24px;
+  padding: clamp(52px, 8vw, 84px) clamp(16px, 4vw, 44px);
+  background: #07110f;
+}
+
+.account-band p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.bet-import {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.bet-import label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.bet-import textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 130px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.55;
+}
+
+.bet-summary {
+  margin: 0;
+  color: #d7e5dd;
 }
 
 .legal-band {
@@ -586,9 +657,14 @@ output {
 
   .section-head,
   .risk-band,
-  .result-strip {
+  .result-strip,
+  .account-band {
     align-items: start;
     flex-direction: column;
+  }
+
+  .account-band {
+    display: flex;
   }
 }
 
@@ -622,6 +698,10 @@ output {
   }
 
   .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .score-candidates {
     grid-template-columns: 1fr;
   }
 

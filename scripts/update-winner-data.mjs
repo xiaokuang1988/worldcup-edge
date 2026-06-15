@@ -27,6 +27,24 @@ const teamProfiles = {
   "ﾁｭﾆｼﾞｱ": { zh: "突尼斯", attack: 62, defense: 69, tempo: 58, volatility: 48 },
   "ｽﾍﾟｲﾝ": { zh: "西班牙", attack: 84, defense: 79, tempo: 74, volatility: 39 },
   "ｶｰﾎﾞﾍﾞ": { zh: "佛得角", attack: 63, defense: 66, tempo: 63, volatility: 52 },
+  "ﾍﾞﾙｷﾞｰ": { zh: "比利时", attack: 81, defense: 74, tempo: 73, volatility: 47 },
+  "ｴｼﾞﾌﾟﾄ": { zh: "埃及", attack: 72, defense: 69, tempo: 66, volatility: 50 },
+  "ｻｳｼﾞ": { zh: "沙特", attack: 64, defense: 62, tempo: 67, volatility: 58 },
+  "ｳﾙｸﾞｱｲ": { zh: "乌拉圭", attack: 80, defense: 78, tempo: 72, volatility: 41 },
+  "ｲﾗﾝ": { zh: "伊朗", attack: 70, defense: 72, tempo: 65, volatility: 46 },
+  "ﾆｭｰｼﾞｰ": { zh: "新西兰", attack: 59, defense: 61, tempo: 63, volatility: 55 },
+  "ﾌﾗﾝｽ": { zh: "法国", attack: 87, defense: 80, tempo: 79, volatility: 39 },
+  "ｾﾈｶﾞﾙ": { zh: "塞内加尔", attack: 74, defense: 74, tempo: 73, volatility: 46 },
+  "ｲﾗｸ": { zh: "伊拉克", attack: 61, defense: 63, tempo: 64, volatility: 57 },
+  "ﾉﾙｳｪｰ": { zh: "挪威", attack: 80, defense: 70, tempo: 71, volatility: 49 },
+  "ｱﾙｾﾞﾝﾁ": { zh: "阿根廷", attack: 86, defense: 80, tempo: 76, volatility: 38 },
+  "ｱﾙｼﾞｪﾘ": { zh: "阿尔及利亚", attack: 72, defense: 71, tempo: 70, volatility: 47 },
+  "ｵｰｽﾄﾘｱ": { zh: "奥地利", attack: 74, defense: 73, tempo: 73, volatility: 44 },
+  "ﾖﾙﾀﾞﾝ": { zh: "约旦", attack: 60, defense: 61, tempo: 64, volatility: 58 },
+  "ｲﾝｸﾞﾗﾝ": { zh: "英格兰", attack: 84, defense: 79, tempo: 74, volatility: 42 },
+  "ｸﾛｱﾁｱ": { zh: "克罗地亚", attack: 75, defense: 76, tempo: 67, volatility: 43 },
+  "ﾎﾟﾙﾄｶﾞ": { zh: "葡萄牙", attack: 85, defense: 77, tempo: 77, volatility: 42 },
+  "ｺﾝｺﾞ": { zh: "刚果", attack: 61, defense: 60, tempo: 68, volatility: 61 },
   "ｶﾅﾀﾞ": { zh: "加拿大", attack: 70, defense: 66, tempo: 76, volatility: 50 },
   "ﾎﾞｽﾆｱ": { zh: "波黑", attack: 66, defense: 64, tempo: 61, volatility: 53 },
   "ﾒｷｼｺ": { zh: "墨西哥", attack: 75, defense: 73, tempo: 74, volatility: 42 },
@@ -162,6 +180,37 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
+function factorial(value) {
+  if (value <= 1) return 1;
+  let total = 1;
+  for (let i = 2; i <= value; i += 1) total *= i;
+  return total;
+}
+
+function poisson(k, lambda) {
+  return (Math.exp(-lambda) * lambda ** k) / factorial(k);
+}
+
+function topScoreCandidates(homeGoals, awayGoals) {
+  const candidates = [];
+  for (let home = 0; home <= 5; home += 1) {
+    for (let away = 0; away <= 5; away += 1) {
+      candidates.push({
+        score: `${home}-${away}`,
+        probability: poisson(home, homeGoals) * poisson(away, awayGoals)
+      });
+    }
+  }
+  const total = candidates.reduce((sum, item) => sum + item.probability, 0);
+  return candidates
+    .map((item) => ({
+      ...item,
+      probability: Math.round((item.probability / total) * 1000) / 10
+    }))
+    .sort((a, b) => b.probability - a.probability)
+    .slice(0, 3);
+}
+
 function scorePrediction(match) {
   const home = profileFor(match.home);
   const away = profileFor(match.away);
@@ -183,13 +232,23 @@ function scorePrediction(match) {
   const total = homeGoals + awayGoals;
   const totalLabel = total >= 2.9 ? "偏大球" : total <= 2.1 ? "偏小球" : "2-3 球区间";
   const winnerLean = roundedHome > roundedAway ? `${match.homeZh}胜` : roundedHome < roundedAway ? `${match.awayZh}胜` : "平局保护";
+  const topScores = topScoreCandidates(homeGoals, awayGoals);
+  const score = topScores[0]?.score || `${roundedHome}-${roundedAway}`;
+  const decision =
+    confidence >= 74
+      ? "可重点核对"
+      : confidence >= 64
+        ? "只做备选"
+        : "建议跳过";
 
   return {
     expectedGoals: { home: homeGoals, away: awayGoals },
-    score: `${roundedHome}-${roundedAway}`,
+    score,
+    topScores,
     confidence,
     winnerLean,
     totalLabel,
+    decision,
     metrics: {
       official: 100,
       attack: Math.round((home.attack + away.attack) / 2),

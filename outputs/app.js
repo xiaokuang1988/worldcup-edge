@@ -31,6 +31,10 @@ const refreshAdvice = document.querySelector("#refreshAdvice");
 const officialLink = document.querySelector("#officialLink");
 const dataStatus = document.querySelector("#dataStatus");
 const recentResults = document.querySelector("#recentResults");
+const betImport = document.querySelector("#betImport");
+const saveBets = document.querySelector("#saveBets");
+const clearBets = document.querySelector("#clearBets");
+const betSummary = document.querySelector("#betSummary");
 
 function safeDate(isoString) {
   try {
@@ -73,16 +77,17 @@ function adjustedConfidence(match) {
 
 function recommendationFor(match, confidence) {
   const prediction = match.prediction;
-  const base = `比分倾向：${match.homeZh} ${prediction.score} ${match.awayZh}；方向：${prediction.winnerLean}，${prediction.totalLabel}。`;
+  const topScores = prediction.topScores?.map((item) => `${item.score} (${item.probability}%)`).join(" / ");
+  const base = `比分候选：${topScores || prediction.score}；方向：${prediction.winnerLean}，${prediction.totalLabel}。`;
   const official = `先打开 WINNER 官方，确认该场是否仍在销售、截止时间、可选比分和払戻倍率。`;
 
   if (confidence >= 74) {
-    return `${base} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
+    return `${prediction.decision}。${base} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
   }
   if (confidence >= 62) {
-    return `${base} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
+    return `${prediction.decision}。${base} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
   }
-  return `${base} 模型波动较大，建议跳过或小额观察。${official}`;
+  return `${prediction.decision}。${base} 模型波动较大，不建议为了追单继续加仓。${official}`;
 }
 
 function renderMatches() {
@@ -110,7 +115,8 @@ function renderMatches() {
         </div>
         <div class="factors">
           <span>官方状态：${match.officialStatus}</span>
-          <span>预测比分：${match.prediction.score}</span>
+          <span>首选比分：${match.prediction.score}</span>
+          <span>${match.prediction.decision}</span>
           <span>${match.prediction.totalLabel}</span>
         </div>
       </div>
@@ -140,12 +146,16 @@ function renderInsight() {
   const confidence = adjustedConfidence(match);
   const angle = Math.round((confidence / 100) * 360);
   const prediction = match.prediction;
+  const topScoreMarkup = (prediction.topScores || [])
+    .map((item) => `<span>${item.score}<small>${item.probability}%</small></span>`)
+    .join("");
 
   selectedTitle.textContent = `${match.homeZh} vs ${match.awayZh}`;
   selectedBadge.textContent = `${match.date} ${match.time}`;
   scoreValue.textContent = prediction.score;
   scoreRing.style.background = `conic-gradient(var(--green) 0deg, var(--green) ${angle}deg, rgba(255, 255, 255, 0.1) ${angle}deg)`;
   recommendationText.innerHTML = `
+    <div class="score-candidates">${topScoreMarkup}</div>
     <strong>${recommendationFor(match, confidence)}</strong>
     <ul>
       ${prediction.reasons.map((reason) => `<li>${reason}</li>`).join("")}
@@ -159,7 +169,8 @@ function renderInsight() {
     ["官方源", `${prediction.metrics.official}%`],
     ["进攻均值", prediction.metrics.attack],
     ["防守均值", prediction.metrics.defense],
-    ["信心分", `${confidence}%`]
+    ["信心分", `${confidence}%`],
+    ["操作建议", prediction.decision]
   ].forEach(([label, value]) => {
     const item = document.createElement("div");
     item.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
@@ -202,6 +213,43 @@ function renderRecentResults() {
   });
 }
 
+function parseBetLines(text) {
+  return text
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const parts = line.split(/[,，\t]/).map((part) => part.trim());
+      return {
+        match: parts[0] || "",
+        pick: parts[1] || "",
+        stake: Number(parts[2] || 0),
+        result: parts[3] || "未开奖"
+      };
+    })
+    .filter((item) => item.match && item.pick);
+}
+
+function renderBetSummary() {
+  const raw = localStorage.getItem("winner-bets") || "";
+  if (betImport) betImport.value = raw;
+  const bets = parseBetLines(raw);
+  if (!bets.length) {
+    betSummary.innerHTML = "还没有导入购买记录。格式：比赛, 选择比分, 金额, 结果";
+    return;
+  }
+  const settled = bets.filter((bet) => bet.result !== "未开奖");
+  const hit = settled.filter((bet) => /中|当|hit|win/i.test(bet.result)).length;
+  const stake = bets.reduce((sum, bet) => sum + (Number.isFinite(bet.stake) ? bet.stake : 0), 0);
+  const rate = settled.length ? Math.round((hit / settled.length) * 100) : 0;
+  betSummary.innerHTML = `
+    <strong>${bets.length}</strong> 条记录，
+    已开奖 <strong>${settled.length}</strong>，
+    命中率 <strong>${rate}%</strong>，
+    记录金额 <strong>${stake.toLocaleString()}円</strong>。
+  `;
+}
+
 function render() {
   confidenceValue.textContent = `${state.minConfidence}%`;
   renderMatches();
@@ -232,4 +280,15 @@ copySources.addEventListener("click", async () => {
   }, 1400);
 });
 
+saveBets?.addEventListener("click", () => {
+  localStorage.setItem("winner-bets", betImport.value);
+  renderBetSummary();
+});
+
+clearBets?.addEventListener("click", () => {
+  localStorage.removeItem("winner-bets");
+  renderBetSummary();
+});
+
+renderBetSummary();
 loadData();
