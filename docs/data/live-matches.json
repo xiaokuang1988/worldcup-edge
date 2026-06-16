@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T00:12:09.221Z",
+  "generatedAt": "2026-06-16T06:07:10.967Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,59 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｲﾗﾝ-ﾆｭｰｼﾞｰ-06-16-火-10-00",
-      "tournament": "サッカーW杯",
-      "home": "ｲﾗﾝ",
-      "away": "ﾆｭｰｼﾞｰ",
-      "homeZh": "伊朗",
-      "awayZh": "新西兰",
-      "date": "06/16 (火)",
-      "time": "10:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.8,
-          "away": 0.4
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 20.2
-          },
-          {
-            "score": "2-0",
-            "probability": 18.1
-          },
-          {
-            "score": "0-0",
-            "probability": 11.2
-          }
-        ],
-        "confidence": 78,
-        "winnerLean": "伊朗胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 65,
-          "defense": 67,
-          "volatility": 51
-        },
-        "reasons": [
-          "WINNER 官方当前列出 伊朗 vs 新西兰 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：伊朗 1.8，新西兰 0.4。",
-          "节奏均值 64，波动风险 51，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾌﾗﾝｽ-ｾﾈｶﾞﾙ-06-17-水-04-00",
       "tournament": "サッカーW杯",
@@ -569,9 +516,94 @@
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
         "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
       ]
+    },
+    {
+      "id": "ﾁｪｺ-南ｱﾌﾘｶ-06-19-金-01-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾁｪｺ",
+      "away": "南ｱﾌﾘｶ",
+      "homeZh": "捷克",
+      "awayZh": "南非",
+      "date": "06/19 (金)",
+      "time": "01:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.8,
+          "away": 0.6
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 16.5
+          },
+          {
+            "score": "2-0",
+            "probability": 14.9
+          },
+          {
+            "score": "1-1",
+            "probability": 9.9
+          }
+        ],
+        "confidence": 76,
+        "winnerLean": "捷克胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 66,
+          "defense": 66,
+          "volatility": 51
+        },
+        "reasons": [
+          "WINNER 官方当前列出 捷克 vs 南非 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：捷克 1.8，南非 0.6。",
+          "节奏均值 66，波动风险 51，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
     }
   ],
   "recentResults": [
+    {
+      "home": "ｽﾍﾟｲﾝ",
+      "away": "ｶｰﾎﾞﾍﾞ",
+      "homeZh": "西班牙",
+      "awayZh": "佛得角",
+      "score": "0-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ｲﾗﾝ",
+      "away": "ﾆｭｰｼﾞｰ",
+      "homeZh": "伊朗",
+      "awayZh": "新西兰",
+      "score": "2-2",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ﾍﾞﾙｷﾞｰ",
+      "away": "ｴｼﾞﾌﾟﾄ",
+      "homeZh": "比利时",
+      "awayZh": "埃及",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ｻｳｼﾞ",
+      "away": "ｳﾙｸﾞｱｲ",
+      "homeZh": "沙特",
+      "awayZh": "乌拉圭",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ｵﾗﾝﾀﾞ",
       "away": "日本",
