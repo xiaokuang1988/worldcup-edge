@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T23:57:41.912Z",
+  "generatedAt": "2026-06-18T04:53:05.701Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,59 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｳｽﾞﾍﾞｷ-ｺﾛﾝﾋﾞｱ-06-18-木-11-00",
-      "tournament": "サッカーW杯",
-      "home": "ｳｽﾞﾍﾞｷ",
-      "away": "ｺﾛﾝﾋﾞｱ",
-      "homeZh": "ｳｽﾞﾍﾞｷ",
-      "awayZh": "ｺﾛﾝﾋﾞｱ",
-      "date": "06/18 (木)",
-      "time": "11:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.4,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 12.7
-          },
-          {
-            "score": "1-1",
-            "probability": 12.7
-          },
-          {
-            "score": "0-0",
-            "probability": 9.1
-          }
-        ],
-        "confidence": 68,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 65,
-          "defense": 65,
-          "volatility": 55
-        },
-        "reasons": [
-          "WINNER 官方当前列出 ｳｽﾞﾍﾞｷ vs ｺﾛﾝﾋﾞｱ 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：ｳｽﾞﾍﾞｷ 1.4，ｺﾛﾝﾋﾞｱ 1。",
-          "节奏均值 65，波动风险 55，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｽｲｽ-ﾎﾞｽﾆｱ-06-19-金-04-00",
       "tournament": "サッカーW杯",
@@ -569,9 +516,78 @@
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
         "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
       ]
+    },
+    {
+      "id": "ﾄﾞｲﾂ-ｺｰﾄｼﾞﾎ-06-21-日-05-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾄﾞｲﾂ",
+      "away": "ｺｰﾄｼﾞﾎ",
+      "homeZh": "德国",
+      "awayZh": "科特迪瓦",
+      "date": "06/21 (日)",
+      "time": "05:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.2,
+          "away": 1.1
+        },
+        "score": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 10.1
+          },
+          {
+            "score": "1-1",
+            "probability": 9.2
+          },
+          {
+            "score": "2-0",
+            "probability": 9.2
+          }
+        ],
+        "confidence": 75,
+        "winnerLean": "德国胜",
+        "totalLabel": "偏大球",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 78,
+          "defense": 72,
+          "volatility": 50
+        },
+        "reasons": [
+          "WINNER 官方当前列出 德国 vs 科特迪瓦 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：德国 2.2，科特迪瓦 1.1。",
+          "节奏均值 75，波动风险 50，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
     }
   ],
   "recentResults": [
+    {
+      "home": "ﾎﾟﾙﾄｶﾞ",
+      "away": "ｺﾝｺﾞ",
+      "homeZh": "葡萄牙",
+      "awayZh": "刚果",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ｶﾞｰﾅ",
+      "away": "ﾊﾟﾅﾏ",
+      "homeZh": "ｶﾞｰﾅ",
+      "awayZh": "ﾊﾟﾅﾏ",
+      "score": "1-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ﾌﾗﾝｽ",
       "away": "ｾﾈｶﾞﾙ",
