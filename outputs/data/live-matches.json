@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T14:14:26.397Z",
+  "generatedAt": "2026-06-19T16:58:43.969Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,112 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｱﾒﾘｶ-ｵｰｽﾄﾗﾘ-06-20-土-04-00",
-      "tournament": "サッカーW杯",
-      "home": "ｱﾒﾘｶ",
-      "away": "ｵｰｽﾄﾗﾘ",
-      "homeZh": "美国",
-      "awayZh": "澳大利亚",
-      "date": "06/20 (土)",
-      "time": "04:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.5,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 12.4
-          },
-          {
-            "score": "1-1",
-            "probability": 12.4
-          },
-          {
-            "score": "2-0",
-            "probability": 9.3
-          }
-        ],
-        "confidence": 70,
-        "winnerLean": "美国胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 70,
-          "defense": 69,
-          "volatility": 45
-        },
-        "reasons": [
-          "WINNER 官方当前列出 美国 vs 澳大利亚 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：美国 1.5，澳大利亚 1。",
-          "节奏均值 68，波动风险 45，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ｽｺｯﾄﾗﾝ-ﾓﾛｯｺ-06-20-土-07-00",
-      "tournament": "サッカーW杯",
-      "home": "ｽｺｯﾄﾗﾝ",
-      "away": "ﾓﾛｯｺ",
-      "homeZh": "苏格兰",
-      "awayZh": "摩洛哥",
-      "date": "06/20 (土)",
-      "time": "07:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.1,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 13.5
-          },
-          {
-            "score": "1-1",
-            "probability": 13.5
-          },
-          {
-            "score": "0-0",
-            "probability": 12.3
-          }
-        ],
-        "confidence": 66,
-        "winnerLean": "平局保护",
-        "totalLabel": "偏小球",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 70,
-          "defense": 74,
-          "volatility": 46
-        },
-        "reasons": [
-          "WINNER 官方当前列出 苏格兰 vs 摩洛哥 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：苏格兰 1.1，摩洛哥 1。",
-          "节奏均值 69，波动风险 46，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾌﾞﾗｼﾞﾙ-ﾊｲﾁ-06-20-土-09-30",
       "tournament": "サッカーW杯",
@@ -563,6 +457,112 @@
           "WINNER 官方当前列出 乌拉圭 vs 佛得角 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：乌拉圭 2.1，佛得角 0.4。",
           "节奏均值 68，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾍﾞﾙｷﾞｰ-ｲﾗﾝ-06-22-月-04-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾍﾞﾙｷﾞｰ",
+      "away": "ｲﾗﾝ",
+      "homeZh": "比利时",
+      "awayZh": "伊朗",
+      "date": "06/22 (月)",
+      "time": "04:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.9,
+          "away": 0.8
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 12.9
+          },
+          {
+            "score": "2-0",
+            "probability": 12.3
+          },
+          {
+            "score": "1-1",
+            "probability": 10.4
+          }
+        ],
+        "confidence": 76,
+        "winnerLean": "比利时胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 76,
+          "defense": 73,
+          "volatility": 47
+        },
+        "reasons": [
+          "WINNER 官方当前列出 比利时 vs 伊朗 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：比利时 1.9，伊朗 0.8。",
+          "节奏均值 69，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾆｭｰｼﾞｰ-ｴｼﾞﾌﾟﾄ-06-22-月-10-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾆｭｰｼﾞｰ",
+      "away": "ｴｼﾞﾌﾟﾄ",
+      "homeZh": "新西兰",
+      "awayZh": "埃及",
+      "date": "06/22 (月)",
+      "time": "10:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 0.9,
+          "away": 1.4
+        },
+        "score": "0-1",
+        "topScores": [
+          {
+            "score": "0-1",
+            "probability": 14.1
+          },
+          {
+            "score": "1-1",
+            "probability": 12.7
+          },
+          {
+            "score": "0-0",
+            "probability": 10.1
+          }
+        ],
+        "confidence": 69,
+        "winnerLean": "平局保护",
+        "totalLabel": "2-3 球区间",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 66,
+          "defense": 65,
+          "volatility": 53
+        },
+        "reasons": [
+          "WINNER 官方当前列出 新西兰 vs 埃及 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：新西兰 0.9，埃及 1.4。",
+          "节奏均值 65，波动风险 53，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
