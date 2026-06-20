@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T03:55:23.621Z",
+  "generatedAt": "2026-06-20T07:53:09.597Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -597,6 +597,14 @@
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     },
     {
+      "home": "ﾄﾙｺ",
+      "away": "ﾊﾟﾗｸﾞｱ",
+      "homeZh": "土耳其",
+      "awayZh": "巴拉圭",
+      "score": "0-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
       "home": "ﾒｷｼｺ",
       "away": "韓国",
       "homeZh": "墨西哥",
@@ -658,14 +666,6 @@
       "homeZh": "奥地利",
       "awayZh": "约旦",
       "score": "3-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｽﾍﾟｲﾝ",
-      "away": "ｶｰﾎﾞﾍﾞ",
-      "homeZh": "西班牙",
-      "awayZh": "佛得角",
-      "score": "0-0",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
   ]
