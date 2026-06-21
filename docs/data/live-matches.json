@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T22:42:56.387Z",
+  "generatedAt": "2026-06-21T00:09:57.338Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,59 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｴｸｱﾄﾞﾙ-ｷｭﾗｿｰ-06-21-日-09-00",
-      "tournament": "サッカーW杯",
-      "home": "ｴｸｱﾄﾞﾙ",
-      "away": "ｷｭﾗｿｰ",
-      "homeZh": "厄瓜多尔",
-      "awayZh": "库拉索",
-      "date": "06/21 (日)",
-      "time": "09:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2.1,
-          "away": 0.3
-        },
-        "score": "2-0",
-        "topScores": [
-          {
-            "score": "2-0",
-            "probability": 20.4
-          },
-          {
-            "score": "1-0",
-            "probability": 19.4
-          },
-          {
-            "score": "3-0",
-            "probability": 14.3
-          }
-        ],
-        "confidence": 82,
-        "winnerLean": "厄瓜多尔胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 64,
-          "defense": 64,
-          "volatility": 56
-        },
-        "reasons": [
-          "WINNER 官方当前列出 厄瓜多尔 vs 库拉索 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：厄瓜多尔 2.1，库拉索 0.3。",
-          "节奏均值 66，波动风险 56，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾁｭﾆｼﾞｱ-日本-06-21-日-13-00",
       "tournament": "サッカーW杯",
@@ -563,6 +510,59 @@
           "WINNER 官方当前列出 约旦 vs 阿尔及利亚 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：约旦 0.9，阿尔及利亚 1.4。",
           "节奏均值 67，波动风险 53，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｲﾝｸﾞﾗﾝ-ｶﾞｰﾅ-06-24-水-05-00",
+      "tournament": "サッカーW杯",
+      "home": "ｲﾝｸﾞﾗﾝ",
+      "away": "ｶﾞｰﾅ",
+      "homeZh": "英格兰",
+      "awayZh": "ｶﾞｰﾅ",
+      "date": "06/24 (水)",
+      "time": "05:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.3,
+          "away": 0.4
+        },
+        "score": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 18.3
+          },
+          {
+            "score": "1-0",
+            "probability": 15.9
+          },
+          {
+            "score": "3-0",
+            "probability": 14
+          }
+        ],
+        "confidence": 83,
+        "winnerLean": "英格兰胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 75,
+          "defense": 72,
+          "volatility": 49
+        },
+        "reasons": [
+          "WINNER 官方当前列出 英格兰 vs ｶﾞｰﾅ 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：英格兰 2.3，ｶﾞｰﾅ 0.4。",
+          "节奏均值 70，波动风险 49，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
