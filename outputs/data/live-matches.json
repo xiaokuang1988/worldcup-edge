@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T21:55:24.932Z",
+  "generatedAt": "2026-06-21T23:18:14.335Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -510,6 +510,59 @@
           "WINNER 官方当前列出 ｺﾛﾝﾋﾞｱ vs 刚果 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：ｺﾛﾝﾋﾞｱ 1.6，刚果 0.8。",
           "节奏均值 67，波动风险 58，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｽｲｽ-ｶﾅﾀﾞ-06-25-木-04-00",
+      "tournament": "サッカーW杯",
+      "home": "ｽｲｽ",
+      "away": "ｶﾅﾀﾞ",
+      "homeZh": "瑞士",
+      "awayZh": "加拿大",
+      "date": "06/25 (木)",
+      "time": "04:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.8,
+          "away": 0.7
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 14.9
+          },
+          {
+            "score": "2-0",
+            "probability": 13.4
+          },
+          {
+            "score": "1-1",
+            "probability": 10.5
+          }
+        ],
+        "confidence": 76,
+        "winnerLean": "瑞士胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 71,
+          "defense": 72,
+          "volatility": 45
+        },
+        "reasons": [
+          "WINNER 官方当前列出 瑞士 vs 加拿大 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：瑞士 1.8，加拿大 0.7。",
+          "节奏均值 71，波动风险 45，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
