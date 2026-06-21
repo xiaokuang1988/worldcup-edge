@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T00:09:57.338Z",
+  "generatedAt": "2026-06-21T05:26:00.993Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,59 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ﾁｭﾆｼﾞｱ-日本-06-21-日-13-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾁｭﾆｼﾞｱ",
-      "away": "日本",
-      "homeZh": "突尼斯",
-      "awayZh": "日本",
-      "date": "06/21 (日)",
-      "time": "13:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1,
-          "away": 1.3
-        },
-        "score": "0-1",
-        "topScores": [
-          {
-            "score": "0-1",
-            "probability": 13.1
-          },
-          {
-            "score": "1-1",
-            "probability": 13.1
-          },
-          {
-            "score": "0-0",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 68,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 69,
-          "defense": 71,
-          "volatility": 46
-        },
-        "reasons": [
-          "WINNER 官方当前列出 突尼斯 vs 日本 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：突尼斯 1，日本 1.3。",
-          "节奏均值 70，波动风险 46，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｽﾍﾟｲﾝ-ｻｳｼﾞ-06-22-月-01-00",
       "tournament": "サッカーW杯",
@@ -569,9 +516,78 @@
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
         "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
       ]
+    },
+    {
+      "id": "ﾎﾟﾙﾄｶﾞ-ｳｽﾞﾍﾞｷ-06-24-水-02-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾎﾟﾙﾄｶﾞ",
+      "away": "ｳｽﾞﾍﾞｷ",
+      "homeZh": "葡萄牙",
+      "awayZh": "ｳｽﾞﾍﾞｷ",
+      "date": "06/24 (水)",
+      "time": "02:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.4,
+          "away": 0.5
+        },
+        "score": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 16.4
+          },
+          {
+            "score": "1-0",
+            "probability": 13.7
+          },
+          {
+            "score": "3-0",
+            "probability": 13.1
+          }
+        ],
+        "confidence": 83,
+        "winnerLean": "葡萄牙胜",
+        "totalLabel": "偏大球",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 75,
+          "defense": 71,
+          "volatility": 49
+        },
+        "reasons": [
+          "WINNER 官方当前列出 葡萄牙 vs ｳｽﾞﾍﾞｷ 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：葡萄牙 2.4，ｳｽﾞﾍﾞｷ 0.5。",
+          "节奏均值 71，波动风险 49，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
     }
   ],
   "recentResults": [
+    {
+      "home": "ｴｸｱﾄﾞﾙ",
+      "away": "ｷｭﾗｿｰ",
+      "homeZh": "厄瓜多尔",
+      "awayZh": "库拉索",
+      "score": "0-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ﾄﾞｲﾂ",
+      "away": "ｺｰﾄｼﾞﾎ",
+      "homeZh": "德国",
+      "awayZh": "科特迪瓦",
+      "score": "2-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ﾌﾞﾗｼﾞﾙ",
       "away": "ﾊｲﾁ",
@@ -649,22 +665,6 @@
       "away": "ｾﾈｶﾞﾙ",
       "homeZh": "法国",
       "awayZh": "塞内加尔",
-      "score": "3-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｱﾙｾﾞﾝﾁ",
-      "away": "ｱﾙｼﾞｪﾘ",
-      "homeZh": "阿根廷",
-      "awayZh": "阿尔及利亚",
-      "score": "3-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｵｰｽﾄﾘｱ",
-      "away": "ﾖﾙﾀﾞﾝ",
-      "homeZh": "奥地利",
-      "awayZh": "约旦",
       "score": "3-1",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
