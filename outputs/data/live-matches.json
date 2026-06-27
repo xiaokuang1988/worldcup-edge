@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T12:52:01.407Z",
+  "generatedAt": "2026-06-27T14:44:23.763Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,112 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｸﾛｱﾁｱ-ｶﾞｰﾅ-06-28-日-06-00",
-      "tournament": "サッカーW杯",
-      "home": "ｸﾛｱﾁｱ",
-      "away": "ｶﾞｰﾅ",
-      "homeZh": "克罗地亚",
-      "awayZh": "ｶﾞｰﾅ",
-      "date": "06/28 (日)",
-      "time": "06:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.8,
-          "away": 0.5
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 18.2
-          },
-          {
-            "score": "2-0",
-            "probability": 16.4
-          },
-          {
-            "score": "0-0",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 77,
-        "winnerLean": "克罗地亚胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 70,
-          "defense": 71,
-          "volatility": 49
-        },
-        "reasons": [
-          "WINNER 官方当前列出 克罗地亚 vs ｶﾞｰﾅ 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：克罗地亚 1.8，ｶﾞｰﾅ 0.5。",
-          "节奏均值 66，波动风险 49，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ﾊﾟﾅﾏ-ｲﾝｸﾞﾗﾝ-06-28-日-06-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾊﾟﾅﾏ",
-      "away": "ｲﾝｸﾞﾗﾝ",
-      "homeZh": "ﾊﾟﾅﾏ",
-      "awayZh": "英格兰",
-      "date": "06/28 (日)",
-      "time": "06:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 0.8,
-          "away": 1.8
-        },
-        "score": "0-1",
-        "topScores": [
-          {
-            "score": "0-1",
-            "probability": 13.5
-          },
-          {
-            "score": "0-2",
-            "probability": 12.2
-          },
-          {
-            "score": "1-1",
-            "probability": 10.8
-          }
-        ],
-        "confidence": 74,
-        "winnerLean": "英格兰胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 75,
-          "defense": 72,
-          "volatility": 49
-        },
-        "reasons": [
-          "WINNER 官方当前列出 ﾊﾟﾅﾏ vs 英格兰 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：ﾊﾟﾅﾏ 0.8，英格兰 1.8。",
-          "节奏均值 70，波动风险 49，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｺﾛﾝﾋﾞｱ-ﾎﾟﾙﾄｶﾞ-06-28-日-08-30",
       "tournament": "サッカーW杯",
