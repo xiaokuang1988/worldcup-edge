@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T23:43:33.871Z",
+  "generatedAt": "2026-06-27T03:39:45.872Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,218 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｳﾙｸﾞｱｲ-ｽﾍﾟｲﾝ-06-27-土-09-00",
-      "tournament": "サッカーW杯",
-      "home": "ｳﾙｸﾞｱｲ",
-      "away": "ｽﾍﾟｲﾝ",
-      "homeZh": "乌拉圭",
-      "awayZh": "西班牙",
-      "date": "06/27 (土)",
-      "time": "09:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.6,
-          "away": 1.3
-        },
-        "score": "1-1",
-        "topScores": [
-          {
-            "score": "1-1",
-            "probability": 11.5
-          },
-          {
-            "score": "2-1",
-            "probability": 9.2
-          },
-          {
-            "score": "1-0",
-            "probability": 8.9
-          }
-        ],
-        "confidence": 69,
-        "winnerLean": "乌拉圭胜",
-        "totalLabel": "偏大球",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 82,
-          "defense": 79,
-          "volatility": 40
-        },
-        "reasons": [
-          "WINNER 官方当前列出 乌拉圭 vs 西班牙 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：乌拉圭 1.6，西班牙 1.3。",
-          "节奏均值 73，波动风险 40，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ｶｰﾎﾞﾍﾞ-ｻｳｼﾞ-06-27-土-09-00",
-      "tournament": "サッカーW杯",
-      "home": "ｶｰﾎﾞﾍﾞ",
-      "away": "ｻｳｼﾞ",
-      "homeZh": "佛得角",
-      "awayZh": "沙特",
-      "date": "06/27 (土)",
-      "time": "09:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.4,
-          "away": 0.9
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 14.1
-          },
-          {
-            "score": "1-1",
-            "probability": 12.7
-          },
-          {
-            "score": "0-0",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 69,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 64,
-          "defense": 64,
-          "volatility": 55
-        },
-        "reasons": [
-          "WINNER 官方当前列出 佛得角 vs 沙特 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：佛得角 1.4，沙特 0.9。",
-          "节奏均值 65，波动风险 55，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ｴｼﾞﾌﾟﾄ-ｲﾗﾝ-06-27-土-12-00",
-      "tournament": "サッカーW杯",
-      "home": "ｴｼﾞﾌﾟﾄ",
-      "away": "ｲﾗﾝ",
-      "homeZh": "埃及",
-      "awayZh": "伊朗",
-      "date": "06/27 (土)",
-      "time": "12:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.4,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 12.7
-          },
-          {
-            "score": "1-1",
-            "probability": 12.7
-          },
-          {
-            "score": "0-0",
-            "probability": 9.1
-          }
-        ],
-        "confidence": 69,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 71,
-          "defense": 71,
-          "volatility": 48
-        },
-        "reasons": [
-          "WINNER 官方当前列出 埃及 vs 伊朗 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：埃及 1.4，伊朗 1。",
-          "节奏均值 66，波动风险 48，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ﾆｭｰｼﾞｰ-ﾍﾞﾙｷﾞｰ-06-27-土-12-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾆｭｰｼﾞｰ",
-      "away": "ﾍﾞﾙｷﾞｰ",
-      "homeZh": "新西兰",
-      "awayZh": "比利时",
-      "date": "06/27 (土)",
-      "time": "12:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 0.7,
-          "away": 1.8
-        },
-        "score": "0-1",
-        "topScores": [
-          {
-            "score": "0-1",
-            "probability": 14.9
-          },
-          {
-            "score": "0-2",
-            "probability": 13.4
-          },
-          {
-            "score": "1-1",
-            "probability": 10.5
-          }
-        ],
-        "confidence": 75,
-        "winnerLean": "比利时胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 70,
-          "defense": 68,
-          "volatility": 51
-        },
-        "reasons": [
-          "WINNER 官方当前列出 新西兰 vs 比利时 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：新西兰 0.7，比利时 1.8。",
-          "节奏均值 68，波动风险 51，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｸﾛｱﾁｱ-ｶﾞｰﾅ-06-28-日-06-00",
       "tournament": "サッカーW杯",
@@ -573,6 +361,22 @@
   ],
   "recentResults": [
     {
+      "home": "ｳﾙｸﾞｱｲ",
+      "away": "ｽﾍﾟｲﾝ",
+      "homeZh": "乌拉圭",
+      "awayZh": "西班牙",
+      "score": "0-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ｶｰﾎﾞﾍﾞ",
+      "away": "ｻｳｼﾞ",
+      "homeZh": "佛得角",
+      "awayZh": "沙特",
+      "score": "0-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
       "home": "日本",
       "away": "ｽｳｪﾃﾞﾝ",
       "homeZh": "日本",
@@ -650,22 +454,6 @@
       "homeZh": "捷克",
       "awayZh": "墨西哥",
       "score": "0-3",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "南ｱﾌﾘｶ",
-      "away": "韓国",
-      "homeZh": "南非",
-      "awayZh": "韩国",
-      "score": "1-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｺﾛﾝﾋﾞｱ",
-      "away": "ｺﾝｺﾞ",
-      "homeZh": "ｺﾛﾝﾋﾞｱ",
-      "awayZh": "刚果",
-      "score": "1-0",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
   ]
