@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T21:38:26.611Z",
+  "generatedAt": "2026-06-28T23:04:55.104Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -86,6 +86,59 @@
           "WINNER 官方当前列出 巴西 vs 日本 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：巴西 2.3，日本 1.2。",
           "节奏均值 82，波动风险 44，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾄﾞｲﾂ-ﾊﾟﾗｸﾞｱ-06-30-火-05-30",
+      "tournament": "サッカーW杯",
+      "home": "ﾄﾞｲﾂ",
+      "away": "ﾊﾟﾗｸﾞｱ",
+      "homeZh": "德国",
+      "awayZh": "巴拉圭",
+      "date": "06/30 (火)",
+      "time": "05:30",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2,
+          "away": 0.6
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 15.1
+          },
+          {
+            "score": "2-0",
+            "probability": 15.1
+          },
+          {
+            "score": "3-0",
+            "probability": 10.1
+          }
+        ],
+        "confidence": 79,
+        "winnerLean": "德国胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 73,
+          "defense": 72,
+          "volatility": 47
+        },
+        "reasons": [
+          "WINNER 官方当前列出 德国 vs 巴拉圭 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：德国 2，巴拉圭 0.6。",
+          "节奏均值 67，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
