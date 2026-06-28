@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T14:23:07.721Z",
+  "generatedAt": "2026-06-28T15:50:48.097Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -40,59 +40,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "南ｱﾌﾘｶ-ｶﾅﾀﾞ-06-29-月-04-00",
-      "tournament": "サッカーW杯",
-      "home": "南ｱﾌﾘｶ",
-      "away": "ｶﾅﾀﾞ",
-      "homeZh": "南非",
-      "awayZh": "加拿大",
-      "date": "06/29 (月)",
-      "time": "04:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.3,
-          "away": 1.4
-        },
-        "score": "1-1",
-        "topScores": [
-          {
-            "score": "1-1",
-            "probability": 12.3
-          },
-          {
-            "score": "0-1",
-            "probability": 9.5
-          },
-          {
-            "score": "1-0",
-            "probability": 8.8
-          }
-        ],
-        "confidence": 65,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 66,
-          "defense": 64,
-          "volatility": 53
-        },
-        "reasons": [
-          "WINNER 官方当前列出 南非 vs 加拿大 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：南非 1.3，加拿大 1.4。",
-          "节奏均值 73，波动风险 53，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾌﾞﾗｼﾞﾙ-日本-06-30-火-02-00",
       "tournament": "サッカーW杯",
@@ -200,102 +147,5 @@
       ]
     }
   ],
-  "recentResults": [
-    {
-      "home": "ｸﾛｱﾁｱ",
-      "away": "ｶﾞｰﾅ",
-      "homeZh": "克罗地亚",
-      "awayZh": "ｶﾞｰﾅ",
-      "score": "2-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｺﾛﾝﾋﾞｱ",
-      "away": "ﾎﾟﾙﾄｶﾞ",
-      "homeZh": "ｺﾛﾝﾋﾞｱ",
-      "awayZh": "葡萄牙",
-      "score": "0-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾖﾙﾀﾞﾝ",
-      "away": "ｱﾙｾﾞﾝﾁ",
-      "homeZh": "约旦",
-      "awayZh": "阿根廷",
-      "score": "1-3",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾊﾟﾅﾏ",
-      "away": "ｲﾝｸﾞﾗﾝ",
-      "homeZh": "ﾊﾟﾅﾏ",
-      "awayZh": "英格兰",
-      "score": "0-2",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｺﾝｺﾞ",
-      "away": "ｳｽﾞﾍﾞｷ",
-      "homeZh": "刚果",
-      "awayZh": "ｳｽﾞﾍﾞｷ",
-      "score": "3-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｳﾙｸﾞｱｲ",
-      "away": "ｽﾍﾟｲﾝ",
-      "homeZh": "乌拉圭",
-      "awayZh": "西班牙",
-      "score": "0-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｴｼﾞﾌﾟﾄ",
-      "away": "ｲﾗﾝ",
-      "homeZh": "埃及",
-      "awayZh": "伊朗",
-      "score": "1-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｶｰﾎﾞﾍﾞ",
-      "away": "ｻｳｼﾞ",
-      "homeZh": "佛得角",
-      "awayZh": "沙特",
-      "score": "0-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "日本",
-      "away": "ｽｳｪﾃﾞﾝ",
-      "homeZh": "日本",
-      "awayZh": "瑞典",
-      "score": "1-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｴｸｱﾄﾞﾙ",
-      "away": "ﾄﾞｲﾂ",
-      "homeZh": "厄瓜多尔",
-      "awayZh": "德国",
-      "score": "2-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾄﾙｺ",
-      "away": "ｱﾒﾘｶ",
-      "homeZh": "土耳其",
-      "awayZh": "美国",
-      "score": "3-2",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾊﾟﾗｸﾞｱ",
-      "away": "ｵｰｽﾄﾗﾘ",
-      "homeZh": "巴拉圭",
-      "awayZh": "澳大利亚",
-      "score": "0-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    }
-  ]
+  "recentResults": []
 }
