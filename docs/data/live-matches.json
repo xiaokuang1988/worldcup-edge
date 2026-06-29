@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T23:04:55.104Z",
+  "generatedAt": "2026-06-29T01:37:00.930Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "sources": [
     {
@@ -200,5 +200,14 @@
       ]
     }
   ],
-  "recentResults": []
+  "recentResults": [
+    {
+      "home": "南ｱﾌﾘｶ",
+      "away": "ｶﾅﾀﾞ",
+      "homeZh": "南非",
+      "awayZh": "加拿大",
+      "score": "0-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    }
+  ]
 }
