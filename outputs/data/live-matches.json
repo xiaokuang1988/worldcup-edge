@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T12:31:24.960Z",
+  "generatedAt": "2026-06-30T15:15:00.611Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,276 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｺｰﾄｼﾞﾎ-ﾉﾙｳｪｰ-07-01-水-02-00",
-      "tournament": "サッカーW杯",
-      "home": "ｺｰﾄｼﾞﾎ",
-      "away": "ﾉﾙｳｪｰ",
-      "homeZh": "科特迪瓦",
-      "awayZh": "挪威",
-      "date": "07/01 (水)",
-      "time": "02:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.7,
-          "away": 1.5
-        },
-        "score": "1-2",
-        "topScores": [
-          {
-            "score": "1-2",
-            "probability": 13.2,
-            "odds": 5.5
-          },
-          {
-            "score": "1-1",
-            "probability": 11.3,
-            "odds": 6.4
-          },
-          {
-            "score": "0-1",
-            "probability": 8.8,
-            "odds": 8.25
-          }
-        ],
-        "confidence": 78,
-        "winnerLean": "挪威胜",
-        "totalLabel": "偏大球",
-        "decision": "模型与赔率一致",
-        "metrics": {
-          "official": 100,
-          "attack": 77,
-          "defense": 70,
-          "volatility": 51
-        },
-        "reasons": [
-          "已合并用户提供的当前赔率快照：科特迪瓦 vs 挪威。",
-          "市场最低比分赔率为 1-2（5.5 倍），胜平负最低项为 挪威胜。",
-          "模型原始候选为 1-1(10.5%) / 2-1(8.9%) / 1-2(7.9%)；当前建议以市场赔率校准后结果为准。"
-        ],
-        "modelTopScores": [
-          {
-            "score": "1-1",
-            "probability": 10.5
-          },
-          {
-            "score": "2-1",
-            "probability": 8.9
-          },
-          {
-            "score": "1-2",
-            "probability": 7.9
-          }
-        ],
-        "marketTopScores": [
-          {
-            "score": "1-2",
-            "odds": 5.5,
-            "probability": 13.2
-          },
-          {
-            "score": "1-1",
-            "odds": 6.4,
-            "probability": 11.3
-          },
-          {
-            "score": "0-1",
-            "odds": 8.25,
-            "probability": 8.8
-          },
-          {
-            "score": "1-3",
-            "odds": 9.5,
-            "probability": 7.6
-          },
-          {
-            "score": "0-2",
-            "odds": 10.5,
-            "probability": 6.9
-          }
-        ],
-        "marketOdds": {
-          "snapshotAt": "2026-06-30T18:00:00+09:00",
-          "source": "user-provided screenshots from kt.xiaodianhuo.com",
-          "matchNo": "2077",
-          "kickoff": "2026-06-30 22:00",
-          "hda": {
-            "home": 3.6,
-            "draw": 3.38,
-            "away": 1.8
-          },
-          "handicap": {
-            "line": "+1",
-            "home": 1.78,
-            "draw": 3.45,
-            "away": 3.6
-          },
-          "totalGoals": {
-            "0": 13,
-            "1": 5.4,
-            "2": 3.55,
-            "3": 3.5,
-            "4": 4.85,
-            "5": 9.2,
-            "6": 15.5,
-            "7+": 22
-          },
-          "halfFull": {
-            "胜/胜": 6.2,
-            "胜/平": 14,
-            "胜/负": 19,
-            "平/胜": 7.7,
-            "平/平": 5.85,
-            "平/负": 4.8,
-            "负/胜": 23,
-            "负/平": 14,
-            "负/负": 2.9
-          }
-        }
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ﾌﾗﾝｽ-ｽｳｪﾃﾞﾝ-07-01-水-06-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾌﾗﾝｽ",
-      "away": "ｽｳｪﾃﾞﾝ",
-      "homeZh": "法国",
-      "awayZh": "瑞典",
-      "date": "07/01 (水)",
-      "time": "06:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2.1,
-          "away": 0.6
-        },
-        "score": "2-0",
-        "topScores": [
-          {
-            "score": "2-0",
-            "probability": 11.4,
-            "odds": 6.5
-          },
-          {
-            "score": "2-1",
-            "probability": 10.7,
-            "odds": 6.9
-          },
-          {
-            "score": "3-1",
-            "probability": 10.4,
-            "odds": 7.1
-          }
-        ],
-        "confidence": 80,
-        "winnerLean": "法国胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "模型与赔率一致",
-        "metrics": {
-          "official": 100,
-          "attack": 79,
-          "defense": 77,
-          "volatility": 41
-        },
-        "reasons": [
-          "已合并用户提供的当前赔率快照：法国 vs 瑞典。",
-          "市场最低比分赔率为 2-0（6.5 倍），胜平负最低项为 法国胜。",
-          "模型原始候选为 2-0(15.1%) / 1-0(14.4%) / 3-0(10.6%)；当前建议以市场赔率校准后结果为准。"
-        ],
-        "modelTopScores": [
-          {
-            "score": "2-0",
-            "probability": 15.1
-          },
-          {
-            "score": "1-0",
-            "probability": 14.4
-          },
-          {
-            "score": "3-0",
-            "probability": 10.6
-          }
-        ],
-        "marketTopScores": [
-          {
-            "score": "2-0",
-            "odds": 6.5,
-            "probability": 11.4
-          },
-          {
-            "score": "2-1",
-            "odds": 6.9,
-            "probability": 10.7
-          },
-          {
-            "score": "3-1",
-            "odds": 7.1,
-            "probability": 10.4
-          },
-          {
-            "score": "3-0",
-            "odds": 8,
-            "probability": 9.3
-          },
-          {
-            "score": "1-0",
-            "odds": 9,
-            "probability": 8.2
-          }
-        ],
-        "marketOdds": {
-          "snapshotAt": "2026-06-30T18:00:00+09:00",
-          "source": "user-provided screenshots from kt.xiaodianhuo.com",
-          "matchNo": "2078",
-          "kickoff": "2026-06-30 22:00",
-          "hda": {
-            "home": 1.16,
-            "draw": 5.8,
-            "away": 10.5
-          },
-          "handicap": {
-            "line": "-1",
-            "home": 1.6,
-            "draw": 3.95,
-            "away": 3.98
-          },
-          "totalGoals": {
-            "0": 27,
-            "1": 7.8,
-            "2": 4.35,
-            "3": 3.6,
-            "4": 4.2,
-            "5": 6.25,
-            "6": 10,
-            "7+": 12
-          },
-          "halfFull": {
-            "胜/胜": 1.56,
-            "胜/平": 21,
-            "胜/负": 50,
-            "平/胜": 4.05,
-            "平/平": 10,
-            "平/负": 23,
-            "负/胜": 21,
-            "负/平": 21,
-            "负/负": 16.5
-          }
-        }
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾒｷｼｺ-ｴｸｱﾄﾞﾙ-07-01-水-10-00",
       "tournament": "サッカーW杯",
@@ -975,6 +705,112 @@
           "WINNER 官方当前列出 澳大利亚 vs 埃及 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：澳大利亚 1.3，埃及 1。",
           "节奏均值 66，波动风险 48，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｱﾙｾﾞﾝﾁ-ｶｰﾎﾞﾍﾞ-07-04-土-07-00",
+      "tournament": "サッカーW杯",
+      "home": "ｱﾙｾﾞﾝﾁ",
+      "away": "ｶｰﾎﾞﾍﾞ",
+      "homeZh": "阿根廷",
+      "awayZh": "佛得角",
+      "date": "07/04 (土)",
+      "time": "07:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.4,
+          "away": 0.3
+        },
+        "score": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 20.1
+          },
+          {
+            "score": "1-0",
+            "probability": 16.7
+          },
+          {
+            "score": "3-0",
+            "probability": 16.1
+          }
+        ],
+        "confidence": 86,
+        "winnerLean": "阿根廷胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 75,
+          "defense": 73,
+          "volatility": 45
+        },
+        "reasons": [
+          "WINNER 官方当前列出 阿根廷 vs 佛得角 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：阿根廷 2.4，佛得角 0.3。",
+          "节奏均值 70，波动风险 45，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｺﾛﾝﾋﾞｱ-ｶﾞｰﾅ-07-04-土-10-30",
+      "tournament": "サッカーW杯",
+      "home": "ｺﾛﾝﾋﾞｱ",
+      "away": "ｶﾞｰﾅ",
+      "homeZh": "ｺﾛﾝﾋﾞｱ",
+      "awayZh": "ｶﾞｰﾅ",
+      "date": "07/04 (土)",
+      "time": "10:30",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.4,
+          "away": 1
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 12.7
+          },
+          {
+            "score": "1-1",
+            "probability": 12.7
+          },
+          {
+            "score": "0-0",
+            "probability": 9.1
+          }
+        ],
+        "confidence": 68,
+        "winnerLean": "平局保护",
+        "totalLabel": "2-3 球区间",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 65,
+          "defense": 65,
+          "volatility": 55
+        },
+        "reasons": [
+          "WINNER 官方当前列出 ｺﾛﾝﾋﾞｱ vs ｶﾞｰﾅ 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：ｺﾛﾝﾋﾞｱ 1.4，ｶﾞｰﾅ 1。",
+          "节奏均值 65，波动风险 55，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
