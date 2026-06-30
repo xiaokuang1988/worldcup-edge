@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const ROOTS = ["outputs", "docs"];
 const WINNER_TOP_URL =
@@ -211,6 +211,93 @@ function topScoreCandidates(homeGoals, awayGoals) {
     .slice(0, 3);
 }
 
+function keyFor(homeZh, awayZh) {
+  return `${homeZh || ""}-${awayZh || ""}`.replace(/\s+/g, "").toLowerCase();
+}
+
+async function loadManualOdds() {
+  try {
+    const raw = await readFile("data/manual-odds.json", "utf8");
+    const odds = JSON.parse(raw);
+    const byKey = new Map();
+    for (const match of odds.matches || []) {
+      byKey.set(keyFor(match.homeZh, match.awayZh), match);
+    }
+    return {
+      snapshotAt: odds.snapshotAt,
+      source: odds.source,
+      byKey
+    };
+  } catch {
+    return { snapshotAt: null, source: null, byKey: new Map() };
+  }
+}
+
+function marketScoreCandidates(scoreOdds) {
+  const entries = Object.entries(scoreOdds || {})
+    .filter(([, odds]) => Number.isFinite(Number(odds)) && Number(odds) > 0)
+    .map(([score, odds]) => ({
+      score,
+      odds: Number(odds),
+      implied: 1 / Number(odds)
+    }));
+  const total = entries.reduce((sum, item) => sum + item.implied, 0) || 1;
+  return entries
+    .map((item) => ({
+      score: item.score,
+      odds: item.odds,
+      probability: Math.round((item.implied / total) * 1000) / 10
+    }))
+    .sort((a, b) => a.odds - b.odds)
+    .slice(0, 5);
+}
+
+function applyMarketOdds(match, prediction, manualOdds) {
+  const odds = manualOdds.byKey.get(keyFor(match.homeZh, match.awayZh));
+  if (!odds) return prediction;
+
+  const modelTopScores = prediction.topScores || [];
+  const marketTopScores = marketScoreCandidates(odds.scoreOdds);
+  const marketPick = marketTopScores[0]?.score || prediction.score;
+  const modelHasMarketPick = modelTopScores.some((item) => item.score === marketPick);
+  const hdaFavorite =
+    odds.hda.home <= odds.hda.draw && odds.hda.home <= odds.hda.away
+      ? `${match.homeZh}胜`
+      : odds.hda.away <= odds.hda.home && odds.hda.away <= odds.hda.draw
+        ? `${match.awayZh}胜`
+        : "平局";
+
+  return {
+    ...prediction,
+    score: marketPick,
+    topScores: marketTopScores.slice(0, 3).map((item) => ({
+      score: item.score,
+      probability: item.probability,
+      odds: item.odds
+    })),
+    modelTopScores,
+    marketTopScores,
+    winnerLean: hdaFavorite,
+    decision: modelHasMarketPick ? "模型与赔率一致" : "赔率优先核对",
+    confidence: Math.max(prediction.confidence, modelHasMarketPick ? 78 : 68),
+    marketOdds: {
+      snapshotAt: manualOdds.snapshotAt,
+      source: manualOdds.source,
+      matchNo: odds.matchNo,
+      kickoff: odds.kickoff,
+      hda: odds.hda,
+      handicap: odds.handicap,
+      totalGoals: odds.totalGoals,
+      halfFull: odds.halfFull
+    },
+    reasons: [
+      `已合并用户提供的当前赔率快照：${match.homeZh} vs ${match.awayZh}。`,
+      `市场最低比分赔率为 ${marketPick}（${marketTopScores[0]?.odds} 倍），胜平负最低项为 ${hdaFavorite}。`,
+      `模型原始候选为 ${modelTopScores.map((item) => `${item.score}(${item.probability}%)`).join(" / ")}；当前建议以市场赔率校准后结果为准。`
+    ]
+  };
+}
+
 function scorePrediction(match) {
   const home = profileFor(match.home);
   const away = profileFor(match.away);
@@ -276,10 +363,11 @@ async function fetchText(url) {
 }
 
 async function main() {
+  const manualOdds = await loadManualOdds();
   const [topHtml, resultsHtml] = await Promise.all([fetchText(WINNER_TOP_URL), fetchText(WINNER_RESULTS_URL)]);
   const upcoming = parseUpcoming(linesFromHtml(topHtml)).map((match) => ({
     ...match,
-    prediction: scorePrediction(match),
+    prediction: applyMarketOdds(match, scorePrediction(match), manualOdds),
     sourceUrls: [WINNER_TOP_URL, "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"]
   }));
   const recentResults = parseRecentResults(linesFromHtml(resultsHtml));
@@ -287,6 +375,8 @@ async function main() {
   const payload = {
     generatedAt: new Date().toISOString(),
     sourcePolicy: "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
+    manualOddsSnapshotAt: manualOdds.snapshotAt,
+    manualOddsSource: manualOdds.source,
     sources,
     upcoming,
     recentResults

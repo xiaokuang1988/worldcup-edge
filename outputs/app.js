@@ -77,17 +77,20 @@ function adjustedConfidence(match) {
 
 function recommendationFor(match, confidence) {
   const prediction = match.prediction;
-  const topScores = prediction.topScores?.map((item) => `${item.score} (${item.probability}%)`).join(" / ");
+  const topScores = prediction.topScores
+    ?.map((item) => `${item.score}${item.odds ? ` @${item.odds}` : ` (${item.probability}%)`}`)
+    .join(" / ");
   const base = `比分候选：${topScores || prediction.score}；方向：${prediction.winnerLean}，${prediction.totalLabel}。`;
   const official = `先打开 WINNER 官方，确认该场是否仍在销售、截止时间、可选比分和払戻倍率。`;
+  const marketNote = prediction.marketOdds ? "已用你提供的当前赔率快照校准。" : "";
 
   if (confidence >= 74) {
-    return `${prediction.decision}。${base} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
+    return `${prediction.decision}。${base} ${marketNote} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
   }
   if (confidence >= 62) {
-    return `${prediction.decision}。${base} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
+    return `${prediction.decision}。${base} ${marketNote} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
   }
-  return `${prediction.decision}。${base} 模型波动较大，不建议为了追单继续加仓。${official}`;
+  return `${prediction.decision}。${base} ${marketNote} 模型波动较大，不建议为了追单继续加仓。${official}`;
 }
 
 function renderMatches() {
@@ -117,6 +120,7 @@ function renderMatches() {
           <span>官方状态：${match.officialStatus}</span>
           <span>首选比分：${match.prediction.score}</span>
           <span>${match.prediction.decision}</span>
+          ${match.prediction.marketOdds ? `<span>赔率${match.prediction.marketOdds.matchNo}</span>` : ""}
           <span>${match.prediction.totalLabel}</span>
         </div>
       </div>
@@ -147,8 +151,25 @@ function renderInsight() {
   const angle = Math.round((confidence / 100) * 360);
   const prediction = match.prediction;
   const topScoreMarkup = (prediction.topScores || [])
-    .map((item) => `<span>${item.score}<small>${item.probability}%</small></span>`)
+    .map((item) => `<span>${item.score}<small>${item.odds ? `@${item.odds} / ${item.probability}%` : `${item.probability}%`}</small></span>`)
     .join("");
+  const marketOddsMarkup = prediction.marketOdds
+    ? `
+      <div class="market-odds">
+        <span class="label">赔率快照</span>
+        <div class="odds-row">
+          <span>胜 ${prediction.marketOdds.hda.home}</span>
+          <span>平 ${prediction.marketOdds.hda.draw}</span>
+          <span>负 ${prediction.marketOdds.hda.away}</span>
+        </div>
+        <div class="odds-row muted">
+          <span>让球 ${prediction.marketOdds.handicap.line}</span>
+          <span>${prediction.marketOdds.kickoff}</span>
+          <span>${prediction.marketOdds.matchNo}</span>
+        </div>
+      </div>
+    `
+    : "";
 
   selectedTitle.textContent = `${match.homeZh} vs ${match.awayZh}`;
   selectedBadge.textContent = `${match.date} ${match.time}`;
@@ -156,6 +177,7 @@ function renderInsight() {
   scoreRing.style.background = `conic-gradient(var(--green) 0deg, var(--green) ${angle}deg, rgba(255, 255, 255, 0.1) ${angle}deg)`;
   recommendationText.innerHTML = `
     <div class="score-candidates">${topScoreMarkup}</div>
+    ${marketOddsMarkup}
     <strong>${recommendationFor(match, confidence)}</strong>
     <ul>
       ${prediction.reasons.map((reason) => `<li>${reason}</li>`).join("")}
@@ -165,13 +187,17 @@ function renderInsight() {
   officialLink.href = match.officialUrl;
 
   metrics.innerHTML = "";
-  [
+  const metricRows = [
     ["官方源", `${prediction.metrics.official}%`],
     ["进攻均值", prediction.metrics.attack],
     ["防守均值", prediction.metrics.defense],
     ["信心分", `${confidence}%`],
     ["操作建议", prediction.decision]
-  ].forEach(([label, value]) => {
+  ];
+  if (prediction.marketOdds) {
+    metricRows.splice(1, 0, ["赔率源", prediction.marketOdds.matchNo]);
+  }
+  metricRows.forEach(([label, value]) => {
     const item = document.createElement("div");
     item.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
     metrics.appendChild(item);
