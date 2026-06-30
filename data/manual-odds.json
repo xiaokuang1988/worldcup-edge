@@ -57,6 +57,7 @@
     {
       "homeZh": "英格兰",
       "awayZh": "刚果金",
+      "aliases": ["英格兰-刚果"],
       "matchNo": "3080",
       "kickoff": "2026-07-01 22:00",
       "hda": { "home": 1.17, "draw": 5.25, "away": 12 },

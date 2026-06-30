@@ -222,6 +222,10 @@ async function loadManualOdds() {
     const byKey = new Map();
     for (const match of odds.matches || []) {
       byKey.set(keyFor(match.homeZh, match.awayZh), match);
+      for (const alias of match.aliases || []) {
+        const [homeZh, awayZh] = alias.split("-");
+        byKey.set(keyFor(homeZh, awayZh), match);
+      }
     }
     return {
       snapshotAt: odds.snapshotAt,
