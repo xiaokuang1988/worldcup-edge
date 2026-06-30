@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T15:15:00.611Z",
+  "generatedAt": "2026-06-30T16:10:18.228Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -198,6 +198,38 @@
         "topScores": [
           {
             "score": "2-0",
+            "probability": 15.6,
+            "odds": 4.7
+          },
+          {
+            "score": "1-0",
+            "probability": 13.8,
+            "odds": 5.3
+          },
+          {
+            "score": "3-0",
+            "probability": 11.7,
+            "odds": 6.25
+          }
+        ],
+        "confidence": 86,
+        "winnerLean": "英格兰胜",
+        "totalLabel": "偏大球",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 73,
+          "defense": 70,
+          "volatility": 52
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：英格兰 vs 刚果。",
+          "市场最低比分赔率为 2-0（4.7 倍），胜平负最低项为 英格兰胜。",
+          "模型原始候选为 2-0(19.6%) / 3-0(16.9%) / 1-0(15%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
+          {
+            "score": "2-0",
             "probability": 19.6
           },
           {
@@ -209,21 +241,71 @@
             "probability": 15
           }
         ],
-        "confidence": 86,
-        "winnerLean": "英格兰胜",
-        "totalLabel": "偏大球",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 73,
-          "defense": 70,
-          "volatility": 52
-        },
-        "reasons": [
-          "WINNER 官方当前列出 英格兰 vs 刚果 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：英格兰 2.6，刚果 0.3。",
-          "节奏均值 71，波动风险 52，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "2-0",
+            "odds": 4.7,
+            "probability": 15.6
+          },
+          {
+            "score": "1-0",
+            "odds": 5.3,
+            "probability": 13.8
+          },
+          {
+            "score": "3-0",
+            "odds": 6.25,
+            "probability": 11.7
+          },
+          {
+            "score": "2-1",
+            "odds": 7.75,
+            "probability": 9.4
+          },
+          {
+            "score": "1-1",
+            "odds": 9.5,
+            "probability": 7.7
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "3080",
+          "kickoff": "2026-07-01 22:00",
+          "hda": {
+            "home": 1.17,
+            "draw": 5.25,
+            "away": 12
+          },
+          "handicap": {
+            "line": "-1",
+            "home": 1.69,
+            "draw": 3.55,
+            "away": 3.91
+          },
+          "totalGoals": {
+            "0": 12,
+            "1": 4.75,
+            "2": 3.5,
+            "3": 3.5,
+            "4": 5.2,
+            "5": 9.5,
+            "6": 18,
+            "7+": 28
+          },
+          "halfFull": {
+            "胜/胜": 1.57,
+            "胜/平": 27,
+            "胜/负": 100,
+            "平/胜": 3.55,
+            "平/平": 7.5,
+            "平/负": 25,
+            "负/胜": 30,
+            "负/平": 27,
+            "负/负": 22
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
