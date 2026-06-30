@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-06-30T10:07:11.683Z",
+  "generatedAt": "2026-06-30T12:29:10.118Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
+  "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
+  "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
   "sources": [
     {
       "type": "WINNER 官方",
@@ -57,8 +59,40 @@
           "home": 1.7,
           "away": 1.5
         },
-        "score": "1-1",
+        "score": "1-2",
         "topScores": [
+          {
+            "score": "1-2",
+            "probability": 13.2,
+            "odds": 5.5
+          },
+          {
+            "score": "1-1",
+            "probability": 11.3,
+            "odds": 6.4
+          },
+          {
+            "score": "0-1",
+            "probability": 8.8,
+            "odds": 8.25
+          }
+        ],
+        "confidence": 78,
+        "winnerLean": "挪威胜",
+        "totalLabel": "偏大球",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 77,
+          "defense": 70,
+          "volatility": 51
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：科特迪瓦 vs 挪威。",
+          "市场最低比分赔率为 1-2（5.5 倍），胜平负最低项为 挪威胜。",
+          "模型原始候选为 1-1(10.5%) / 2-1(8.9%) / 1-2(7.9%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
           {
             "score": "1-1",
             "probability": 10.5
@@ -72,21 +106,71 @@
             "probability": 7.9
           }
         ],
-        "confidence": 66,
-        "winnerLean": "平局保护",
-        "totalLabel": "偏大球",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 77,
-          "defense": 70,
-          "volatility": 51
-        },
-        "reasons": [
-          "WINNER 官方当前列出 科特迪瓦 vs 挪威 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：科特迪瓦 1.7，挪威 1.5。",
-          "节奏均值 73，波动风险 51，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "1-2",
+            "odds": 5.5,
+            "probability": 13.2
+          },
+          {
+            "score": "1-1",
+            "odds": 6.4,
+            "probability": 11.3
+          },
+          {
+            "score": "0-1",
+            "odds": 8.25,
+            "probability": 8.8
+          },
+          {
+            "score": "1-3",
+            "odds": 9.5,
+            "probability": 7.6
+          },
+          {
+            "score": "0-2",
+            "odds": 10.5,
+            "probability": 6.9
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "2077",
+          "kickoff": "2026-06-30 22:00",
+          "hda": {
+            "home": 3.6,
+            "draw": 3.38,
+            "away": 1.8
+          },
+          "handicap": {
+            "line": "+1",
+            "home": 1.78,
+            "draw": 3.45,
+            "away": 3.6
+          },
+          "totalGoals": {
+            "0": 13,
+            "1": 5.4,
+            "2": 3.55,
+            "3": 3.5,
+            "4": 4.85,
+            "5": 9.2,
+            "6": 15.5,
+            "7+": 22
+          },
+          "halfFull": {
+            "胜/胜": 6.2,
+            "胜/平": 14,
+            "胜/负": 19,
+            "平/胜": 7.7,
+            "平/平": 5.85,
+            "平/负": 4.8,
+            "负/胜": 23,
+            "负/平": 14,
+            "负/负": 2.9
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
@@ -114,6 +198,38 @@
         "topScores": [
           {
             "score": "2-0",
+            "probability": 11.4,
+            "odds": 6.5
+          },
+          {
+            "score": "2-1",
+            "probability": 10.7,
+            "odds": 6.9
+          },
+          {
+            "score": "3-1",
+            "probability": 10.4,
+            "odds": 7.1
+          }
+        ],
+        "confidence": 80,
+        "winnerLean": "法国胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 79,
+          "defense": 77,
+          "volatility": 41
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：法国 vs 瑞典。",
+          "市场最低比分赔率为 2-0（6.5 倍），胜平负最低项为 法国胜。",
+          "模型原始候选为 2-0(15.1%) / 1-0(14.4%) / 3-0(10.6%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
+          {
+            "score": "2-0",
             "probability": 15.1
           },
           {
@@ -125,21 +241,71 @@
             "probability": 10.6
           }
         ],
-        "confidence": 80,
-        "winnerLean": "法国胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 79,
-          "defense": 77,
-          "volatility": 41
-        },
-        "reasons": [
-          "WINNER 官方当前列出 法国 vs 瑞典 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：法国 2.1，瑞典 0.6。",
-          "节奏均值 72，波动风险 41，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "2-0",
+            "odds": 6.5,
+            "probability": 11.4
+          },
+          {
+            "score": "2-1",
+            "odds": 6.9,
+            "probability": 10.7
+          },
+          {
+            "score": "3-1",
+            "odds": 7.1,
+            "probability": 10.4
+          },
+          {
+            "score": "3-0",
+            "odds": 8,
+            "probability": 9.3
+          },
+          {
+            "score": "1-0",
+            "odds": 9,
+            "probability": 8.2
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "2078",
+          "kickoff": "2026-06-30 22:00",
+          "hda": {
+            "home": 1.16,
+            "draw": 5.8,
+            "away": 10.5
+          },
+          "handicap": {
+            "line": "-1",
+            "home": 1.6,
+            "draw": 3.95,
+            "away": 3.98
+          },
+          "totalGoals": {
+            "0": 27,
+            "1": 7.8,
+            "2": 4.35,
+            "3": 3.6,
+            "4": 4.2,
+            "5": 6.25,
+            "6": 10,
+            "7+": 12
+          },
+          "halfFull": {
+            "胜/胜": 1.56,
+            "胜/平": 21,
+            "胜/负": 50,
+            "平/胜": 4.05,
+            "平/平": 10,
+            "平/负": 23,
+            "负/胜": 21,
+            "负/平": 21,
+            "负/负": 16.5
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
@@ -163,8 +329,40 @@
           "home": 1.6,
           "away": 0.9
         },
-        "score": "1-0",
+        "score": "1-1",
         "topScores": [
+          {
+            "score": "1-1",
+            "probability": 15.9,
+            "odds": 4.5
+          },
+          {
+            "score": "1-0",
+            "probability": 13.4,
+            "odds": 5.35
+          },
+          {
+            "score": "0-0",
+            "probability": 11.9,
+            "odds": 6
+          }
+        ],
+        "confidence": 78,
+        "winnerLean": "墨西哥胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 73,
+          "defense": 73,
+          "volatility": 44
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：墨西哥 vs 厄瓜多尔。",
+          "市场最低比分赔率为 1-1（4.5 倍），胜平负最低项为 墨西哥胜。",
+          "模型原始候选为 1-0(13.2%) / 1-1(11.9%) / 2-0(10.6%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
           {
             "score": "1-0",
             "probability": 13.2
@@ -178,21 +376,71 @@
             "probability": 10.6
           }
         ],
-        "confidence": 72,
-        "winnerLean": "墨西哥胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 73,
-          "defense": 73,
-          "volatility": 44
-        },
-        "reasons": [
-          "WINNER 官方当前列出 墨西哥 vs 厄瓜多尔 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：墨西哥 1.6，厄瓜多尔 0.9。",
-          "节奏均值 73，波动风险 44，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "1-1",
+            "odds": 4.5,
+            "probability": 15.9
+          },
+          {
+            "score": "1-0",
+            "odds": 5.35,
+            "probability": 13.4
+          },
+          {
+            "score": "0-0",
+            "odds": 6,
+            "probability": 11.9
+          },
+          {
+            "score": "2-1",
+            "odds": 6.75,
+            "probability": 10.6
+          },
+          {
+            "score": "2-0",
+            "odds": 7.7,
+            "probability": 9.3
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "2079",
+          "kickoff": "2026-06-30 22:00",
+          "hda": {
+            "home": 1.94,
+            "draw": 2.7,
+            "away": 4.1
+          },
+          "handicap": {
+            "line": "-1",
+            "home": 4.45,
+            "draw": 3.27,
+            "away": 1.67
+          },
+          "totalGoals": {
+            "0": 6,
+            "1": 3.3,
+            "2": 3,
+            "3": 4.25,
+            "4": 8.5,
+            "5": 20,
+            "6": 35,
+            "7+": 50
+          },
+          "halfFull": {
+            "胜/胜": 3.3,
+            "胜/平": 15,
+            "胜/负": 34,
+            "平/胜": 4.25,
+            "平/平": 4,
+            "平/负": 8.25,
+            "负/胜": 23,
+            "负/平": 15,
+            "负/负": 7.25
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
@@ -273,6 +521,38 @@
         "topScores": [
           {
             "score": "1-1",
+            "probability": 13.3,
+            "odds": 5.4
+          },
+          {
+            "score": "1-0",
+            "probability": 11,
+            "odds": 6.5
+          },
+          {
+            "score": "2-1",
+            "probability": 10.6,
+            "odds": 6.75
+          }
+        ],
+        "confidence": 78,
+        "winnerLean": "比利时胜",
+        "totalLabel": "偏大球",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 78,
+          "defense": 74,
+          "volatility": 47
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：比利时 vs 塞内加尔。",
+          "市场最低比分赔率为 1-1（5.4 倍），胜平负最低项为 比利时胜。",
+          "模型原始候选为 1-1(11%) / 1-0(10%) / 2-1(9.9%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
+          {
+            "score": "1-1",
             "probability": 11
           },
           {
@@ -284,21 +564,71 @@
             "probability": 9.9
           }
         ],
-        "confidence": 72,
-        "winnerLean": "比利时胜",
-        "totalLabel": "偏大球",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 78,
-          "defense": 74,
-          "volatility": 47
-        },
-        "reasons": [
-          "WINNER 官方当前列出 比利时 vs 塞内加尔 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：比利时 1.8，塞内加尔 1.1。",
-          "节奏均值 73，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "1-1",
+            "odds": 5.4,
+            "probability": 13.3
+          },
+          {
+            "score": "1-0",
+            "odds": 6.5,
+            "probability": 11
+          },
+          {
+            "score": "2-1",
+            "odds": 6.75,
+            "probability": 10.6
+          },
+          {
+            "score": "0-0",
+            "odds": 8.5,
+            "probability": 8.4
+          },
+          {
+            "score": "2-0",
+            "odds": 9,
+            "probability": 8
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "3081",
+          "kickoff": "2026-07-01 22:00",
+          "hda": {
+            "home": 1.99,
+            "draw": 2.95,
+            "away": 3.47
+          },
+          "handicap": {
+            "line": "-1",
+            "home": 4.15,
+            "draw": 3.6,
+            "away": 1.64
+          },
+          "totalGoals": {
+            "0": 8.5,
+            "1": 4,
+            "2": 3.2,
+            "3": 3.75,
+            "4": 6.2,
+            "5": 12.5,
+            "6": 24,
+            "7+": 40
+          },
+          "halfFull": {
+            "胜/胜": 3.25,
+            "胜/平": 14,
+            "胜/负": 32,
+            "平/胜": 4.75,
+            "平/平": 4.9,
+            "平/负": 7,
+            "负/胜": 26,
+            "负/平": 14,
+            "负/负": 5.7
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
@@ -322,8 +652,40 @@
           "home": 1.7,
           "away": 0.9
         },
-        "score": "1-0",
+        "score": "2-0",
         "topScores": [
+          {
+            "score": "2-0",
+            "probability": 12.5,
+            "odds": 5.8
+          },
+          {
+            "score": "1-0",
+            "probability": 12.1,
+            "odds": 6
+          },
+          {
+            "score": "2-1",
+            "probability": 10.8,
+            "odds": 6.75
+          }
+        ],
+        "confidence": 78,
+        "winnerLean": "美国胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "模型与赔率一致",
+        "metrics": {
+          "official": 100,
+          "attack": 69,
+          "defense": 66,
+          "volatility": 49
+        },
+        "reasons": [
+          "已合并用户提供的当前赔率快照：美国 vs 波黑。",
+          "市场最低比分赔率为 2-0（5.8 倍），胜平负最低项为 美国胜。",
+          "模型原始候选为 1-0(12.7%) / 1-1(11.5%) / 2-0(10.8%)；当前建议以市场赔率校准后结果为准。"
+        ],
+        "modelTopScores": [
           {
             "score": "1-0",
             "probability": 12.7
@@ -337,21 +699,71 @@
             "probability": 10.8
           }
         ],
-        "confidence": 72,
-        "winnerLean": "美国胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 69,
-          "defense": 66,
-          "volatility": 49
-        },
-        "reasons": [
-          "WINNER 官方当前列出 美国 vs 波黑 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：美国 1.7，波黑 0.9。",
-          "节奏均值 66，波动风险 49，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
+        "marketTopScores": [
+          {
+            "score": "2-0",
+            "odds": 5.8,
+            "probability": 12.5
+          },
+          {
+            "score": "1-0",
+            "odds": 6,
+            "probability": 12.1
+          },
+          {
+            "score": "2-1",
+            "odds": 6.75,
+            "probability": 10.8
+          },
+          {
+            "score": "3-0",
+            "odds": 8,
+            "probability": 9.1
+          },
+          {
+            "score": "1-1",
+            "odds": 8,
+            "probability": 9.1
+          }
+        ],
+        "marketOdds": {
+          "snapshotAt": "2026-06-30T18:00:00+09:00",
+          "source": "user-provided screenshots from kt.xiaodianhuo.com",
+          "matchNo": "3082",
+          "kickoff": "2026-07-01 22:00",
+          "hda": {
+            "home": 1.27,
+            "draw": 4.5,
+            "away": 8.4
+          },
+          "handicap": {
+            "line": "-1",
+            "home": 1.93,
+            "draw": 3.5,
+            "away": 3.08
+          },
+          "totalGoals": {
+            "0": 13,
+            "1": 5,
+            "2": 3.6,
+            "3": 3.45,
+            "4": 5.1,
+            "5": 9,
+            "6": 16,
+            "7+": 25
+          },
+          "halfFull": {
+            "胜/胜": 1.85,
+            "胜/平": 20,
+            "胜/负": 60,
+            "平/胜": 3.75,
+            "平/平": 6.5,
+            "平/负": 16,
+            "负/胜": 27,
+            "负/平": 20,
+            "负/负": 13
+          }
+        }
       },
       "sourceUrls": [
         "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
