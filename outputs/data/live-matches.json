@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T13:17:30.804Z",
+  "generatedAt": "2026-07-02T15:41:29.760Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,112 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｽﾍﾟｲﾝ-ｵｰｽﾄﾘｱ-07-03-金-04-00",
-      "tournament": "サッカーW杯",
-      "home": "ｽﾍﾟｲﾝ",
-      "away": "ｵｰｽﾄﾘｱ",
-      "homeZh": "西班牙",
-      "awayZh": "奥地利",
-      "date": "07/03 (金)",
-      "time": "04:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2,
-          "away": 0.9
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 11.2
-          },
-          {
-            "score": "2-0",
-            "probability": 11.2
-          },
-          {
-            "score": "1-1",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 76,
-        "winnerLean": "西班牙胜",
-        "totalLabel": "偏大球",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 79,
-          "defense": 76,
-          "volatility": 42
-        },
-        "reasons": [
-          "WINNER 官方当前列出 西班牙 vs 奥地利 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：西班牙 2，奥地利 0.9。",
-          "节奏均值 74，波动风险 42，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ﾎﾟﾙﾄｶﾞ-ｸﾛｱﾁｱ-07-03-金-08-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾎﾟﾙﾄｶﾞ",
-      "away": "ｸﾛｱﾁｱ",
-      "homeZh": "葡萄牙",
-      "awayZh": "克罗地亚",
-      "date": "07/03 (金)",
-      "time": "08:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.9,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 10.6
-          },
-          {
-            "score": "1-1",
-            "probability": 10.6
-          },
-          {
-            "score": "2-0",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 74,
-        "winnerLean": "葡萄牙胜",
-        "totalLabel": "偏大球",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 80,
-          "defense": 77,
-          "volatility": 43
-        },
-        "reasons": [
-          "WINNER 官方当前列出 葡萄牙 vs 克罗地亚 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：葡萄牙 1.9，克罗地亚 1。",
-          "节奏均值 72，波动风险 43，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｽｲｽ-ｱﾙｼﾞｪﾘ-07-03-金-12-00",
       "tournament": "サッカーW杯",
