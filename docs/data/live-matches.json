@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T23:38:05.304Z",
+  "generatedAt": "2026-07-03T03:29:28.753Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,59 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｽｲｽ-ｱﾙｼﾞｪﾘ-07-03-金-12-00",
-      "tournament": "サッカーW杯",
-      "home": "ｽｲｽ",
-      "away": "ｱﾙｼﾞｪﾘ",
-      "homeZh": "瑞士",
-      "awayZh": "阿尔及利亚",
-      "date": "07/03 (金)",
-      "time": "12:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.5,
-          "away": 0.8
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 15.1
-          },
-          {
-            "score": "1-1",
-            "probability": 12.1
-          },
-          {
-            "score": "2-0",
-            "probability": 11.3
-          }
-        ],
-        "confidence": 72,
-        "winnerLean": "瑞士胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 72,
-          "defense": 74,
-          "volatility": 44
-        },
-        "reasons": [
-          "WINNER 官方当前列出 瑞士 vs 阿尔及利亚 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：瑞士 1.5，阿尔及利亚 0.8。",
-          "节奏均值 68，波动风险 44，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｵｰｽﾄﾗﾘ-ｴｼﾞﾌﾟﾄ-07-04-土-03-00",
       "tournament": "サッカーW杯",
@@ -256,6 +203,22 @@
     }
   ],
   "recentResults": [
+    {
+      "home": "ｽﾍﾟｲﾝ",
+      "away": "ｵｰｽﾄﾘｱ",
+      "homeZh": "西班牙",
+      "awayZh": "奥地利",
+      "score": "3-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ﾎﾟﾙﾄｶﾞ",
+      "away": "ｸﾛｱﾁｱ",
+      "homeZh": "葡萄牙",
+      "awayZh": "克罗地亚",
+      "score": "2-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ｲﾝｸﾞﾗﾝ",
       "away": "ｺﾝｺﾞ",
