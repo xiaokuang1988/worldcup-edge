@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T03:29:28.753Z",
+  "generatedAt": "2026-07-03T06:49:16.504Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -212,6 +212,14 @@
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     },
     {
+      "home": "ｽｲｽ",
+      "away": "ｱﾙｼﾞｪﾘ",
+      "homeZh": "瑞士",
+      "awayZh": "阿尔及利亚",
+      "score": "2-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
       "home": "ﾎﾟﾙﾄｶﾞ",
       "away": "ｸﾛｱﾁｱ",
       "homeZh": "葡萄牙",
@@ -289,14 +297,6 @@
       "homeZh": "德国",
       "awayZh": "巴拉圭",
       "score": "1-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "南ｱﾌﾘｶ",
-      "away": "ｶﾅﾀﾞ",
-      "homeZh": "南非",
-      "awayZh": "加拿大",
-      "score": "0-1",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
   ]
