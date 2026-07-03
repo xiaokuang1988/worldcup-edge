@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T12:26:49.770Z",
+  "generatedAt": "2026-07-03T14:53:31.243Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,112 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｵｰｽﾄﾗﾘ-ｴｼﾞﾌﾟﾄ-07-04-土-03-00",
-      "tournament": "サッカーW杯",
-      "home": "ｵｰｽﾄﾗﾘ",
-      "away": "ｴｼﾞﾌﾟﾄ",
-      "homeZh": "澳大利亚",
-      "awayZh": "埃及",
-      "date": "07/04 (土)",
-      "time": "03:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.3,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 13.1
-          },
-          {
-            "score": "1-1",
-            "probability": 13.1
-          },
-          {
-            "score": "0-0",
-            "probability": 10.1
-          }
-        ],
-        "confidence": 68,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 70,
-          "defense": 70,
-          "volatility": 48
-        },
-        "reasons": [
-          "WINNER 官方当前列出 澳大利亚 vs 埃及 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：澳大利亚 1.3，埃及 1。",
-          "节奏均值 66，波动风险 48，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ｱﾙｾﾞﾝﾁ-ｶｰﾎﾞﾍﾞ-07-04-土-07-00",
-      "tournament": "サッカーW杯",
-      "home": "ｱﾙｾﾞﾝﾁ",
-      "away": "ｶｰﾎﾞﾍﾞ",
-      "homeZh": "阿根廷",
-      "awayZh": "佛得角",
-      "date": "07/04 (土)",
-      "time": "07:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2.4,
-          "away": 0.3
-        },
-        "score": "2-0",
-        "topScores": [
-          {
-            "score": "2-0",
-            "probability": 20.1
-          },
-          {
-            "score": "1-0",
-            "probability": 16.7
-          },
-          {
-            "score": "3-0",
-            "probability": 16.1
-          }
-        ],
-        "confidence": 86,
-        "winnerLean": "阿根廷胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 75,
-          "defense": 73,
-          "volatility": 45
-        },
-        "reasons": [
-          "WINNER 官方当前列出 阿根廷 vs 佛得角 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：阿根廷 2.4，佛得角 0.3。",
-          "节奏均值 70，波动风险 45，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｺﾛﾝﾋﾞｱ-ｶﾞｰﾅ-07-04-土-10-30",
       "tournament": "サッカーW杯",
