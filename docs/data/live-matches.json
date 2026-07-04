@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T04:12:12.022Z",
+  "generatedAt": "2026-07-04T07:22:52.419Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -265,6 +265,14 @@
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     },
     {
+      "home": "ｺﾛﾝﾋﾞｱ",
+      "away": "ｶﾞｰﾅ",
+      "homeZh": "ｺﾛﾝﾋﾞｱ",
+      "awayZh": "ｶﾞｰﾅ",
+      "score": "1-0",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
       "home": "ｱﾙｾﾞﾝﾁ",
       "away": "ｶｰﾎﾞﾍﾞ",
       "homeZh": "阿根廷",
@@ -342,14 +350,6 @@
       "homeZh": "法国",
       "awayZh": "瑞典",
       "score": "3-0",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾌﾞﾗｼﾞﾙ",
-      "away": "日本",
-      "homeZh": "巴西",
-      "awayZh": "日本",
-      "score": "2-1",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
   ]
