@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T00:06:50.970Z",
+  "generatedAt": "2026-07-04T04:12:12.022Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,59 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｺﾛﾝﾋﾞｱ-ｶﾞｰﾅ-07-04-土-10-30",
-      "tournament": "サッカーW杯",
-      "home": "ｺﾛﾝﾋﾞｱ",
-      "away": "ｶﾞｰﾅ",
-      "homeZh": "ｺﾛﾝﾋﾞｱ",
-      "awayZh": "ｶﾞｰﾅ",
-      "date": "07/04 (土)",
-      "time": "10:30",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.4,
-          "away": 1
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 12.7
-          },
-          {
-            "score": "1-1",
-            "probability": 12.7
-          },
-          {
-            "score": "0-0",
-            "probability": 9.1
-          }
-        ],
-        "confidence": 68,
-        "winnerLean": "平局保护",
-        "totalLabel": "2-3 球区间",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 65,
-          "defense": 65,
-          "volatility": 55
-        },
-        "reasons": [
-          "WINNER 官方当前列出 ｺﾛﾝﾋﾞｱ vs ｶﾞｰﾅ 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：ｺﾛﾝﾋﾞｱ 1.4，ｶﾞｰﾅ 1。",
-          "节奏均值 65，波动风险 55，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ﾊﾟﾗｸﾞｱ-ﾌﾗﾝｽ-07-05-日-06-00",
       "tournament": "サッカーW杯",
@@ -310,6 +257,22 @@
   ],
   "recentResults": [
     {
+      "home": "ｵｰｽﾄﾗﾘ",
+      "away": "ｴｼﾞﾌﾟﾄ",
+      "homeZh": "澳大利亚",
+      "awayZh": "埃及",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
+      "home": "ｱﾙｾﾞﾝﾁ",
+      "away": "ｶｰﾎﾞﾍﾞ",
+      "homeZh": "阿根廷",
+      "awayZh": "佛得角",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
+    {
       "home": "ｽﾍﾟｲﾝ",
       "away": "ｵｰｽﾄﾘｱ",
       "homeZh": "西班牙",
@@ -387,22 +350,6 @@
       "homeZh": "巴西",
       "awayZh": "日本",
       "score": "2-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ｵﾗﾝﾀﾞ",
-      "away": "ﾓﾛｯｺ",
-      "homeZh": "荷兰",
-      "awayZh": "摩洛哥",
-      "score": "1-1",
-      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
-    },
-    {
-      "home": "ﾄﾞｲﾂ",
-      "away": "ﾊﾟﾗｸﾞｱ",
-      "homeZh": "德国",
-      "awayZh": "巴拉圭",
-      "score": "1-1",
       "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
     }
   ]
