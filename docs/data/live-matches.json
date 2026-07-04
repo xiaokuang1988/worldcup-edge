@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T22:34:02.013Z",
+  "generatedAt": "2026-07-04T00:06:50.970Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -88,6 +88,218 @@
           "WINNER 官方当前列出 ｺﾛﾝﾋﾞｱ vs ｶﾞｰﾅ 的 1 比赛预测销售项。",
           "模型按双方进攻/防守档位估算 xG：ｺﾛﾝﾋﾞｱ 1.4，ｶﾞｰﾅ 1。",
           "节奏均值 65，波动风险 55，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾊﾟﾗｸﾞｱ-ﾌﾗﾝｽ-07-05-日-06-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾊﾟﾗｸﾞｱ",
+      "away": "ﾌﾗﾝｽ",
+      "homeZh": "巴拉圭",
+      "awayZh": "法国",
+      "date": "07/05 (日)",
+      "time": "06:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 0.7,
+          "away": 1.7
+        },
+        "score": "0-1",
+        "topScores": [
+          {
+            "score": "0-1",
+            "probability": 15.5
+          },
+          {
+            "score": "0-2",
+            "probability": 13.2
+          },
+          {
+            "score": "1-1",
+            "probability": 10.9
+          }
+        ],
+        "confidence": 75,
+        "winnerLean": "法国胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 76,
+          "defense": 75,
+          "volatility": 43
+        },
+        "reasons": [
+          "WINNER 官方当前列出 巴拉圭 vs 法国 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：巴拉圭 0.7，法国 1.7。",
+          "节奏均值 69，波动风险 43，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｶﾅﾀﾞ-ﾓﾛｯｺ-07-05-日-02-00",
+      "tournament": "サッカーW杯",
+      "home": "ｶﾅﾀﾞ",
+      "away": "ﾓﾛｯｺ",
+      "homeZh": "加拿大",
+      "awayZh": "摩洛哥",
+      "date": "07/05 (日)",
+      "time": "02:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.3,
+          "away": 1.3
+        },
+        "score": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 12.6
+          },
+          {
+            "score": "0-1",
+            "probability": 9.7
+          },
+          {
+            "score": "1-0",
+            "probability": 9.7
+          }
+        ],
+        "confidence": 65,
+        "winnerLean": "平局保护",
+        "totalLabel": "2-3 球区间",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 71,
+          "defense": 71,
+          "volatility": 47
+        },
+        "reasons": [
+          "WINNER 官方当前列出 加拿大 vs 摩洛哥 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：加拿大 1.3，摩洛哥 1.3。",
+          "节奏均值 74，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾌﾞﾗｼﾞﾙ-ﾉﾙｳｪｰ-07-06-月-05-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾌﾞﾗｼﾞﾙ",
+      "away": "ﾉﾙｳｪｰ",
+      "homeZh": "巴西",
+      "awayZh": "挪威",
+      "date": "07/06 (月)",
+      "time": "05:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.3,
+          "away": 1.3
+        },
+        "score": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 9.7
+          },
+          {
+            "score": "1-1",
+            "probability": 8.4
+          },
+          {
+            "score": "2-0",
+            "probability": 7.5
+          }
+        ],
+        "confidence": 75,
+        "winnerLean": "巴西胜",
+        "totalLabel": "偏大球",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 83,
+          "defense": 74,
+          "volatility": 47
+        },
+        "reasons": [
+          "WINNER 官方当前列出 巴西 vs 挪威 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：巴西 2.3，挪威 1.3。",
+          "节奏均值 77，波动风险 47，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ﾒｷｼｺ-ｲﾝｸﾞﾗﾝ-07-06-月-09-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾒｷｼｺ",
+      "away": "ｲﾝｸﾞﾗﾝ",
+      "homeZh": "墨西哥",
+      "awayZh": "英格兰",
+      "date": "07/06 (月)",
+      "time": "09:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.4,
+          "away": 1.5
+        },
+        "score": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 11.6
+          },
+          {
+            "score": "1-2",
+            "probability": 8.7
+          },
+          {
+            "score": "0-1",
+            "probability": 8.3
+          }
+        ],
+        "confidence": 66,
+        "winnerLean": "英格兰胜",
+        "totalLabel": "偏大球",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 80,
+          "defense": 76,
+          "volatility": 42
+        },
+        "reasons": [
+          "WINNER 官方当前列出 墨西哥 vs 英格兰 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：墨西哥 1.4，英格兰 1.5。",
+          "节奏均值 74，波动风险 42，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
