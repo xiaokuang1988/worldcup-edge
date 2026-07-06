@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T22:31:55.589Z",
+  "generatedAt": "2026-07-06T00:09:17.165Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -43,13 +43,66 @@
   ],
   "upcoming": [
     {
-      "id": "ﾒｷｼｺ-ｲﾝｸﾞﾗﾝ-07-06-月-09-00",
+      "id": "ﾎﾟﾙﾄｶﾞ-ｽﾍﾟｲﾝ-07-07-火-04-00",
       "tournament": "サッカーW杯",
-      "home": "ﾒｷｼｺ",
-      "away": "ｲﾝｸﾞﾗﾝ",
-      "homeZh": "墨西哥",
-      "awayZh": "英格兰",
-      "date": "07/06 (月)",
+      "home": "ﾎﾟﾙﾄｶﾞ",
+      "away": "ｽﾍﾟｲﾝ",
+      "homeZh": "葡萄牙",
+      "awayZh": "西班牙",
+      "date": "07/07 (火)",
+      "time": "04:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.8,
+          "away": 1.4
+        },
+        "score": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 10.4
+          },
+          {
+            "score": "2-1",
+            "probability": 9.4
+          },
+          {
+            "score": "1-0",
+            "probability": 7.4
+          }
+        ],
+        "confidence": 69,
+        "winnerLean": "葡萄牙胜",
+        "totalLabel": "偏大球",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 85,
+          "defense": 78,
+          "volatility": 41
+        },
+        "reasons": [
+          "WINNER 官方当前列出 葡萄牙 vs 西班牙 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：葡萄牙 1.8，西班牙 1.4。",
+          "节奏均值 76，波动风险 41，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｱﾒﾘｶ-ﾍﾞﾙｷﾞｰ-07-07-火-09-00",
+      "tournament": "サッカーW杯",
+      "home": "ｱﾒﾘｶ",
+      "away": "ﾍﾞﾙｷﾞｰ",
+      "homeZh": "美国",
+      "awayZh": "比利时",
+      "date": "07/07 (火)",
       "time": "09:00",
       "market": "WINNER サッカー 1試合予想",
       "officialStatus": "試合結果を予想する",
@@ -57,37 +110,143 @@
       "prediction": {
         "expectedGoals": {
           "home": 1.4,
-          "away": 1.5
+          "away": 1.6
         },
         "score": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 11.6
+            "probability": 11.3
           },
           {
             "score": "1-2",
-            "probability": 8.7
+            "probability": 9
           },
           {
             "score": "0-1",
-            "probability": 8.3
+            "probability": 8
           }
         ],
-        "confidence": 66,
-        "winnerLean": "英格兰胜",
+        "confidence": 67,
+        "winnerLean": "比利时胜",
         "totalLabel": "偏大球",
         "decision": "只做备选",
         "metrics": {
           "official": 100,
-          "attack": 80,
-          "defense": 76,
-          "volatility": 42
+          "attack": 77,
+          "defense": 71,
+          "volatility": 46
         },
         "reasons": [
-          "WINNER 官方当前列出 墨西哥 vs 英格兰 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：墨西哥 1.4，英格兰 1.5。",
-          "节奏均值 74，波动风险 42，因此推荐比分不是结果承诺，只用于核对官方选项。"
+          "WINNER 官方当前列出 美国 vs 比利时 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：美国 1.4，比利时 1.6。",
+          "节奏均值 72，波动风险 46，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｽｲｽ-ｺﾛﾝﾋﾞｱ-07-08-水-05-00",
+      "tournament": "サッカーW杯",
+      "home": "ｽｲｽ",
+      "away": "ｺﾛﾝﾋﾞｱ",
+      "homeZh": "瑞士",
+      "awayZh": "ｺﾛﾝﾋﾞｱ",
+      "date": "07/08 (水)",
+      "time": "05:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.7,
+          "away": 0.5
+        },
+        "score": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 19
+          },
+          {
+            "score": "2-0",
+            "probability": 16.1
+          },
+          {
+            "score": "0-0",
+            "probability": 11.2
+          }
+        ],
+        "confidence": 77,
+        "winnerLean": "瑞士胜",
+        "totalLabel": "2-3 球区间",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 69,
+          "defense": 71,
+          "volatility": 48
+        },
+        "reasons": [
+          "WINNER 官方当前列出 瑞士 vs ｺﾛﾝﾋﾞｱ 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：瑞士 1.7，ｺﾛﾝﾋﾞｱ 0.5。",
+          "节奏均值 65，波动风险 48，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｱﾙｾﾞﾝﾁ-ｴｼﾞﾌﾟﾄ-07-08-水-01-00",
+      "tournament": "サッカーW杯",
+      "home": "ｱﾙｾﾞﾝﾁ",
+      "away": "ｴｼﾞﾌﾟﾄ",
+      "homeZh": "阿根廷",
+      "awayZh": "埃及",
+      "date": "07/08 (水)",
+      "time": "01:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 2.3,
+          "away": 0.7
+        },
+        "score": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 13.6
+          },
+          {
+            "score": "1-0",
+            "probability": 11.8
+          },
+          {
+            "score": "3-0",
+            "probability": 10.4
+          }
+        ],
+        "confidence": 81,
+        "winnerLean": "阿根廷胜",
+        "totalLabel": "偏大球",
+        "decision": "可重点核对",
+        "metrics": {
+          "official": 100,
+          "attack": 79,
+          "defense": 75,
+          "volatility": 44
+        },
+        "reasons": [
+          "WINNER 官方当前列出 阿根廷 vs 埃及 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：阿根廷 2.3，埃及 0.7。",
+          "节奏均值 71，波动风险 44，因此推荐比分不是结果承诺，只用于核对官方选项。"
         ]
       },
       "sourceUrls": [
