@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T23:38:04.248Z",
+  "generatedAt": "2026-07-07T03:37:13.203Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,59 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ｱﾒﾘｶ-ﾍﾞﾙｷﾞｰ-07-07-火-09-00",
-      "tournament": "サッカーW杯",
-      "home": "ｱﾒﾘｶ",
-      "away": "ﾍﾞﾙｷﾞｰ",
-      "homeZh": "美国",
-      "awayZh": "比利时",
-      "date": "07/07 (火)",
-      "time": "09:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.4,
-          "away": 1.6
-        },
-        "score": "1-1",
-        "topScores": [
-          {
-            "score": "1-1",
-            "probability": 11.3
-          },
-          {
-            "score": "1-2",
-            "probability": 9
-          },
-          {
-            "score": "0-1",
-            "probability": 8
-          }
-        ],
-        "confidence": 67,
-        "winnerLean": "比利时胜",
-        "totalLabel": "偏大球",
-        "decision": "只做备选",
-        "metrics": {
-          "official": 100,
-          "attack": 77,
-          "defense": 71,
-          "volatility": 46
-        },
-        "reasons": [
-          "WINNER 官方当前列出 美国 vs 比利时 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：美国 1.4，比利时 1.6。",
-          "节奏均值 72，波动风险 46，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｽｲｽ-ｺﾛﾝﾋﾞｱ-07-08-水-05-00",
       "tournament": "サッカーW杯",
@@ -203,6 +150,14 @@
     }
   ],
   "recentResults": [
+    {
+      "home": "ﾎﾟﾙﾄｶﾞ",
+      "away": "ｽﾍﾟｲﾝ",
+      "homeZh": "葡萄牙",
+      "awayZh": "西班牙",
+      "score": "0-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ﾌﾞﾗｼﾞﾙ",
       "away": "ﾉﾙｳｪｰ",
