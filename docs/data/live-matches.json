@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T13:34:27.187Z",
+  "generatedAt": "2026-07-07T16:32:58.971Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -41,114 +41,7 @@
       "note": "日本体育新闻聚合，用于赛前伤停和舆情核对。"
     }
   ],
-  "upcoming": [
-    {
-      "id": "ｽｲｽ-ｺﾛﾝﾋﾞｱ-07-08-水-05-00",
-      "tournament": "サッカーW杯",
-      "home": "ｽｲｽ",
-      "away": "ｺﾛﾝﾋﾞｱ",
-      "homeZh": "瑞士",
-      "awayZh": "ｺﾛﾝﾋﾞｱ",
-      "date": "07/08 (水)",
-      "time": "05:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.7,
-          "away": 0.5
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 19
-          },
-          {
-            "score": "2-0",
-            "probability": 16.1
-          },
-          {
-            "score": "0-0",
-            "probability": 11.2
-          }
-        ],
-        "confidence": 77,
-        "winnerLean": "瑞士胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 69,
-          "defense": 71,
-          "volatility": 48
-        },
-        "reasons": [
-          "WINNER 官方当前列出 瑞士 vs ｺﾛﾝﾋﾞｱ 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：瑞士 1.7，ｺﾛﾝﾋﾞｱ 0.5。",
-          "节奏均值 65，波动风险 48，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
-    {
-      "id": "ｱﾙｾﾞﾝﾁ-ｴｼﾞﾌﾟﾄ-07-08-水-01-00",
-      "tournament": "サッカーW杯",
-      "home": "ｱﾙｾﾞﾝﾁ",
-      "away": "ｴｼﾞﾌﾟﾄ",
-      "homeZh": "阿根廷",
-      "awayZh": "埃及",
-      "date": "07/08 (水)",
-      "time": "01:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2.3,
-          "away": 0.7
-        },
-        "score": "2-0",
-        "topScores": [
-          {
-            "score": "2-0",
-            "probability": 13.6
-          },
-          {
-            "score": "1-0",
-            "probability": 11.8
-          },
-          {
-            "score": "3-0",
-            "probability": 10.4
-          }
-        ],
-        "confidence": 81,
-        "winnerLean": "阿根廷胜",
-        "totalLabel": "偏大球",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 79,
-          "defense": 75,
-          "volatility": 44
-        },
-        "reasons": [
-          "WINNER 官方当前列出 阿根廷 vs 埃及 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：阿根廷 2.3，埃及 0.7。",
-          "节奏均值 71，波动风险 44，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    }
-  ],
+  "upcoming": [],
   "recentResults": [
     {
       "home": "ﾎﾟﾙﾄｶﾞ",
