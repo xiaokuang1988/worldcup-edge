@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T13:51:43.749Z",
+  "generatedAt": "2026-07-09T16:28:48.081Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -42,59 +42,6 @@
     }
   ],
   "upcoming": [
-    {
-      "id": "ﾌﾗﾝｽ-ﾓﾛｯｺ-07-10-金-05-00",
-      "tournament": "サッカーW杯",
-      "home": "ﾌﾗﾝｽ",
-      "away": "ﾓﾛｯｺ",
-      "homeZh": "法国",
-      "awayZh": "摩洛哥",
-      "date": "07/10 (金)",
-      "time": "05:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 2.1,
-          "away": 0.8
-        },
-        "score": "2-0",
-        "topScores": [
-          {
-            "score": "2-0",
-            "probability": 12.4
-          },
-          {
-            "score": "1-0",
-            "probability": 11.8
-          },
-          {
-            "score": "2-1",
-            "probability": 9.9
-          }
-        ],
-        "confidence": 78,
-        "winnerLean": "法国胜",
-        "totalLabel": "偏大球",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 80,
-          "defense": 78,
-          "volatility": 41
-        },
-        "reasons": [
-          "WINNER 官方当前列出 法国 vs 摩洛哥 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：法国 2.1，摩洛哥 0.8。",
-          "节奏均值 75，波动风险 41，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    },
     {
       "id": "ｽﾍﾟｲﾝ-ﾍﾞﾙｷﾞｰ-07-11-土-04-00",
       "tournament": "サッカーW杯",
