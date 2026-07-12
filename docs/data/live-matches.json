@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T23:57:01.064Z",
+  "generatedAt": "2026-07-12T03:39:21.742Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -41,62 +41,16 @@
       "note": "日本体育新闻聚合，用于赛前伤停和舆情核对。"
     }
   ],
-  "upcoming": [
-    {
-      "id": "ｱﾙｾﾞﾝﾁ-ｽｲｽ-07-12-日-10-00",
-      "tournament": "サッカーW杯",
-      "home": "ｱﾙｾﾞﾝﾁ",
-      "away": "ｽｲｽ",
-      "homeZh": "阿根廷",
-      "awayZh": "瑞士",
-      "date": "07/12 (日)",
-      "time": "10:00",
-      "market": "WINNER サッカー 1試合予想",
-      "officialStatus": "試合結果を予想する",
-      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-      "prediction": {
-        "expectedGoals": {
-          "home": 1.9,
-          "away": 0.7
-        },
-        "score": "1-0",
-        "topScores": [
-          {
-            "score": "1-0",
-            "probability": 14.3
-          },
-          {
-            "score": "2-0",
-            "probability": 13.6
-          },
-          {
-            "score": "1-1",
-            "probability": 10
-          }
-        ],
-        "confidence": 78,
-        "winnerLean": "阿根廷胜",
-        "totalLabel": "2-3 球区间",
-        "decision": "可重点核对",
-        "metrics": {
-          "official": 100,
-          "attack": 79,
-          "defense": 79,
-          "volatility": 39
-        },
-        "reasons": [
-          "WINNER 官方当前列出 阿根廷 vs 瑞士 的 1 比赛预测销售项。",
-          "模型按双方进攻/防守档位估算 xG：阿根廷 1.9，瑞士 0.7。",
-          "节奏均值 71，波动风险 39，因此推荐比分不是结果承诺，只用于核对官方选项。"
-        ]
-      },
-      "sourceUrls": [
-        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
-        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
-      ]
-    }
-  ],
+  "upcoming": [],
   "recentResults": [
+    {
+      "home": "ﾉﾙｳｪｰ",
+      "away": "ｲﾝｸﾞﾗﾝ",
+      "homeZh": "挪威",
+      "awayZh": "英格兰",
+      "score": "1-1",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ｽﾍﾟｲﾝ",
       "away": "ﾍﾞﾙｷﾞｰ",
