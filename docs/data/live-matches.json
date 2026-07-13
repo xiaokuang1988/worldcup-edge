@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T22:28:04.864Z",
+  "generatedAt": "2026-07-13T23:28:17.874Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -41,6 +41,113 @@
       "note": "日本体育新闻聚合，用于赛前伤停和舆情核对。"
     }
   ],
-  "upcoming": [],
+  "upcoming": [
+    {
+      "id": "ﾌﾗﾝｽ-ｽﾍﾟｲﾝ-07-15-水-04-00",
+      "tournament": "サッカーW杯",
+      "home": "ﾌﾗﾝｽ",
+      "away": "ｽﾍﾟｲﾝ",
+      "homeZh": "法国",
+      "awayZh": "西班牙",
+      "date": "07/15 (水)",
+      "time": "04:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.9,
+          "away": 1.3
+        },
+        "score": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 10.2
+          },
+          {
+            "score": "2-1",
+            "probability": 9.7
+          },
+          {
+            "score": "1-0",
+            "probability": 7.9
+          }
+        ],
+        "confidence": 72,
+        "winnerLean": "法国胜",
+        "totalLabel": "偏大球",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 86,
+          "defense": 80,
+          "volatility": 39
+        },
+        "reasons": [
+          "WINNER 官方当前列出 法国 vs 西班牙 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：法国 1.9，西班牙 1.3。",
+          "节奏均值 77，波动风险 39，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    },
+    {
+      "id": "ｲﾝｸﾞﾗﾝ-ｱﾙｾﾞﾝﾁ-07-16-木-04-00",
+      "tournament": "サッカーW杯",
+      "home": "ｲﾝｸﾞﾗﾝ",
+      "away": "ｱﾙｾﾞﾝﾁ",
+      "homeZh": "英格兰",
+      "awayZh": "阿根廷",
+      "date": "07/16 (木)",
+      "time": "04:00",
+      "market": "WINNER サッカー 1試合予想",
+      "officialStatus": "試合結果を予想する",
+      "officialUrl": "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+      "prediction": {
+        "expectedGoals": {
+          "home": 1.7,
+          "away": 1.4
+        },
+        "score": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 10.8
+          },
+          {
+            "score": "2-1",
+            "probability": 9.2
+          },
+          {
+            "score": "1-0",
+            "probability": 7.7
+          }
+        ],
+        "confidence": 69,
+        "winnerLean": "英格兰胜",
+        "totalLabel": "偏大球",
+        "decision": "只做备选",
+        "metrics": {
+          "official": 100,
+          "attack": 85,
+          "defense": 80,
+          "volatility": 40
+        },
+        "reasons": [
+          "WINNER 官方当前列出 英格兰 vs 阿根廷 的 1 比赛预测销售项。",
+          "模型按双方进攻/防守档位估算 xG：英格兰 1.7，阿根廷 1.4。",
+          "节奏均值 75，波动风险 40，因此推荐比分不是结果承诺，只用于核对官方选项。"
+        ]
+      },
+      "sourceUrls": [
+        "https://store.toto-dream.com/dcs/subos/screen/pi31/spin049/PGSPIN04901InitWinnerTop.form",
+        "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+      ]
+    }
+  ],
   "recentResults": []
 }
