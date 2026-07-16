@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T01:00:59.476Z",
+  "generatedAt": "2026-07-16T04:39:10.164Z",
   "sourcePolicy": "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -43,6 +43,14 @@
   ],
   "upcoming": [],
   "recentResults": [
+    {
+      "home": "ｲﾝｸﾞﾗﾝ",
+      "away": "ｱﾙｾﾞﾝﾁ",
+      "homeZh": "英格兰",
+      "awayZh": "阿根廷",
+      "score": "1-2",
+      "officialUrl": "https://sp.toto-dream.com/dcs/subos/screen/si40/ssin058/PGSSIN05801LnkCheckKujiResultSoccer.form?beforeTeamId=322"
+    },
     {
       "home": "ﾌﾗﾝｽ",
       "away": "ｽﾍﾟｲﾝ",
