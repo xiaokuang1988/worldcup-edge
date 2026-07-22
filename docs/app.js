@@ -1,6 +1,6 @@
 const fallbackData = {
   generatedAt: "2026-06-13T00:00:00+09:00",
-  sourcePolicy: "Official WINNER schedule/results plus reputable official/news sources. No unlicensed offshore betting links.",
+  sourcePolicy: "China Sports Lottery football analysis snapshot. Manual odds snapshots are preserved for review.",
   sources: [],
   upcoming: [],
   recentResults: []
@@ -38,7 +38,7 @@ const betSummary = document.querySelector("#betSummary");
 const bankrollInput = document.querySelector("#bankrollInput");
 
 function yen(value) {
-  return `${Math.round(value || 0).toLocaleString()}円`;
+  return `${Math.round(value || 0).toLocaleString()}元`;
 }
 
 function safeDate(isoString) {
@@ -58,9 +58,9 @@ async function loadData() {
     const response = await fetch(`./data/live-matches.json?ts=${Date.now()}`);
     if (!response.ok) throw new Error(`data returned ${response.status}`);
     state.data = await response.json();
-    dataStatus.textContent = `官方数据：${safeDate(state.data.generatedAt)} 更新`;
+    dataStatus.textContent = `体彩快照：${safeDate(state.data.generatedAt)} 更新`;
   } catch (error) {
-    dataStatus.textContent = "官方数据读取失败，请重新部署或刷新数据";
+    dataStatus.textContent = "体彩快照读取失败，请重新部署或刷新数据";
     console.error(error);
   }
 
@@ -157,8 +157,8 @@ function recommendationFor(match, confidence) {
   const topScores = prediction.topScores
     ?.map((item) => `${item.score}${item.odds ? ` @${item.odds}` : ` (${item.probability}%)`}`)
     .join(" / ");
-  const base = `比分候选：${topScores || prediction.score}；方向：${prediction.winnerLean}，${prediction.totalLabel}。`;
-  const official = `先打开 WINNER 官方，确认该场是否仍在销售、截止时间、可选比分和払戻倍率。`;
+  const base = `比分候选：${topScores || prediction.score}；赛果倾向：${prediction.resultLean}，${prediction.totalLabel}。`;
+  const official = `投注前必须核对中国体彩官方公告、销售截止时间、票面玩法和最终固定奖金。`;
   const marketNote = prediction.marketOdds ? "已用你提供的当前赔率快照校准。" : "";
   const stakeNote = v1.maxStake ? `V1.0 输出 ${v1.decision}，${v1.position} 仓，单场建议上限 ${yen(v1.maxStake)}。` : `V1.0 输出 ${v1.decision}，不建议下注。`;
 
@@ -175,7 +175,7 @@ function renderMatches() {
   matchList.innerHTML = "";
   const matches = state.data.upcoming || [];
   if (!matches.length) {
-    matchList.innerHTML = `<div class="empty-state">没有读取到 WINNER 官方比赛数据。</div>`;
+    matchList.innerHTML = `<div class="empty-state">没有读取到体彩竞彩比赛快照。</div>`;
     return;
   }
 
@@ -218,10 +218,10 @@ function renderInsight() {
   const matches = state.data.upcoming || [];
   const match = matches.find((item) => item.id === state.selectedId) || matches[0];
   if (!match) {
-    selectedTitle.textContent = "等待官方数据";
-    selectedBadge.textContent = "WINNER";
+    selectedTitle.textContent = "等待体彩快照";
+    selectedBadge.textContent = "竞彩";
     scoreValue.textContent = "--";
-    recommendationText.textContent = "请先运行数据更新脚本，或等待 GitHub Pages 数据刷新。";
+    recommendationText.textContent = "请先导入体彩赔率快照，或等待 GitHub Pages 数据刷新。";
     topPick.textContent = "暂无";
     metrics.innerHTML = "";
     return;
@@ -317,7 +317,7 @@ function renderRecentResults() {
   recentResults.innerHTML = "";
   const results = state.data.recentResults || [];
   if (!results.length) {
-    recentResults.innerHTML = `<span>近期官方结果读取中</span>`;
+    recentResults.innerHTML = `<span>暂无复盘记录</span>`;
     return;
   }
 
@@ -332,7 +332,7 @@ function renderRecentResults() {
 }
 
 function parseBetLines(text) {
-  const unitPrice = 200;
+  const unitPrice = 2;
   return text
     .split(/\n+/)
     .map((line) => line.trim())
@@ -343,8 +343,8 @@ function parseBetLines(text) {
       const allScores = [...normalized.matchAll(/(\d+)\s*[:：-]\s*(\d+)/g)];
       const resultScore = allScores[1] ? `${allScores[1][1]}-${allScores[1][2]}` : null;
       const unitMatch = normalized.match(/(\d+)\s*注/);
-      const oddsMatch = normalized.match(/(?:赔率|払戻倍率|倍率)\s*[:：]?\s*([0-9.]+)/i);
-      const resultMatch = normalized.match(/(未开奖|未発表|中|命中|当たり|当選|外れ|不中|ハズレ|lose|lost|win|hit)/i);
+      const oddsMatch = normalized.match(/(?:赔率|固定奖金|奖金|倍率)\s*[:：]?\s*([0-9.]+)/i);
+      const resultMatch = normalized.match(/(未开奖|中|命中|中奖|未中|不中|lose|lost|win|hit)/i);
 
       if (scoreMatch && unitMatch) {
         const scoreStart = scoreMatch.index ?? 0;
@@ -378,7 +378,7 @@ function parseBetLines(text) {
 }
 
 function renderBetSummary() {
-  const raw = localStorage.getItem("winner-bets") || "";
+  const raw = localStorage.getItem("ticai-bets") || "";
   if (betImport) betImport.value = raw;
   const bets = parseBetLines(raw);
   if (!bets.length) {
@@ -407,9 +407,9 @@ function renderBetSummary() {
     合计 <strong>${units}</strong> 注，
     已开奖 <strong>${settled.length}</strong>，
     命中率 <strong>${rate}%</strong>，
-    投入 <strong>${stake.toLocaleString()}円</strong>
+    投入 <strong>${stake.toLocaleString()}元</strong>
     ${settled.length ? `，已结算返还 <strong>${yen(returned)}</strong>，盈亏 <strong>${yen(profit)}</strong>` : ""}
-    ${potential ? `，理论最高返还 <strong>${Math.round(potential).toLocaleString()}円</strong>` : ""}。
+    ${potential ? `，理论最高返还 <strong>${Math.round(potential).toLocaleString()}元</strong>` : ""}。
     ${stopToday ? `<br><strong class="danger-text">连输 ${consecutiveLosses} 单，按 V1.0 规则今日停止下注。</strong>` : ""}
   `;
 }
@@ -445,12 +445,12 @@ copySources.addEventListener("click", async () => {
 });
 
 saveBets?.addEventListener("click", () => {
-  localStorage.setItem("winner-bets", betImport.value);
+  localStorage.setItem("ticai-bets", betImport.value);
   renderBetSummary();
 });
 
 clearBets?.addEventListener("click", () => {
-  localStorage.removeItem("winner-bets");
+  localStorage.removeItem("ticai-bets");
   renderBetSummary();
 });
 

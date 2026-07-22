@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Cup Edge | 合规世界杯分析台</title>
+    <title>体彩AI决策平台 | 竞彩足球分析台</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#dashboard" aria-label="World Cup Edge home">
-        <span class="brand-mark">W</span>
+      <a class="brand" href="#dashboard" aria-label="体彩AI决策平台 home">
+        <span class="brand-mark">体</span>
         <span>
-          <strong>World Cup Edge</strong>
-          <small>日本合规分析版</small>
+          <strong>体彩AI决策平台</strong>
+          <small>中国竞彩足球模型</small>
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#dashboard">分析</a>
-        <a href="#legal">合规入口</a>
+        <a href="#legal">玩法规则</a>
         <a href="#sources">资讯源</a>
         <a href="#risk">风控</a>
       </nav>
@@ -29,24 +29,24 @@
         <img src="./assets/worldcup-analytics-hero.png" alt="" class="hero-image" />
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">FIFA World Cup 2026 analysis console</p>
-          <h1>世界杯赛前分析与合规购买决策台</h1>
+          <p class="eyebrow">China Sports Lottery football model</p>
+          <h1>竞彩足球赛前分析与资金决策台</h1>
           <p class="hero-copy">
-            接入 WINNER 官方比赛列表与正规资讯源，生成赛前比分倾向；购买入口只指向日本正规渠道，不接入、不宣传海外非法线上博彩。
+            按中国体育彩票竞彩足球玩法建模：胜平负、让球胜平负、比分、总进球和半全场。模型输出 BET / WATCH / PASS、A/B/C 仓位和最大投入。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#matches">查看推荐</a>
-            <a class="button ghost" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">打开 WINNER 官方</a>
+            <a class="button ghost" href="https://www.sporttery.cn/" target="_blank" rel="noreferrer">打开中国体彩网</a>
           </div>
         </div>
         <aside class="hero-panel" aria-label="Current model summary">
           <div>
             <span class="label">模型状态</span>
-            <strong id="dataStatus">官方数据读取中</strong>
+            <strong id="dataStatus">体彩快照读取中</strong>
           </div>
           <div>
-            <span class="label">合规策略</span>
-            <strong>只链接官方/许可渠道</strong>
+            <span class="label">玩法范围</span>
+            <strong>竞彩 90 分钟结算</strong>
           </div>
           <div>
             <span class="label">今日建议</span>
@@ -59,7 +59,7 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Match intelligence</p>
-            <h2>比赛筛选与建议</h2>
+            <h2>竞彩比赛筛选与建议</h2>
           </div>
           <div class="controls" aria-label="Filters">
             <label>
@@ -86,7 +86,7 @@
                 <span class="label">Selected match</span>
                 <h3 id="selectedTitle">选择一场比赛</h3>
               </div>
-              <span class="badge" id="selectedBadge">Live model</span>
+              <span class="badge" id="selectedBadge">Ticai model</span>
             </div>
             <div class="score-ring" id="scoreRing">
               <span id="scoreValue">--</span>
@@ -98,64 +98,63 @@
               <div class="recommendation-body" id="recommendationText">请从左侧选择一场比赛。</div>
             </div>
             <div class="action-row">
-              <a class="button primary" id="officialLink" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">去 WINNER 核对</a>
+              <a class="button primary" id="officialLink" href="https://www.sporttery.cn/" target="_blank" rel="noreferrer">去体彩规则核对</a>
               <button class="button ghost" id="refreshAdvice" type="button">重新计算</button>
             </div>
           </section>
         </div>
       </section>
 
-      <section class="result-strip" aria-label="Recent official results">
-        <span class="label">近期 WINNER 官方结果</span>
+      <section class="result-strip" aria-label="Recent review results">
+        <span class="label">近期复盘记录</span>
         <div id="recentResults" class="recent-results"></div>
       </section>
 
       <section class="account-band" id="account">
         <div>
-          <p class="eyebrow">WINNER account link</p>
-          <h2>下单记录连接</h2>
+          <p class="eyebrow">Ticket record</p>
+          <h2>竞彩投注记录</h2>
           <p>
-            公开网页不能直接读取你的 WINNER 登录态。当前先支持本机导入购买记录，数据只保存在你手机/电脑浏览器 localStorage。
-            真正自动连接需要单独做一个你授权的后端或本地连接器。
+            当前先支持手动导入票据记录，数据只保存在你手机/电脑浏览器 localStorage。后续如果要自动同步，需要对接可授权的数据后台或本地录入助手。
           </p>
         </div>
         <div class="bet-import">
           <label for="bankrollInput">本金</label>
           <input id="bankrollInput" class="bankroll-input" type="number" min="1000" step="1000" value="100000" />
           <label for="betImport">购买记录</label>
-          <textarea id="betImport" rows="5" placeholder="例：伊朗VS新西兰 1:0 20注 赔率4.9 结果1:0&#10;也支持：西班牙 vs 佛得角, 2-0, 4000, 未开奖"></textarea>
+          <textarea id="betImport" rows="5" placeholder="例：法国VS瑞典 比分 2:0 20注 赔率6.5 结果2:0&#10;也支持：墨西哥 vs 厄瓜多尔, 让球胜平负, 让平, 4000, 未开奖"></textarea>
           <div class="action-row">
             <button class="button primary" id="saveBets" type="button">保存记录</button>
             <button class="button ghost" id="clearBets" type="button">清空</button>
           </div>
           <p id="betSummary" class="bet-summary"></p>
-          <p class="bet-hint">按 WINNER 规则，一注按 200円 计算；例如 20注 = 4,000円。</p>
+          <p class="bet-hint">按中国体彩竞彩常规票面单位，一注按 2元计算；例如 20注 = 40元。</p>
         </div>
       </section>
 
       <section class="legal-band" id="legal">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Legal routes in Japan</p>
-            <h2>日本合规购买入口</h2>
+            <p class="eyebrow">Game rules</p>
+            <h2>中国体彩竞彩足球玩法</h2>
           </div>
-          <p class="section-note">以下只放官方或可核验入口。未确认日本合法性的海外平台不做链接。</p>
+          <p class="section-note">页面只做分析和记录，不代理购票、不收款、不提供非官方渠道跳转。</p>
         </div>
         <div class="legal-grid">
-          <a class="legal-card" href="https://www.toto-dream.com/winner/index.html" target="_blank" rel="noreferrer">
-            <span>官方购买</span>
-            <strong>スポーツくじ WINNER</strong>
-            <p>单场预测、赛事结果类官方体育彩票入口。</p>
+          <a class="legal-card" href="https://www.sporttery.cn/help/2969.html" target="_blank" rel="noreferrer">
+            <span>竞彩规则</span>
+            <strong>中国体育彩票竞彩足球</strong>
+            <p>以足球比赛为媒介，按规则预测比赛结果并兑奖。</p>
           </a>
-          <a class="legal-card" href="https://www.toto-dream.com/" target="_blank" rel="noreferrer">
+          <a class="legal-card" href="https://www.sporttery.cn/" target="_blank" rel="noreferrer">
             <span>官方站点</span>
-            <strong>スポーツくじ toto / BIG</strong>
-            <p>销售日程、开奖结果、规则和公告。</p>
+            <strong>中国体彩网</strong>
+            <p>公告、开奖、赛事和官方信息核对入口。</p>
           </a>
-          <a class="legal-card warning" href="https://www.npa.go.jp/bureau/safetylife/hoan/onlinecasino/onlinecasino.html" target="_blank" rel="noreferrer">
-            <span>风险核验</span>
-            <strong>警察厅：线上赌博风险</strong>
-            <p>核对海外线上博彩、导流和广告宣传的法律风险。</p>
+          <a class="legal-card warning" href="#risk">
+            <span>风控规则</span>
+            <strong>只算 90 分钟</strong>
+            <p>默认不计加时和点球；比分玩法只允许 C 仓。</p>
           </a>
         </div>
       </section>
@@ -173,22 +172,22 @@
 
       <section class="risk-band" id="risk">
         <div>
-          <p class="eyebrow">Compliance guardrail</p>
+            <p class="eyebrow">Risk guardrail</p>
           <h2>平台风控原则</h2>
         </div>
         <div class="risk-copy">
           <p>
-            本页面是分析与导航工具，不代理下注、不托管资金、不承诺收益。页面读取本项目生成的官方数据 JSON；数据源优先级为 WINNER 官方销售/结果页、FIFA/JFA 等官方赛事源和日本正规资讯源。
+            本页面是分析与记录工具，不代理购彩、不托管资金、不承诺收益。模型只做赛前概率、赔率结构和资金纪律判断，最终应以中国体彩官方公告、票面规则和线下合法销售渠道为准。
           </p>
           <p>
-            日本国内从海外线上博彩网站进行 sports betting 有犯罪风险；页面不会加入“开户注册”“返利”“开户链接”或未经确认的博彩站跳转。
+            默认只计算 90 分钟含伤停补时。让球胜平负按体彩让球数结算；总进球为双方合计；加时赛和点球大战不计入默认结算。
           </p>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>World Cup Edge MVP</span>
+      <span>体彩AI决策平台 MVP</span>
       <span>Last checked: 2026-07-23 JST</span>
     </footer>
 
