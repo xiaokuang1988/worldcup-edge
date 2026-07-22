@@ -120,8 +120,10 @@
           </p>
         </div>
         <div class="bet-import">
+          <label for="bankrollInput">本金</label>
+          <input id="bankrollInput" class="bankroll-input" type="number" min="1000" step="1000" value="100000" />
           <label for="betImport">购买记录</label>
-          <textarea id="betImport" rows="5" placeholder="例：伊朗VS新西兰 1:0 20注 赔率4.9&#10;也支持：西班牙 vs 佛得角, 2-0, 4000, 未开奖"></textarea>
+          <textarea id="betImport" rows="5" placeholder="例：伊朗VS新西兰 1:0 20注 赔率4.9 结果1:0&#10;也支持：西班牙 vs 佛得角, 2-0, 4000, 未开奖"></textarea>
           <div class="action-row">
             <button class="button primary" id="saveBets" type="button">保存记录</button>
             <button class="button ghost" id="clearBets" type="button">清空</button>

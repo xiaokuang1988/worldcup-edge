@@ -484,6 +484,38 @@ output {
   font-size: 12px;
 }
 
+.v1-panel {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 12px;
+  border: 1px solid rgba(241, 200, 91, 0.42);
+  border-radius: 8px;
+  background: rgba(241, 200, 91, 0.08);
+}
+
+.v1-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.v1-grid span {
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  font-weight: 900;
+  text-align: center;
+}
+
+.v1-grid small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 .market-odds {
   display: grid;
   gap: 8px;
@@ -586,9 +618,23 @@ output {
   line-height: 1.55;
 }
 
+.bankroll-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+}
+
 .bet-summary {
   margin: 0;
   color: #d7e5dd;
+}
+
+.danger-text {
+  color: var(--red);
 }
 
 .bet-hint {
@@ -737,6 +783,10 @@ output {
 
   .score-candidates {
     grid-template-columns: 1fr;
+  }
+
+  .v1-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer {
