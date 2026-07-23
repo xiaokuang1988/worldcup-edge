@@ -83,7 +83,7 @@ function toLiveMatch(match) {
     time,
     market: "胜平负 / 让球胜平负 / 比分 / 总进球",
     officialStatus: "赔率快照",
-    officialUrl: "https://www.sporttery.cn/",
+    officialUrl: "#legal",
     prediction: predictionFor(match)
   };
 }
@@ -98,14 +98,14 @@ const liveData = {
   sources: [
     {
       type: "体彩官方",
-      name: "中国体彩网",
-      url: "https://www.sporttery.cn/",
-      note: "公告、开奖和官方赛事信息核对入口。"
+      name: "中国体彩官方信息",
+      url: "#legal",
+      note: "官方网页可能返回 567 或打不开，使用时以票面、公告和实体销售点信息为准。"
     },
     {
       type: "竞彩规则",
       name: "中国体育彩票竞彩足球游戏",
-      url: "https://www.sporttery.cn/help/2969.html",
+      url: "#legal",
       note: "竞彩足球玩法、投注、开奖和兑奖规则说明。"
     },
     {

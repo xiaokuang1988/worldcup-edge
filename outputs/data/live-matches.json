@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T22:47:38.721Z",
+  "generatedAt": "2026-07-23T16:56:10.282Z",
   "sourcePolicy": "China Sports Lottery football analysis snapshot. Manual odds snapshots are preserved for review.",
   "manualOddsSnapshotAt": "2026-06-30T18:00:00+09:00",
   "manualOddsSource": "user-provided screenshots from kt.xiaodianhuo.com",
@@ -7,14 +7,14 @@
   "sources": [
     {
       "type": "体彩官方",
-      "name": "中国体彩网",
-      "url": "https://www.sporttery.cn/",
-      "note": "公告、开奖和官方赛事信息核对入口。"
+      "name": "中国体彩官方信息",
+      "url": "#legal",
+      "note": "官方网页可能返回 567 或打不开，使用时以票面、公告和实体销售点信息为准。"
     },
     {
       "type": "竞彩规则",
       "name": "中国体育彩票竞彩足球游戏",
-      "url": "https://www.sporttery.cn/help/2969.html",
+      "url": "#legal",
       "note": "竞彩足球玩法、投注、开奖和兑奖规则说明。"
     },
     {
@@ -34,7 +34,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "1-2",
         "topScores": [
@@ -157,7 +157,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "2-0",
         "topScores": [
@@ -280,7 +280,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "1-1",
         "topScores": [
@@ -403,7 +403,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "2-0",
         "topScores": [
@@ -526,7 +526,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "1-1",
         "topScores": [
@@ -649,7 +649,7 @@
       "time": "22:00",
       "market": "胜平负 / 让球胜平负 / 比分 / 总进球",
       "officialStatus": "赔率快照",
-      "officialUrl": "https://www.sporttery.cn/",
+      "officialUrl": "#legal",
       "prediction": {
         "score": "2-0",
         "topScores": [

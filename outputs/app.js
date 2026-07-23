@@ -158,12 +158,12 @@ function recommendationFor(match, confidence) {
     ?.map((item) => `${item.score}${item.odds ? ` @${item.odds}` : ` (${item.probability}%)`}`)
     .join(" / ");
   const base = `比分候选：${topScores || prediction.score}；赛果倾向：${prediction.resultLean}，${prediction.totalLabel}。`;
-  const official = `投注前必须核对中国体彩官方公告、销售截止时间、票面玩法和最终固定奖金。`;
+  const official = `投注前必须核对中国体彩官方公告、销售截止时间、票面玩法和最终固定奖金；官方网页打不开时以票面和实体销售点信息为准。`;
   const marketNote = prediction.marketOdds ? "已用你提供的当前赔率快照校准。" : "";
   const stakeNote = v1.maxStake ? `V1.0 输出 ${v1.decision}，${v1.position} 仓，单场建议上限 ${yen(v1.maxStake)}。` : `V1.0 输出 ${v1.decision}，不建议下注。`;
 
   if (confidence >= 74) {
-    return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 信心较高，但仍只适合作为赛前判断，不承诺命中。${official}`;
+    return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 信心较高，但仍只适合作为赛事判断，不承诺命中。${official}`;
   }
   if (confidence >= 62) {
     return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
