@@ -1,4 +1,4 @@
-name: Update Ticai snapshot data
+name: Update kt jingcai snapshot data
 
 on:
   workflow_dispatch:
@@ -14,12 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Build China Sports Lottery snapshot data
-        run: node scripts/build-ticai-data.mjs
+      - name: Build kt jingcai snapshot data
+        run: node scripts/scrape-kt-jingcai.mjs --from-file
       - name: Commit changed data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/live-matches.json outputs/data/live-matches.json
-          git diff --cached --quiet || git commit -m "Update Ticai snapshot data"
+          git add data/kt-jingcai-current.json docs/data/live-matches.json outputs/data/live-matches.json
+          git diff --cached --quiet || git commit -m "Update kt jingcai snapshot data"
           git push

@@ -58,9 +58,9 @@ async function loadData() {
     const response = await fetch(`./data/live-matches.json?ts=${Date.now()}`);
     if (!response.ok) throw new Error(`data returned ${response.status}`);
     state.data = await response.json();
-    dataStatus.textContent = `体彩快照：${safeDate(state.data.generatedAt)} 更新`;
+    dataStatus.textContent = `kt 当前页：${safeDate(state.data.generatedAt)} 更新`;
   } catch (error) {
-    dataStatus.textContent = "体彩快照读取失败，请重新部署或刷新数据";
+    dataStatus.textContent = "kt 当前页读取失败，请重新抓取或刷新数据";
     console.error(error);
   }
 
@@ -158,8 +158,8 @@ function recommendationFor(match, confidence) {
     ?.map((item) => `${item.score}${item.odds ? ` @${item.odds}` : ` (${item.probability}%)`}`)
     .join(" / ");
   const base = `比分候选：${topScores || prediction.score}；赛果倾向：${prediction.resultLean}，${prediction.totalLabel}。`;
-  const official = `投注前必须核对中国体彩官方公告、销售截止时间、票面玩法和最终固定奖金；官方网页打不开时以票面和实体销售点信息为准。`;
-  const marketNote = prediction.marketOdds ? "已用你提供的当前赔率快照校准。" : "";
+  const official = `下注前必须核对 kt 页面是否仍在售、实体店票面玩法和截止时间；页面数据仅供参考。`;
+  const marketNote = prediction.marketOdds ? "已用 kt 当前页赔率校准。" : "";
   const stakeNote = v1.maxStake ? `V1.0 输出 ${v1.decision}，${v1.position} 仓，单场建议上限 ${yen(v1.maxStake)}。` : `V1.0 输出 ${v1.decision}，不建议下注。`;
 
   if (confidence >= 74) {
@@ -218,10 +218,10 @@ function renderInsight() {
   const matches = state.data.upcoming || [];
   const match = matches.find((item) => item.id === state.selectedId) || matches[0];
   if (!match) {
-    selectedTitle.textContent = "等待体彩快照";
+    selectedTitle.textContent = "等待 kt 当前页";
     selectedBadge.textContent = "竞彩";
     scoreValue.textContent = "--";
-    recommendationText.textContent = "请先导入体彩赔率快照，或等待 GitHub Pages 数据刷新。";
+    recommendationText.textContent = "请先抓取 kt 当前页，或等待 GitHub Pages 数据刷新。";
     topPick.textContent = "暂无";
     metrics.innerHTML = "";
     return;

@@ -32,7 +32,7 @@
           <p class="eyebrow">China Sports Lottery football model</p>
           <h1>竞彩足球赛事分析与资金决策台</h1>
           <p class="hero-copy">
-            按中国体育彩票竞彩足球玩法建模：胜平负、让球胜平负、比分、总进球和半全场。模型输出 BET / WATCH / PASS、A/B/C 仓位和最大投入。
+            读取你提供的 kt.xiaodianhuo.com 竞彩足球页面当前场次，基于胜平负和让球胜平负赔率输出 BET / WATCH / PASS、A/B/C 仓位和最大投入。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#matches">查看推荐</a>
@@ -42,7 +42,7 @@
         <aside class="hero-panel" aria-label="Current model summary">
           <div>
             <span class="label">模型状态</span>
-            <strong id="dataStatus">体彩快照读取中</strong>
+            <strong id="dataStatus">kt 当前页读取中</strong>
           </div>
           <div>
             <span class="label">玩法范围</span>
@@ -122,7 +122,7 @@
           <label for="bankrollInput">本金</label>
           <input id="bankrollInput" class="bankroll-input" type="number" min="1000" step="1000" value="100000" />
           <label for="betImport">购买记录</label>
-          <textarea id="betImport" rows="5" placeholder="例：法国VS瑞典 比分 2:0 20注 赔率6.5 结果2:0&#10;也支持：墨西哥 vs 厄瓜多尔, 让球胜平负, 让平, 4000, 未开奖"></textarea>
+          <textarea id="betImport" rows="5" placeholder="例：首尔FCVS蔚山现代 胜平负 主胜 20注 赔率1.68 结果未开奖&#10;也支持：安养FC vs 江原FC, 让球胜平负, 让胜, 40, 未开奖"></textarea>
           <div class="action-row">
             <button class="button primary" id="saveBets" type="button">保存记录</button>
             <button class="button ghost" id="clearBets" type="button">清空</button>
@@ -148,8 +148,8 @@
           </a>
           <a class="legal-card" href="#sources">
             <span>数据方式</span>
-            <strong>手动赔率快照</strong>
-            <p>官方入口不可用时，先用票面或截图录入赔率，保留每次快照。</p>
+            <strong>kt 当前页快照</strong>
+            <p>从你给的竞彩页面读取当前比赛、胜平负和让球赔率，作为下注参考。</p>
           </a>
           <a class="legal-card warning" href="#risk">
             <span>风控规则</span>
@@ -177,7 +177,7 @@
         </div>
         <div class="risk-copy">
           <p>
-            本页面是分析与记录工具，不代理购彩、不托管资金、不承诺收益。模型只做赛事概率、赔率结构和资金纪律判断，最终应以中国体彩官方公告、票面规则和线下合法销售渠道为准。
+            本页面是分析与记录工具，不代理购彩、不托管资金、不承诺收益。模型只做赛事概率、赔率结构和资金纪律判断。kt 页面也提示数据仅供参考，购买需到线下实体店。
           </p>
           <p>
             默认只计算 90 分钟含伤停补时。让球胜平负按体彩让球数结算；总进球为双方合计；加时赛和点球大战不计入默认结算。

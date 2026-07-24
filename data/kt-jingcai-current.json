@@ -1,0 +1,126 @@
+{
+  "scrapedAt": "2026-07-24T17:36:25.349Z",
+  "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
+  "matches": [
+    {
+      "matchNo": "6201",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "11",
+      "homeZh": "金泉尚武",
+      "awayZh": "大田市民",
+      "awayRank": "9",
+      "hda": {
+        "home": 2.85,
+        "draw": 3.05,
+        "away": 2.22
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 1.51,
+        "draw": 3.75,
+        "away": 5
+      }
+    },
+    {
+      "matchNo": "6202",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "5",
+      "homeZh": "浦项制铁",
+      "awayZh": "全北现代",
+      "awayRank": "3",
+      "hda": {
+        "home": 3.03,
+        "draw": 2.95,
+        "away": 2.17
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 1.54,
+        "draw": 3.52,
+        "away": 5.1
+      }
+    },
+    {
+      "matchNo": "7201",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "1",
+      "homeZh": "首尔FC",
+      "awayZh": "蔚山现代",
+      "awayRank": "4",
+      "hda": {
+        "home": 1.68,
+        "draw": 3.48,
+        "away": 4.05
+      },
+      "handicap": {
+        "line": "-1",
+        "home": 3.1,
+        "draw": 3.45,
+        "away": 1.94
+      }
+    },
+    {
+      "matchNo": "7202",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "7",
+      "homeZh": "仁川联",
+      "awayZh": "富川FC",
+      "awayRank": "10",
+      "hda": {
+        "home": 1.56,
+        "draw": 3.35,
+        "away": 5.3
+      },
+      "handicap": {
+        "line": "-1",
+        "home": 3.07,
+        "draw": 3.05,
+        "away": 2.1
+      }
+    },
+    {
+      "matchNo": "7203",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "12",
+      "homeZh": "光州FC",
+      "awayZh": "济州SK",
+      "awayRank": "8",
+      "hda": {
+        "home": 3.65,
+        "draw": 3,
+        "away": 1.92
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 1.68,
+        "draw": 3.45,
+        "away": 4.1
+      }
+    },
+    {
+      "matchNo": "7204",
+      "league": "韩职",
+      "time": "18:30",
+      "homeRank": "6",
+      "homeZh": "安养FC",
+      "awayZh": "江原FC",
+      "awayRank": "2",
+      "hda": {
+        "home": 4,
+        "draw": 2.95,
+        "away": 1.85
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 1.74,
+        "draw": 3.3,
+        "away": 4
+      }
+    }
+  ]
+}
