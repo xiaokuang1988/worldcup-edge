@@ -23,10 +23,10 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#dashboard">分析</a>
-        <a href="#legal">玩法规则</a>
-        <a href="#sources">资讯源</a>
-        <a href="#risk">风控</a>
+        <a href="#plan">怎么买</a>
+        <a href="#ledger">入库</a>
+        <a href="#bill">账单</a>
+        <a href="#review">复盘</a>
       </nav>
     </header>
 
@@ -36,13 +36,13 @@
         <div class="hero-shade"></div>
         <div class="hero-content">
           <p class="eyebrow">China Sports Lottery football model</p>
-          <h1>竞彩足球赛事分析与资金决策台</h1>
+          <h1>输入预算，直接生成下注方案</h1>
           <p class="hero-copy">
-            读取你提供的 kt.xiaodianhuo.com 竞彩足球页面当前场次，基于胜平负和让球胜平负赔率输出 BET / WATCH / PASS、A/B/C 仓位和最大投入。
+            读取 kt 当前竞彩场次后，只输出“怎么买、买多少、是否入库、开奖后输赢、月账单和复盘”。不展示冗长情报。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#matches">查看推荐</a>
-            <a class="button ghost" href="#legal">查看玩法规则</a>
+            <a class="button primary" href="#plan">生成 200 元方案</a>
+            <a class="button ghost" href="#ledger">录入开奖结果</a>
           </div>
         </div>
         <aside class="hero-panel" aria-label="Current model summary">
@@ -59,125 +59,82 @@
             <strong>竞彩 90 分钟结算</strong>
           </div>
           <div>
-            <span class="label">今日建议</span>
-            <strong id="top-pick">等待筛选</strong>
+              <span class="label">今日建议</span>
+            <strong id="top-pick">等待生成</strong>
           </div>
         </aside>
       </section>
 
-      <section class="workspace" id="matches">
+      <section class="workspace" id="plan">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Match intelligence</p>
-            <h2>竞彩比赛筛选与建议</h2>
+            <p class="eyebrow">Buy plan</p>
+            <h2>今日怎么买</h2>
           </div>
-          <div class="controls" aria-label="Filters">
+          <div class="controls" aria-label="Plan controls">
             <label>
-              <span>风险偏好</span>
+              <span>预算</span>
+              <input id="planBudget" class="bankroll-input" type="number" min="2" step="2" value="200" />
+            </label>
+            <label>
+              <span>模式</span>
               <select id="riskMode">
                 <option value="balanced">均衡</option>
                 <option value="low">保守</option>
                 <option value="high">激进</option>
               </select>
             </label>
-            <label>
-              <span>最低信心</span>
-              <input id="confidenceRange" type="range" min="50" max="90" value="62" />
-            </label>
-            <output id="confidenceValue">62%</output>
+            <button class="button primary" id="generatePlan" type="button">生成方案</button>
+            <button class="button ghost" id="savePlan" type="button">确认入库</button>
           </div>
         </div>
 
-        <div class="dashboard-grid">
-          <section class="match-list" aria-label="Matches" id="matchList"></section>
-          <section class="insight-panel" aria-label="Selected match insight">
-            <div class="panel-header">
-              <div>
-                <span class="label">Selected match</span>
-                <h3 id="selectedTitle">选择一场比赛</h3>
-              </div>
-              <span class="badge" id="selectedBadge">Ticai model</span>
-            </div>
-            <div class="score-ring" id="scoreRing">
-              <span id="scoreValue">--</span>
-              <small>score pick</small>
-            </div>
-            <dl class="metrics" id="metrics"></dl>
-            <div class="recommendation">
-              <span class="label">专业建议</span>
-              <div class="recommendation-body" id="recommendationText">请从左侧选择一场比赛。</div>
-            </div>
-            <div class="action-row">
-              <a class="button primary" id="officialLink" href="#legal">查看玩法规则</a>
-              <button class="button ghost" id="refreshAdvice" type="button">重新计算</button>
-            </div>
-          </section>
+        <div class="ops-grid">
+          <section class="plan-output" id="planOutput">数据读取后，点击“生成方案”。</section>
+          <section class="match-list compact-list" aria-label="Matches" id="matchList"></section>
         </div>
       </section>
 
-      <section class="result-strip" aria-label="Recent review results">
-        <span class="label">近期复盘记录</span>
-        <div id="recentResults" class="recent-results"></div>
-      </section>
-
-      <section class="account-band" id="account">
+      <section class="account-band" id="ledger">
         <div>
-          <p class="eyebrow">Ticket record</p>
-          <h2>竞彩投注记录</h2>
+          <p class="eyebrow">Ledger</p>
+          <h2>投注入库与开奖结算</h2>
           <p>
-            当前先支持手动导入票据记录，数据只保存在你手机/电脑浏览器 localStorage。后续如果要自动同步，需要对接可授权的数据后台或本地录入助手。
+            确认方案后自动保存为“未开奖”。开奖后选择记录，录入命中/未中和返还金额，系统自动算盈亏并生成复盘。
           </p>
         </div>
         <div class="bet-import">
-          <label for="bankrollInput">本金</label>
-          <input id="bankrollInput" class="bankroll-input" type="number" min="1000" step="1000" value="100000" />
-          <label for="betImport">购买记录</label>
-          <textarea id="betImport" rows="5" placeholder="例：首尔FCVS蔚山现代 胜平负 主胜 20注 赔率1.68 结果未开奖&#10;也支持：安养FC vs 江原FC, 让球胜平负, 让胜, 40, 未开奖"></textarea>
+          <label for="settleSelect">选择未开奖记录</label>
+          <select id="settleSelect" class="bankroll-input"></select>
+          <label for="returnInput">返还金额</label>
+          <input id="returnInput" class="bankroll-input" type="number" min="0" step="0.01" value="0" />
           <div class="action-row">
-            <button class="button primary" id="saveBets" type="button">保存记录</button>
-            <button class="button ghost" id="clearBets" type="button">清空</button>
+            <button class="button primary" id="settleWin" type="button">命中入库</button>
+            <button class="button ghost" id="settleLose" type="button">未中入库</button>
           </div>
-          <p id="betSummary" class="bet-summary"></p>
-          <p class="bet-hint">按中国体彩竞彩常规票面单位，一注按 2元计算；例如 20注 = 40元。</p>
+          <p id="ledgerSummary" class="bet-summary"></p>
         </div>
       </section>
 
-      <section class="legal-band" id="legal">
+      <section class="legal-band" id="bill">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Game rules</p>
-            <h2>中国体彩竞彩足球玩法</h2>
+            <p class="eyebrow">Monthly bill</p>
+            <h2>本月账单</h2>
           </div>
-          <p class="section-note">页面只做分析和记录，不代理购票、不收款；官方站点当前可能打不开，因此这里保留玩法规则说明和人工核对提示。</p>
+          <button class="button compact" id="exportBill" type="button">导出账单</button>
         </div>
-        <div class="legal-grid">
-          <a class="legal-card" href="#risk">
-            <span>竞彩规则</span>
-            <strong>中国体育彩票竞彩足球</strong>
-            <p>以足球比赛为媒介，按规则预测比赛结果并兑奖。</p>
-          </a>
-          <a class="legal-card" href="#sources">
-            <span>数据方式</span>
-            <strong>kt 当前页快照</strong>
-            <p>从你给的竞彩页面读取当前比赛、胜平负和让球赔率，作为下注参考。</p>
-          </a>
-          <a class="legal-card warning" href="#risk">
-            <span>风控规则</span>
-            <strong>只算 90 分钟</strong>
-            <p>默认不计加时和点球；比分玩法只允许 C 仓。</p>
-          </a>
-        </div>
+        <div class="ledger-table" id="monthlyBill"></div>
       </section>
 
-      <section class="source-band" id="sources">
+      <section class="source-band" id="review">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Information sources</p>
-            <h2>资讯平台</h2>
+            <p class="eyebrow">Review</p>
+            <h2>投注后复盘</h2>
           </div>
-          <button class="button compact" id="copySources" type="button">复制数据源清单</button>
         </div>
-        <div class="source-list" id="sourceList"></div>
+        <div class="source-list" id="reviewList"></div>
       </section>
 
       <section class="risk-band" id="risk">
@@ -198,9 +155,9 @@
 
     <footer class="footer">
       <span>体彩AI决策平台 Web App</span>
-      <span>Fixed URL release: 2026-07-26 JST</span>
+      <span>Ledger release: 2026-07-26 JST</span>
     </footer>
 
-    <script src="./app.js?v=20260726-fixed-url"></script>
+    <script src="./app.js?v=20260726-ledger"></script>
   </body>
 </html>

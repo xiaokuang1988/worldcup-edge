@@ -1,47 +1,37 @@
-const fallbackData = {
-  generatedAt: "2026-06-13T00:00:00+09:00",
-  sourcePolicy: "China Sports Lottery football analysis snapshot. Manual odds snapshots are preserved for review.",
-  sources: [],
-  upcoming: [],
-  recentResults: []
-};
-
 const state = {
-  data: fallbackData,
-  selectedId: null,
-  riskMode: "balanced",
-  minConfidence: 62,
-  wobble: 0
+  data: { generatedAt: "", upcoming: [], sources: [] },
+  currentPlan: []
 };
 
 const matchList = document.querySelector("#matchList");
 const riskMode = document.querySelector("#riskMode");
-const confidenceRange = document.querySelector("#confidenceRange");
-const confidenceValue = document.querySelector("#confidenceValue");
-const selectedTitle = document.querySelector("#selectedTitle");
-const selectedBadge = document.querySelector("#selectedBadge");
-const scoreRing = document.querySelector("#scoreRing");
-const scoreValue = document.querySelector("#scoreValue");
-const metrics = document.querySelector("#metrics");
-const recommendationText = document.querySelector("#recommendationText");
-const topPick = document.querySelector("#top-pick");
-const sourceList = document.querySelector("#sourceList");
-const copySources = document.querySelector("#copySources");
-const refreshAdvice = document.querySelector("#refreshAdvice");
-const officialLink = document.querySelector("#officialLink");
+const planBudget = document.querySelector("#planBudget");
+const generatePlan = document.querySelector("#generatePlan");
+const savePlan = document.querySelector("#savePlan");
+const planOutput = document.querySelector("#planOutput");
 const dataStatus = document.querySelector("#dataStatus");
-const recentResults = document.querySelector("#recentResults");
-const betImport = document.querySelector("#betImport");
-const saveBets = document.querySelector("#saveBets");
-const clearBets = document.querySelector("#clearBets");
-const betSummary = document.querySelector("#betSummary");
-const bankrollInput = document.querySelector("#bankrollInput");
+const topPick = document.querySelector("#top-pick");
+const settleSelect = document.querySelector("#settleSelect");
+const returnInput = document.querySelector("#returnInput");
+const settleWin = document.querySelector("#settleWin");
+const settleLose = document.querySelector("#settleLose");
+const ledgerSummary = document.querySelector("#ledgerSummary");
+const monthlyBill = document.querySelector("#monthlyBill");
+const reviewList = document.querySelector("#reviewList");
+const exportBill = document.querySelector("#exportBill");
+
+const LEDGER_KEY = "ticai-ledger-v2";
 
 function yen(value) {
-  return `${Math.round(value || 0).toLocaleString()}元`;
+  return `${Math.round((Number(value) || 0) * 100) / 100}元`;
+}
+
+function units(stake) {
+  return Math.round((Number(stake) || 0) / 2);
 }
 
 function safeDate(isoString) {
+  if (!isoString) return "未更新";
   try {
     return new Intl.DateTimeFormat("zh-CN", {
       dateStyle: "medium",
@@ -53,6 +43,335 @@ function safeDate(isoString) {
   }
 }
 
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function monthKey(dateText = todayKey()) {
+  return dateText.slice(0, 7);
+}
+
+function readLedger() {
+  try {
+    const ledger = JSON.parse(localStorage.getItem(LEDGER_KEY) || "[]");
+    return Array.isArray(ledger) ? ledger : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeLedger(ledger) {
+  localStorage.setItem(LEDGER_KEY, JSON.stringify(ledger));
+}
+
+function sideToPick(side) {
+  return { 主胜: "主胜", 客胜: "客胜", 平局: "平" }[side] || "平";
+}
+
+function pickOdds(match, pick) {
+  const hda = match.prediction?.marketOdds?.hda || {};
+  if (pick === "主胜") return hda.home;
+  if (pick === "客胜") return hda.away;
+  return hda.draw;
+}
+
+function confidence(match) {
+  return Number(match.prediction?.confidence || 0);
+}
+
+function recentLossStreak() {
+  const settled = readLedger()
+    .filter((item) => item.status !== "pending")
+    .sort((a, b) => String(a.settledAt || a.createdAt).localeCompare(String(b.settledAt || b.createdAt)));
+  let streak = 0;
+  for (const item of settled.reverse()) {
+    if (item.status === "win") break;
+    if (item.status === "lose") streak += 1;
+  }
+  return streak;
+}
+
+function candidateFor(match) {
+  const pick = sideToPick(match.prediction?.resultLean);
+  const odds = pickOdds(match, pick);
+  const line = match.prediction?.marketOdds?.handicap?.line || "0";
+  const score = confidence(match);
+  const penalty = Number(odds) < 1.5 ? 8 : 0;
+  return {
+    matchId: match.id,
+    match: `${match.homeZh} vs ${match.awayZh}`,
+    league: match.tournament,
+    time: match.time,
+    market: "胜平负",
+    pick,
+    odds: Number(odds) || 0,
+    handicap: line,
+    score: Math.max(0, score - penalty),
+    reason: `方向 ${pick}，赔率 ${odds || "-"}，让球 ${line}。`
+  };
+}
+
+function roundStake(value) {
+  return Math.max(2, Math.round(value / 2) * 2);
+}
+
+function allocateBudget(budget, count) {
+  const templates = {
+    1: [1],
+    2: [0.6, 0.4],
+    3: [0.5, 0.3, 0.2],
+    4: [0.4, 0.25, 0.2, 0.15]
+  };
+  const weights = templates[count] || templates[3];
+  const stakes = weights.map((weight) => roundStake(budget * weight));
+  const diff = budget - stakes.reduce((sum, stake) => sum + stake, 0);
+  stakes[0] = Math.max(2, stakes[0] + diff);
+  return stakes;
+}
+
+function buildPlan() {
+  const budget = Math.max(2, roundStake(Number(planBudget.value || 200)));
+  planBudget.value = String(budget);
+
+  const lossStreak = recentLossStreak();
+  if (lossStreak >= 3) {
+    state.currentPlan = [];
+    planOutput.innerHTML = `<div class="empty-state">最近已连续未中 ${lossStreak} 单，按风控规则今日停止下注。</div>`;
+    topPick.textContent = "今日停止";
+    return;
+  }
+
+  const mode = riskMode.value;
+  const wanted = mode === "low" ? 2 : mode === "high" ? 4 : 3;
+  const candidates = (state.data.upcoming || [])
+    .map(candidateFor)
+    .filter((item) => item.odds >= 1.5 && item.score >= 62)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, wanted);
+
+  if (!candidates.length) {
+    state.currentPlan = [];
+    planOutput.innerHTML = `<div class="empty-state">当前没有达到下注阈值的比赛。建议 PASS，不要为了下注而下注。</div>`;
+    topPick.textContent = "全部 PASS";
+    return;
+  }
+
+  const stakes = allocateBudget(budget, candidates.length);
+  state.currentPlan = candidates.map((item, index) => ({
+    ...item,
+    id: `bet-${Date.now()}-${index}`,
+    createdAt: todayKey(),
+    stake: stakes[index],
+    units: units(stakes[index]),
+    status: "pending",
+    returned: 0
+  }));
+
+  renderPlan();
+}
+
+function renderPlan() {
+  if (!state.currentPlan.length) {
+    planOutput.innerHTML = `<div class="empty-state">输入预算后点击“生成方案”。</div>`;
+    return;
+  }
+
+  const total = state.currentPlan.reduce((sum, item) => sum + item.stake, 0);
+  const maxReturn = state.currentPlan.reduce((sum, item) => sum + item.stake * item.odds, 0);
+  topPick.textContent = `${state.currentPlan[0].match} ${state.currentPlan[0].pick}`;
+  planOutput.innerHTML = `
+    <div class="plan-summary">
+      <strong>预算 ${yen(total)}</strong>
+      <span>共 ${state.currentPlan.length} 单，理论最高返还 ${yen(maxReturn)}</span>
+    </div>
+    ${state.currentPlan
+      .map(
+        (item, index) => `
+          <article class="plan-card">
+            <span class="label">第 ${index + 1} 单</span>
+            <h3>${item.match}</h3>
+            <p>${item.market}：<strong>${item.pick}</strong> @${item.odds}</p>
+            <p>金额：<strong>${yen(item.stake)}</strong>，${item.units} 注</p>
+            <small>${item.reason}</small>
+          </article>
+        `
+      )
+      .join("")}
+  `;
+}
+
+function saveCurrentPlan() {
+  if (!state.currentPlan.length) buildPlan();
+  if (!state.currentPlan.length) return;
+
+  const ledger = readLedger();
+  const saved = state.currentPlan.map((item) => ({
+    ...item,
+    id: `bet-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    createdAt: todayKey(),
+    sourceGeneratedAt: state.data.generatedAt
+  }));
+  writeLedger([...ledger, ...saved]);
+  planOutput.insertAdjacentHTML("afterbegin", `<div class="save-banner">已入库 ${saved.length} 单，等待开奖结算。</div>`);
+  renderLedger();
+}
+
+function settle(status) {
+  const id = settleSelect.value;
+  if (!id) return;
+  const ledger = readLedger();
+  const item = ledger.find((entry) => entry.id === id);
+  if (!item) return;
+  item.status = status;
+  item.settledAt = todayKey();
+  item.returned = status === "win" ? Number(returnInput.value || item.stake * item.odds || 0) : 0;
+  item.profit = item.returned - item.stake;
+  item.review = reviewFor(item);
+  writeLedger(ledger);
+  returnInput.value = "0";
+  renderLedger();
+}
+
+function reviewFor(item) {
+  if (item.status === "win") {
+    return `${item.match} 命中 ${item.pick}，投入 ${yen(item.stake)}，返还 ${yen(item.returned)}。下次保持同等仓位，不加码追热。`;
+  }
+  return `${item.match} 未中 ${item.pick}，亏损 ${yen(item.stake)}。复盘重点：方向判断是否过度依赖赔率低位，下一单降低仓位。`;
+}
+
+function renderMatches() {
+  const matches = state.data.upcoming || [];
+  if (!matches.length) {
+    matchList.innerHTML = `<div class="empty-state">暂无可用比赛。</div>`;
+    return;
+  }
+  matchList.innerHTML = matches
+    .map((match) => {
+      const item = candidateFor(match);
+      return `
+        <button class="match-card" type="button">
+          <div>
+            <p class="teams">${item.match}</p>
+            <div class="match-meta">
+              <span>${item.league}</span>
+              <span>${item.time}</span>
+              <span>${item.market}</span>
+            </div>
+            <div class="factors">
+              <span>${item.pick} @${item.odds}</span>
+              <span>让球 ${item.handicap}</span>
+              <span>评分 ${item.score}</span>
+            </div>
+          </div>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderLedger() {
+  const ledger = readLedger();
+  const pending = ledger.filter((item) => item.status === "pending");
+  const settled = ledger.filter((item) => item.status !== "pending");
+  const stake = ledger.reduce((sum, item) => sum + Number(item.stake || 0), 0);
+  const returned = ledger.reduce((sum, item) => sum + Number(item.returned || 0), 0);
+  const profit = returned - settled.reduce((sum, item) => sum + Number(item.stake || 0), 0);
+
+  settleSelect.innerHTML = pending.length
+    ? pending.map((item) => `<option value="${item.id}">${item.match} ${item.pick} ${yen(item.stake)}</option>`).join("")
+    : `<option value="">没有未开奖记录</option>`;
+
+  ledgerSummary.innerHTML = `
+    已入库 <strong>${ledger.length}</strong> 单，
+    未开奖 <strong>${pending.length}</strong>，
+    总投入 <strong>${yen(stake)}</strong>，
+    已返还 <strong>${yen(returned)}</strong>，
+    已结算盈亏 <strong>${yen(profit)}</strong>。
+  `;
+
+  renderMonthlyBill();
+  renderReviews();
+}
+
+function renderMonthlyBill() {
+  const key = monthKey();
+  const rows = readLedger().filter((item) => monthKey(item.createdAt) === key);
+  const settled = rows.filter((item) => item.status !== "pending");
+  const stake = rows.reduce((sum, item) => sum + Number(item.stake || 0), 0);
+  const returned = rows.reduce((sum, item) => sum + Number(item.returned || 0), 0);
+  const profit = returned - settled.reduce((sum, item) => sum + Number(item.stake || 0), 0);
+  const wins = settled.filter((item) => item.status === "win").length;
+  const hitRate = settled.length ? Math.round((wins / settled.length) * 100) : 0;
+
+  monthlyBill.innerHTML = `
+    <div class="bill-total">
+      <strong>${key} 月账单</strong>
+      <span>投注 ${rows.length} 单 / 已结算 ${settled.length} 单 / 命中率 ${hitRate}% / 盈亏 ${yen(profit)}</span>
+    </div>
+    <table>
+      <thead><tr><th>日期</th><th>比赛</th><th>选择</th><th>投入</th><th>返还</th><th>状态</th></tr></thead>
+      <tbody>
+        ${rows
+          .map(
+            (item) => `
+              <tr>
+                <td>${item.createdAt}</td>
+                <td>${item.match}</td>
+                <td>${item.pick}</td>
+                <td>${yen(item.stake)}</td>
+                <td>${yen(item.returned)}</td>
+                <td>${item.status === "pending" ? "未开奖" : item.status === "win" ? "命中" : "未中"}</td>
+              </tr>
+            `
+          )
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderReviews() {
+  const reviews = readLedger()
+    .filter((item) => item.status !== "pending")
+    .slice(-12)
+    .reverse();
+
+  reviewList.innerHTML = reviews.length
+    ? reviews
+        .map(
+          (item) => `
+            <article class="source-item">
+              <span>${item.settledAt}</span>
+              <strong>${item.match}</strong>
+              <p>${item.review || reviewFor(item)}</p>
+            </article>
+          `
+        )
+        .join("")
+    : `<div class="empty-state">还没有已结算记录。开奖后录入结果，这里会自动复盘。</div>`;
+}
+
+function exportMonthlyBill() {
+  const key = monthKey();
+  const rows = readLedger().filter((item) => monthKey(item.createdAt) === key);
+  const header = ["date", "match", "market", "pick", "odds", "stake", "returned", "status", "review"];
+  const csv = [
+    header.join(","),
+    ...rows.map((item) =>
+      header
+        .map((field) => `"${String(item[field] ?? "").replace(/"/g, '""')}"`)
+        .join(",")
+    )
+  ].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `ticai-bill-${key}.csv`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
 async function loadData() {
   try {
     const response = await fetch(`./data/live-matches.json?ts=${Date.now()}`);
@@ -60,408 +379,19 @@ async function loadData() {
     state.data = await response.json();
     dataStatus.textContent = `kt 当前页：${safeDate(state.data.generatedAt)} 更新`;
   } catch (error) {
-    dataStatus.textContent = "kt 当前页读取失败，请重新抓取或刷新数据";
+    dataStatus.textContent = "kt 当前页读取失败";
     console.error(error);
   }
-
-  state.selectedId = state.data.upcoming[0]?.id || null;
-  renderSources();
-  renderRecentResults();
-  render();
-}
-
-function adjustedConfidence(match) {
-  const riskAdjustment = {
-    low: -5,
-    balanced: 0,
-    high: 4
-  }[state.riskMode];
-  const volatilityPenalty = state.riskMode === "low" ? Math.round(match.prediction.metrics.volatility / 14) : 0;
-  return Math.max(45, Math.min(90, match.prediction.confidence + riskAdjustment - volatilityPenalty + state.wobble));
-}
-
-function getBankroll() {
-  const stored = Number(localStorage.getItem("bankroll") || 100000);
-  return Number.isFinite(stored) && stored > 0 ? stored : 100000;
-}
-
-function outcomeFromScore(score) {
-  const [home, away] = String(score).split("-").map(Number);
-  if (home > away) return "home";
-  if (home < away) return "away";
-  return "draw";
-}
-
-function hdaFavorite(odds) {
-  if (!odds) return null;
-  const entries = [
-    ["home", odds.home],
-    ["draw", odds.draw],
-    ["away", odds.away]
-  ].sort((a, b) => a[1] - b[1]);
-  return entries[0][0];
-}
-
-function scoreV1(match) {
-  const prediction = match.prediction;
-  const market = prediction.marketOdds;
-  const attackDefense = ((prediction.metrics.attack || 65) + (prediction.metrics.defense || 65)) / 2;
-  const strengthForm = Math.max(0, Math.min(25, Math.round((attackDefense - 55) * 0.8)));
-  const squadSchedule = market ? 11 : 7;
-  const oddsStructure = market ? 18 : 6;
-  const oddsMovement = market ? 14 : 3;
-  const favorite = hdaFavorite(market?.hda);
-  const scoreOutcome = outcomeFromScore(prediction.score);
-  const marketAligned = market ? favorite === scoreOutcome : false;
-  const marketAnomaly = market ? (marketAligned ? 13 : 9) : 5;
-  const rawScore = strengthForm + squadSchedule + oddsStructure + oddsMovement + marketAnomaly;
-  const completeness = market ? 75 : 45;
-  const score = completeness < 50 ? Math.min(rawScore, 69) : rawScore;
-  const decision = completeness < 50 ? "PASS" : score >= 80 ? "BET" : score >= 70 ? "WATCH" : "PASS";
-  const bankroll = getBankroll();
-  const singleCap = bankroll * 0.05;
-  const position = decision === "BET" && score >= 84 ? "A" : decision === "BET" ? "B" : decision === "WATCH" ? "C" : "PASS";
-  const positionRate = position === "A" ? 0.6 : position === "B" ? 0.25 : position === "C" ? 0.1 : 0;
-  const maxStake = singleCap * positionRate;
-  const primaryMarket =
-    market && market.hda.home < 1.5 && favorite === "home"
-      ? "胜平负赔率低于 1.50，不做主仓"
-      : market
-        ? "胜平负 / 总进球"
-        : "数据不足";
-
-  return {
-    strengthForm,
-    squadSchedule,
-    oddsStructure,
-    oddsMovement,
-    marketAnomaly,
-    completeness,
-    score,
-    decision,
-    position,
-    maxStake,
-    primaryMarket,
-    warnings: [
-      completeness < 50 ? "数据完整度低于 50%，强制 PASS。" : "",
-      market ? "" : "缺少当前赔率快照，最高只能观察。",
-      "比分玩法只允许 C 仓；半全场默认禁用。",
-      "单场总投入不得超过本金 5%。"
-    ].filter(Boolean)
-  };
-}
-
-function recommendationFor(match, confidence) {
-  const prediction = match.prediction;
-  const v1 = scoreV1(match);
-  const topScores = prediction.topScores
-    ?.map((item) => `${item.score}${item.odds ? ` @${item.odds}` : ` (${item.probability}%)`}`)
-    .join(" / ");
-  const base = `比分候选：${topScores || prediction.score}；赛果倾向：${prediction.resultLean}，${prediction.totalLabel}。`;
-  const official = `下注前必须核对 kt 页面是否仍在售、实体店票面玩法和截止时间；页面数据仅供参考。`;
-  const marketNote = prediction.marketOdds ? "已用 kt 当前页赔率校准。" : "";
-  const stakeNote = v1.maxStake ? `V1.0 输出 ${v1.decision}，${v1.position} 仓，单场建议上限 ${yen(v1.maxStake)}。` : `V1.0 输出 ${v1.decision}，不建议下注。`;
-
-  if (confidence >= 74) {
-    return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 信心较高，但仍只适合作为赛事判断，不承诺命中。${official}`;
-  }
-  if (confidence >= 62) {
-    return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 属于可参考区间，建议等首发和伤停确认后再核对官方选项。${official}`;
-  }
-  return `${prediction.decision}。${base} ${marketNote} ${stakeNote} 模型波动较大，不建议为了追单继续加仓。${official}`;
-}
-
-function renderMatches() {
-  matchList.innerHTML = "";
-  const matches = state.data.upcoming || [];
-  if (!matches.length) {
-    matchList.innerHTML = `<div class="empty-state">没有读取到体彩竞彩比赛快照。</div>`;
-    return;
-  }
-
-  const visible = matches.filter((match) => adjustedConfidence(match) >= state.minConfidence);
-  const list = visible.length ? visible : matches;
-  list.forEach((match) => {
-    const confidence = adjustedConfidence(match);
-    const v1 = scoreV1(match);
-    const button = document.createElement("button");
-    button.className = `match-card${match.id === state.selectedId ? " active" : ""}`;
-    button.type = "button";
-    button.innerHTML = `
-      <div>
-        <p class="teams">${match.homeZh} vs ${match.awayZh}</p>
-        <div class="match-meta">
-          <span>${match.tournament}</span>
-          <span>${match.date} ${match.time}</span>
-          <span>${match.market}</span>
-        </div>
-        <div class="factors">
-          <span>官方状态：${match.officialStatus}</span>
-          <span>首选比分：${match.prediction.score}</span>
-          <span>${v1.decision}</span>
-          <span>${v1.position}仓 ${yen(v1.maxStake)}</span>
-          ${match.prediction.marketOdds ? `<span>赔率${match.prediction.marketOdds.matchNo}</span>` : ""}
-          <span>${match.prediction.totalLabel}</span>
-        </div>
-      </div>
-      <div class="confidence-pill">${confidence}%</div>
-    `;
-    button.addEventListener("click", () => {
-      state.selectedId = match.id;
-      render();
-    });
-    matchList.appendChild(button);
-  });
-}
-
-function renderInsight() {
-  const matches = state.data.upcoming || [];
-  const match = matches.find((item) => item.id === state.selectedId) || matches[0];
-  if (!match) {
-    selectedTitle.textContent = "等待 kt 当前页";
-    selectedBadge.textContent = "竞彩";
-    scoreValue.textContent = "--";
-    recommendationText.textContent = "请先抓取 kt 当前页，或等待 GitHub Pages 数据刷新。";
-    topPick.textContent = "暂无";
-    metrics.innerHTML = "";
-    return;
-  }
-
-  const confidence = adjustedConfidence(match);
-  const angle = Math.round((confidence / 100) * 360);
-  const prediction = match.prediction;
-  const v1 = scoreV1(match);
-  const topScoreMarkup = (prediction.topScores || [])
-    .map((item) => `<span>${item.score}<small>${item.odds ? `@${item.odds} / ${item.probability}%` : `${item.probability}%`}</small></span>`)
-    .join("");
-  const marketOddsMarkup = prediction.marketOdds
-    ? `
-      <div class="market-odds">
-        <span class="label">赔率快照</span>
-        <div class="odds-row">
-          <span>胜 ${prediction.marketOdds.hda.home}</span>
-          <span>平 ${prediction.marketOdds.hda.draw}</span>
-          <span>负 ${prediction.marketOdds.hda.away}</span>
-        </div>
-        <div class="odds-row muted">
-          <span>让球 ${prediction.marketOdds.handicap.line}</span>
-          <span>${prediction.marketOdds.kickoff}</span>
-          <span>${prediction.marketOdds.matchNo}</span>
-        </div>
-      </div>
-    `
-    : "";
-
-  selectedTitle.textContent = `${match.homeZh} vs ${match.awayZh}`;
-  selectedBadge.textContent = `${match.date} ${match.time}`;
-  scoreValue.textContent = prediction.score;
-  scoreRing.style.background = `conic-gradient(var(--green) 0deg, var(--green) ${angle}deg, rgba(255, 255, 255, 0.1) ${angle}deg)`;
-  recommendationText.innerHTML = `
-    <div class="score-candidates">${topScoreMarkup}</div>
-    <div class="v1-panel">
-      <span class="label">V1.0 决策</span>
-      <div class="v1-grid">
-        <span>${v1.decision}<small>decision</small></span>
-        <span>${v1.score}<small>score</small></span>
-        <span>${v1.position}<small>position</small></span>
-        <span>${yen(v1.maxStake)}<small>max stake</small></span>
-      </div>
-    </div>
-    ${marketOddsMarkup}
-    <strong>${recommendationFor(match, confidence)}</strong>
-    <ul>
-      ${prediction.reasons.map((reason) => `<li>${reason}</li>`).join("")}
-      ${v1.warnings.map((warning) => `<li>${warning}</li>`).join("")}
-    </ul>
-  `;
-  topPick.textContent = `${match.homeZh} vs ${match.awayZh}：${prediction.score}`;
-  officialLink.href = match.officialUrl;
-
-  metrics.innerHTML = "";
-  const metricRows = [
-    ["官方源", `${prediction.metrics.official}%`],
-    ["完整度", `${v1.completeness}%`],
-    ["进攻均值", prediction.metrics.attack],
-    ["防守均值", prediction.metrics.defense],
-    ["信心分", `${confidence}%`],
-    ["V1决策", v1.decision]
-  ];
-  if (prediction.marketOdds) {
-    metricRows.splice(1, 0, ["赔率源", prediction.marketOdds.matchNo]);
-  }
-  metricRows.forEach(([label, value]) => {
-    const item = document.createElement("div");
-    item.innerHTML = `<dt>${label}</dt><dd>${value}</dd>`;
-    metrics.appendChild(item);
-  });
-}
-
-function renderSources() {
-  sourceList.innerHTML = "";
-  (state.data.sources || []).forEach((source) => {
-    const link = document.createElement("a");
-    link.className = "source-item";
-    link.href = source.url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.innerHTML = `
-      <span>${source.type}</span>
-      <strong>${source.name}</strong>
-      <p>${source.note}</p>
-    `;
-    sourceList.appendChild(link);
-  });
-}
-
-function renderRecentResults() {
-  recentResults.innerHTML = "";
-  const results = state.data.recentResults || [];
-  if (!results.length) {
-    recentResults.innerHTML = `<span>暂无复盘记录</span>`;
-    return;
-  }
-
-  results.forEach((result) => {
-    const link = document.createElement("a");
-    link.href = result.officialUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = `${result.homeZh} ${result.score} ${result.awayZh}`;
-    recentResults.appendChild(link);
-  });
-}
-
-function parseBetLines(text) {
-  const unitPrice = 2;
-  return text
-    .split(/\n+/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const normalized = line.replace(/\s+/g, " ");
-      const scoreMatch = normalized.match(/(\d+)\s*[:：-]\s*(\d+)/);
-      const allScores = [...normalized.matchAll(/(\d+)\s*[:：-]\s*(\d+)/g)];
-      const resultScore = allScores[1] ? `${allScores[1][1]}-${allScores[1][2]}` : null;
-      const unitMatch = normalized.match(/(\d+)\s*注/);
-      const oddsMatch = normalized.match(/(?:赔率|固定奖金|奖金|倍率)\s*[:：]?\s*([0-9.]+)/i);
-      const resultMatch = normalized.match(/(未开奖|中|命中|中奖|未中|不中|lose|lost|win|hit)/i);
-
-      if (scoreMatch && unitMatch) {
-        const scoreStart = scoreMatch.index ?? 0;
-        const match = normalized.slice(0, scoreStart).replace(/\s*vs\s*/i, " vs ").trim();
-        const units = Number(unitMatch[1]);
-        return {
-          match,
-          pick: `${scoreMatch[1]}-${scoreMatch[2]}`,
-          units,
-          stake: units * unitPrice,
-          odds: oddsMatch ? Number(oddsMatch[1]) : null,
-          resultScore,
-          result: resultScore ? (resultScore === `${scoreMatch[1]}-${scoreMatch[2]}` ? "命中" : "不中") : resultMatch?.[1] || "未开奖"
-        };
-      }
-
-      const parts = line.split(/[,，\t]/).map((part) => part.trim());
-      const unitsFromPart = parts[2]?.match(/(\d+)\s*注/);
-      const stake = unitsFromPart ? Number(unitsFromPart[1]) * unitPrice : Number(parts[2] || 0);
-      return {
-        match: parts[0] || "",
-        pick: (parts[1] || "").replace(/[:：]/g, "-"),
-        units: unitsFromPart ? Number(unitsFromPart[1]) : Math.round(stake / unitPrice),
-        stake,
-        odds: null,
-        resultScore: parts[3]?.match(/(\d+)\s*[:：-]\s*(\d+)/)?.slice(1, 3).join("-") || null,
-        result: parts[3] || "未开奖"
-      };
-    })
-    .filter((item) => item.match && item.pick);
-}
-
-function renderBetSummary() {
-  const raw = localStorage.getItem("ticai-bets") || "";
-  if (betImport) betImport.value = raw;
-  const bets = parseBetLines(raw);
-  if (!bets.length) {
-    betSummary.innerHTML = "还没有导入购买记录。格式：比赛, 选择比分, 金额, 结果";
-    return;
-  }
-  const settled = bets.filter((bet) => bet.result !== "未开奖");
-  const hit = settled.filter((bet) => /中|当|hit|win/i.test(bet.result)).length;
-  const stake = bets.reduce((sum, bet) => sum + (Number.isFinite(bet.stake) ? bet.stake : 0), 0);
-  const returned = settled.reduce((sum, bet) => {
-    const isHit = /中|当|hit|win/i.test(bet.result);
-    return sum + (isHit && Number.isFinite(bet.odds) ? bet.stake * bet.odds : 0);
-  }, 0);
-  const units = bets.reduce((sum, bet) => sum + (Number.isFinite(bet.units) ? bet.units : 0), 0);
-  const potential = bets.reduce((sum, bet) => {
-    if (!Number.isFinite(bet.odds) || !Number.isFinite(bet.stake)) return sum;
-    return sum + bet.stake * bet.odds;
-  }, 0);
-  const rate = settled.length ? Math.round((hit / settled.length) * 100) : 0;
-  const profit = returned - settled.reduce((sum, bet) => sum + bet.stake, 0);
-  const losingStreak = [...settled].reverse().findIndex((bet) => /中|当|hit|win/i.test(bet.result));
-  const consecutiveLosses = losingStreak === -1 ? settled.length : losingStreak;
-  const stopToday = consecutiveLosses >= 3;
-  betSummary.innerHTML = `
-    <strong>${bets.length}</strong> 条记录，
-    合计 <strong>${units}</strong> 注，
-    已开奖 <strong>${settled.length}</strong>，
-    命中率 <strong>${rate}%</strong>，
-    投入 <strong>${stake.toLocaleString()}元</strong>
-    ${settled.length ? `，已结算返还 <strong>${yen(returned)}</strong>，盈亏 <strong>${yen(profit)}</strong>` : ""}
-    ${potential ? `，理论最高返还 <strong>${Math.round(potential).toLocaleString()}元</strong>` : ""}。
-    ${stopToday ? `<br><strong class="danger-text">连输 ${consecutiveLosses} 单，按 V1.0 规则今日停止下注。</strong>` : ""}
-  `;
-}
-
-function render() {
-  confidenceValue.textContent = `${state.minConfidence}%`;
   renderMatches();
-  renderInsight();
+  buildPlan();
+  renderLedger();
 }
 
-riskMode.addEventListener("change", (event) => {
-  state.riskMode = event.target.value;
-  render();
-});
+generatePlan.addEventListener("click", buildPlan);
+savePlan.addEventListener("click", saveCurrentPlan);
+riskMode.addEventListener("change", buildPlan);
+settleWin.addEventListener("click", () => settle("win"));
+settleLose.addEventListener("click", () => settle("lose"));
+exportBill.addEventListener("click", exportMonthlyBill);
 
-confidenceRange.addEventListener("input", (event) => {
-  state.minConfidence = Number(event.target.value);
-  render();
-});
-
-refreshAdvice.addEventListener("click", () => {
-  state.wobble = Math.floor(Math.random() * 5) - 2;
-  render();
-});
-
-copySources.addEventListener("click", async () => {
-  const text = (state.data.sources || []).map((source) => `${source.name}: ${source.url}`).join("\n");
-  await navigator.clipboard.writeText(text);
-  copySources.textContent = "已复制";
-  window.setTimeout(() => {
-    copySources.textContent = "复制数据源清单";
-  }, 1400);
-});
-
-saveBets?.addEventListener("click", () => {
-  localStorage.setItem("ticai-bets", betImport.value);
-  renderBetSummary();
-});
-
-clearBets?.addEventListener("click", () => {
-  localStorage.removeItem("ticai-bets");
-  renderBetSummary();
-});
-
-bankrollInput?.addEventListener("change", () => {
-  const value = Number(bankrollInput.value);
-  if (Number.isFinite(value) && value > 0) {
-    localStorage.setItem("bankroll", String(value));
-    render();
-  }
-});
-
-if (bankrollInput) bankrollInput.value = String(getBankroll());
-renderBetSummary();
 loadData();

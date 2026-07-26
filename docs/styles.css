@@ -317,6 +317,68 @@ output {
   gap: 20px;
 }
 
+.ops-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  gap: 20px;
+}
+
+.plan-output {
+  display: grid;
+  gap: 12px;
+  align-self: start;
+}
+
+.plan-summary,
+.save-banner,
+.bill-total {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid rgba(49, 208, 127, 0.42);
+  border-radius: 8px;
+  background: rgba(49, 208, 127, 0.1);
+}
+
+.plan-summary strong,
+.bill-total strong {
+  font-size: 22px;
+}
+
+.plan-summary span,
+.bill-total span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.save-banner {
+  color: var(--green);
+  font-weight: 850;
+}
+
+.plan-card {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.plan-card h3,
+.plan-card p {
+  margin: 0;
+}
+
+.plan-card small {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.compact-list {
+  align-self: start;
+}
+
 .match-list {
   display: grid;
   gap: 12px;
@@ -647,6 +709,37 @@ output {
   background: #0b1714;
 }
 
+.ledger-table {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.ledger-table table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.ledger-table th,
+.ledger-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.ledger-table th {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.ledger-table td {
+  color: #d7e5dd;
+}
+
 .legal-grid,
 .source-list {
   display: grid;
@@ -724,6 +817,7 @@ output {
 @media (max-width: 980px) {
   .hero,
   .dashboard-grid,
+  .ops-grid,
   .legal-grid,
   .source-list {
     grid-template-columns: 1fr;
