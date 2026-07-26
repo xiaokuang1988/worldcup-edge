@@ -251,6 +251,7 @@ h3 {
 .workspace,
 .legal-band,
 .source-band,
+.lotto-band,
 .risk-band {
   padding: clamp(52px, 8vw, 84px) clamp(16px, 4vw, 44px);
 }
@@ -278,6 +279,25 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
+}
+
+.compact-controls {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.check-row {
+  display: inline-flex !important;
+  grid-template-columns: none !important;
+  align-items: center;
+  min-width: auto !important;
+  padding: 0 8px 6px;
+}
+
+.check-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
 }
 
 .controls label {
@@ -709,6 +729,94 @@ output {
   background: #0b1714;
 }
 
+.lotto-band {
+  background: #091411;
+  border-top: 1px solid var(--line);
+}
+
+.lotto-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  gap: 20px;
+}
+
+.lotto-panel {
+  display: grid;
+  gap: 14px;
+  align-self: start;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.lotto-panel h3 {
+  margin: 0;
+}
+
+.lotto-output,
+.lotto-history {
+  display: grid;
+  gap: 12px;
+}
+
+.ticket-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 132px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.6;
+}
+
+.field-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.lotto-ticket {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.balls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ball {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.ball.front {
+  background: rgba(255, 107, 95, 0.18);
+  color: #ffafa8;
+  border: 1px solid rgba(255, 107, 95, 0.48);
+}
+
+.ball.back {
+  background: rgba(97, 184, 255, 0.18);
+  color: #b9e0ff;
+  border: 1px solid rgba(97, 184, 255, 0.5);
+}
+
 .ledger-table {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -818,6 +926,7 @@ output {
   .hero,
   .dashboard-grid,
   .ops-grid,
+  .lotto-grid,
   .legal-grid,
   .source-list {
     grid-template-columns: 1fr;

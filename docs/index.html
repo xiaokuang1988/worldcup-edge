@@ -24,6 +24,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#plan">怎么买</a>
+        <a href="#dlt">大乐透</a>
         <a href="#ledger">入库</a>
         <a href="#bill">账单</a>
         <a href="#review">复盘</a>
@@ -99,6 +100,56 @@
         </div>
       </section>
 
+      <section class="lotto-band" id="dlt">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Super Lotto</p>
+            <h2>超级大乐透热透</h2>
+          </div>
+          <p class="section-note">前区 01-35 选 5 个，后区 01-12 选 2 个。默认 2 元/注，支持票据入库、开奖号录入和命中复盘。</p>
+        </div>
+
+        <div class="lotto-grid">
+          <section class="lotto-panel">
+            <div class="controls compact-controls" aria-label="大乐透生成控制">
+              <label>
+                <span>预算</span>
+                <input id="dltBudget" class="bankroll-input" type="number" min="2" step="2" value="10" />
+              </label>
+              <label>
+                <span>策略</span>
+                <select id="dltMode">
+                  <option value="balanced">热冷均衡</option>
+                  <option value="hot">偏热号</option>
+                  <option value="cold">偏冷号</option>
+                </select>
+              </label>
+              <label class="check-row">
+                <input id="dltAppend" type="checkbox" />
+                <span>追加</span>
+              </label>
+              <button class="button primary" id="generateDlt" type="button">生成大乐透方案</button>
+              <button class="button ghost" id="saveDlt" type="button">保存大乐透票</button>
+            </div>
+            <div class="lotto-output" id="dltOutput">点击“生成大乐透方案”。</div>
+          </section>
+
+          <section class="lotto-panel">
+            <h3>票据入库与开奖复盘</h3>
+            <label class="field-label" for="dltImport">粘贴票据号码</label>
+            <textarea id="dltImport" class="ticket-input" rows="6" placeholder="例如：03 11 19 21 25 + 09 12"></textarea>
+            <div class="action-row">
+              <button class="button compact" id="importDlt" type="button">导入票据</button>
+              <button class="button compact" id="sampleDlt" type="button">填入图中示例</button>
+            </div>
+            <label class="field-label" for="dltDraw">录入开奖号</label>
+            <input id="dltDraw" class="bankroll-input" placeholder="例如：01 02 03 04 05 + 06 07" />
+            <button class="button primary" id="settleDlt" type="button">保存开奖并复盘</button>
+            <div class="lotto-history" id="dltHistory"></div>
+          </section>
+        </div>
+      </section>
+
       <section class="account-band" id="ledger">
         <div>
           <p class="eyebrow">Ledger</p>
@@ -162,6 +213,6 @@
       <span>Fact-first release: 2026-07-27 JST</span>
     </footer>
 
-    <script src="./app.js?v=20260727-buy-plan"></script>
+    <script src="./app.js?v=20260727-dlt"></script>
   </body>
 </html>

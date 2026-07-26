@@ -20,11 +20,29 @@ const ledgerSummary = document.querySelector("#ledgerSummary");
 const monthlyBill = document.querySelector("#monthlyBill");
 const reviewList = document.querySelector("#reviewList");
 const exportBill = document.querySelector("#exportBill");
+const dltBudget = document.querySelector("#dltBudget");
+const dltMode = document.querySelector("#dltMode");
+const dltAppend = document.querySelector("#dltAppend");
+const generateDlt = document.querySelector("#generateDlt");
+const saveDlt = document.querySelector("#saveDlt");
+const dltOutput = document.querySelector("#dltOutput");
+const dltImport = document.querySelector("#dltImport");
+const importDlt = document.querySelector("#importDlt");
+const sampleDlt = document.querySelector("#sampleDlt");
+const dltDraw = document.querySelector("#dltDraw");
+const settleDlt = document.querySelector("#settleDlt");
+const dltHistory = document.querySelector("#dltHistory");
 
 const LEDGER_KEY = "ticai-ledger-v2";
+const DLT_KEY = "ticai-dlt-ledger-v1";
 const DEFAULT_FRESHNESS_LIMIT_MINUTES = 90;
 const MIN_PLAN_RETURN_MULTIPLE = 2;
 const MIN_OPTION_SCORE = 58;
+const DLT_SAMPLE_TICKET = `03 11 19 21 25 + 09 12
+06 08 27 32 35 + 02 08
+06 21 23 28 31 + 01 07
+01 06 21 29 33 + 07 12
+03 04 05 23 29 + 02 04`;
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -139,6 +157,237 @@ function learnedScoreBoost(category) {
 
 function writeLedger(ledger) {
   localStorage.setItem(LEDGER_KEY, JSON.stringify(ledger));
+}
+
+function readDltLedger() {
+  try {
+    const ledger = JSON.parse(localStorage.getItem(DLT_KEY) || "[]");
+    return Array.isArray(ledger) ? ledger : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeDltLedger(ledger) {
+  localStorage.setItem(DLT_KEY, JSON.stringify(ledger));
+}
+
+function pad2(value) {
+  return String(value).padStart(2, "0");
+}
+
+function rangeNumbers(max) {
+  return Array.from({ length: max }, (_, index) => index + 1);
+}
+
+function parseDltLines(text) {
+  return String(text || "")
+    .split(/\n+/)
+    .map((line) => {
+      let numbers = line.match(/\d{1,2}/g)?.map(Number).filter(Number.isFinite) || [];
+      if (numbers.length >= 8 && numbers[0] >= 1 && numbers[0] <= 20) {
+        const maybeFront = numbers.slice(1, 6);
+        const maybeBack = numbers.slice(6, 8);
+        if (maybeFront.every((n) => n >= 1 && n <= 35) && maybeBack.every((n) => n >= 1 && n <= 12)) {
+          numbers = numbers.slice(1);
+        }
+      }
+      const front = numbers.slice(0, 5).filter((n) => n >= 1 && n <= 35);
+      const back = numbers.slice(5, 7).filter((n) => n >= 1 && n <= 12);
+      if (new Set(front).size !== 5 || new Set(back).size !== 2) return null;
+      return {
+        front: [...new Set(front)].sort((a, b) => a - b),
+        back: [...new Set(back)].sort((a, b) => a - b)
+      };
+    })
+    .filter(Boolean);
+}
+
+function formatDltLine(line) {
+  return `${line.front.map(pad2).join(" ")} + ${line.back.map(pad2).join(" ")}`;
+}
+
+function dltFrequency() {
+  const front = Object.fromEntries(rangeNumbers(35).map((n) => [n, 0]));
+  const back = Object.fromEntries(rangeNumbers(12).map((n) => [n, 0]));
+  for (const record of readDltLedger()) {
+    for (const line of record.lines || []) {
+      for (const n of line.front || []) front[n] += 1;
+      for (const n of line.back || []) back[n] += 1;
+    }
+    if (record.draw) {
+      for (const n of record.draw.front || []) front[n] += 2;
+      for (const n of record.draw.back || []) back[n] += 2;
+    }
+  }
+  return { front, back };
+}
+
+function weightedPick(pool, count, freq, mode) {
+  const selected = [];
+  const available = [...pool];
+  while (selected.length < count && available.length) {
+    const weights = available.map((n) => {
+      const f = Number(freq[n] || 0);
+      const base = mode === "hot" ? 1 + f : mode === "cold" ? 1 / (1 + f) : 1 + Math.min(f, 3) * 0.25;
+      const balance = selected.length && selected.some((x) => Math.abs(x - n) <= 1) ? 0.55 : 1;
+      return base * balance;
+    });
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    let cursor = Math.random() * total;
+    let index = 0;
+    for (; index < available.length; index += 1) {
+      cursor -= weights[index];
+      if (cursor <= 0) break;
+    }
+    selected.push(available[index]);
+    available.splice(index, 1);
+  }
+  return selected.sort((a, b) => a - b);
+}
+
+function balancedFrontPool() {
+  return [
+    ...rangeNumbers(12),
+    ...rangeNumbers(12).map((n) => n + 12),
+    ...rangeNumbers(11).map((n) => n + 24)
+  ];
+}
+
+function generateDltLines() {
+  const unitCost = dltAppend?.checked ? 3 : 2;
+  const budget = Math.max(unitCost, Math.round(Number(dltBudget?.value || 10) / unitCost) * unitCost);
+  const count = Math.max(1, Math.min(20, Math.floor(budget / unitCost)));
+  if (dltBudget) dltBudget.value = String(count * unitCost);
+  const mode = dltMode?.value || "balanced";
+  const freq = dltFrequency();
+  const lines = [];
+  const seen = new Set();
+  let guard = 0;
+  while (lines.length < count && guard < 300) {
+    guard += 1;
+    const front = weightedPick(balancedFrontPool(), 5, freq.front, mode);
+    const back = weightedPick(rangeNumbers(12), 2, freq.back, mode);
+    const key = `${front.join("-")}+${back.join("-")}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    lines.push({ front, back });
+  }
+  return { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
+}
+
+function dltHitLevel(line, draw) {
+  const frontHits = line.front.filter((n) => draw.front.includes(n)).length;
+  const backHits = line.back.filter((n) => draw.back.includes(n)).length;
+  const key = `${frontHits}+${backHits}`;
+  const levelMap = {
+    "5+2": "一等奖",
+    "5+1": "二等奖",
+    "5+0": "三等奖",
+    "4+2": "三等奖",
+    "4+1": "四等奖",
+    "3+2": "五等奖",
+    "4+0": "五等奖",
+    "3+1": "六等奖",
+    "2+2": "六等奖",
+    "3+0": "七等奖",
+    "2+1": "七等奖",
+    "1+2": "七等奖",
+    "0+2": "七等奖"
+  };
+  return { frontHits, backHits, level: levelMap[key] || "未中" };
+}
+
+function renderDltPlan(plan, banner = "") {
+  if (!dltOutput) return;
+  if (!plan?.lines?.length) {
+    dltOutput.innerHTML = `<div class="empty-state">没有可用大乐透方案。</div>`;
+    return;
+  }
+  dltOutput.innerHTML = `
+    ${banner ? `<div class="save-banner">${banner}</div>` : ""}
+    <div class="plan-summary">
+      <strong>${plan.lines.length} 注 / ${yen(plan.amount)}</strong>
+      <span>${plan.append ? "含追加，每注 3 元" : "基本投注，每注 2 元"}。热冷只按本机已入库记录统计，不代表开奖概率会提高。</span>
+    </div>
+    ${plan.lines
+      .map(
+        (line, index) => `
+          <article class="lotto-ticket">
+            <span class="label">第 ${index + 1} 注</span>
+            <div class="balls">
+              ${line.front.map((n) => `<span class="ball front">${pad2(n)}</span>`).join("")}
+              <b>+</b>
+              ${line.back.map((n) => `<span class="ball back">${pad2(n)}</span>`).join("")}
+            </div>
+          </article>
+        `
+      )
+      .join("")}
+  `;
+}
+
+function renderDltHistory() {
+  if (!dltHistory) return;
+  const records = readDltLedger().slice(-8).reverse();
+  dltHistory.innerHTML = records.length
+    ? records
+        .map((record) => {
+          const result = record.result ? `｜${record.result.summary}` : "｜未开奖";
+          return `
+            <article class="source-item">
+              <span>${record.createdAt}</span>
+              <strong>${record.lines.length} 注 / ${yen(record.amount)}${record.append ? " / 追加" : ""}</strong>
+              <p>${record.lines.map(formatDltLine).join("； ")}${result}</p>
+            </article>
+          `;
+        })
+        .join("")
+    : `<div class="empty-state">还没有大乐透票据记录。</div>`;
+}
+
+function currentDltPlanFromOutput() {
+  return window.__currentDltPlan || null;
+}
+
+function saveDltPlan(plan, banner = "已保存大乐透票据") {
+  if (!plan?.lines?.length) return;
+  const record = {
+    id: `dlt-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    createdAt: todayKey(),
+    game: "超级大乐透",
+    append: plan.append,
+    amount: plan.amount,
+    unitCost: plan.unitCost,
+    lines: plan.lines,
+    status: "pending"
+  };
+  writeDltLedger([...readDltLedger(), record]);
+  renderDltPlan(plan, banner);
+  renderDltHistory();
+}
+
+function settleDltTickets(draw) {
+  const ledger = readDltLedger();
+  let settledCount = 0;
+  for (const record of ledger) {
+    if (record.status !== "pending") continue;
+    const hits = record.lines.map((line) => dltHitLevel(line, draw));
+    const wins = hits.filter((hit) => hit.level !== "未中");
+    record.status = "settled";
+    record.settledAt = todayKey();
+    record.draw = draw;
+    record.result = {
+      hits,
+      summary: wins.length ? `${wins.length} 注命中：${wins.map((hit) => `${hit.level}(${hit.frontHits}+${hit.backHits})`).join("、")}` : "全部未中"
+    };
+    settledCount += 1;
+  }
+  writeDltLedger(ledger);
+  renderDltHistory();
+  if (dltOutput) {
+    dltOutput.insertAdjacentHTML("afterbegin", `<div class="save-banner">已复盘 ${settledCount} 张大乐透票：${formatDltLine(draw)}</div>`);
+  }
 }
 
 function sideToPick(side) {
@@ -688,5 +937,44 @@ riskMode.addEventListener("change", buildPlan);
 settleWin.addEventListener("click", () => settle("win"));
 settleLose.addEventListener("click", () => settle("lose"));
 exportBill.addEventListener("click", exportMonthlyBill);
+generateDlt?.addEventListener("click", () => {
+  const plan = generateDltLines();
+  window.__currentDltPlan = plan;
+  renderDltPlan(plan);
+});
+saveDlt?.addEventListener("click", () => {
+  const plan = currentDltPlanFromOutput() || generateDltLines();
+  window.__currentDltPlan = plan;
+  saveDltPlan(plan);
+});
+dltMode?.addEventListener("change", () => {
+  const plan = generateDltLines();
+  window.__currentDltPlan = plan;
+  renderDltPlan(plan);
+});
+dltAppend?.addEventListener("change", () => {
+  const plan = generateDltLines();
+  window.__currentDltPlan = plan;
+  renderDltPlan(plan);
+});
+sampleDlt?.addEventListener("click", () => {
+  dltImport.value = DLT_SAMPLE_TICKET;
+});
+importDlt?.addEventListener("click", () => {
+  const lines = parseDltLines(dltImport.value);
+  const unitCost = dltAppend?.checked ? 3 : 2;
+  const plan = { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
+  window.__currentDltPlan = plan;
+  renderDltPlan(plan, lines.length ? "已识别票据号码，可保存入库" : "没有识别到有效大乐透号码");
+});
+settleDlt?.addEventListener("click", () => {
+  const [draw] = parseDltLines(dltDraw.value);
+  if (!draw) {
+    dltOutput?.insertAdjacentHTML("afterbegin", `<div class="empty-state">开奖号格式不正确，请输入 5 个前区 + 2 个后区。</div>`);
+    return;
+  }
+  settleDltTickets(draw);
+});
 
 loadData();
+renderDltHistory();
