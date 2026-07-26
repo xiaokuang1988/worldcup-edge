@@ -162,6 +162,7 @@ function toLiveData(matches) {
     ],
     upcoming: matches.map((match) => ({
       id: `kt-${match.matchNo}`,
+      matchNo: match.matchNo,
       homeZh: match.homeZh,
       awayZh: match.awayZh,
       tournament: match.league,

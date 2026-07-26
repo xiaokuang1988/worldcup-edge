@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T14:58:27.008Z",
+  "generatedAt": "2026-07-26T15:01:33.952Z",
   "sourcePolicy": "Current football betting reference from user-provided kt.xiaodianhuo.com page. For analysis only; buy only through legal offline channels.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "unitStakeCny": 2,
@@ -20,6 +20,7 @@
   "upcoming": [
     {
       "id": "kt-7213",
+      "matchNo": "7213",
       "homeZh": "萨普斯堡",
       "awayZh": "汉坎",
       "tournament": "挪超",
@@ -95,6 +96,7 @@
     },
     {
       "id": "kt-7214",
+      "matchNo": "7214",
       "homeZh": "奥斯KFUM",
       "awayZh": "莫尔德",
       "tournament": "挪超",
@@ -170,6 +172,7 @@
     },
     {
       "id": "kt-7215",
+      "matchNo": "7215",
       "homeZh": "桑纳菲",
       "awayZh": "博德闪耀",
       "tournament": "挪超",
@@ -245,6 +248,7 @@
     },
     {
       "id": "kt-7216",
+      "matchNo": "7216",
       "homeZh": "奥勒松",
       "awayZh": "维京",
       "tournament": "挪超",
@@ -320,6 +324,7 @@
     },
     {
       "id": "kt-7217",
+      "matchNo": "7217",
       "homeZh": "弗拉门戈",
       "awayZh": "圣保罗",
       "tournament": "巴甲",
@@ -395,6 +400,7 @@
     },
     {
       "id": "kt-7218",
+      "matchNo": "7218",
       "homeZh": "格雷米奥",
       "awayZh": "弗鲁米嫩",
       "tournament": "巴甲",
@@ -470,6 +476,7 @@
     },
     {
       "id": "kt-1201",
+      "matchNo": "1201",
       "homeZh": "赫根",
       "awayZh": "索尔纳",
       "tournament": "瑞超",
@@ -545,6 +552,7 @@
     },
     {
       "id": "kt-1202",
+      "matchNo": "1202",
       "homeZh": "罗森博格",
       "awayZh": "腓特烈",
       "tournament": "挪超",

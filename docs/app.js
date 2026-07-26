@@ -99,6 +99,7 @@ function candidateFor(match) {
   const penalty = Number(odds) < 1.5 ? 8 : 0;
   return {
     matchId: match.id,
+    matchNo: match.matchNo || match.id?.replace(/^kt-/, "") || "",
     match: `${match.homeZh} vs ${match.awayZh}`,
     league: match.tournament,
     time: match.time,
@@ -189,7 +190,7 @@ function renderPlan() {
         (item, index) => `
           <article class="plan-card">
             <span class="label">第 ${index + 1} 单</span>
-            <h3>${item.match}</h3>
+            <h3>${item.matchNo ? `${item.matchNo} ` : ""}${item.match}</h3>
             <p>${item.market}：<strong>${item.pick}</strong> @${item.odds}</p>
             <p>金额：<strong>${yen(item.stake)}</strong>，${item.units} 注</p>
             <small>${item.reason}</small>
@@ -253,6 +254,7 @@ function renderMatches() {
           <div>
             <p class="teams">${item.match}</p>
             <div class="match-meta">
+              ${item.matchNo ? `<span>编号 ${item.matchNo}</span>` : ""}
               <span>${item.league}</span>
               <span>${item.time}</span>
               <span>${item.market}</span>
