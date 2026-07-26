@@ -1,5 +1,6 @@
-import { execFile } from "node:child_process";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { execFile, spawn } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 
@@ -15,6 +16,87 @@ const outputTargets = [
   path.resolve("outputs/data/live-matches.json"),
   path.resolve("docs/data/live-matches.json")
 ];
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+class CdpClient {
+  constructor(wsUrl) {
+    this.wsUrl = wsUrl;
+    this.nextId = 1;
+    this.pending = new Map();
+  }
+
+  async connect() {
+    this.ws = new WebSocket(this.wsUrl);
+    await new Promise((resolve, reject) => {
+      this.ws.addEventListener("open", resolve, { once: true });
+      this.ws.addEventListener("error", reject, { once: true });
+    });
+    this.ws.addEventListener("message", (event) => {
+      const message = JSON.parse(event.data);
+      if (!message.id) return;
+      const pending = this.pending.get(message.id);
+      if (!pending) return;
+      this.pending.delete(message.id);
+      if (message.error) pending.reject(new Error(message.error.message));
+      else pending.resolve(message.result || {});
+    });
+  }
+
+  send(method, params = {}) {
+    const id = this.nextId++;
+    const payload = JSON.stringify({ id, method, params });
+    return new Promise((resolve, reject) => {
+      this.pending.set(id, { resolve, reject });
+      this.ws.send(payload);
+    });
+  }
+
+  close() {
+    this.ws?.close();
+  }
+}
+
+async function waitForDevTools(port) {
+  const url = `http://127.0.0.1:${port}/json`;
+  for (let i = 0; i < 80; i += 1) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const targets = await response.json();
+        const pageTarget = targets.find((target) => target.type === "page" && target.webSocketDebuggerUrl);
+        if (pageTarget) return pageTarget;
+      }
+    } catch {
+      // Chrome is still starting.
+    }
+    await sleep(250);
+  }
+  throw new Error("Chrome DevTools endpoint did not start");
+}
+
+async function evaluate(cdp, expression) {
+  const result = await cdp.send("Runtime.evaluate", {
+    expression,
+    awaitPromise: true,
+    returnByValue: true
+  });
+  if (result.exceptionDetails) {
+    throw new Error(result.exceptionDetails.text || "Runtime.evaluate failed");
+  }
+  return result.result?.value;
+}
+
+async function waitForExpression(cdp, expression, timeoutMs = 12000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    if (await evaluate(cdp, expression)) return true;
+    await sleep(300);
+  }
+  return false;
+}
 
 function cleanText(html) {
   return html
@@ -102,6 +184,10 @@ function confidenceFromOdds(match) {
   return Math.max(58, Math.min(84, Math.round(62 + spread * 4 + favoritePenalty)));
 }
 
+function marketAvailable(odds) {
+  return odds && Object.keys(odds).length > 0;
+}
+
 function impliedProbabilities(hda) {
   const entries = [
     ["主胜", hda.home],
@@ -146,9 +232,10 @@ function predictionFor(match) {
       hda: match.hda,
       handicap: match.handicap,
       impliedProbabilities: impliedProbabilities(match.hda),
-      scoreOdds: {},
-      totalGoals: {},
-      halfFull: {}
+      scoreOdds: match.moreMarkets?.scoreOdds || {},
+      totalGoals: match.moreMarkets?.totalGoals || {},
+      halfFull: match.moreMarkets?.halfFull || {},
+      moreMarketsStatus: match.moreMarkets?.status || "not_checked"
     }
   };
 }
@@ -172,9 +259,16 @@ function toLiveData(matches) {
         type: "风控规则",
         name: "本地 V1.0 资金规则",
         url: "#risk",
-        note: "单场不超过本金 5%，比分玩法只允许 C 仓，半全场默认禁用。"
+        note: "覆盖胜平负、让球胜平负、总进球、比分、半全场；比分和半全场只允许小仓位。"
       }
     ],
+    marketCoverage: {
+      hda: true,
+      handicap: true,
+      scoreOdds: matches.some((match) => marketAvailable(match.moreMarkets?.scoreOdds)),
+      totalGoals: matches.some((match) => marketAvailable(match.moreMarkets?.totalGoals)),
+      halfFull: matches.some((match) => marketAvailable(match.moreMarkets?.halfFull))
+    },
     upcoming: matches.map((match) => ({
       id: `kt-${match.matchNo}`,
       matchNo: match.matchNo,
@@ -209,10 +303,144 @@ async function dumpDom() {
   return stdout;
 }
 
-const html = process.argv.includes("--from-file")
-  ? await readFile(domPath, "utf8")
-  : await dumpDom();
+async function renderPageWithMoreMarkets() {
+  const port = 29000 + Math.floor(Math.random() * 1000);
+  const profileDir = await mkdtemp(path.join(os.tmpdir(), "kt-jingcai-chrome-"));
+  const chrome = spawn(
+    chromePath,
+    [
+      "--headless",
+      "--disable-gpu",
+      `--remote-debugging-port=${port}`,
+      `--user-data-dir=${profileDir}`,
+      "--window-size=390,844",
+      KT_JINGCAI_URL
+    ],
+    { stdio: "ignore" }
+  );
+
+  let cdp;
+  try {
+    const version = await waitForDevTools(port);
+    cdp = new CdpClient(version.webSocketDebuggerUrl);
+    await cdp.connect();
+    await cdp.send("Page.enable");
+    await cdp.send("Runtime.enable");
+    await waitForExpression(cdp, "document.querySelectorAll('.matchitem').length > 0", 15000);
+    await sleep(1200);
+
+    const html = await evaluate(cdp, "document.documentElement.outerHTML");
+    await mkdir(path.dirname(domPath), { recursive: true });
+    await writeFile(domPath, html);
+
+    const matchCount = await evaluate(cdp, "document.querySelectorAll('.matchitem').length");
+    const moreMarkets = {};
+    const moreMarketsByIndex = [];
+
+    for (let index = 0; index < matchCount; index += 1) {
+      const opened = await evaluate(
+        cdp,
+        `(() => {
+          const buttons = document.querySelectorAll('.morebtn');
+          if (!buttons[${index}]) return false;
+          buttons[${index}].click();
+          return true;
+        })()`
+      );
+      if (!opened) continue;
+
+      await waitForExpression(
+        cdp,
+        "Boolean([...document.querySelectorAll('.layerbox')].find((layer) => getComputedStyle(layer).display !== 'none' && layer.querySelector('.morediv')))",
+        8000
+      );
+      await sleep(700);
+
+      const details = await evaluate(
+        cdp,
+        `(() => {
+          const visibleLayer = [...document.querySelectorAll('.layerbox')]
+            .find((layer) => getComputedStyle(layer).display !== 'none' && layer.querySelector('.morediv'));
+          const box = visibleLayer?.querySelector('.morediv');
+          const parseOdds = (selector) => {
+            const root = box?.querySelector(selector);
+            if (!root) return {};
+            if (/未受注/.test(root.innerText || '')) return {};
+            const odds = {};
+            root.querySelectorAll('.betbtn').forEach((button) => {
+              const parts = [...button.querySelectorAll('span')]
+                .map((node) => node.innerText.trim())
+                .filter(Boolean);
+              const value = Number(parts[1]);
+              if (parts[0] && Number.isFinite(value)) odds[parts[0]] = value;
+            });
+            return odds;
+          };
+          const matchNoText = box?.querySelector('header p')?.innerText || '';
+          const matchNo = matchNoText.match(/(\\d{3})$/)?.[1];
+          return {
+            matchNo: matchNo ? '1' + matchNo : '',
+            title: box?.querySelector('h1')?.innerText || '',
+            scoreOdds: parseOdds('.m_bif'),
+            totalGoals: parseOdds('.m_zongjq'),
+            halfFull: parseOdds('.m_half')
+          };
+        })()`
+      );
+
+      if (details?.matchNo) {
+        moreMarkets[details.matchNo] = {
+          status: "available",
+          title: details.title,
+          scoreOdds: details.scoreOdds || {},
+          totalGoals: details.totalGoals || {},
+          halfFull: details.halfFull || {}
+        };
+      }
+      moreMarketsByIndex[index] = {
+        status: "available",
+        title: details?.title || "",
+        scoreOdds: details?.scoreOdds || {},
+        totalGoals: details?.totalGoals || {},
+        halfFull: details?.halfFull || {}
+      };
+
+      await evaluate(
+        cdp,
+        `(() => {
+          const visibleLayer = [...document.querySelectorAll('.layerbox')]
+            .find((layer) => getComputedStyle(layer).display !== 'none' && layer.querySelector('.morediv'));
+          const close = visibleLayer?.querySelector('.closeball2');
+          if (close) close.click();
+          return true;
+        })()`
+      );
+      await sleep(350);
+    }
+
+    return { html, moreMarkets, moreMarketsByIndex };
+  } finally {
+    cdp?.close();
+    chrome.kill("SIGTERM");
+    await rm(profileDir, { recursive: true, force: true });
+  }
+}
+
+const fromFile = process.argv.includes("--from-file");
+const rendered = fromFile
+  ? { html: await readFile(domPath, "utf8"), moreMarkets: {}, moreMarketsByIndex: [] }
+  : await renderPageWithMoreMarkets();
+const html = rendered.html;
 const matches = extractMatches(html);
+
+for (const [index, match] of matches.entries()) {
+  match.moreMarkets = rendered.moreMarkets[match.matchNo] || rendered.moreMarketsByIndex[index] || {
+    status: fromFile ? "not_checked_from_file" : "unavailable",
+    scoreOdds: {},
+    totalGoals: {},
+    halfFull: {}
+  };
+}
 
 if (!matches.length) {
   throw new Error("No kt jingcai matches parsed from rendered page");

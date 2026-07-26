@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T15:07:02.209Z",
+  "generatedAt": "2026-07-26T15:20:17.111Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -16,9 +16,16 @@
       "type": "风控规则",
       "name": "本地 V1.0 资金规则",
       "url": "#risk",
-      "note": "单场不超过本金 5%，比分玩法只允许 C 仓，半全场默认禁用。"
+      "note": "覆盖胜平负、让球胜平负、总进球、比分、半全场；比分和半全场只允许小仓位。"
     }
   ],
+  "marketCoverage": {
+    "hda": true,
+    "handicap": true,
+    "scoreOdds": true,
+    "totalGoals": true,
+    "halfFull": true
+  },
   "upcoming": [
     {
       "id": "kt-1201",
@@ -95,9 +102,61 @@
             "平": 23.6,
             "客胜": 25.8
           },
-          "scoreOdds": {},
-          "totalGoals": {},
-          "halfFull": {}
+          "scoreOdds": {
+            "1:0": 10.5,
+            "2:0": 11,
+            "2:1": 7,
+            "3:0": 16,
+            "3:1": 11.5,
+            "3:2": 16,
+            "4:0": 30,
+            "4:1": 25,
+            "4:2": 35,
+            "5:0": 90,
+            "5:1": 60,
+            "5:2": 90,
+            "胜其他": 27,
+            "0:0": 21,
+            "1:1": 8,
+            "2:2": 10.5,
+            "3:3": 35,
+            "平其他": 150,
+            "0:1": 16,
+            "0:2": 23,
+            "1:2": 9.5,
+            "0:3": 50,
+            "1:3": 23,
+            "2:3": 22,
+            "0:4": 120,
+            "1:4": 70,
+            "2:4": 70,
+            "0:5": 350,
+            "1:5": 200,
+            "2:5": 200,
+            "负其他": 60
+          },
+          "totalGoals": {
+            "0球": 21,
+            "1球": 7,
+            "2球": 4.2,
+            "3球": 3.5,
+            "4球": 4.4,
+            "5球": 6.7,
+            "6球": 11,
+            "7+": 14
+          },
+          "halfFull": {
+            "胜/胜": 2.8,
+            "胜/平": 13.5,
+            "胜/负": 30,
+            "平/胜": 4.8,
+            "平/平": 6.5,
+            "平/负": 8.25,
+            "负/胜": 20,
+            "负/平": 13.5,
+            "负/负": 5.5
+          },
+          "moreMarketsStatus": "available"
         }
       }
     },
@@ -176,9 +235,61 @@
             "平": 23.6,
             "客胜": 19.9
           },
-          "scoreOdds": {},
-          "totalGoals": {},
-          "halfFull": {}
+          "scoreOdds": {
+            "1:0": 7.5,
+            "2:0": 7.5,
+            "2:1": 6,
+            "3:0": 12,
+            "3:1": 10.5,
+            "3:2": 20,
+            "4:0": 25,
+            "4:1": 22,
+            "4:2": 45,
+            "5:0": 70,
+            "5:1": 60,
+            "5:2": 100,
+            "胜其他": 40,
+            "0:0": 14,
+            "1:1": 7,
+            "2:2": 14,
+            "3:3": 60,
+            "平其他": 400,
+            "0:1": 14,
+            "0:2": 28,
+            "1:2": 13.5,
+            "0:3": 70,
+            "1:3": 45,
+            "2:3": 45,
+            "0:4": 300,
+            "1:4": 150,
+            "2:4": 150,
+            "0:5": 700,
+            "1:5": 500,
+            "2:5": 500,
+            "负其他": 150
+          },
+          "totalGoals": {
+            "0球": 14,
+            "1球": 5,
+            "2球": 3.8,
+            "3球": 3.4,
+            "4球": 5,
+            "5球": 8.5,
+            "6球": 15.5,
+            "7+": 23
+          },
+          "halfFull": {
+            "胜/胜": 2.3,
+            "胜/平": 17,
+            "胜/负": 35,
+            "平/胜": 4.2,
+            "平/平": 6.2,
+            "平/负": 10.5,
+            "负/胜": 22,
+            "负/平": 17,
+            "负/负": 7.5
+          },
+          "moreMarketsStatus": "available"
         }
       }
     }

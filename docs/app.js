@@ -100,6 +100,28 @@ function confidence(match) {
   return Number(match.prediction?.confidence || 0);
 }
 
+function oddsEntries(odds = {}) {
+  return Object.entries(odds)
+    .map(([pick, value]) => ({ pick, odds: Number(value) }))
+    .filter((item) => item.pick && Number.isFinite(item.odds) && item.odds > 0)
+    .sort((a, b) => a.odds - b.odds);
+}
+
+function bestEntry(odds = {}, predicate = () => true) {
+  return oddsEntries(odds).find(predicate);
+}
+
+function makeOption(match, option) {
+  return {
+    matchId: match.id,
+    matchNo: match.matchNo || match.id?.replace(/^kt-/, "") || "",
+    match: `${match.homeZh} vs ${match.awayZh}`,
+    league: match.tournament,
+    time: match.time,
+    ...option
+  };
+}
+
 function recentLossStreak() {
   const settled = readLedger()
     .filter((item) => item.status !== "pending")
@@ -135,6 +157,102 @@ function candidateFor(match) {
   };
 }
 
+function marketOptionsFor(match) {
+  const marketOdds = match.prediction?.marketOdds || {};
+  const hda = marketOdds.hda || {};
+  const handicap = marketOdds.handicap || {};
+  const score = confidence(match);
+  const options = [];
+
+  const hdaPick = sideToPick(match.prediction?.resultLean);
+  const hdaOdds = pickOdds(match, hdaPick);
+  if (hdaOdds >= 1.5) {
+    options.push(
+      makeOption(match, {
+        category: "hda",
+        market: "胜平负",
+        pick: hdaPick,
+        odds: Number(hdaOdds),
+        hda,
+        handicap: handicap.line || "0",
+        score: Math.max(0, score - (hdaOdds < 1.5 ? 8 : 0)),
+        riskWeight: 1,
+        reason: `主市场事实：胜 ${hda.home || "-"} / 平 ${hda.draw || "-"} / 负 ${hda.away || "-"}。`
+      })
+    );
+  }
+
+  const handicapPick = bestEntry({ 让胜: handicap.home, 让平: handicap.draw, 让负: handicap.away }, (item) => item.odds >= 1.55 && item.odds <= 4.8);
+  if (handicapPick) {
+    options.push(
+      makeOption(match, {
+        category: "handicap",
+        market: `让球胜平负 ${handicap.line || ""}`.trim(),
+        pick: handicapPick.pick,
+        odds: handicapPick.odds,
+        hda,
+        handicap: handicap.line || "0",
+        score: Math.max(0, score - 4),
+        riskWeight: 0.75,
+        reason: `让球盘事实：让胜 ${handicap.home || "-"} / 让平 ${handicap.draw || "-"} / 让负 ${handicap.away || "-"}。`
+      })
+    );
+  }
+
+  const totalPick = bestEntry(marketOdds.totalGoals, (item) => item.odds >= 2.4 && item.odds <= 7.5);
+  if (totalPick) {
+    options.push(
+      makeOption(match, {
+        category: "totalGoals",
+        market: "总进球数",
+        pick: totalPick.pick,
+        odds: totalPick.odds,
+        hda,
+        handicap: handicap.line || "0",
+        score: Math.max(0, score - 8),
+        riskWeight: 0.45,
+        reason: `总进球事实赔率：${Object.entries(marketOdds.totalGoals || {}).map(([k, v]) => `${k} ${v}`).join(" / ")}。`
+      })
+    );
+  }
+
+  const scorePick = bestEntry(marketOdds.scoreOdds, (item) => item.odds >= 5 && item.odds <= 14 && !item.pick.includes("其他"));
+  if (scorePick) {
+    options.push(
+      makeOption(match, {
+        category: "score",
+        market: "比分",
+        pick: scorePick.pick,
+        odds: scorePick.odds,
+        hda,
+        handicap: handicap.line || "0",
+        score: Math.max(0, score - 16),
+        riskWeight: 0.18,
+        reason: "比分玩法波动最大，只能小仓位；这里仅取当前可见赔率中风险相对最低的比分。"
+      })
+    );
+  }
+
+  const halfPick = bestEntry(marketOdds.halfFull, (item) => item.odds >= 2 && item.odds <= 8.5);
+  if (halfPick) {
+    options.push(
+      makeOption(match, {
+        category: "halfFull",
+        market: "半全场",
+        pick: halfPick.pick,
+        odds: halfPick.odds,
+        hda,
+        handicap: handicap.line || "0",
+        score: Math.max(0, score - 12),
+        riskWeight: 0.28,
+        reason: "半全场对比赛节奏要求高，默认小仓位，只在赔率结构清楚时进入候选。"
+      })
+    );
+  }
+
+  return options;
+}
+
 function roundStake(value) {
   return Math.max(2, Math.round(value / 2) * 2);
 }
@@ -151,6 +269,45 @@ function allocateBudget(budget, count) {
   const diff = budget - stakes.reduce((sum, stake) => sum + stake, 0);
   stakes[0] = Math.max(2, stakes[0] + diff);
   return stakes;
+}
+
+function allocateWeightedBudget(budget, candidates) {
+  const totalWeight = candidates.reduce((sum, item) => sum + Number(item.riskWeight || 0.2), 0) || 1;
+  const stakes = candidates.map((item) => roundStake((budget * Number(item.riskWeight || 0.2)) / totalWeight));
+  const diff = budget - stakes.reduce((sum, stake) => sum + stake, 0);
+  stakes[0] = Math.max(2, stakes[0] + diff);
+  return stakes;
+}
+
+function selectPortfolio(options, wanted, maxPerMatch = 3) {
+  const categoryOrder = ["hda", "handicap", "totalGoals", "score", "halfFull"];
+  const selected = [];
+  const used = new Set();
+  const matchCounts = {};
+  const canUse = (item) => Number(matchCounts[item.matchId] || 0) < maxPerMatch;
+  const add = (item) => {
+    selected.push(item);
+    used.add(`${item.matchId}-${item.market}-${item.pick}`);
+    matchCounts[item.matchId] = Number(matchCounts[item.matchId] || 0) + 1;
+  };
+
+  for (const category of categoryOrder) {
+    const best = options.find((item) => item.category === category && canUse(item) && !used.has(`${item.matchId}-${item.market}-${item.pick}`));
+    if (best) {
+      add(best);
+    }
+    if (selected.length >= wanted) return selected;
+  }
+
+  for (const item of options) {
+    const key = `${item.matchId}-${item.market}-${item.pick}`;
+    if (used.has(key)) continue;
+    if (!canUse(item)) continue;
+    add(item);
+    if (selected.length >= wanted) break;
+  }
+
+  return selected;
 }
 
 function buildPlan() {
@@ -173,22 +330,23 @@ function buildPlan() {
   }
 
   const mode = riskMode.value;
-  const wanted = mode === "low" ? 2 : mode === "high" ? 4 : 3;
+  const wanted = mode === "low" ? 4 : mode === "high" ? 8 : 6;
   const candidates = (state.data.upcoming || [])
-    .map(candidateFor)
-    .filter((item) => item.odds >= 1.5 && item.score >= 62)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, wanted);
+    .flatMap(marketOptionsFor)
+    .filter((item) => item.odds >= 1.5 && item.score >= 45)
+    .sort((a, b) => b.score - a.score);
+  const matchCount = new Set((state.data.upcoming || []).map((match) => match.id)).size || 1;
+  const selected = selectPortfolio(candidates, wanted, Math.max(2, Math.ceil(wanted / matchCount)));
 
-  if (!candidates.length) {
+  if (!selected.length) {
     state.currentPlan = [];
     planOutput.innerHTML = `<div class="empty-state">当前没有达到下注阈值的比赛。建议 PASS，不要为了下注而下注。</div>`;
     topPick.textContent = "全部 PASS";
     return;
   }
 
-  const stakes = allocateBudget(budget, candidates.length);
-  state.currentPlan = candidates.map((item, index) => ({
+  const stakes = allocateWeightedBudget(budget, selected);
+  state.currentPlan = selected.map((item, index) => ({
     ...item,
     id: `bet-${Date.now()}-${index}`,
     createdAt: todayKey(),
@@ -209,7 +367,7 @@ function renderPlan() {
 
   const total = state.currentPlan.reduce((sum, item) => sum + item.stake, 0);
   const maxReturn = state.currentPlan.reduce((sum, item) => sum + item.stake * item.odds, 0);
-  topPick.textContent = `${state.currentPlan[0].match} ${state.currentPlan[0].pick}`;
+  topPick.textContent = `${state.currentPlan[0].match} ${state.currentPlan[0].market} ${state.currentPlan[0].pick}`;
   planOutput.innerHTML = `
     <div class="plan-summary">
       <strong>预算 ${yen(total)}</strong>
@@ -280,6 +438,12 @@ function renderMatches() {
   matchList.innerHTML = matches
     .map((match) => {
       const item = candidateFor(match);
+      const marketOdds = match.prediction?.marketOdds || {};
+      const coverage = [
+        Object.keys(marketOdds.scoreOdds || {}).length ? "比分" : "",
+        Object.keys(marketOdds.totalGoals || {}).length ? "总进球" : "",
+        Object.keys(marketOdds.halfFull || {}).length ? "半全场" : ""
+      ].filter(Boolean);
       return `
         <button class="match-card" type="button">
           <div>
@@ -289,6 +453,7 @@ function renderMatches() {
               <span>${item.league}</span>
               <span>${item.time}</span>
               <span>${item.market}</span>
+              ${coverage.map((label) => `<span>${label}已接入</span>`).join("")}
             </div>
             <div class="factors">
               <span>胜 ${item.hda.home || "-"}</span>
