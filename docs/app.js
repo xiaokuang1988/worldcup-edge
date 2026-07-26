@@ -32,6 +32,9 @@ const sampleDlt = document.querySelector("#sampleDlt");
 const dltDraw = document.querySelector("#dltDraw");
 const settleDlt = document.querySelector("#settleDlt");
 const dltHistory = document.querySelector("#dltHistory");
+const dltNextDraw = document.querySelector("#dltNextDraw");
+const dltCutoff = document.querySelector("#dltCutoff");
+const dltReminderStatus = document.querySelector("#dltReminderStatus");
 
 const LEDGER_KEY = "ticai-ledger-v2";
 const DLT_KEY = "ticai-dlt-ledger-v1";
@@ -43,6 +46,10 @@ const DLT_SAMPLE_TICKET = `03 11 19 21 25 + 09 12
 06 21 23 28 31 + 01 07
 01 06 21 29 33 + 07 12
 03 04 05 23 29 + 02 04`;
+const DLT_DRAW_WEEKDAYS = [1, 3, 6];
+const DLT_CUTOFF_HOUR_CN = 21;
+const DLT_DRAW_HOUR_CN = 21;
+const DLT_DRAW_MINUTE_CN = 25;
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -92,6 +99,92 @@ function saleWindow() {
     isOpen,
     text: `${isOpen ? "开售中" : "停售中"}｜中国${weekdayZh[cn.weekday] || cn.weekday} ${cn.hour}:${cn.minute}，日本${weekdayZh[jp.weekday] || jp.weekday} ${jp.hour}:${jp.minute}｜开售 中国 11:00 / 日本 12:00，截止 ${weekend ? "中国 23:00 / 日本次日 00:00" : "中国 22:00 / 日本 23:00"}`
   };
+}
+
+function dateInTimeZone(timeZone) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    year: Number(values.year),
+    month: Number(values.month),
+    day: Number(values.day),
+    hour: Number(values.hour) % 24,
+    minute: Number(values.minute),
+    second: Number(values.second)
+  };
+}
+
+function chinaDateToUtcMs(year, month, day, hour, minute = 0, second = 0) {
+  return Date.UTC(year, month - 1, day, hour - 8, minute, second);
+}
+
+function formatZoned(ms, timeZone) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone,
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(new Date(ms));
+}
+
+function compactDuration(ms) {
+  if (ms <= 0) return "已到时间";
+  const totalMinutes = Math.ceil(ms / 60000);
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  if (days) return `${days}天${hours}小时${minutes}分钟`;
+  if (hours) return `${hours}小时${minutes}分钟`;
+  return `${minutes}分钟`;
+}
+
+function nextDltSchedule(nowMs = Date.now()) {
+  const cnNow = dateInTimeZone("Asia/Shanghai");
+  const todayUtc = chinaDateToUtcMs(cnNow.year, cnNow.month, cnNow.day, 0, 0, 0);
+  for (let offset = 0; offset < 14; offset += 1) {
+    const dayMs = todayUtc + offset * 86400000;
+    const cnDay = new Date(dayMs + 8 * 3600000);
+    const weekday = cnDay.getUTCDay();
+    if (!DLT_DRAW_WEEKDAYS.includes(weekday)) continue;
+    const year = cnDay.getUTCFullYear();
+    const month = cnDay.getUTCMonth() + 1;
+    const day = cnDay.getUTCDate();
+    const cutoffMs = chinaDateToUtcMs(year, month, day, DLT_CUTOFF_HOUR_CN, 0, 0);
+    const drawMs = chinaDateToUtcMs(year, month, day, DLT_DRAW_HOUR_CN, DLT_DRAW_MINUTE_CN, 0);
+    if (drawMs > nowMs) {
+      return {
+        cutoffMs,
+        drawMs,
+        canBuy: nowMs < cutoffMs,
+        hasCutoffPassed: nowMs >= cutoffMs,
+        untilCutoff: cutoffMs - nowMs,
+        untilDraw: drawMs - nowMs
+      };
+    }
+  }
+  return null;
+}
+
+function renderDltReminder() {
+  const schedule = nextDltSchedule();
+  if (!schedule || !dltNextDraw || !dltCutoff || !dltReminderStatus) return;
+  dltNextDraw.textContent = `中国 ${formatZoned(schedule.drawMs, "Asia/Shanghai")} / 日本 ${formatZoned(schedule.drawMs, "Asia/Tokyo")}`;
+  dltCutoff.textContent = `中国 ${formatZoned(schedule.cutoffMs, "Asia/Shanghai")} / 日本 ${formatZoned(schedule.cutoffMs, "Asia/Tokyo")}`;
+  dltReminderStatus.textContent = schedule.canBuy
+    ? `可买，距离停止购买 ${compactDuration(schedule.untilCutoff)}`
+    : `已停止购买，距离开奖 ${compactDuration(schedule.untilDraw)}`;
 }
 
 function dataAgeMinutes() {
@@ -978,3 +1071,5 @@ settleDlt?.addEventListener("click", () => {
 
 loadData();
 renderDltHistory();
+renderDltReminder();
+setInterval(renderDltReminder, 60000);
