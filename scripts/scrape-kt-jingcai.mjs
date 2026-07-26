@@ -102,6 +102,18 @@ function confidenceFromOdds(match) {
   return Math.max(58, Math.min(84, Math.round(62 + spread * 4 + favoritePenalty)));
 }
 
+function impliedProbabilities(hda) {
+  const entries = [
+    ["主胜", hda.home],
+    ["平", hda.draw],
+    ["客胜", hda.away]
+  ].filter(([, odds]) => Number.isFinite(odds) && odds > 0);
+  const inverseTotal = entries.reduce((sum, [, odds]) => sum + 1 / odds, 0);
+  return Object.fromEntries(
+    entries.map(([label, odds]) => [label, Math.round(((1 / odds) / inverseTotal) * 1000) / 10])
+  );
+}
+
 function predictionFor(match) {
   const topScores = scoreCandidates(match);
   const confidence = confidenceFromOdds(match);
@@ -124,7 +136,7 @@ function predictionFor(match) {
     },
     reasons: [
       "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
-      `胜平负赔率显示${favorite}方向相对更强。`,
+      `胜平负赔率显示${favorite}方向相对更强；这是赔率结构事实，不等于赛果保证。`,
       `让球胜平负盘口为 ${match.handicap.line}，需要按 90 分钟赛果结算。`
     ],
     marketOdds: {
@@ -133,6 +145,7 @@ function predictionFor(match) {
       kickoff: `${match.league} ${match.time}`,
       hda: match.hda,
       handicap: match.handicap,
+      impliedProbabilities: impliedProbabilities(match.hda),
       scoreOdds: {},
       totalGoals: {},
       halfFull: {}
@@ -143,8 +156,10 @@ function predictionFor(match) {
 function toLiveData(matches) {
   return {
     generatedAt: new Date().toISOString(),
-    sourcePolicy: "Current football betting reference from user-provided kt.xiaodianhuo.com page. For analysis only; buy only through legal offline channels.",
+    sourcePolicy: "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
     ktSourceUrl: KT_JINGCAI_URL,
+    retrievalMethod: process.argv.includes("--from-file") ? "stored rendered DOM snapshot" : "local Chrome rendered DOM",
+    freshnessLimitMinutes: 90,
     unitStakeCny: 2,
     sources: [
       {

@@ -21,6 +21,7 @@ const reviewList = document.querySelector("#reviewList");
 const exportBill = document.querySelector("#exportBill");
 
 const LEDGER_KEY = "ticai-ledger-v2";
+const DEFAULT_FRESHNESS_LIMIT_MINUTES = 90;
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -41,6 +42,26 @@ function safeDate(isoString) {
   } catch {
     return isoString;
   }
+}
+
+function dataAgeMinutes() {
+  const generatedAt = Date.parse(state.data.generatedAt || "");
+  if (!Number.isFinite(generatedAt)) return Infinity;
+  return Math.max(0, Math.round((Date.now() - generatedAt) / 60000));
+}
+
+function freshnessLimit() {
+  return Number(state.data.freshnessLimitMinutes || DEFAULT_FRESHNESS_LIMIT_MINUTES);
+}
+
+function isDataFresh() {
+  return dataAgeMinutes() <= freshnessLimit();
+}
+
+function freshnessLabel() {
+  const age = dataAgeMinutes();
+  if (!Number.isFinite(age)) return "未取得";
+  return age <= freshnessLimit() ? `${age} 分钟前` : `已过期 ${age} 分钟`;
 }
 
 function todayKey() {
@@ -97,6 +118,7 @@ function candidateFor(match) {
   const line = match.prediction?.marketOdds?.handicap?.line || "0";
   const score = confidence(match);
   const penalty = Number(odds) < 1.5 ? 8 : 0;
+  const hda = match.prediction?.marketOdds?.hda || {};
   return {
     matchId: match.id,
     matchNo: match.matchNo || match.id?.replace(/^kt-/, "") || "",
@@ -106,9 +128,10 @@ function candidateFor(match) {
     market: "胜平负",
     pick,
     odds: Number(odds) || 0,
+    hda,
     handicap: line,
     score: Math.max(0, score - penalty),
-    reason: `方向 ${pick}，赔率 ${odds || "-"}，让球 ${line}。`
+    reason: `事实依据：胜 ${hda.home || "-"} / 平 ${hda.draw || "-"} / 负 ${hda.away || "-"}，让球 ${line}。建议只来自赔率结构，不代表赛果事实。`
   };
 }
 
@@ -131,6 +154,13 @@ function allocateBudget(budget, count) {
 }
 
 function buildPlan() {
+  if (!isDataFresh()) {
+    state.currentPlan = [];
+    planOutput.innerHTML = `<div class="empty-state">数据快照${freshnessLabel()}，超过 ${freshnessLimit()} 分钟风控线。为避免旧场次误导，已停止生成下注方案；请先刷新 kt 数据。</div>`;
+    topPick.textContent = "数据过期";
+    return;
+  }
+
   const budget = Math.max(2, roundStake(Number(planBudget.value || 200)));
   planBudget.value = String(budget);
 
@@ -193,6 +223,7 @@ function renderPlan() {
             <h3>${item.matchNo ? `${item.matchNo} ` : ""}${item.match}</h3>
             <p>${item.market}：<strong>${item.pick}</strong> @${item.odds}</p>
             <p>金额：<strong>${yen(item.stake)}</strong>，${item.units} 注</p>
+            <p>赔率事实：胜 ${item.hda.home || "-"} / 平 ${item.hda.draw || "-"} / 负 ${item.hda.away || "-"}</p>
             <small>${item.reason}</small>
           </article>
         `
@@ -260,9 +291,11 @@ function renderMatches() {
               <span>${item.market}</span>
             </div>
             <div class="factors">
-              <span>${item.pick} @${item.odds}</span>
+              <span>胜 ${item.hda.home || "-"}</span>
+              <span>平 ${item.hda.draw || "-"}</span>
+              <span>负 ${item.hda.away || "-"}</span>
               <span>让球 ${item.handicap}</span>
-              <span>评分 ${item.score}</span>
+              <span>${isDataFresh() ? "快照有效" : "快照过期"}</span>
             </div>
           </div>
         </button>
@@ -379,7 +412,9 @@ async function loadData() {
     const response = await fetch(`./data/live-matches.json?ts=${Date.now()}`);
     if (!response.ok) throw new Error(`data returned ${response.status}`);
     state.data = await response.json();
-    dataStatus.textContent = `kt 当前页：${safeDate(state.data.generatedAt)} 更新`;
+    dataStatus.textContent = isDataFresh()
+      ? `kt 快照：${safeDate(state.data.generatedAt)} 更新，${freshnessLabel()}`
+      : `kt 快照过期：${safeDate(state.data.generatedAt)} 更新，${freshnessLabel()}`;
   } catch (error) {
     dataStatus.textContent = "kt 当前页读取失败";
     console.error(error);

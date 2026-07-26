@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>体彩AI决策平台 | 竞彩足球分析台</title>
+    <title>体彩事实决策台 | 竞彩足球快照与入库</title>
     <meta name="theme-color" content="#07110f" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="体彩AI决策" />
+    <meta name="apple-mobile-web-app-title" content="体彩事实" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="canonical" href="https://xiaokuang1988.github.io/worldcup-edge/" />
     <link rel="manifest" href="./manifest.json" />
@@ -15,11 +15,11 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#dashboard" aria-label="体彩AI决策平台 home">
+      <a class="brand" href="#dashboard" aria-label="体彩事实决策台 home">
         <span class="brand-mark">体</span>
         <span>
-          <strong>体彩AI决策平台</strong>
-          <small>中国竞彩足球模型</small>
+          <strong>体彩事实决策台</strong>
+          <small>竞彩足球事实快照</small>
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
@@ -32,13 +32,13 @@
 
     <main>
       <section class="hero" id="dashboard">
-        <img src="./assets/worldcup-analytics-hero.png" alt="" class="hero-image" />
+        <img src="./assets/football-odds-hero.png" alt="" class="hero-image" />
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">China Sports Lottery football model</p>
-          <h1>输入预算，直接生成下注方案</h1>
+          <p class="eyebrow">Fact-first lottery ledger</p>
+          <h1>先核对事实，再生成方案</h1>
           <p class="hero-copy">
-            读取 kt 当前竞彩场次后，只输出“怎么买、买多少、是否入库、开奖后输赢、月账单和复盘”。不展示冗长情报。
+            只使用 kt 页面可见的场次编号、球队、开赛时间、胜平负赔率和让球赔率。快照超过风控时间会停止推荐，避免旧场次继续误导。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#plan">生成 200 元方案</a>
@@ -52,11 +52,11 @@
           </div>
           <div>
             <span class="label">模型状态</span>
-            <strong id="dataStatus">kt 当前页读取中</strong>
+            <strong id="dataStatus">kt 快照读取中</strong>
           </div>
           <div>
             <span class="label">玩法范围</span>
-            <strong>竞彩 90 分钟结算</strong>
+            <strong>事实快照 + 90 分钟结算</strong>
           </div>
           <div>
               <span class="label">今日建议</span>
@@ -69,7 +69,7 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Buy plan</p>
-            <h2>今日怎么买</h2>
+            <h2>按当前快照怎么买</h2>
           </div>
           <div class="controls" aria-label="Plan controls">
             <label>
@@ -144,7 +144,7 @@
         </div>
         <div class="risk-copy">
           <p>
-            本页面是分析与记录工具，不代理购彩、不托管资金、不承诺收益。模型只做赛事概率、赔率结构和资金纪律判断。kt 页面也提示数据仅供参考，购买需到线下实体店。
+            本页面是事实快照、资金纪律和记录工具，不代理购彩、不托管资金、不承诺收益。页面只使用抓取时可见的场次与赔率；超过风控时间会停止生成方案。
           </p>
           <p>
             默认只计算 90 分钟含伤停补时。让球胜平负按体彩让球数结算；总进球为双方合计；加时赛和点球大战不计入默认结算。
@@ -154,10 +154,10 @@
     </main>
 
     <footer class="footer">
-      <span>体彩AI决策平台 Web App</span>
-      <span>Ledger release: 2026-07-26 JST</span>
+      <span>体彩事实决策台 Web App</span>
+      <span>Fact-first release: 2026-07-27 JST</span>
     </footer>
 
-    <script src="./app.js?v=20260726-ledger"></script>
+    <script src="./app.js?v=20260727-fact-first"></script>
   </body>
 </html>

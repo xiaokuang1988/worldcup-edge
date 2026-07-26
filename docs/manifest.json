@@ -1,7 +1,7 @@
 {
-  "name": "体彩AI决策平台",
-  "short_name": "体彩AI决策",
-  "description": "竞彩足球赛事分析与资金决策 Web App",
+  "name": "体彩事实决策台",
+  "short_name": "体彩事实",
+  "description": "竞彩足球事实快照、下注入库与月账单 Web App",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
