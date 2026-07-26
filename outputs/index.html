@@ -36,12 +36,12 @@
         <div class="hero-shade"></div>
         <div class="hero-content">
           <p class="eyebrow">Fact-first lottery ledger</p>
-          <h1>先核对事实，再生成方案</h1>
+          <h1>先核对事实，再生成买入方案</h1>
           <p class="hero-copy">
             只使用 kt 页面可见的场次编号、球队、开赛时间和赔率。当前覆盖胜平负、让球胜平负、比分、总进球数、半全场；快照超过风控时间会停止推荐。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#plan">生成 200 元方案</a>
+            <a class="button primary" href="#plan">生成买入方案</a>
             <a class="button ghost" href="#ledger">录入开奖结果</a>
           </div>
         </div>
@@ -57,6 +57,10 @@
           <div>
             <span class="label">玩法范围</span>
             <strong>事实快照 + 90 分钟结算</strong>
+          </div>
+          <div>
+            <span class="label">销售时间</span>
+            <strong id="saleStatus">中国时间校验中</strong>
           </div>
           <div>
               <span class="label">今日建议</span>
@@ -84,13 +88,13 @@
                 <option value="high">激进</option>
               </select>
             </label>
-            <button class="button primary" id="generatePlan" type="button">生成方案</button>
+            <button class="button primary" id="generatePlan" type="button">生成买入方案</button>
             <button class="button ghost" id="savePlan" type="button">确认入库</button>
           </div>
         </div>
 
         <div class="ops-grid">
-          <section class="plan-output" id="planOutput">数据读取后，点击“生成方案”。</section>
+          <section class="plan-output" id="planOutput">数据读取后，点击“生成买入方案”。</section>
           <section class="match-list compact-list" aria-label="Matches" id="matchList"></section>
         </div>
       </section>
@@ -158,6 +162,6 @@
       <span>Fact-first release: 2026-07-27 JST</span>
     </footer>
 
-    <script src="./app.js?v=20260727-fact-first"></script>
+    <script src="./app.js?v=20260727-buy-plan"></script>
   </body>
 </html>

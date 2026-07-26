@@ -11,6 +11,7 @@ const savePlan = document.querySelector("#savePlan");
 const planOutput = document.querySelector("#planOutput");
 const dataStatus = document.querySelector("#dataStatus");
 const topPick = document.querySelector("#top-pick");
+const saleStatus = document.querySelector("#saleStatus");
 const settleSelect = document.querySelector("#settleSelect");
 const returnInput = document.querySelector("#returnInput");
 const settleWin = document.querySelector("#settleWin");
@@ -22,6 +23,8 @@ const exportBill = document.querySelector("#exportBill");
 
 const LEDGER_KEY = "ticai-ledger-v2";
 const DEFAULT_FRESHNESS_LIMIT_MINUTES = 90;
+const MIN_PLAN_RETURN_MULTIPLE = 2;
+const MIN_OPTION_SCORE = 58;
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -42,6 +45,35 @@ function safeDate(isoString) {
   } catch {
     return isoString;
   }
+}
+
+function zonedParts(timeZone) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).formatToParts(new Date());
+  return Object.fromEntries(parts.map((part) => [part.type, part.value]));
+}
+
+function saleWindow() {
+  const cn = zonedParts("Asia/Shanghai");
+  const jp = zonedParts("Asia/Tokyo");
+  const weekdayZh = { Mon: "周一", Tue: "周二", Wed: "周三", Thu: "周四", Fri: "周五", Sat: "周六", Sun: "周日" };
+  const weekend = cn.weekday === "Sat" || cn.weekday === "Sun";
+  const closeHourCn = weekend ? 23 : 22;
+  const hour = Number(cn.hour) % 24;
+  const minute = Number(cn.minute);
+  const minutes = hour * 60 + minute;
+  const openMinutes = 11 * 60;
+  const closeMinutes = closeHourCn * 60;
+  const isOpen = minutes >= openMinutes && minutes < closeMinutes;
+  return {
+    isOpen,
+    text: `${isOpen ? "开售中" : "停售中"}｜中国${weekdayZh[cn.weekday] || cn.weekday} ${cn.hour}:${cn.minute}，日本${weekdayZh[jp.weekday] || jp.weekday} ${jp.hour}:${jp.minute}｜开售 中国 11:00 / 日本 12:00，截止 ${weekend ? "中国 23:00 / 日本次日 00:00" : "中国 22:00 / 日本 23:00"}`
+  };
 }
 
 function dataAgeMinutes() {
@@ -79,6 +111,30 @@ function readLedger() {
   } catch {
     return [];
   }
+}
+
+function settledLedger() {
+  return readLedger().filter((item) => item.status === "win" || item.status === "lose");
+}
+
+function categoryStats() {
+  const stats = {};
+  for (const item of settledLedger()) {
+    const key = item.category || item.market || "unknown";
+    if (!stats[key]) stats[key] = { total: 0, wins: 0 };
+    stats[key].total += 1;
+    if (item.status === "win") stats[key].wins += 1;
+  }
+  return stats;
+}
+
+function learnedScoreBoost(category) {
+  const stat = categoryStats()[category];
+  if (!stat || stat.total < 3) return 0;
+  const rate = stat.wins / stat.total;
+  if (rate >= 0.6) return 6;
+  if (rate <= 0.34) return -10;
+  return 0;
 }
 
 function writeLedger(ledger) {
@@ -253,6 +309,13 @@ function marketOptionsFor(match) {
   return options;
 }
 
+function applyLearning(options) {
+  return options.map((item) => ({
+    ...item,
+    score: Math.max(0, item.score + learnedScoreBoost(item.category))
+  }));
+}
+
 function roundStake(value) {
   return Math.max(2, Math.round(value / 2) * 2);
 }
@@ -310,7 +373,34 @@ function selectPortfolio(options, wanted, maxPerMatch = 3) {
   return selected;
 }
 
+function planReturnMultiple(items) {
+  const stake = items.reduce((sum, item) => sum + Number(item.stake || 0), 0);
+  const maxReturn = items.reduce((sum, item) => sum + Number(item.stake || 0) * Number(item.odds || 0), 0);
+  return stake ? maxReturn / stake : 0;
+}
+
+function selectTwoXPortfolio(candidates, budget, wanted, matchCount) {
+  const maxPerMatch = Math.max(2, Math.ceil(wanted / matchCount));
+  for (let count = wanted; count >= 1; count -= 1) {
+    const selected = selectPortfolio(candidates, count, maxPerMatch);
+    if (!selected.length) continue;
+    const stakes = allocateWeightedBudget(budget, selected);
+    const withStakes = selected.map((item, index) => ({ ...item, stake: stakes[index] }));
+    if (planReturnMultiple(withStakes) >= MIN_PLAN_RETURN_MULTIPLE) return { selected, stakes };
+  }
+  return { selected: [], stakes: [] };
+}
+
 function buildPlan() {
+  const sale = saleWindow();
+  if (saleStatus) saleStatus.textContent = sale.text;
+  if (!sale.isOpen) {
+    state.currentPlan = [];
+    planOutput.innerHTML = `<div class="empty-state">${sale.text}。为了避免日本时间和中国时间混淆，当前不生成买入方案。</div>`;
+    topPick.textContent = "停售中";
+    return;
+  }
+
   if (!isDataFresh()) {
     state.currentPlan = [];
     planOutput.innerHTML = `<div class="empty-state">数据快照${freshnessLabel()}，超过 ${freshnessLimit()} 分钟风控线。为避免旧场次误导，已停止生成下注方案；请先刷新 kt 数据。</div>`;
@@ -331,21 +421,19 @@ function buildPlan() {
 
   const mode = riskMode.value;
   const wanted = mode === "low" ? 4 : mode === "high" ? 8 : 6;
-  const candidates = (state.data.upcoming || [])
-    .flatMap(marketOptionsFor)
-    .filter((item) => item.odds >= 1.5 && item.score >= 45)
+  const candidates = applyLearning((state.data.upcoming || []).flatMap(marketOptionsFor))
+    .filter((item) => item.odds >= 1.75 && item.score >= MIN_OPTION_SCORE)
     .sort((a, b) => b.score - a.score);
   const matchCount = new Set((state.data.upcoming || []).map((match) => match.id)).size || 1;
-  const selected = selectPortfolio(candidates, wanted, Math.max(2, Math.ceil(wanted / matchCount)));
+  const { selected, stakes } = selectTwoXPortfolio(candidates, budget, wanted, matchCount);
 
   if (!selected.length) {
     state.currentPlan = [];
-    planOutput.innerHTML = `<div class="empty-state">当前没有达到下注阈值的比赛。建议 PASS，不要为了下注而下注。</div>`;
+    planOutput.innerHTML = `<div class="empty-state">当前没有达到高胜率与 2 倍理论返还阈值的买入方案。建议 PASS，不要为了下注而下注。</div>`;
     topPick.textContent = "全部 PASS";
     return;
   }
 
-  const stakes = allocateWeightedBudget(budget, selected);
   state.currentPlan = selected.map((item, index) => ({
     ...item,
     id: `bet-${Date.now()}-${index}`,
@@ -361,17 +449,19 @@ function buildPlan() {
 
 function renderPlan() {
   if (!state.currentPlan.length) {
-    planOutput.innerHTML = `<div class="empty-state">输入预算后点击“生成方案”。</div>`;
+    planOutput.innerHTML = `<div class="empty-state">输入预算后点击“生成买入方案”。</div>`;
     return;
   }
 
   const total = state.currentPlan.reduce((sum, item) => sum + item.stake, 0);
   const maxReturn = state.currentPlan.reduce((sum, item) => sum + item.stake * item.odds, 0);
+  const multiple = total ? maxReturn / total : 0;
   topPick.textContent = `${state.currentPlan[0].match} ${state.currentPlan[0].market} ${state.currentPlan[0].pick}`;
   planOutput.innerHTML = `
     <div class="plan-summary">
       <strong>预算 ${yen(total)}</strong>
-      <span>共 ${state.currentPlan.length} 单，理论最高返还 ${yen(maxReturn)}</span>
+      <span>共 ${state.currentPlan.length} 单，理论最高返还 ${yen(maxReturn)}，返还倍数 ${multiple.toFixed(2)}x</span>
+      <span>规则：只生成理论返还至少 2.00x 且评分达标的买入方案；达不到就 PASS。</span>
     </div>
     ${state.currentPlan
       .map(
@@ -423,10 +513,12 @@ function settle(status) {
 }
 
 function reviewFor(item) {
+  const stat = categoryStats()[item.category || item.market || "unknown"];
+  const statText = stat && stat.total >= 3 ? ` 当前玩法历史 ${stat.wins}/${stat.total}。` : "";
   if (item.status === "win") {
-    return `${item.match} 命中 ${item.pick}，投入 ${yen(item.stake)}，返还 ${yen(item.returned)}。下次保持同等仓位，不加码追热。`;
+    return `${item.match} 命中 ${item.market} ${item.pick}，投入 ${yen(item.stake)}，返还 ${yen(item.returned)}。${statText}下次保持同等仓位，不加码追热。`;
   }
-  return `${item.match} 未中 ${item.pick}，亏损 ${yen(item.stake)}。复盘重点：方向判断是否过度依赖赔率低位，下一单降低仓位。`;
+  return `${item.match} 未中 ${item.market} ${item.pick}，亏损 ${yen(item.stake)}。${statText}复盘重点：该玩法是否应降权，下一单降低同类玩法仓位。`;
 }
 
 function renderMatches() {
@@ -585,6 +677,7 @@ async function loadData() {
     console.error(error);
   }
   renderMatches();
+  if (saleStatus) saleStatus.textContent = saleWindow().text;
   buildPlan();
   renderLedger();
 }
