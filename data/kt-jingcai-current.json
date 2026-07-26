@@ -1,125 +1,165 @@
 {
-  "scrapedAt": "2026-07-24T17:36:25.349Z",
+  "scrapedAt": "2026-07-26T14:58:27.008Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
-      "matchNo": "6201",
-      "league": "韩职",
-      "time": "18:30",
-      "homeRank": "11",
-      "homeZh": "金泉尚武",
-      "awayZh": "大田市民",
-      "awayRank": "9",
-      "hda": {
-        "home": 2.85,
-        "draw": 3.05,
-        "away": 2.22
-      },
-      "handicap": {
-        "line": "+1",
-        "home": 1.51,
-        "draw": 3.75,
-        "away": 5
-      }
-    },
-    {
-      "matchNo": "6202",
-      "league": "韩职",
-      "time": "18:30",
-      "homeRank": "5",
-      "homeZh": "浦项制铁",
-      "awayZh": "全北现代",
-      "awayRank": "3",
-      "hda": {
-        "home": 3.03,
-        "draw": 2.95,
-        "away": 2.17
-      },
-      "handicap": {
-        "line": "+1",
-        "home": 1.54,
-        "draw": 3.52,
-        "away": 5.1
-      }
-    },
-    {
-      "matchNo": "7201",
-      "league": "韩职",
-      "time": "18:30",
-      "homeRank": "1",
-      "homeZh": "首尔FC",
-      "awayZh": "蔚山现代",
-      "awayRank": "4",
-      "hda": {
-        "home": 1.68,
-        "draw": 3.48,
-        "away": 4.05
-      },
-      "handicap": {
-        "line": "-1",
-        "home": 3.1,
-        "draw": 3.45,
-        "away": 1.94
-      }
-    },
-    {
-      "matchNo": "7202",
-      "league": "韩职",
-      "time": "18:30",
+      "matchNo": "7213",
+      "league": "挪超",
+      "time": "23:00",
       "homeRank": "7",
-      "homeZh": "仁川联",
-      "awayZh": "富川FC",
-      "awayRank": "10",
-      "hda": {
-        "home": 1.56,
-        "draw": 3.35,
-        "away": 5.3
-      },
-      "handicap": {
-        "line": "-1",
-        "home": 3.07,
-        "draw": 3.05,
-        "away": 2.1
-      }
-    },
-    {
-      "matchNo": "7203",
-      "league": "韩职",
-      "time": "18:30",
-      "homeRank": "12",
-      "homeZh": "光州FC",
-      "awayZh": "济州SK",
+      "homeZh": "萨普斯堡",
+      "awayZh": "汉坎",
       "awayRank": "8",
       "hda": {
-        "home": 3.65,
-        "draw": 3,
-        "away": 1.92
+        "home": 1.47,
+        "draw": 4.2,
+        "away": 4.75
       },
       "handicap": {
-        "line": "+1",
-        "home": 1.68,
-        "draw": 3.45,
-        "away": 4.1
+        "line": "-1",
+        "home": 2.69,
+        "draw": 3.2,
+        "away": 2.25
       }
     },
     {
-      "matchNo": "7204",
-      "league": "韩职",
-      "time": "18:30",
-      "homeRank": "6",
-      "homeZh": "安养FC",
-      "awayZh": "江原FC",
-      "awayRank": "2",
+      "matchNo": "7214",
+      "league": "挪超",
+      "time": "23:00",
+      "homeRank": "13",
+      "homeZh": "奥斯KFUM",
+      "awayZh": "莫尔德",
+      "awayRank": "5",
       "hda": {
-        "home": 4,
-        "draw": 2.95,
-        "away": 1.85
+        "home": 3.16,
+        "draw": 3.3,
+        "away": 1.96
       },
       "handicap": {
         "line": "+1",
-        "home": 1.74,
-        "draw": 3.3,
-        "away": 4
+        "home": 1.66,
+        "draw": 3.8,
+        "away": 3.8
+      }
+    },
+    {
+      "matchNo": "7215",
+      "league": "挪超",
+      "time": "23:00",
+      "homeRank": "11",
+      "homeZh": "桑纳菲",
+      "awayZh": "博德闪耀",
+      "awayRank": "2",
+      "hda": {
+        "home": 8,
+        "draw": 6.1,
+        "away": 1.19
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 3.53,
+        "draw": 4.16,
+        "away": 1.65
+      }
+    },
+    {
+      "matchNo": "7216",
+      "league": "挪超",
+      "time": "23:00",
+      "homeRank": "14",
+      "homeZh": "奥勒松",
+      "awayZh": "维京",
+      "awayRank": "1",
+      "hda": {
+        "home": 5.75,
+        "draw": 4.9,
+        "away": 1.33
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 2.69,
+        "draw": 3.68,
+        "away": 2.06
+      }
+    },
+    {
+      "matchNo": "7217",
+      "league": "巴甲",
+      "time": "23:00",
+      "homeRank": "2",
+      "homeZh": "弗拉门戈",
+      "awayZh": "圣保罗",
+      "awayRank": "12",
+      "hda": {
+        "home": 1.32,
+        "draw": 4.4,
+        "away": 6.9
+      },
+      "handicap": {
+        "line": "-1",
+        "home": 2.2,
+        "draw": 3.17,
+        "away": 2.78
+      }
+    },
+    {
+      "matchNo": "7218",
+      "league": "巴甲",
+      "time": "23:00",
+      "homeRank": "16",
+      "homeZh": "格雷米奥",
+      "awayZh": "弗鲁米嫩",
+      "awayRank": "4",
+      "hda": {
+        "home": 2.79,
+        "draw": 2.87,
+        "away": 2.37
+      },
+      "handicap": {
+        "line": "+1",
+        "home": 1.45,
+        "draw": 3.65,
+        "away": 6.05
+      }
+    },
+    {
+      "matchNo": "1201",
+      "league": "瑞超",
+      "time": "22:00",
+      "homeRank": "4",
+      "homeZh": "赫根",
+      "awayZh": "索尔纳",
+      "awayRank": "6",
+      "hda": {
+        "home": 1.75,
+        "draw": 3.75,
+        "away": 3.43
+      },
+      "handicap": {
+        "line": "-1",
+        "home": 3.16,
+        "draw": 3.75,
+        "away": 1.83
+      }
+    },
+    {
+      "matchNo": "1202",
+      "league": "挪超",
+      "time": "22:00",
+      "homeRank": "10",
+      "homeZh": "罗森博格",
+      "awayZh": "腓特烈",
+      "awayRank": "12",
+      "hda": {
+        "home": 1.57,
+        "draw": 3.75,
+        "away": 4.45
+      },
+      "handicap": {
+        "line": "-1",
+        "home": 2.84,
+        "draw": 3.4,
+        "away": 2.07
       }
     }
   ]
