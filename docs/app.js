@@ -8,6 +8,8 @@ const riskMode = document.querySelector("#riskMode");
 const planBudget = document.querySelector("#planBudget");
 const generatePlan = document.querySelector("#generatePlan");
 const savePlan = document.querySelector("#savePlan");
+const refreshData = document.querySelector("#refreshData");
+const refreshDataHero = document.querySelector("#refreshDataHero");
 const planOutput = document.querySelector("#planOutput");
 const dataStatus = document.querySelector("#dataStatus");
 const topPick = document.querySelector("#top-pick");
@@ -1024,8 +1026,36 @@ async function loadData() {
   renderLedger();
 }
 
+async function refreshAllData() {
+  const buttons = [refreshData, refreshDataHero].filter(Boolean);
+  buttons.forEach((button) => {
+    button.disabled = true;
+    button.dataset.originalText = button.textContent;
+    button.textContent = "刷新中";
+  });
+  if (dataStatus) dataStatus.textContent = "正在刷新数据";
+  try {
+    await loadData();
+    renderDltReminder();
+    renderDltHistory();
+    if (planOutput) {
+      planOutput.querySelector("[data-refresh-banner]")?.remove();
+      planOutput.insertAdjacentHTML("afterbegin", `<div class="save-banner">已刷新本机数据视图。若要抓取 kt 最新页面，需要后台脚本重新发布快照。</div>`);
+      planOutput.firstElementChild?.setAttribute("data-refresh-banner", "true");
+    }
+  } finally {
+    buttons.forEach((button) => {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || "刷新数据";
+      delete button.dataset.originalText;
+    });
+  }
+}
+
 generatePlan.addEventListener("click", buildPlan);
 savePlan.addEventListener("click", saveCurrentPlan);
+refreshData?.addEventListener("click", refreshAllData);
+refreshDataHero?.addEventListener("click", refreshAllData);
 riskMode.addEventListener("change", buildPlan);
 settleWin.addEventListener("click", () => settle("win"));
 settleLose.addEventListener("click", () => settle("lose"));
