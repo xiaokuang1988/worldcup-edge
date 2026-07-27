@@ -360,21 +360,32 @@ function fileToImage(file) {
   });
 }
 
-async function preprocessDltPhoto(file) {
-  const img = await fileToImage(file);
-  const maxWidth = 1600;
-  const scale = Math.min(3, Math.max(1.5, maxWidth / Math.max(img.width, 1)));
-  const width = Math.round(img.width * scale);
-  const height = Math.round(img.height * scale);
+function cropImageToCanvas(img, crop) {
+  const sourceX = Math.round(img.width * crop.x);
+  const sourceY = Math.round(img.height * crop.y);
+  const sourceWidth = Math.round(img.width * crop.width);
+  const sourceHeight = Math.round(img.height * crop.height);
+  const maxWidth = crop.maxWidth || 1800;
+  const scale = Math.min(4, Math.max(2, maxWidth / Math.max(sourceWidth, 1)));
+  const width = Math.round(sourceWidth * scale);
+  const height = Math.round(sourceHeight * scale);
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
-  ctx.drawImage(img, 0, 0, width, height);
+  ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, width, height);
+  return { canvas, ctx, width, height };
+}
 
-  const imageData = ctx.getImageData(0, 0, width, height);
+async function enhanceCanvasToBlob(sourceCanvas, thresholdFactor = 0.9) {
+  const canvas = document.createElement("canvas");
+  canvas.width = sourceCanvas.width;
+  canvas.height = sourceCanvas.height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(sourceCanvas, 0, 0);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   let sum = 0;
   for (let i = 0; i < data.length; i += 4) {
@@ -382,7 +393,7 @@ async function preprocessDltPhoto(file) {
     sum += gray;
   }
   const avg = sum / (data.length / 4);
-  const threshold = Math.max(118, Math.min(178, avg * 0.9));
+  const threshold = Math.max(108, Math.min(188, avg * thresholdFactor));
   for (let i = 0; i < data.length; i += 4) {
     const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
     const boosted = gray < threshold ? 0 : 255;
@@ -393,8 +404,25 @@ async function preprocessDltPhoto(file) {
   ctx.putImageData(imageData, 0, 0);
 
   return await new Promise((resolve) => {
-    canvas.toBlob((blob) => resolve(blob || file), "image/png");
+    canvas.toBlob((blob) => resolve(blob || sourceCanvas), "image/png");
   });
+}
+
+async function preprocessDltPhotoVariants(file) {
+  const img = await fileToImage(file);
+  const crops = [
+    { name: "整张票", x: 0, y: 0, width: 1, height: 1, maxWidth: 1600 },
+    { name: "票据主体", x: 0.18, y: 0.14, width: 0.64, height: 0.74, maxWidth: 1800 },
+    { name: "号码区", x: 0.2, y: 0.34, width: 0.6, height: 0.28, maxWidth: 2200 },
+    { name: "前后区号码", x: 0.16, y: 0.36, width: 0.68, height: 0.24, maxWidth: 2400 }
+  ];
+  const variants = [];
+  for (const crop of crops) {
+    const { canvas } = cropImageToCanvas(img, crop);
+    variants.push({ name: crop.name, blob: await enhanceCanvasToBlob(canvas, 0.82) });
+    variants.push({ name: `${crop.name} 高阈值`, blob: await enhanceCanvasToBlob(canvas, 1.02) });
+  }
+  return variants;
 }
 
 function renderDltPhotoPreview(file, message = "") {
@@ -423,20 +451,26 @@ async function recognizeDltPhoto() {
     ocrDltPhoto.textContent = "识别中";
   }
   try {
-    if (ocrDltPhoto) ocrDltPhoto.textContent = "增强图片";
-    const processedFile = await preprocessDltPhoto(file);
-    if (ocrDltPhoto) ocrDltPhoto.textContent = "识别中";
-    const result = await window.Tesseract.recognize(processedFile, "eng", {
-      tessedit_char_whitelist: "0123456789+ ",
-      tessedit_pageseg_mode: "6",
-      logger: (progress) => {
-        if (ocrDltPhoto && progress.status) {
-          const pct = progress.progress ? ` ${Math.round(progress.progress * 100)}%` : "";
-          ocrDltPhoto.textContent = `识别中${pct}`;
+    if (ocrDltPhoto) ocrDltPhoto.textContent = "裁剪号码区";
+    const variants = await preprocessDltPhotoVariants(file);
+    const ocrTexts = [];
+    for (const [index, variant] of variants.entries()) {
+      if (ocrDltPhoto) ocrDltPhoto.textContent = `识别 ${index + 1}/${variants.length}`;
+      const result = await window.Tesseract.recognize(variant.blob, "eng", {
+        tessedit_char_whitelist: "0123456789+ ",
+        tessedit_pageseg_mode: "6",
+        logger: (progress) => {
+          if (ocrDltPhoto && progress.status) {
+            const pct = progress.progress ? ` ${Math.round(progress.progress * 100)}%` : "";
+            ocrDltPhoto.textContent = `识别 ${index + 1}/${variants.length}${pct}`;
+          }
         }
-      }
-    });
-    const normalized = normalizeDltOcrText(result?.data?.text || "");
+      });
+      ocrTexts.push(result?.data?.text || "");
+      const partial = parseDltLines(normalizeDltOcrText(ocrTexts.join("\n")));
+      if (partial.length >= 5) break;
+    }
+    const normalized = normalizeDltOcrText(ocrTexts.join("\n"));
     if (dltImport) dltImport.value = normalized;
     const lines = parseDltLines(normalized);
     renderDltPhotoPreview(file, lines.length ? `识别到 ${lines.length} 注，请核对后导入。` : "未识别到完整号码，请在下方手动校正。");
