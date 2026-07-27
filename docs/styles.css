@@ -836,6 +836,68 @@ output {
   border-radius: 8px;
 }
 
+.dlt-editor-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mini-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mini-field input {
+  width: 58px;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+}
+
+.dlt-line-editor {
+  display: grid;
+  gap: 10px;
+}
+
+.dlt-editor-row {
+  display: grid;
+  grid-template-columns: 28px repeat(5, 42px) 16px repeat(2, 42px);
+  gap: 6px;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.dlt-editor-row strong,
+.dlt-editor-row b {
+  color: var(--muted);
+  text-align: center;
+}
+
+.dlt-number-input {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+  font: inherit;
+  font-weight: 850;
+  text-align: center;
+}
+
+.dlt-number-input.invalid {
+  border-color: rgba(255, 107, 95, 0.8);
+  background: rgba(255, 107, 95, 0.12);
+}
+
 .field-label {
   color: var(--muted);
   font-size: 12px;

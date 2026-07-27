@@ -173,7 +173,14 @@
             </div>
             <label class="field-label" for="dltImport">识别结果 / 手动校正</label>
             <textarea id="dltImport" class="ticket-input" rows="5" placeholder="识别后会自动填入；也可以手动修正为：03 11 19 21 25 + 09 12"></textarea>
+            <div class="dlt-editor-head">
+              <span class="field-label">票据号码格</span>
+              <label class="mini-field">本票注数 <input id="dltExpectedLines" type="number" min="1" max="20" step="1" value="5" /></label>
+            </div>
+            <div id="dltLineEditor" class="dlt-line-editor" aria-label="大乐透票据号码格"></div>
             <div class="action-row">
+              <button class="button compact" id="addDltLine" type="button">添加一注</button>
+              <button class="button compact" id="clearDltEditor" type="button">清空号码格</button>
               <button class="button compact" id="importDlt" type="button">导入识别结果</button>
             </div>
             <label class="field-label" for="dltDraw">录入开奖号</label>
@@ -248,6 +255,6 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-    <script src="./app.js?v=20260727-dlt-multipass-ocr"></script>
+    <script src="./app.js?v=20260727-dlt-line-editor"></script>
   </body>
 </html>

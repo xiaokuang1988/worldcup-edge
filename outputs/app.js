@@ -33,6 +33,10 @@ const dltGalleryPhoto = document.querySelector("#dltGalleryPhoto");
 const dltPhotoPreview = document.querySelector("#dltPhotoPreview");
 const ocrDltPhoto = document.querySelector("#ocrDltPhoto");
 const dltImport = document.querySelector("#dltImport");
+const dltLineEditor = document.querySelector("#dltLineEditor");
+const dltExpectedLines = document.querySelector("#dltExpectedLines");
+const addDltLine = document.querySelector("#addDltLine");
+const clearDltEditor = document.querySelector("#clearDltEditor");
 const importDlt = document.querySelector("#importDlt");
 const sampleDlt = document.querySelector("#sampleDlt");
 const dltDraw = document.querySelector("#dltDraw");
@@ -468,12 +472,13 @@ async function recognizeDltPhoto() {
       });
       ocrTexts.push(result?.data?.text || "");
       const partial = parseDltLines(normalizeDltOcrText(ocrTexts.join("\n")));
-      if (partial.length >= 5) break;
+      if (partial.length >= expectedDltLineCount()) break;
     }
     const normalized = normalizeDltOcrText(ocrTexts.join("\n"));
     if (dltImport) dltImport.value = normalized;
     const lines = parseDltLines(normalized);
-    renderDltPhotoPreview(file, lines.length ? `识别到 ${lines.length} 注，请核对后导入。` : "未识别到完整号码，请在下方手动校正。");
+    renderDltLineEditor(lines, Math.max(expectedDltLineCount(), lines.length));
+    renderDltPhotoPreview(file, lines.length ? `识别到 ${lines.length} 注，已填入号码格；请按票面补齐漏行后导入。` : "未识别到完整号码，请在号码格手动录入。");
     if (lines.length) {
       const unitCost = dltAppend?.checked ? 3 : 2;
       const plan = { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
@@ -494,6 +499,72 @@ async function recognizeDltPhoto() {
 
 function formatDltLine(line) {
   return `${line.front.map(pad2).join(" ")} + ${line.back.map(pad2).join(" ")}`;
+}
+
+function emptyDltLine() {
+  return { front: ["", "", "", "", ""], back: ["", ""] };
+}
+
+function renderDltLineEditor(lines = [], count = 5) {
+  if (!dltLineEditor) return;
+  const rows = [...lines];
+  while (rows.length < count) rows.push(emptyDltLine());
+  dltLineEditor.innerHTML = rows
+    .map((line, rowIndex) => {
+      const front = line.front || [];
+      const back = line.back || [];
+      return `
+        <div class="dlt-editor-row" data-row="${rowIndex}">
+          <strong>${rowIndex + 1}</strong>
+          ${Array.from({ length: 5 }, (_, index) => `<input class="dlt-number-input" inputmode="numeric" maxlength="2" data-zone="front" data-index="${index}" value="${front[index] ? pad2(front[index]) : ""}" aria-label="第 ${rowIndex + 1} 注前区 ${index + 1}" />`).join("")}
+          <b>+</b>
+          ${Array.from({ length: 2 }, (_, index) => `<input class="dlt-number-input" inputmode="numeric" maxlength="2" data-zone="back" data-index="${index}" value="${back[index] ? pad2(back[index]) : ""}" aria-label="第 ${rowIndex + 1} 注后区 ${index + 1}" />`).join("")}
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function readDltEditorLines() {
+  if (!dltLineEditor) return [];
+  const lines = [];
+  dltLineEditor.querySelectorAll(".dlt-editor-row").forEach((row) => {
+    const frontInputs = [...row.querySelectorAll('[data-zone="front"]')];
+    const backInputs = [...row.querySelectorAll('[data-zone="back"]')];
+    const front = frontInputs.map((input) => input.value.trim()).filter(Boolean).map(Number).filter(Number.isFinite);
+    const back = backInputs.map((input) => input.value.trim()).filter(Boolean).map(Number).filter(Number.isFinite);
+    [...frontInputs, ...backInputs].forEach((input) => input.classList.remove("invalid"));
+    const hasAnyValue = [...frontInputs, ...backInputs].some((input) => input.value.trim());
+    if (!hasAnyValue) return;
+
+    const validFront = front.length === 5 && front.every((n) => n >= 1 && n <= 35) && new Set(front).size === 5;
+    const validBack = back.length === 2 && back.every((n) => n >= 1 && n <= 12) && new Set(back).size === 2;
+    if (!validFront) frontInputs.forEach((input) => input.classList.add("invalid"));
+    if (!validBack) backInputs.forEach((input) => input.classList.add("invalid"));
+    if (validFront && validBack) {
+      lines.push({
+        front: [...front].sort((a, b) => a - b),
+        back: [...back].sort((a, b) => a - b)
+      });
+    }
+  });
+  return lines;
+}
+
+function syncDltEditorFromText() {
+  const lines = parseDltLines(dltImport?.value || "");
+  renderDltLineEditor(lines, Math.max(expectedDltLineCount(), lines.length));
+  return lines;
+}
+
+function syncDltTextFromEditor() {
+  const lines = readDltEditorLines();
+  if (dltImport && lines.length) dltImport.value = lines.map(formatDltLine).join("\n");
+  return lines;
+}
+
+function expectedDltLineCount() {
+  return Math.max(1, Math.min(20, Number(dltExpectedLines?.value || 5)));
 }
 
 function dltFrequency() {
@@ -1279,13 +1350,40 @@ dltAppend?.addEventListener("change", () => {
 });
 sampleDlt?.addEventListener("click", () => {
   dltImport.value = DLT_SAMPLE_TICKET;
+  syncDltEditorFromText();
 });
 importDlt?.addEventListener("click", () => {
-  const lines = parseDltLines(dltImport.value);
+  const editorLines = syncDltTextFromEditor();
+  const lines = editorLines.length ? editorLines : parseDltLines(dltImport.value);
+  const expected = expectedDltLineCount();
+  if (lines.length < expected) {
+    if (dltOutput) {
+      dltOutput.innerHTML = `<div class="empty-state">本票设置为 ${expected} 注，目前只有 ${lines.length} 注有效号码；请补齐红色/空白号码格后再导入。</div>`;
+    }
+    return;
+  }
   const unitCost = dltAppend?.checked ? 3 : 2;
   const plan = { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
   window.__currentDltPlan = plan;
-  renderDltPlan(plan, lines.length ? "已识别票据号码，可保存入库" : "没有识别到有效大乐透号码");
+  renderDltPlan(plan, lines.length ? `已导入 ${lines.length} 注票据号码，可保存入库` : "没有识别到有效大乐透号码，请检查红色号码格");
+});
+addDltLine?.addEventListener("click", () => {
+  const lines = readDltEditorLines();
+  renderDltLineEditor(lines, Math.max(5, dltLineEditor?.querySelectorAll(".dlt-editor-row").length || 0) + 1);
+});
+clearDltEditor?.addEventListener("click", () => {
+  if (dltImport) dltImport.value = "";
+  renderDltLineEditor([], expectedDltLineCount());
+});
+dltExpectedLines?.addEventListener("change", () => {
+  renderDltLineEditor(readDltEditorLines(), expectedDltLineCount());
+});
+dltImport?.addEventListener("blur", syncDltEditorFromText);
+dltLineEditor?.addEventListener("input", (event) => {
+  const input = event.target;
+  if (!(input instanceof HTMLInputElement)) return;
+  input.value = input.value.replace(/\D/g, "").slice(0, 2);
+  input.classList.remove("invalid");
 });
 settleDlt?.addEventListener("click", () => {
   const [draw] = parseDltLines(dltDraw.value);
@@ -1297,6 +1395,7 @@ settleDlt?.addEventListener("click", () => {
 });
 
 loadData();
+renderDltLineEditor([], expectedDltLineCount());
 renderDltHistory();
 renderDltReminder();
 setInterval(renderDltReminder, 60000);
