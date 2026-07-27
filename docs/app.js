@@ -319,7 +319,82 @@ function normalizeDltOcrText(text) {
       parsed.push(formatted);
     }
   }
+  if (!parsed.length) {
+    const numbers = String(text || "").match(/\d{1,2}/g)?.map(Number).filter(Number.isFinite) || [];
+    for (let index = 0; index <= numbers.length - 7; index += 1) {
+      const front = numbers.slice(index, index + 5);
+      const back = numbers.slice(index + 5, index + 7);
+      if (
+        front.every((n) => n >= 1 && n <= 35) &&
+        back.every((n) => n >= 1 && n <= 12) &&
+        new Set(front).size === 5 &&
+        new Set(back).size === 2
+      ) {
+        const formatted = formatDltLine({
+          front: [...front].sort((a, b) => a - b),
+          back: [...back].sort((a, b) => a - b)
+        });
+        if (!seen.has(formatted)) {
+          seen.add(formatted);
+          parsed.push(formatted);
+        }
+      }
+    }
+  }
   return parsed.length ? parsed.join("\n") : cleanedLines.join("\n");
+}
+
+function fileToImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(img);
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Image load failed"));
+    };
+    img.src = url;
+  });
+}
+
+async function preprocessDltPhoto(file) {
+  const img = await fileToImage(file);
+  const maxWidth = 1600;
+  const scale = Math.min(3, Math.max(1.5, maxWidth / Math.max(img.width, 1)));
+  const width = Math.round(img.width * scale);
+  const height = Math.round(img.height * scale);
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(img, 0, 0, width, height);
+
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const data = imageData.data;
+  let sum = 0;
+  for (let i = 0; i < data.length; i += 4) {
+    const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+    sum += gray;
+  }
+  const avg = sum / (data.length / 4);
+  const threshold = Math.max(118, Math.min(178, avg * 0.9));
+  for (let i = 0; i < data.length; i += 4) {
+    const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+    const boosted = gray < threshold ? 0 : 255;
+    data[i] = boosted;
+    data[i + 1] = boosted;
+    data[i + 2] = boosted;
+  }
+  ctx.putImageData(imageData, 0, 0);
+
+  return await new Promise((resolve) => {
+    canvas.toBlob((blob) => resolve(blob || file), "image/png");
+  });
 }
 
 function renderDltPhotoPreview(file, message = "") {
@@ -348,7 +423,12 @@ async function recognizeDltPhoto() {
     ocrDltPhoto.textContent = "识别中";
   }
   try {
-    const result = await window.Tesseract.recognize(file, "eng", {
+    if (ocrDltPhoto) ocrDltPhoto.textContent = "增强图片";
+    const processedFile = await preprocessDltPhoto(file);
+    if (ocrDltPhoto) ocrDltPhoto.textContent = "识别中";
+    const result = await window.Tesseract.recognize(processedFile, "eng", {
+      tessedit_char_whitelist: "0123456789+ ",
+      tessedit_pageseg_mode: "6",
       logger: (progress) => {
         if (ocrDltPhoto && progress.status) {
           const pct = progress.progress ? ` ${Math.round(progress.progress * 100)}%` : "";
