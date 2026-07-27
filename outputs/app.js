@@ -38,6 +38,7 @@ const dltExpectedLines = document.querySelector("#dltExpectedLines");
 const addDltLine = document.querySelector("#addDltLine");
 const clearDltEditor = document.querySelector("#clearDltEditor");
 const importDlt = document.querySelector("#importDlt");
+const saveImportedDlt = document.querySelector("#saveImportedDlt");
 const sampleDlt = document.querySelector("#sampleDlt");
 const dltDraw = document.querySelector("#dltDraw");
 const settleDlt = document.querySelector("#settleDlt");
@@ -565,6 +566,24 @@ function syncDltTextFromEditor() {
 
 function expectedDltLineCount() {
   return Math.max(1, Math.min(20, Number(dltExpectedLines?.value || 5)));
+}
+
+function dltPlanFromEditor() {
+  const editorLines = syncDltTextFromEditor();
+  const lines = editorLines.length ? editorLines : parseDltLines(dltImport?.value || "");
+  const expected = expectedDltLineCount();
+  if (lines.length < expected) {
+    return {
+      ok: false,
+      lines,
+      message: `本票设置为 ${expected} 注，目前只有 ${lines.length} 注有效号码；请补齐红色/空白号码格后再保存。`
+    };
+  }
+  const unitCost = dltAppend?.checked ? 3 : 2;
+  return {
+    ok: true,
+    plan: { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost }
+  };
 }
 
 function dltFrequency() {
@@ -1353,19 +1372,27 @@ sampleDlt?.addEventListener("click", () => {
   syncDltEditorFromText();
 });
 importDlt?.addEventListener("click", () => {
-  const editorLines = syncDltTextFromEditor();
-  const lines = editorLines.length ? editorLines : parseDltLines(dltImport.value);
-  const expected = expectedDltLineCount();
-  if (lines.length < expected) {
+  const result = dltPlanFromEditor();
+  if (!result.ok) {
     if (dltOutput) {
-      dltOutput.innerHTML = `<div class="empty-state">本票设置为 ${expected} 注，目前只有 ${lines.length} 注有效号码；请补齐红色/空白号码格后再导入。</div>`;
+      dltOutput.innerHTML = `<div class="empty-state">${result.message}</div>`;
     }
     return;
   }
-  const unitCost = dltAppend?.checked ? 3 : 2;
-  const plan = { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
+  const plan = result.plan;
   window.__currentDltPlan = plan;
-  renderDltPlan(plan, lines.length ? `已导入 ${lines.length} 注票据号码，可保存入库` : "没有识别到有效大乐透号码，请检查红色号码格");
+  renderDltPlan(plan, `已导入 ${plan.lines.length} 注票据号码，可保存入库`);
+});
+saveImportedDlt?.addEventListener("click", () => {
+  const result = dltPlanFromEditor();
+  if (!result.ok) {
+    if (dltHistory) {
+      dltHistory.innerHTML = `<div class="empty-state">${result.message}</div>${dltHistory.innerHTML}`;
+    }
+    return;
+  }
+  window.__currentDltPlan = result.plan;
+  saveDltPlan(result.plan, `已保存大乐透票据：${result.plan.lines.length} 注 / ${yen(result.plan.amount)}`);
 });
 addDltLine?.addEventListener("click", () => {
   const lines = readDltEditorLines();
@@ -1388,7 +1415,7 @@ dltLineEditor?.addEventListener("input", (event) => {
 settleDlt?.addEventListener("click", () => {
   const [draw] = parseDltLines(dltDraw.value);
   if (!draw) {
-    dltOutput?.insertAdjacentHTML("afterbegin", `<div class="empty-state">开奖号格式不正确，请输入 5 个前区 + 2 个后区。</div>`);
+    dltHistory?.insertAdjacentHTML("afterbegin", `<div class="empty-state">这里是开奖复盘按钮。保存票据请点上面的“保存票据入库”；开奖后再输入 5 个前区 + 2 个后区并点此按钮。</div>`);
     return;
   }
   settleDltTickets(draw);

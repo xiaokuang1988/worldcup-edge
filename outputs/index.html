@@ -183,9 +183,10 @@
               <button class="button compact" id="clearDltEditor" type="button">清空号码格</button>
               <button class="button compact" id="importDlt" type="button">导入识别结果</button>
             </div>
+            <button class="button primary" id="saveImportedDlt" type="button">保存票据入库</button>
             <label class="field-label" for="dltDraw">录入开奖号</label>
             <input id="dltDraw" class="bankroll-input" placeholder="例如：01 02 03 04 05 + 06 07" />
-            <button class="button primary" id="settleDlt" type="button">保存开奖并复盘</button>
+            <button class="button ghost" id="settleDlt" type="button">保存开奖并复盘</button>
             <div class="lotto-history" id="dltHistory"></div>
           </section>
         </div>
@@ -255,6 +256,6 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-    <script src="./app.js?v=20260727-dlt-line-editor"></script>
+    <script src="./app.js?v=20260727-dlt-save-ticket"></script>
   </body>
 </html>
