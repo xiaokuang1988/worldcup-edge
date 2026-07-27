@@ -28,7 +28,8 @@ const dltAppend = document.querySelector("#dltAppend");
 const generateDlt = document.querySelector("#generateDlt");
 const saveDlt = document.querySelector("#saveDlt");
 const dltOutput = document.querySelector("#dltOutput");
-const dltPhoto = document.querySelector("#dltPhoto");
+const dltCameraPhoto = document.querySelector("#dltCameraPhoto");
+const dltGalleryPhoto = document.querySelector("#dltGalleryPhoto");
 const dltPhotoPreview = document.querySelector("#dltPhotoPreview");
 const ocrDltPhoto = document.querySelector("#ocrDltPhoto");
 const dltImport = document.querySelector("#dltImport");
@@ -56,6 +57,7 @@ const DLT_CUTOFF_HOUR_CN = 21;
 const DLT_DRAW_HOUR_CN = 21;
 const DLT_DRAW_MINUTE_CN = 25;
 let dltPhotoObjectUrl = "";
+let selectedDltPhotoFile = null;
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -322,6 +324,7 @@ function normalizeDltOcrText(text) {
 
 function renderDltPhotoPreview(file, message = "") {
   if (!dltPhotoPreview) return;
+  selectedDltPhotoFile = file || null;
   if (dltPhotoObjectUrl) URL.revokeObjectURL(dltPhotoObjectUrl);
   dltPhotoObjectUrl = file ? URL.createObjectURL(file) : "";
   dltPhotoPreview.innerHTML = file
@@ -330,7 +333,7 @@ function renderDltPhotoPreview(file, message = "") {
 }
 
 async function recognizeDltPhoto() {
-  const file = dltPhoto?.files?.[0];
+  const file = selectedDltPhotoFile || dltCameraPhoto?.files?.[0] || dltGalleryPhoto?.files?.[0];
   if (!file) {
     renderDltPhotoPreview(null, "请先选择或拍摄一张大乐透票据照片。");
     return;
@@ -1133,7 +1136,8 @@ generatePlan.addEventListener("click", buildPlan);
 savePlan.addEventListener("click", saveCurrentPlan);
 refreshData?.addEventListener("click", refreshAllData);
 refreshDataHero?.addEventListener("click", refreshAllData);
-dltPhoto?.addEventListener("change", () => renderDltPhotoPreview(dltPhoto.files?.[0] || null));
+dltCameraPhoto?.addEventListener("change", () => renderDltPhotoPreview(dltCameraPhoto.files?.[0] || null, "照片已载入，点击“识别照片号码”。"));
+dltGalleryPhoto?.addEventListener("change", () => renderDltPhotoPreview(dltGalleryPhoto.files?.[0] || null, "照片已载入，点击“识别照片号码”。"));
 ocrDltPhoto?.addEventListener("click", recognizeDltPhoto);
 riskMode.addEventListener("change", buildPlan);
 settleWin.addEventListener("click", () => settle("win"));

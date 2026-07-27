@@ -157,8 +157,13 @@
 
           <section class="lotto-panel">
             <h3>票据入库与开奖复盘</h3>
-            <label class="field-label" for="dltPhoto">导入票据照片</label>
-            <input id="dltPhoto" class="photo-input" type="file" accept="image/*" capture="environment" />
+            <span class="field-label">导入票据照片</span>
+            <div class="photo-actions">
+              <label class="button primary photo-button" for="dltCameraPhoto">拍照导入</label>
+              <label class="button ghost photo-button" for="dltGalleryPhoto">从相册选择</label>
+            </div>
+            <input id="dltCameraPhoto" class="photo-input" type="file" accept="image/*" capture="environment" />
+            <input id="dltGalleryPhoto" class="photo-input" type="file" accept="image/*" />
             <div class="photo-preview" id="dltPhotoPreview">
               <span>选择或拍摄大乐透票据照片后，系统会先预览，再识别号码。</span>
             </div>
@@ -243,6 +248,6 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-    <script src="./app.js?v=20260727-photo-refresh"></script>
+    <script src="./app.js?v=20260727-photo-upload-fix"></script>
   </body>
 </html>
