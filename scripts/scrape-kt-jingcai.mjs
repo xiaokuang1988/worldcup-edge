@@ -40,6 +40,26 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function waitForProcessExit(process, timeoutMs = 2500) {
+  if (process.exitCode !== null || process.signalCode) return;
+  await Promise.race([
+    new Promise((resolve) => process.once("exit", resolve)),
+    sleep(timeoutMs)
+  ]);
+}
+
+async function removeDirWithRetry(targetPath) {
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    try {
+      await rm(targetPath, { recursive: true, force: true, maxRetries: 3, retryDelay: 250 });
+      return;
+    } catch (error) {
+      if (attempt === 4) throw error;
+      await sleep(350);
+    }
+  }
+}
+
 class CdpClient {
   constructor(wsUrl) {
     this.wsUrl = wsUrl;
@@ -441,8 +461,9 @@ async function renderPageWithMoreMarkets() {
     return { html, moreMarkets, moreMarketsByIndex };
   } finally {
     cdp?.close();
-    chrome.kill("SIGTERM");
-    await rm(profileDir, { recursive: true, force: true });
+    if (!chrome.killed) chrome.kill("SIGTERM");
+    await waitForProcessExit(chrome);
+    await removeDirWithRetry(profileDir);
   }
 }
 
