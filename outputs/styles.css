@@ -794,6 +794,36 @@ output {
   line-height: 1.6;
 }
 
+.photo-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px;
+  border: 1px dashed rgba(49, 208, 127, 0.48);
+  border-radius: 8px;
+  background: #0a1613;
+  color: var(--text);
+}
+
+.photo-preview {
+  display: grid;
+  place-items: center;
+  min-height: 156px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  text-align: center;
+}
+
+.photo-preview img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 .field-label {
   color: var(--muted);
   font-size: 12px;

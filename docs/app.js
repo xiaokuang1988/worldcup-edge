@@ -28,6 +28,9 @@ const dltAppend = document.querySelector("#dltAppend");
 const generateDlt = document.querySelector("#generateDlt");
 const saveDlt = document.querySelector("#saveDlt");
 const dltOutput = document.querySelector("#dltOutput");
+const dltPhoto = document.querySelector("#dltPhoto");
+const dltPhotoPreview = document.querySelector("#dltPhotoPreview");
+const ocrDltPhoto = document.querySelector("#ocrDltPhoto");
 const dltImport = document.querySelector("#dltImport");
 const importDlt = document.querySelector("#importDlt");
 const sampleDlt = document.querySelector("#sampleDlt");
@@ -52,6 +55,7 @@ const DLT_DRAW_WEEKDAYS = [1, 3, 6];
 const DLT_CUTOFF_HOUR_CN = 21;
 const DLT_DRAW_HOUR_CN = 21;
 const DLT_DRAW_MINUTE_CN = 25;
+let dltPhotoObjectUrl = "";
 
 function yen(value) {
   return `${Math.round((Number(value) || 0) * 100) / 100}元`;
@@ -296,6 +300,79 @@ function parseDltLines(text) {
       };
     })
     .filter(Boolean);
+}
+
+function normalizeDltOcrText(text) {
+  const cleanedLines = String(text || "")
+    .split(/\n+/)
+    .map((line) => line.replace(/[^\d+\s]/g, " ").replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  const parsed = [];
+  const seen = new Set();
+  for (const line of cleanedLines) {
+    for (const ticketLine of parseDltLines(line)) {
+      const formatted = formatDltLine(ticketLine);
+      if (seen.has(formatted)) continue;
+      seen.add(formatted);
+      parsed.push(formatted);
+    }
+  }
+  return parsed.length ? parsed.join("\n") : cleanedLines.join("\n");
+}
+
+function renderDltPhotoPreview(file, message = "") {
+  if (!dltPhotoPreview) return;
+  if (dltPhotoObjectUrl) URL.revokeObjectURL(dltPhotoObjectUrl);
+  dltPhotoObjectUrl = file ? URL.createObjectURL(file) : "";
+  dltPhotoPreview.innerHTML = file
+    ? `<img src="${dltPhotoObjectUrl}" alt="大乐透票据照片预览" /><span>${message || "照片已载入，点击“识别照片号码”。"}</span>`
+    : `<span>${message || "选择或拍摄大乐透票据照片后，系统会先预览，再识别号码。"}</span>`;
+}
+
+async function recognizeDltPhoto() {
+  const file = dltPhoto?.files?.[0];
+  if (!file) {
+    renderDltPhotoPreview(null, "请先选择或拍摄一张大乐透票据照片。");
+    return;
+  }
+  if (!window.Tesseract?.recognize) {
+    renderDltPhotoPreview(file, "OCR 组件未加载。可以先手动输入号码，或刷新页面后再识别。");
+    return;
+  }
+  if (ocrDltPhoto) {
+    ocrDltPhoto.disabled = true;
+    ocrDltPhoto.dataset.originalText = ocrDltPhoto.textContent;
+    ocrDltPhoto.textContent = "识别中";
+  }
+  try {
+    const result = await window.Tesseract.recognize(file, "eng", {
+      logger: (progress) => {
+        if (ocrDltPhoto && progress.status) {
+          const pct = progress.progress ? ` ${Math.round(progress.progress * 100)}%` : "";
+          ocrDltPhoto.textContent = `识别中${pct}`;
+        }
+      }
+    });
+    const normalized = normalizeDltOcrText(result?.data?.text || "");
+    if (dltImport) dltImport.value = normalized;
+    const lines = parseDltLines(normalized);
+    renderDltPhotoPreview(file, lines.length ? `识别到 ${lines.length} 注，请核对后导入。` : "未识别到完整号码，请在下方手动校正。");
+    if (lines.length) {
+      const unitCost = dltAppend?.checked ? 3 : 2;
+      const plan = { lines, unitCost, append: Boolean(dltAppend?.checked), amount: lines.length * unitCost };
+      window.__currentDltPlan = plan;
+      renderDltPlan(plan, "照片号码已识别，请核对无误后保存入库");
+    }
+  } catch (error) {
+    console.error(error);
+    renderDltPhotoPreview(file, "照片识别失败。请换一张更清晰的照片，或手动输入号码。");
+  } finally {
+    if (ocrDltPhoto) {
+      ocrDltPhoto.disabled = false;
+      ocrDltPhoto.textContent = ocrDltPhoto.dataset.originalText || "识别照片号码";
+      delete ocrDltPhoto.dataset.originalText;
+    }
+  }
 }
 
 function formatDltLine(line) {
@@ -1015,7 +1092,7 @@ async function loadData() {
     state.data = await response.json();
     dataStatus.textContent = isDataFresh()
       ? `kt 快照：${safeDate(state.data.generatedAt)} 更新，${freshnessLabel()}`
-      : `kt 快照过期：${safeDate(state.data.generatedAt)} 更新，${freshnessLabel()}`;
+      : `kt 快照过期：${safeDate(state.data.generatedAt)} 更新，${freshnessLabel()}，需后台重新抓取`;
   } catch (error) {
     dataStatus.textContent = "kt 当前页读取失败";
     console.error(error);
@@ -1033,20 +1110,20 @@ async function refreshAllData() {
     button.dataset.originalText = button.textContent;
     button.textContent = "刷新中";
   });
-  if (dataStatus) dataStatus.textContent = "正在刷新数据";
+  if (dataStatus) dataStatus.textContent = "正在读取已发布快照";
   try {
     await loadData();
     renderDltReminder();
     renderDltHistory();
     if (planOutput) {
       planOutput.querySelector("[data-refresh-banner]")?.remove();
-      planOutput.insertAdjacentHTML("afterbegin", `<div class="save-banner">已刷新本机数据视图。若要抓取 kt 最新页面，需要后台脚本重新发布快照。</div>`);
+      planOutput.insertAdjacentHTML("afterbegin", `<div class="save-banner">已重新读取已发布快照。手机端按钮不能直接抓取 kt 实时页；足球实时更新需要后台任务先抓取并发布 live-matches.json。</div>`);
       planOutput.firstElementChild?.setAttribute("data-refresh-banner", "true");
     }
   } finally {
     buttons.forEach((button) => {
       button.disabled = false;
-      button.textContent = button.dataset.originalText || "刷新数据";
+      button.textContent = button.dataset.originalText || "刷新快照";
       delete button.dataset.originalText;
     });
   }
@@ -1056,6 +1133,8 @@ generatePlan.addEventListener("click", buildPlan);
 savePlan.addEventListener("click", saveCurrentPlan);
 refreshData?.addEventListener("click", refreshAllData);
 refreshDataHero?.addEventListener("click", refreshAllData);
+dltPhoto?.addEventListener("change", () => renderDltPhotoPreview(dltPhoto.files?.[0] || null));
+ocrDltPhoto?.addEventListener("click", recognizeDltPhoto);
 riskMode.addEventListener("change", buildPlan);
 settleWin.addEventListener("click", () => settle("win"));
 settleLose.addEventListener("click", () => settle("lose"));

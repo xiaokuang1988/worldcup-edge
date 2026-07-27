@@ -1,5 +1,5 @@
 import { execFile, spawn } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { access, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -9,13 +9,32 @@ const execFileAsync = promisify(execFile);
 const KT_JINGCAI_URL =
   "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=";
 
-const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const domPath = path.resolve("data/kt-jingcai-dom.html");
 const snapshotPath = path.resolve("data/kt-jingcai-current.json");
 const outputTargets = [
   path.resolve("outputs/data/live-matches.json"),
   path.resolve("docs/data/live-matches.json")
 ];
+
+async function findChromePath() {
+  const candidates = [
+    process.env.CHROME_PATH,
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium"
+  ].filter(Boolean);
+  for (const candidate of candidates) {
+    try {
+      await access(candidate);
+      return candidate;
+    } catch {
+      // Try the next common Chrome path.
+    }
+  }
+  throw new Error("Chrome executable was not found. Set CHROME_PATH to the browser binary.");
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -306,6 +325,7 @@ async function dumpDom() {
 async function renderPageWithMoreMarkets() {
   const port = 29000 + Math.floor(Math.random() * 1000);
   const profileDir = await mkdtemp(path.join(os.tmpdir(), "kt-jingcai-chrome-"));
+  const chromePath = await findChromePath();
   const chrome = spawn(
     chromePath,
     [

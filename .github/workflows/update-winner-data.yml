@@ -2,6 +2,8 @@ name: Update kt jingcai snapshot data
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "*/30 3-15 * * *"
 
 permissions:
   contents: write
@@ -15,7 +17,7 @@ jobs:
         with:
           node-version: "22"
       - name: Build kt jingcai snapshot data
-        run: node scripts/scrape-kt-jingcai.mjs --from-file
+        run: node scripts/scrape-kt-jingcai.mjs
       - name: Commit changed data
         run: |
           git config user.name "github-actions[bot]"

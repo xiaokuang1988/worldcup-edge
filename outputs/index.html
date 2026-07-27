@@ -47,7 +47,7 @@
           <div class="hero-actions">
             <a class="button primary" href="#plan">生成买入方案</a>
             <a class="button ghost" href="#dlt">大乐透热透</a>
-            <button class="button ghost" id="refreshDataHero" type="button">刷新数据</button>
+            <button class="button ghost" id="refreshDataHero" type="button">刷新快照</button>
             <a class="button ghost" href="#ledger">录入开奖结果</a>
           </div>
         </div>
@@ -94,7 +94,7 @@
                 <option value="high">激进</option>
               </select>
             </label>
-            <button class="button compact" id="refreshData" type="button">刷新数据</button>
+            <button class="button compact" id="refreshData" type="button">刷新快照</button>
             <button class="button primary" id="generatePlan" type="button">生成买入方案</button>
             <button class="button ghost" id="savePlan" type="button">确认入库</button>
           </div>
@@ -157,11 +157,19 @@
 
           <section class="lotto-panel">
             <h3>票据入库与开奖复盘</h3>
-            <label class="field-label" for="dltImport">粘贴票据号码</label>
-            <textarea id="dltImport" class="ticket-input" rows="6" placeholder="例如：03 11 19 21 25 + 09 12"></textarea>
+            <label class="field-label" for="dltPhoto">导入票据照片</label>
+            <input id="dltPhoto" class="photo-input" type="file" accept="image/*" capture="environment" />
+            <div class="photo-preview" id="dltPhotoPreview">
+              <span>选择或拍摄大乐透票据照片后，系统会先预览，再识别号码。</span>
+            </div>
             <div class="action-row">
-              <button class="button compact" id="importDlt" type="button">导入票据</button>
+              <button class="button compact" id="ocrDltPhoto" type="button">识别照片号码</button>
               <button class="button compact" id="sampleDlt" type="button">填入图中示例</button>
+            </div>
+            <label class="field-label" for="dltImport">识别结果 / 手动校正</label>
+            <textarea id="dltImport" class="ticket-input" rows="5" placeholder="识别后会自动填入；也可以手动修正为：03 11 19 21 25 + 09 12"></textarea>
+            <div class="action-row">
+              <button class="button compact" id="importDlt" type="button">导入识别结果</button>
             </div>
             <label class="field-label" for="dltDraw">录入开奖号</label>
             <input id="dltDraw" class="bankroll-input" placeholder="例如：01 02 03 04 05 + 06 07" />
@@ -234,6 +242,7 @@
       <span>Fact-first release: 2026-07-27 JST</span>
     </footer>
 
-    <script src="./app.js?v=20260727-refresh-button"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="./app.js?v=20260727-photo-refresh"></script>
   </body>
 </html>
