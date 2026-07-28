@@ -52,6 +52,8 @@ const DLT_KEY = "ticai-dlt-ledger-v1";
 const DEFAULT_FRESHNESS_LIMIT_MINUTES = 90;
 const MIN_PLAN_RETURN_MULTIPLE = 2;
 const MIN_OPTION_SCORE = 58;
+const FOOTBALL_PLAN_LIMIT = 4;
+const FOOTBALL_MAX_PER_MATCH = 1;
 const AUTO_REFRESH_INTERVAL_MS = 2 * 60 * 1000;
 let autoRefreshInFlight = false;
 const DLT_SAMPLE_TICKET = `03 11 19 21 25 + 09 12
@@ -868,23 +870,6 @@ function marketOptionsFor(match) {
     );
   }
 
-  const handicapPick = bestEntry({ 让胜: handicap.home, 让平: handicap.draw, 让负: handicap.away }, (item) => item.odds >= 1.55 && item.odds <= 4.8);
-  if (handicapPick) {
-    options.push(
-      makeOption(match, {
-        category: "handicap",
-        market: `让球胜平负 ${handicap.line || ""}`.trim(),
-        pick: handicapPick.pick,
-        odds: handicapPick.odds,
-        hda,
-        handicap: handicap.line || "0",
-        score: Math.max(0, score - 4),
-        riskWeight: 0.75,
-        reason: `让球盘事实：让胜 ${handicap.home || "-"} / 让平 ${handicap.draw || "-"} / 让负 ${handicap.away || "-"}。`
-      })
-    );
-  }
-
   const totalPick = bestEntry(marketOdds.totalGoals, (item) => item.odds >= 2.4 && item.odds <= 7.5);
   if (totalPick) {
     options.push(
@@ -972,8 +957,8 @@ function allocateWeightedBudget(budget, candidates) {
   return stakes;
 }
 
-function selectPortfolio(options, wanted, maxPerMatch = 3) {
-  const categoryOrder = ["hda", "handicap", "totalGoals", "score", "halfFull"];
+function selectPortfolio(options, wanted, maxPerMatch = FOOTBALL_MAX_PER_MATCH) {
+  const categoryOrder = ["hda", "totalGoals", "score", "halfFull"];
   const selected = [];
   const used = new Set();
   const matchCounts = {};
@@ -1010,7 +995,7 @@ function planReturnMultiple(items) {
 }
 
 function selectTwoXPortfolio(candidates, budget, wanted, matchCount) {
-  const maxPerMatch = Math.max(2, Math.ceil(wanted / matchCount));
+  const maxPerMatch = FOOTBALL_MAX_PER_MATCH;
   for (let count = wanted; count >= 1; count -= 1) {
     const selected = selectPortfolio(candidates, count, maxPerMatch);
     if (!selected.length) continue;
@@ -1050,9 +1035,9 @@ function buildPlan() {
   }
 
   const mode = riskMode.value;
-  const wanted = mode === "low" ? 4 : mode === "high" ? 8 : 6;
+  const wanted = Math.min(FOOTBALL_PLAN_LIMIT, mode === "low" ? 3 : FOOTBALL_PLAN_LIMIT);
   const candidates = applyLearning((state.data.upcoming || []).flatMap(marketOptionsFor))
-    .filter((item) => item.odds >= 1.75 && item.score >= MIN_OPTION_SCORE)
+    .filter((item) => item.category !== "handicap" && item.odds >= 1.75 && item.score >= MIN_OPTION_SCORE)
     .sort((a, b) => b.score - a.score);
   const matchCount = new Set((state.data.upcoming || []).map((match) => match.id)).size || 1;
   const { selected, stakes } = selectTwoXPortfolio(candidates, budget, wanted, matchCount);
@@ -1091,7 +1076,7 @@ function renderPlan() {
     <div class="plan-summary">
       <strong>预算 ${yen(total)}</strong>
       <span>共 ${state.currentPlan.length} 单，理论最高返还 ${yen(maxReturn)}，返还倍数 ${multiple.toFixed(2)}x</span>
-      <span>规则：只生成理论返还至少 2.00x 且评分达标的买入方案；达不到就 PASS。</span>
+      <span>规则：最多 ${FOOTBALL_PLAN_LIMIT} 单，每场最多 1 单；不推荐让球胜平负单关，达不到 2.00x 就 PASS。</span>
     </div>
     ${state.currentPlan
       .map(
