@@ -3,7 +3,7 @@ name: Update kt jingcai snapshot data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 3-15 * * *"
+    - cron: "*/10 3-15 * * *"
 
 permissions:
   contents: write

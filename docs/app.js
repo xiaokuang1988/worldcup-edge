@@ -52,6 +52,8 @@ const DLT_KEY = "ticai-dlt-ledger-v1";
 const DEFAULT_FRESHNESS_LIMIT_MINUTES = 90;
 const MIN_PLAN_RETURN_MULTIPLE = 2;
 const MIN_OPTION_SCORE = 58;
+const AUTO_REFRESH_INTERVAL_MS = 2 * 60 * 1000;
+let autoRefreshInFlight = false;
 const DLT_SAMPLE_TICKET = `03 11 19 21 25 + 09 12
 06 08 27 32 35 + 02 08
 06 21 23 28 31 + 01 07
@@ -1336,6 +1338,24 @@ async function refreshAllData() {
   }
 }
 
+async function autoRefreshPublishedSnapshot(reason = "auto") {
+  if (autoRefreshInFlight) return;
+  autoRefreshInFlight = true;
+  const previousGeneratedAt = state.data.generatedAt;
+  try {
+    await loadData();
+    renderDltReminder();
+    renderDltHistory();
+    if (dataStatus && state.data.generatedAt && state.data.generatedAt !== previousGeneratedAt) {
+      dataStatus.textContent = `${dataStatus.textContent}｜自动更新`;
+    }
+  } catch (error) {
+    console.error(`auto refresh failed: ${reason}`, error);
+  } finally {
+    autoRefreshInFlight = false;
+  }
+}
+
 generatePlan.addEventListener("click", buildPlan);
 savePlan.addEventListener("click", saveCurrentPlan);
 refreshData?.addEventListener("click", refreshAllData);
@@ -1426,3 +1446,8 @@ renderDltLineEditor([], expectedDltLineCount());
 renderDltHistory();
 renderDltReminder();
 setInterval(renderDltReminder, 60000);
+setInterval(() => autoRefreshPublishedSnapshot("timer"), AUTO_REFRESH_INTERVAL_MS);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") autoRefreshPublishedSnapshot("visible");
+});
+window.addEventListener("focus", () => autoRefreshPublishedSnapshot("focus"));
