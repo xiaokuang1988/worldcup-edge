@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T05:32:55.441Z",
+  "generatedAt": "2026-07-30T07:56:54.362Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -103,22 +103,22 @@
             "客胜": 24.6
           },
           "scoreOdds": {
-            "1:0": 8.75,
-            "2:0": 10,
+            "1:0": 8.5,
+            "2:0": 9.5,
             "2:1": 6.5,
             "3:0": 17,
-            "3:1": 12,
-            "3:2": 17,
-            "4:0": 35,
-            "4:1": 25,
-            "4:2": 35,
+            "3:1": 12.5,
+            "3:2": 18,
+            "4:0": 38,
+            "4:1": 28,
+            "4:2": 38,
             "5:0": 90,
             "5:1": 65,
             "5:2": 90,
             "胜其他": 33,
-            "0:0": 19,
-            "1:1": 8,
-            "2:2": 10.5,
+            "0:0": 18,
+            "1:1": 7.5,
+            "2:2": 11,
             "3:3": 35,
             "平其他": 250,
             "0:1": 13,
@@ -136,14 +136,14 @@
             "负其他": 80
           },
           "totalGoals": {
-            "0球": 19,
-            "1球": 6.2,
-            "2球": 3.75,
-            "3球": 3.45,
+            "0球": 18,
+            "1球": 6,
+            "2球": 3.65,
+            "3球": 3.4,
             "4球": 4.6,
-            "5球": 7.3,
-            "6球": 13,
-            "7+": 20
+            "5球": 7.75,
+            "6球": 14,
+            "7+": 22
           },
           "halfFull": {
             "胜/胜": 2.65,
@@ -208,7 +208,7 @@
           "official": 76,
           "attack": 78,
           "defense": 70,
-          "volatility": 57
+          "volatility": 56
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -221,8 +221,8 @@
           "kickoff": "欧罗巴 22:00",
           "hda": {
             "home": 1.8,
-            "draw": 3.48,
-            "away": 3.5
+            "draw": 3.58,
+            "away": 3.4
           },
           "handicap": {
             "line": "-1",
@@ -232,8 +232,8 @@
           },
           "impliedProbabilities": {
             "主胜": 49.2,
-            "平": 25.5,
-            "客胜": 25.3
+            "平": 24.7,
+            "客胜": 26.1
           },
           "scoreOdds": {
             "1:0": 6.75,
@@ -270,9 +270,9 @@
           },
           "totalGoals": {
             "0球": 12,
-            "1球": 4.2,
-            "2球": 3.25,
-            "3球": 3.6,
+            "1球": 4.5,
+            "2球": 3.15,
+            "3球": 3.5,
             "4球": 5.6,
             "5球": 10.5,
             "6球": 23,
@@ -341,7 +341,7 @@
           "official": 76,
           "attack": 77,
           "defense": 70,
-          "volatility": 51
+          "volatility": 52
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -353,20 +353,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "欧罗巴 22:00",
           "hda": {
-            "home": 2.02,
+            "home": 1.98,
             "draw": 3.45,
-            "away": 2.9
+            "away": 3
           },
           "handicap": {
             "line": "-1",
-            "home": 4.15,
-            "draw": 3.8,
-            "away": 1.6
+            "home": 4.08,
+            "draw": 3.7,
+            "away": 1.63
           },
           "impliedProbabilities": {
-            "主胜": 43.8,
+            "主胜": 44.8,
             "平": 25.7,
-            "客胜": 30.5
+            "客胜": 29.5
           },
           "scoreOdds": {
             "1:0": 8.5,
@@ -404,23 +404,23 @@
           "totalGoals": {
             "0球": 15,
             "1球": 5.6,
-            "2球": 3.7,
-            "3球": 3.35,
+            "2球": 3.6,
+            "3球": 3.3,
             "4球": 4.7,
-            "5球": 8,
-            "6球": 16,
-            "7+": 25
+            "5球": 8.5,
+            "6球": 17,
+            "7+": 26
           },
           "halfFull": {
-            "胜/胜": 3.25,
+            "胜/胜": 3.2,
             "胜/平": 13,
             "胜/负": 28,
-            "平/胜": 5.2,
+            "平/胜": 5,
             "平/平": 6.25,
-            "平/负": 7,
+            "平/负": 7.25,
             "负/胜": 23,
             "负/平": 13,
-            "负/负": 4.6
+            "负/负": 4.75
           },
           "moreMarketsStatus": "available"
         }
@@ -539,10 +539,10 @@
             "1球": 5.9,
             "2球": 4,
             "3球": 3.35,
-            "4球": 4.55,
-            "5球": 7.25,
-            "6球": 14,
-            "7+": 21
+            "4球": 4.3,
+            "5球": 7.5,
+            "6球": 15,
+            "7+": 22
           },
           "halfFull": {
             "胜/胜": 4.5,
@@ -550,10 +550,10 @@
             "胜/负": 20,
             "平/胜": 7.25,
             "平/平": 6.7,
-            "平/负": 5.2,
+            "平/负": 4.95,
             "负/胜": 25,
             "负/平": 13,
-            "负/负": 3.25
+            "负/负": 3.35
           },
           "moreMarketsStatus": "available"
         }
@@ -602,12 +602,12 @@
         "resultLean": "主胜",
         "totalLabel": "总进球 1-3 球倾向",
         "decision": "WATCH",
-        "confidence": 73,
+        "confidence": 72,
         "metrics": {
           "official": 76,
           "attack": 78,
           "defense": 69,
-          "volatility": 63
+          "volatility": 62
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -619,20 +619,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "巴甲 22:00",
           "hda": {
-            "home": 1.72,
+            "home": 1.74,
             "draw": 3.15,
-            "away": 4.35
+            "away": 4.22
           },
           "handicap": {
             "line": "-1",
-            "home": 3.62,
+            "home": 3.65,
             "draw": 3.15,
-            "away": 1.87
+            "away": 1.86
           },
           "impliedProbabilities": {
-            "主胜": 51.5,
+            "主胜": 50.9,
             "平": 28.1,
-            "客胜": 20.4
+            "客胜": 21
           },
           "scoreOdds": {
             "1:0": 8.5,
@@ -811,14 +811,14 @@
             "7+": 60
           },
           "halfFull": {
-            "胜/胜": 2.65,
-            "胜/平": 17,
-            "胜/负": 45,
+            "胜/胜": 2.75,
+            "胜/平": 16,
+            "胜/负": 42,
             "平/胜": 4.1,
             "平/平": 4.55,
-            "平/负": 9.25,
+            "平/负": 8.75,
             "负/胜": 28,
-            "负/平": 17,
+            "负/平": 16,
             "负/负": 7.8
           },
           "moreMarketsStatus": "available"
