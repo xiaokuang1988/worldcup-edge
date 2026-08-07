@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-07T04:50:41.396Z",
+  "scrapedAt": "2026-08-07T06:02:30.840Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -11,15 +11,15 @@
       "awayZh": "鹿岛鹿角",
       "awayRank": "7",
       "hda": {
-        "home": 3.9,
+        "home": 3.7,
         "draw": 3.32,
-        "away": 1.75
+        "away": 1.8
       },
       "handicap": {
         "line": "+1",
-        "home": 1.83,
-        "draw": 3.35,
-        "away": 3.52
+        "home": 1.78,
+        "draw": 3.4,
+        "away": 3.65
       },
       "moreMarkets": {
         "status": "available",
@@ -68,15 +68,15 @@
           "7+": 34
         },
         "halfFull": {
-          "胜/胜": 7.25,
+          "胜/胜": 7,
           "胜/平": 16,
           "胜/负": 24,
-          "平/胜": 9.25,
-          "平/平": 5.6,
+          "平/胜": 9,
+          "平/平": 5.45,
           "平/负": 4.4,
           "负/胜": 35,
           "负/平": 16,
-          "负/负": 2.8
+          "负/负": 2.9
         }
       }
     },
@@ -408,8 +408,8 @@
       "handicap": {
         "line": "+1",
         "home": 2.16,
-        "draw": 3.6,
-        "away": 2.58
+        "draw": 3.5,
+        "away": 2.63
       },
       "moreMarkets": {
         "status": "available",
