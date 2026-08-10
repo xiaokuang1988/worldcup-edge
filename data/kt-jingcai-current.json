@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-09T16:14:49.911Z",
+  "scrapedAt": "2026-08-10T04:24:02.173Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -9,7 +9,7 @@
       "homeRank": "1",
       "homeZh": "天狼星",
       "awayZh": "布鲁马波",
-      "awayRank": "12",
+      "awayRank": "13",
       "hda": {
         "home": 1.25,
         "draw": 5.25,
@@ -23,7 +23,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[1] 瑞典超 天狼星  VS  布鲁马波 瑞典超 [12]",
+        "title": "[1] 瑞典超 天狼星  VS  布鲁马波 瑞典超 [13]",
         "scoreOdds": {
           "1:0": 10.5,
           "2:0": 8,
@@ -68,15 +68,15 @@
           "7+": 10.5
         },
         "halfFull": {
-          "胜/胜": 1.74,
+          "胜/胜": 1.67,
           "胜/平": 20,
           "胜/负": 60,
-          "平/胜": 4.4,
-          "平/平": 9.5,
-          "平/负": 18,
+          "平/胜": 4.5,
+          "平/平": 10.5,
+          "平/负": 20,
           "负/胜": 21,
           "负/平": 20,
-          "负/负": 13
+          "负/负": 13.5
         }
       }
     },
@@ -84,7 +84,7 @@
       "matchNo": "1002",
       "league": "瑞超",
       "time": "22:00",
-      "homeRank": "8",
+      "homeRank": "9",
       "homeZh": "韦斯特罗",
       "awayZh": "佐加顿斯",
       "awayRank": "3",
@@ -101,7 +101,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[8] 瑞典超 韦斯特罗  VS  佐加顿斯 瑞典超 [3]",
+        "title": "[9] 瑞典超 韦斯特罗  VS  佐加顿斯 瑞典超 [3]",
         "scoreOdds": {
           "1:0": 16,
           "2:0": 23,
@@ -165,7 +165,7 @@
       "homeRank": "14",
       "homeZh": "圣克拉拉",
       "awayZh": "葡国民",
-      "awayRank": "12",
+      "awayRank": "13",
       "hda": {
         "home": 1.73,
         "draw": 3.15,
@@ -179,7 +179,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[14] 葡超 圣克拉拉  VS  葡国民 葡超 [12]",
+        "title": "[14] 葡超 圣克拉拉  VS  葡国民 葡超 [13]",
         "scoreOdds": {
           "1:0": 5.75,
           "2:0": 7.5,
@@ -198,7 +198,7 @@
           "1:1": 6.3,
           "2:2": 18,
           "3:3": 100,
-          "平其他": 700,
+          "平其他": 500,
           "0:1": 10,
           "0:2": 21,
           "1:2": 13,
@@ -211,7 +211,7 @@
           "0:5": 800,
           "1:5": 700,
           "2:5": 700,
-          "负其他": 300
+          "负其他": 250
         },
         "totalGoals": {
           "0球": 8.5,
