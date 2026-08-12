@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-12T04:42:31.603Z",
+  "scrapedAt": "2026-08-12T06:05:30.415Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -12,8 +12,8 @@
       "awayRank": "4",
       "hda": {
         "home": 1.54,
-        "draw": 3.71,
-        "away": 4.75
+        "draw": 3.65,
+        "away": 4.85
       },
       "handicap": {
         "line": "-1",

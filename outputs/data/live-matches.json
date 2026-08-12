@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T04:42:31.603Z",
+  "generatedAt": "2026-08-12T06:05:30.415Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -75,7 +75,7 @@
           "official": 76,
           "attack": 79,
           "defense": 69,
-          "volatility": 67
+          "volatility": 68
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -88,8 +88,8 @@
           "kickoff": "欧超杯 22:00",
           "hda": {
             "home": 1.54,
-            "draw": 3.71,
-            "away": 4.75
+            "draw": 3.65,
+            "away": 4.85
           },
           "handicap": {
             "line": "-1",
@@ -99,8 +99,8 @@
           },
           "impliedProbabilities": {
             "主胜": 57.5,
-            "平": 23.9,
-            "客胜": 18.6
+            "平": 24.3,
+            "客胜": 18.3
           },
           "scoreOdds": {
             "1:0": 8,
