@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-15T05:37:06.141Z",
+  "scrapedAt": "2026-08-15T05:57:45.443Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -11,15 +11,15 @@
       "awayZh": "名古屋鲸",
       "awayRank": "18",
       "hda": {
-        "home": 1.65,
-        "draw": 3.47,
-        "away": 4.25
+        "home": 1.74,
+        "draw": 3.38,
+        "away": 3.86
       },
       "handicap": {
         "line": "-1",
-        "home": 3.15,
-        "draw": 3.35,
-        "away": 1.95
+        "home": 3.4,
+        "draw": 3.4,
+        "away": 1.85
       },
       "moreMarkets": {
         "status": "available",
@@ -401,15 +401,15 @@
       "awayZh": "浦项制铁",
       "awayRank": "8",
       "hda": {
-        "home": 3.63,
-        "draw": 3,
-        "away": 1.92
+        "home": 3.58,
+        "draw": 2.94,
+        "away": 1.96
       },
       "handicap": {
         "line": "+1",
-        "home": 1.69,
-        "draw": 3.37,
-        "away": 4.15
+        "home": 1.66,
+        "draw": 3.4,
+        "away": 4.3
       },
       "moreMarkets": {
         "status": "available",
@@ -459,14 +459,14 @@
         },
         "halfFull": {
           "胜/胜": 6.75,
-          "胜/平": 16,
-          "胜/负": 26,
-          "平/胜": 7.75,
-          "平/平": 4.4,
+          "胜/平": 15,
+          "胜/负": 28,
+          "平/胜": 7.6,
+          "平/平": 4.3,
           "平/负": 4.7,
           "负/胜": 35,
-          "负/平": 16,
-          "负/负": 3.4
+          "负/平": 15,
+          "负/负": 3.55
         }
       }
     },
@@ -791,15 +791,15 @@
       "awayZh": "利勒斯特",
       "awayRank": "4",
       "hda": {
-        "home": 2.6,
+        "home": 2.67,
         "draw": 3.45,
-        "away": 2.2
+        "away": 2.15
       },
       "handicap": {
         "line": "+1",
-        "home": 1.51,
-        "draw": 4,
-        "away": 4.6
+        "home": 1.54,
+        "draw": 3.95,
+        "away": 4.4
       },
       "moreMarkets": {
         "status": "available",
@@ -1025,15 +1025,15 @@
       "awayZh": "塞伊奈",
       "awayRank": "10",
       "hda": {
-        "home": 5.35,
-        "draw": 4.5,
-        "away": 1.39
+        "home": 5.6,
+        "draw": 4.65,
+        "away": 1.36
       },
       "handicap": {
         "line": "+1",
-        "home": 2.52,
+        "home": 2.62,
         "draw": 3.75,
-        "away": 2.15
+        "away": 2.08
       },
       "moreMarkets": {
         "status": "available",
@@ -1082,15 +1082,15 @@
           "7+": 12.5
         },
         "halfFull": {
-          "胜/胜": 9.5,
+          "胜/胜": 10,
           "胜/平": 18,
           "胜/负": 19,
-          "平/胜": 12,
-          "平/平": 8.25,
+          "平/胜": 13,
+          "平/平": 8.3,
           "平/负": 4.9,
           "负/胜": 38,
           "负/平": 18,
-          "负/负": 2
+          "负/负": 1.95
         }
       }
     },
@@ -1656,8 +1656,8 @@
       "handicap": {
         "line": "-1",
         "home": 2.68,
-        "draw": 3.7,
-        "away": 2.06
+        "draw": 3.6,
+        "away": 2.09
       },
       "moreMarkets": {
         "status": "available",
