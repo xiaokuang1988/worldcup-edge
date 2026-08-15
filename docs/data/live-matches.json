@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T07:59:31.128Z",
+  "generatedAt": "2026-08-15T08:27:04.658Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -208,7 +208,7 @@
           "official": 76,
           "attack": 77,
           "defense": 70,
-          "volatility": 46
+          "volatility": 48
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -220,20 +220,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "日乙 17:00",
           "hda": {
-            "home": 2.66,
-            "draw": 2.9,
-            "away": 2.45
+            "home": 2.77,
+            "draw": 2.85,
+            "away": 2.4
           },
           "handicap": {
             "line": "+1",
-            "home": 1.4,
-            "draw": 4,
-            "away": 6.05
+            "home": 1.42,
+            "draw": 3.9,
+            "away": 5.95
           },
           "impliedProbabilities": {
-            "主胜": 33.3,
-            "平": 30.5,
-            "客胜": 36.2
+            "主胜": 32,
+            "平": 31.1,
+            "客胜": 36.9
           },
           "scoreOdds": {
             "1:0": 8,
@@ -385,9 +385,9 @@
             "0:0": 12.5,
             "1:1": 6.75,
             "2:2": 13,
-            "3:3": 55,
-            "平其他": 250,
-            "0:1": 7.4,
+            "3:3": 50,
+            "平其他": 200,
+            "0:1": 7.5,
             "0:2": 9.5,
             "1:2": 7,
             "0:3": 17,
@@ -1181,10 +1181,10 @@
             "5:2": 300,
             "胜其他": 90,
             "0:0": 15,
-            "1:1": 6.75,
+            "1:1": 6.9,
             "2:2": 12,
-            "3:3": 50,
-            "平其他": 300,
+            "3:3": 45,
+            "平其他": 200,
             "0:1": 8.5,
             "0:2": 10.5,
             "1:2": 7,
@@ -1405,7 +1405,7 @@
           "official": 76,
           "attack": 77,
           "defense": 70,
-          "volatility": 49
+          "volatility": 50
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -1417,20 +1417,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "挪超 22:00",
           "hda": {
-            "home": 2.67,
+            "home": 2.75,
             "draw": 3.45,
-            "away": 2.15
+            "away": 2.1
           },
           "handicap": {
             "line": "+1",
-            "home": 1.54,
-            "draw": 3.95,
-            "away": 4.4
+            "home": 1.57,
+            "draw": 3.85,
+            "away": 4.3
           },
           "impliedProbabilities": {
-            "主胜": 33.2,
+            "主胜": 32.2,
             "平": 25.7,
-            "客胜": 41.2
+            "客胜": 42.2
           },
           "scoreOdds": {
             "1:0": 11,
@@ -1476,15 +1476,15 @@
             "7+": 21
           },
           "halfFull": {
-            "胜/胜": 4.5,
+            "胜/胜": 4.8,
             "胜/平": 14,
             "胜/负": 22,
-            "平/胜": 7,
+            "平/胜": 7.5,
             "平/平": 6,
-            "平/负": 6,
+            "平/负": 5.75,
             "负/胜": 25,
             "负/平": 14,
-            "负/负": 3.6
+            "负/负": 3.4
           },
           "moreMarketsStatus": "available"
         }
@@ -1671,7 +1671,7 @@
           "official": 76,
           "attack": 78,
           "defense": 70,
-          "volatility": 56
+          "volatility": 57
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -1684,8 +1684,8 @@
           "kickoff": "葡超 22:30",
           "hda": {
             "home": 1.91,
-            "draw": 3.1,
-            "away": 3.55
+            "draw": 3.05,
+            "away": 3.6
           },
           "handicap": {
             "line": "-1",
@@ -1695,8 +1695,8 @@
           },
           "impliedProbabilities": {
             "主胜": 46.4,
-            "平": 28.6,
-            "客胜": 25
+            "平": 29,
+            "客胜": 24.6
           },
           "scoreOdds": {
             "1:0": 6.4,
@@ -2011,12 +2011,12 @@
             "胜/胜": 3.05,
             "胜/平": 15,
             "胜/负": 28,
-            "平/胜": 5.2,
-            "平/平": 6.25,
-            "平/负": 8,
+            "平/胜": 4.8,
+            "平/平": 5.9,
+            "平/负": 8.75,
             "负/胜": 21,
             "负/平": 15,
-            "负/负": 5.5
+            "负/负": 6
           },
           "moreMarketsStatus": "available"
         }
@@ -2382,14 +2382,14 @@
             "2:2": 16,
             "3:3": 100,
             "平其他": 650,
-            "0:1": 6.7,
+            "0:1": 6,
             "0:2": 10,
             "1:2": 8,
             "0:3": 21,
-            "1:3": 19,
-            "2:3": 30,
-            "0:4": 60,
-            "1:4": 60,
+            "1:3": 22,
+            "2:3": 35,
+            "0:4": 70,
+            "1:4": 70,
             "2:4": 120,
             "0:5": 250,
             "1:5": 250,
@@ -2398,13 +2398,13 @@
           },
           "totalGoals": {
             "0球": 8.5,
-            "1球": 3.6,
-            "2球": 3.35,
-            "3球": 3.75,
-            "4球": 7.5,
-            "5球": 15.5,
-            "6球": 34,
-            "7+": 60
+            "1球": 3.45,
+            "2球": 3.4,
+            "3球": 3.65,
+            "4球": 7.6,
+            "5球": 17,
+            "6球": 40,
+            "7+": 72
           },
           "halfFull": {
             "胜/胜": 5.3,
@@ -3063,10 +3063,10 @@
           },
           "totalGoals": {
             "0球": 20,
-            "1球": 6.6,
-            "2球": 4.05,
-            "3球": 3.75,
-            "4球": 4.7,
+            "1球": 7.1,
+            "2球": 4.15,
+            "3球": 3.65,
+            "4球": 4.5,
             "5球": 7.25,
             "6球": 12.5,
             "7+": 17
