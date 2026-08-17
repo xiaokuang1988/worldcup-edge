@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T10:14:28.521Z",
+  "generatedAt": "2026-08-17T10:49:34.144Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -678,12 +678,12 @@
             "7+": 37
           },
           "halfFull": {
-            "胜/胜": 2.15,
+            "胜/胜": 2.2,
             "胜/平": 19,
             "胜/负": 50,
-            "平/胜": 4.4,
-            "平/平": 6.25,
-            "平/负": 12,
+            "平/胜": 4.2,
+            "平/平": 6,
+            "平/负": 12.5,
             "负/胜": 25,
             "负/平": 19,
             "负/负": 10
