@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-16T15:53:41.548Z",
+  "scrapedAt": "2026-08-17T03:42:31.659Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -38,11 +38,11 @@
           "5:1": 90,
           "5:2": 150,
           "胜其他": 47,
-          "0:0": 17,
+          "0:0": 18,
           "1:1": 7,
           "2:2": 12,
-          "3:3": 38,
-          "平其他": 175,
+          "3:3": 35,
+          "平其他": 150,
           "0:1": 12,
           "0:2": 16,
           "1:2": 9,
@@ -58,14 +58,14 @@
           "负其他": 55
         },
         "totalGoals": {
-          "0球": 17,
-          "1球": 6.3,
+          "0球": 18,
+          "1球": 6.5,
           "2球": 3.95,
           "3球": 3.6,
           "4球": 4.8,
-          "5球": 8,
-          "6球": 14,
-          "7+": 20
+          "5球": 7.75,
+          "6球": 13.5,
+          "7+": 19
         },
         "halfFull": {
           "胜/胜": 3.65,
@@ -84,7 +84,7 @@
       "matchNo": "1002",
       "league": "瑞超",
       "time": "22:00",
-      "homeRank": "5",
+      "homeRank": "7",
       "homeZh": "赫根",
       "awayZh": "哈尔姆斯",
       "awayRank": "16",
@@ -101,7 +101,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[5] 瑞典超 赫根  VS  哈尔姆斯 瑞典超 [16]",
+        "title": "[7] 瑞典超 赫根  VS  哈尔姆斯 瑞典超 [16]",
         "scoreOdds": {
           "1:0": 10,
           "2:0": 7.5,
@@ -162,7 +162,7 @@
       "matchNo": "1003",
       "league": "英冠",
       "time": "22:00",
-      "homeRank": "13",
+      "homeRank": "15",
       "homeZh": "加的夫城",
       "awayZh": "雷克斯",
       "awayRank": "16",
@@ -179,7 +179,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[13] 英冠 加的夫城  VS  雷克斯 英冠 [16]",
+        "title": "[15] 英冠 加的夫城  VS  雷克斯 英冠 [16]",
         "scoreOdds": {
           "1:0": 9.75,
           "2:0": 13,
@@ -243,21 +243,21 @@
       "homeRank": "13",
       "homeZh": "拉科",
       "awayZh": "埃尔切",
-      "awayRank": "6",
+      "awayRank": "9",
       "hda": {
-        "home": 2.16,
+        "home": 2.1,
         "draw": 2.95,
-        "away": 3.05
+        "away": 3.18
       },
       "handicap": {
         "line": "-1",
-        "home": 5,
-        "draw": 3.65,
-        "away": 1.53
+        "home": 4.85,
+        "draw": 3.55,
+        "away": 1.56
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[13] 西甲 拉科  VS  埃尔切 西甲 [6]",
+        "title": "[13] 西甲 拉科  VS  埃尔切 西甲 [9]",
         "scoreOdds": {
           "1:0": 7,
           "2:0": 10,
@@ -305,12 +305,12 @@
           "胜/胜": 3.75,
           "胜/平": 16,
           "胜/负": 35,
-          "平/胜": 5.2,
+          "平/胜": 5.05,
           "平/平": 4.45,
           "平/负": 7,
           "负/胜": 30,
           "负/平": 16,
-          "负/负": 5.25
+          "负/负": 5.4
         }
       }
     },
@@ -318,10 +318,10 @@
       "matchNo": "1006",
       "league": "巴甲",
       "time": "22:00",
-      "homeRank": "16",
+      "homeRank": "17",
       "homeZh": "巴西国际",
       "awayZh": "里莫",
-      "awayRank": "19",
+      "awayRank": "18",
       "hda": {
         "home": 1.45,
         "draw": 3.8,
@@ -335,7 +335,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[16] 巴甲 巴西国际  VS  里莫 巴甲 [19]",
+        "title": "[17] 巴甲 巴西国际  VS  里莫 巴甲 [18]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 7,
