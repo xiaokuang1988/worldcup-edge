@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T10:04:37.473Z",
+  "generatedAt": "2026-08-18T10:40:24.298Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -146,13 +146,13 @@
             "7+": 80
           },
           "halfFull": {
-            "胜/胜": 4.35,
+            "胜/胜": 4.5,
             "胜/平": 15.5,
-            "胜/负": 40,
-            "平/胜": 5,
-            "平/平": 3.5,
+            "胜/负": 45,
+            "平/胜": 4.9,
+            "平/平": 3.4,
             "平/负": 7,
-            "负/胜": 36,
+            "负/胜": 40,
             "负/平": 15.5,
             "负/负": 6.1
           },
@@ -271,11 +271,11 @@
           "totalGoals": {
             "0球": 9,
             "1球": 4.1,
-            "2球": 3.1,
-            "3球": 3.9,
-            "4球": 6.75,
+            "2球": 3.05,
+            "3球": 3.85,
+            "4球": 7,
             "5球": 15,
-            "6球": 30,
+            "6球": 33,
             "7+": 45
           },
           "halfFull": {
@@ -502,7 +502,7 @@
             "客胜": 26.8
           },
           "scoreOdds": {
-            "1:0": 8.5,
+            "1:0": 8.75,
             "2:0": 10.5,
             "2:1": 7.5,
             "3:0": 17,
@@ -515,13 +515,13 @@
             "5:1": 80,
             "5:2": 120,
             "胜其他": 40,
-            "0:0": 15,
-            "1:1": 7,
+            "0:0": 16,
+            "1:1": 6.75,
             "2:2": 11.5,
             "3:3": 48,
             "平其他": 200,
             "0:1": 13,
-            "0:2": 21,
+            "0:2": 20,
             "1:2": 10.5,
             "0:3": 45,
             "1:3": 25,
@@ -535,9 +535,9 @@
             "负其他": 85
           },
           "totalGoals": {
-            "0球": 15,
-            "1球": 5.95,
-            "2球": 3.75,
+            "0球": 16,
+            "1球": 6.05,
+            "2球": 3.65,
             "3球": 3.45,
             "4球": 5.15,
             "5球": 8.75,
