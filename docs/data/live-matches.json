@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T12:33:16.521Z",
+  "generatedAt": "2026-08-18T13:26:57.387Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -140,8 +140,8 @@
             "1球": 3.5,
             "2球": 2.95,
             "3球": 4.5,
-            "4球": 9.5,
-            "5球": 27,
+            "4球": 9.65,
+            "5球": 25,
             "6球": 50,
             "7+": 80
           },
@@ -369,7 +369,7 @@
             "客胜": 19.9
           },
           "scoreOdds": {
-            "1:0": 9.25,
+            "1:0": 9.5,
             "2:0": 9,
             "2:1": 6.75,
             "3:0": 14.5,
@@ -381,13 +381,13 @@
             "5:0": 70,
             "5:1": 55,
             "5:2": 90,
-            "胜其他": 32,
+            "胜其他": 30,
             "0:0": 17,
-            "1:1": 7.5,
-            "2:2": 12.5,
-            "3:3": 37,
-            "平其他": 200,
-            "0:1": 16,
+            "1:1": 7.75,
+            "2:2": 12,
+            "3:3": 35,
+            "平其他": 150,
+            "0:1": 17,
             "0:2": 28,
             "1:2": 14,
             "0:3": 70,
@@ -399,7 +399,7 @@
             "0:5": 550,
             "1:5": 350,
             "2:5": 350,
-            "负其他": 100
+            "负其他": 85
           },
           "totalGoals": {
             "0球": 17,
@@ -474,7 +474,7 @@
           "official": 76,
           "attack": 77,
           "defense": 70,
-          "volatility": 55
+          "volatility": 56
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -486,20 +486,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "欧冠 22:00",
           "hda": {
-            "home": 1.88,
+            "home": 1.85,
             "draw": 3.34,
-            "away": 3.35
+            "away": 3.45
           },
           "handicap": {
             "line": "-1",
-            "home": 3.75,
-            "draw": 3.7,
-            "away": 1.69
+            "home": 3.7,
+            "draw": 3.6,
+            "away": 1.72
           },
           "impliedProbabilities": {
-            "主胜": 47.1,
+            "主胜": 47.8,
             "平": 26.5,
-            "客胜": 26.4
+            "客胜": 25.7
           },
           "scoreOdds": {
             "1:0": 8.5,
