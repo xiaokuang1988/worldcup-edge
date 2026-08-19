@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T07:49:13.344Z",
+  "generatedAt": "2026-08-19T08:18:07.760Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -1001,12 +1001,12 @@
         "resultLean": "主胜",
         "totalLabel": "总进球 1-3 球倾向",
         "decision": "WATCH",
-        "confidence": 73,
+        "confidence": 72,
         "metrics": {
           "official": 76,
           "attack": 78,
           "defense": 69,
-          "volatility": 64
+          "volatility": 63
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -1018,20 +1018,20 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "欧冠 22:00",
           "hda": {
-            "home": 1.6,
-            "draw": 3.68,
-            "away": 4.3
+            "home": 1.63,
+            "draw": 3.64,
+            "away": 4.15
           },
           "handicap": {
             "line": "-1",
-            "home": 2.89,
-            "draw": 3.5,
-            "away": 2.01
+            "home": 2.93,
+            "draw": 3.6,
+            "away": 1.96
           },
           "impliedProbabilities": {
-            "主胜": 55.3,
-            "平": 24.1,
-            "客胜": 20.6
+            "主胜": 54.3,
+            "平": 24.3,
+            "客胜": 21.3
           },
           "scoreOdds": {
             "1:0": 8,
@@ -1070,22 +1070,22 @@
             "0球": 15,
             "1球": 5.4,
             "2球": 3.7,
-            "3球": 3.65,
+            "3球": 3.55,
             "4球": 5.25,
-            "5球": 9,
-            "6球": 16,
-            "7+": 23
+            "5球": 9.25,
+            "6球": 16.5,
+            "7+": 24
           },
           "halfFull": {
-            "胜/胜": 2.6,
+            "胜/胜": 2.7,
             "胜/平": 15,
             "胜/负": 36,
             "平/胜": 4.45,
-            "平/平": 6.2,
-            "平/负": 10.5,
+            "平/平": 6.05,
+            "平/负": 10,
             "负/胜": 25,
             "负/平": 15,
-            "负/负": 7.25
+            "负/负": 7
           },
           "moreMarketsStatus": "available"
         }
