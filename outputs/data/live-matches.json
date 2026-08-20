@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T06:39:38.895Z",
+  "generatedAt": "2026-08-20T07:26:56.206Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -93,9 +93,9 @@
           },
           "handicap": {
             "line": "+2",
-            "home": 1.98,
-            "draw": 3.95,
-            "away": 2.7
+            "home": 2.03,
+            "draw": 3.9,
+            "away": 2.63
           },
           "impliedProbabilities": {
             "主胜": 8.9,
@@ -279,14 +279,14 @@
             "7+": 55
           },
           "halfFull": {
-            "胜/胜": 3.45,
-            "胜/平": 17,
+            "胜/胜": 3.55,
+            "胜/平": 16,
             "胜/负": 35,
             "平/胜": 4.6,
             "平/平": 4.15,
             "平/负": 8,
             "负/胜": 27,
-            "负/平": 17,
+            "负/平": 16,
             "负/负": 6.75
           },
           "moreMarketsStatus": "available"
@@ -359,8 +359,8 @@
           },
           "handicap": {
             "line": "-1",
-            "home": 4.12,
-            "draw": 3.2,
+            "home": 4.27,
+            "draw": 3.12,
             "away": 1.74
           },
           "impliedProbabilities": {
@@ -413,14 +413,14 @@
           },
           "halfFull": {
             "胜/胜": 3.4,
-            "胜/平": 18,
+            "胜/平": 16,
             "胜/负": 55,
             "平/胜": 4.3,
             "平/平": 3.7,
-            "平/负": 8.5,
+            "平/负": 9,
             "负/胜": 38,
-            "负/平": 18,
-            "负/负": 7.5
+            "负/平": 16,
+            "负/负": 8
           },
           "moreMarketsStatus": "available"
         }
@@ -1210,15 +1210,15 @@
             "7+": 8.75
           },
           "halfFull": {
-            "胜/胜": 1.44,
+            "胜/胜": 1.4,
             "胜/平": 28,
             "胜/负": 100,
-            "平/胜": 4.2,
-            "平/平": 12,
-            "平/负": 32,
+            "平/胜": 4.35,
+            "平/平": 13,
+            "平/负": 35,
             "负/胜": 26,
             "负/平": 28,
-            "负/负": 27
+            "负/负": 29
           },
           "moreMarketsStatus": "available"
         }
