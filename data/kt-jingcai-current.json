@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-20T03:40:06.988Z",
+  "scrapedAt": "2026-08-20T04:20:40.041Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -17,9 +17,9 @@
       },
       "handicap": {
         "line": "+2",
-        "home": 1.98,
-        "draw": 3.95,
-        "away": 2.7
+        "home": 2.03,
+        "draw": 3.9,
+        "away": 2.63
       },
       "moreMarkets": {
         "status": "available",
@@ -558,8 +558,8 @@
       "awayRank": "10",
       "hda": {
         "home": 1.61,
-        "draw": 3.77,
-        "away": 4.15
+        "draw": 3.65,
+        "away": 4.28
       },
       "handicap": {
         "line": "-1",
