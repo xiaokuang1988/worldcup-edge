@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T11:47:55.021Z",
+  "generatedAt": "2026-08-21T12:05:49.092Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -873,7 +873,7 @@
           "official": 76,
           "attack": 78,
           "defense": 69,
-          "volatility": 62
+          "volatility": 63
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -886,19 +886,19 @@
           "kickoff": "法甲 22:00",
           "hda": {
             "home": 1.65,
-            "draw": 3.58,
-            "away": 4.1
+            "draw": 3.5,
+            "away": 4.2
           },
           "handicap": {
             "line": "-1",
-            "home": 2.95,
-            "draw": 3.5,
+            "home": 3.03,
+            "draw": 3.4,
             "away": 1.98
           },
           "impliedProbabilities": {
-            "主胜": 53.7,
-            "平": 24.7,
-            "客胜": 21.6
+            "主胜": 53.6,
+            "平": 25.3,
+            "客胜": 21.1
           },
           "scoreOdds": {
             "1:0": 9.75,
@@ -935,12 +935,12 @@
           },
           "totalGoals": {
             "0球": 20,
-            "1球": 7.1,
-            "2球": 4.25,
-            "3球": 3.5,
-            "4球": 4.55,
+            "1球": 7.2,
+            "2球": 4.45,
+            "3球": 3.4,
+            "4球": 4.4,
             "5球": 7.5,
-            "6球": 12,
+            "6球": 12.5,
             "7+": 18
           },
           "halfFull": {
@@ -1024,8 +1024,8 @@
           },
           "handicap": {
             "line": "-1",
-            "home": 3.92,
-            "draw": 3.37,
+            "home": 4.02,
+            "draw": 3.3,
             "away": 1.73
           },
           "impliedProbabilities": {
@@ -1043,28 +1043,28 @@
             "4:0": 8.5,
             "4:1": 17,
             "4:2": 75,
-            "5:0": 15,
+            "5:0": 17,
             "5:1": 30,
             "5:2": 120,
             "胜其他": 13,
             "0:0": 19,
             "1:1": 14,
-            "2:2": 40,
-            "3:3": 200,
-            "平其他": 600,
+            "2:2": 35,
+            "3:3": 150,
+            "平其他": 500,
             "0:1": 35,
-            "0:2": 175,
+            "0:2": 150,
             "1:2": 55,
-            "0:3": 550,
-            "1:3": 350,
-            "2:3": 250,
-            "0:4": 1000,
-            "1:4": 1000,
-            "2:4": 850,
-            "0:5": 1000,
-            "1:5": 1000,
-            "2:5": 1000,
-            "负其他": 600
+            "0:3": 500,
+            "1:3": 300,
+            "2:3": 200,
+            "0:4": 800,
+            "1:4": 800,
+            "2:4": 800,
+            "0:5": 800,
+            "1:5": 800,
+            "2:5": 800,
+            "负其他": 500
           },
           "totalGoals": {
             "0球": 19,
@@ -1210,14 +1210,14 @@
             "7+": 32
           },
           "halfFull": {
-            "胜/胜": 3.25,
-            "胜/平": 14,
+            "胜/胜": 3.35,
+            "胜/平": 15,
             "胜/负": 32,
-            "平/胜": 4.75,
-            "平/平": 5.8,
-            "平/负": 7.5,
+            "平/胜": 4.5,
+            "平/平": 5.5,
+            "平/负": 7.7,
             "负/胜": 25,
-            "负/平": 14,
+            "负/平": 15,
             "负/负": 6
           },
           "moreMarketsStatus": "available"
