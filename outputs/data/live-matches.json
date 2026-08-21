@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T11:19:57.112Z",
+  "generatedAt": "2026-08-21T11:47:55.021Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -146,15 +146,15 @@
             "7+": 11.5
           },
           "halfFull": {
-            "胜/胜": 18,
-            "胜/平": 23,
+            "胜/胜": 20,
+            "胜/平": 24,
             "胜/负": 22,
-            "平/胜": 24,
+            "平/胜": 26,
             "平/平": 10.5,
             "平/负": 4.2,
             "负/胜": 80,
-            "负/平": 23,
-            "负/负": 1.59
+            "负/平": 24,
+            "负/负": 1.56
           },
           "moreMarketsStatus": "available"
         }
@@ -648,9 +648,9 @@
             "5:1": 175,
             "5:2": 250,
             "胜其他": 70,
-            "0:0": 13,
-            "1:1": 6.4,
-            "2:2": 13,
+            "0:0": 14,
+            "1:1": 6.35,
+            "2:2": 12,
             "3:3": 50,
             "平其他": 300,
             "0:1": 10,
@@ -668,10 +668,10 @@
             "负其他": 85
           },
           "totalGoals": {
-            "0球": 13,
-            "1球": 5.3,
-            "2球": 3.35,
-            "3球": 3.65,
+            "0球": 14,
+            "1球": 5.55,
+            "2球": 3.25,
+            "3球": 3.6,
             "4球": 5.75,
             "5球": 10,
             "6球": 18,
