@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-22T10:36:41.131Z",
+  "scrapedAt": "2026-08-22T10:56:12.853Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -371,13 +371,13 @@
         },
         "totalGoals": {
           "0球": 11,
-          "1球": 4.8,
+          "1球": 4.6,
           "2球": 3.1,
-          "3球": 3.85,
-          "4球": 5.6,
+          "3球": 3.8,
+          "4球": 6,
           "5球": 12.5,
           "6球": 26,
-          "7+": 38
+          "7+": 42
         },
         "halfFull": {
           "胜/胜": 3.5,
@@ -683,12 +683,12 @@
         },
         "totalGoals": {
           "0球": 9,
-          "1球": 4,
+          "1球": 4.4,
           "2球": 3.25,
           "3球": 3.9,
-          "4球": 6.9,
-          "5球": 15,
-          "6球": 25,
+          "4球": 6.3,
+          "5球": 14,
+          "6球": 23,
           "7+": 36
         },
         "halfFull": {
