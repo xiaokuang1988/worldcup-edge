@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-22T05:46:14.008Z",
+  "scrapedAt": "2026-08-22T06:03:58.691Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -11,15 +11,15 @@
       "awayZh": "福冈黄蜂",
       "awayRank": "8",
       "hda": {
-        "home": 1.61,
+        "home": 1.63,
         "draw": 3.26,
-        "away": 4.95
+        "away": 4.8
       },
       "handicap": {
         "line": "-1",
-        "home": 3.2,
+        "home": 3.24,
         "draw": 3.12,
-        "away": 2.02
+        "away": 2
       },
       "moreMarkets": {
         "status": "available",
@@ -89,15 +89,15 @@
       "awayZh": "甲府风林",
       "awayRank": "16",
       "hda": {
-        "home": 2.16,
+        "home": 2.23,
         "draw": 2.85,
-        "away": 3.17
+        "away": 3.03
       },
       "handicap": {
         "line": "-1",
-        "home": 4.95,
-        "draw": 3.65,
-        "away": 1.53
+        "home": 5.2,
+        "draw": 3.7,
+        "away": 1.5
       },
       "moreMarkets": {
         "status": "available",
@@ -839,12 +839,12 @@
         },
         "totalGoals": {
           "0球": 11,
-          "1球": 4.5,
-          "2球": 3.3,
+          "1球": 4.7,
+          "2球": 3.2,
           "3球": 3.8,
-          "4球": 6,
-          "5球": 11.5,
-          "6球": 23,
+          "4球": 5.8,
+          "5球": 12,
+          "6球": 24,
           "7+": 36
         },
         "halfFull": {
@@ -4067,15 +4067,15 @@
       "awayZh": "纽约城",
       "awayRank": "16",
       "hda": {
-        "home": 2.09,
+        "home": 2.06,
         "draw": 3.45,
-        "away": 2.77
+        "away": 2.82
       },
       "handicap": {
         "line": "-1",
-        "home": 4.25,
-        "draw": 3.9,
-        "away": 1.57
+        "home": 4.15,
+        "draw": 3.85,
+        "away": 1.59
       },
       "moreMarkets": {
         "status": "available",
