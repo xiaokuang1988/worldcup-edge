@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-22T15:53:35.516Z",
+  "scrapedAt": "2026-08-23T03:44:19.170Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -11,15 +11,15 @@
       "awayZh": "海牙",
       "awayRank": "16",
       "hda": {
-        "home": 1.68,
-        "draw": 3.8,
-        "away": 3.7
+        "home": 1.63,
+        "draw": 3.88,
+        "away": 3.88
       },
       "handicap": {
         "line": "-1",
-        "home": 2.95,
+        "home": 2.82,
         "draw": 3.75,
-        "away": 1.91
+        "away": 1.97
       },
       "moreMarkets": {
         "status": "available",
@@ -68,15 +68,15 @@
           "7+": 15.5
         },
         "halfFull": {
-          "胜/胜": 2.7,
+          "胜/胜": 2.6,
           "胜/平": 14.5,
           "胜/负": 28,
-          "平/胜": 4.9,
-          "平/平": 7,
-          "平/负": 9.5,
+          "平/胜": 4.8,
+          "平/平": 7.15,
+          "平/负": 10,
           "负/胜": 20,
           "负/平": 14.5,
-          "负/负": 6.3
+          "负/负": 6.75
         }
       }
     },
@@ -89,15 +89,15 @@
       "awayZh": "浦和红钻",
       "awayRank": "19",
       "hda": {
-        "home": 1.77,
-        "draw": 3.25,
-        "away": 3.9
+        "home": 1.73,
+        "draw": 3.3,
+        "away": 4.02
       },
       "handicap": {
         "line": "-1",
-        "home": 3.48,
+        "home": 3.38,
         "draw": 3.45,
-        "away": 1.81
+        "away": 1.84
       },
       "moreMarkets": {
         "status": "available",
@@ -138,23 +138,23 @@
         "totalGoals": {
           "0球": 10,
           "1球": 4.45,
-          "2球": 3.35,
-          "3球": 3.75,
-          "4球": 6.1,
-          "5球": 12,
-          "6球": 24,
-          "7+": 40
+          "2球": 3.45,
+          "3球": 3.85,
+          "4球": 6,
+          "5球": 11,
+          "6球": 22,
+          "7+": 37
         },
         "halfFull": {
-          "胜/胜": 2.9,
+          "胜/胜": 2.85,
           "胜/平": 16,
           "胜/负": 38,
-          "平/胜": 4.55,
+          "平/胜": 4.35,
           "平/平": 5.2,
-          "平/负": 9,
+          "平/负": 9.5,
           "负/胜": 24,
           "负/平": 16,
-          "负/负": 7
+          "负/负": 7.5
         }
       }
     },
@@ -215,13 +215,13 @@
         },
         "totalGoals": {
           "0球": 10,
-          "1球": 4.45,
-          "2球": 3.2,
+          "1球": 4.5,
+          "2球": 3.35,
           "3球": 3.75,
-          "4球": 6.5,
-          "5球": 13,
-          "6球": 23,
-          "7+": 38
+          "4球": 6.35,
+          "5球": 12,
+          "6球": 21,
+          "7+": 35
         },
         "halfFull": {
           "胜/胜": 4.3,
@@ -240,10 +240,10 @@
       "matchNo": "7004",
       "league": "英冠",
       "time": "19:00",
-      "homeRank": "8",
+      "homeRank": "9",
       "homeZh": "西布罗姆",
       "awayZh": "伯恩利",
-      "awayRank": "12",
+      "awayRank": "16",
       "hda": {
         "home": 2.6,
         "draw": 3.1,
@@ -257,7 +257,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[8] 英冠 西布罗姆  VS  伯恩利 英冠 [12]",
+        "title": "[9] 英冠 西布罗姆  VS  伯恩利 英冠 [16]",
         "scoreOdds": {
           "1:0": 9,
           "2:0": 13,
@@ -401,15 +401,15 @@
       "awayZh": "埃夫斯堡",
       "awayRank": "5",
       "hda": {
-        "home": 2.49,
-        "draw": 3.33,
-        "away": 2.34
+        "home": 2.55,
+        "draw": 3.35,
+        "away": 2.28
       },
       "handicap": {
         "line": "+1",
-        "home": 1.45,
-        "draw": 4.1,
-        "away": 5.1
+        "home": 1.47,
+        "draw": 4.05,
+        "away": 4.95
       },
       "moreMarkets": {
         "status": "available",
@@ -477,7 +477,7 @@
       "homeRank": "3",
       "homeZh": "赫尔辛基",
       "awayZh": "赫尔火花",
-      "awayRank": "4",
+      "awayRank": "6",
       "hda": {
         "home": 1.4,
         "draw": 4.4,
@@ -491,7 +491,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[3] 芬超 赫尔辛基  VS  赫尔火花 芬超 [4]",
+        "title": "[3] 芬超 赫尔辛基  VS  赫尔火花 芬超 [6]",
         "scoreOdds": {
           "1:0": 9.75,
           "2:0": 8.5,
@@ -552,7 +552,7 @@
       "matchNo": "7008",
       "league": "荷甲",
       "time": "20:30",
-      "homeRank": "6",
+      "homeRank": "5",
       "homeZh": "埃因霍温",
       "awayZh": "格罗宁根",
       "awayRank": "2",
@@ -569,7 +569,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[6] 荷甲 埃因霍温  VS  格罗宁根 荷甲 [2]",
+        "title": "[5] 荷甲 埃因霍温  VS  格罗宁根 荷甲 [2]",
         "scoreOdds": {
           "1:0": 13,
           "2:0": 9.5,
@@ -630,10 +630,10 @@
       "matchNo": "7009",
       "league": "英超",
       "time": "21:00",
-      "homeRank": "14",
+      "homeRank": "13",
       "homeZh": "曼城",
       "awayZh": "伯恩茅斯",
-      "awayRank": "3",
+      "awayRank": "7",
       "hda": {
         "home": 1.33,
         "draw": 4.8,
@@ -647,7 +647,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[14] 英超 曼城  VS  伯恩茅斯 英超 [3]",
+        "title": "[13] 英超 曼城  VS  伯恩茅斯 英超 [7]",
         "scoreOdds": {
           "1:0": 11,
           "2:0": 8.75,
@@ -708,10 +708,10 @@
       "matchNo": "7010",
       "league": "法甲",
       "time": "21:00",
-      "homeRank": "3",
+      "homeRank": "10",
       "homeZh": "昂热",
       "awayZh": "里尔",
-      "awayRank": "9",
+      "awayRank": "13",
       "hda": {
         "home": 4.95,
         "draw": 3.4,
@@ -725,7 +725,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[3] 法甲 昂热  VS  里尔 法甲 [9]",
+        "title": "[10] 法甲 昂热  VS  里尔 法甲 [13]",
         "scoreOdds": {
           "1:0": 12,
           "2:0": 27,
@@ -864,10 +864,10 @@
       "matchNo": "7012",
       "league": "葡超",
       "time": "22:30",
-      "homeRank": "16",
+      "homeRank": "17",
       "homeZh": "吉马良斯",
       "awayZh": "葡国民",
-      "awayRank": "5",
+      "awayRank": "6",
       "hda": {
         "home": 1.57,
         "draw": 3.6,
@@ -881,7 +881,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[16] 葡超 吉马良斯  VS  葡国民 葡超 [5]",
+        "title": "[17] 葡超 吉马良斯  VS  葡国民 葡超 [6]",
         "scoreOdds": {
           "1:0": 7,
           "2:0": 8,
@@ -947,15 +947,15 @@
       "awayZh": "盖斯",
       "awayRank": "9",
       "hda": {
-        "home": 1.3,
-        "draw": 4.75,
-        "away": 6.7
+        "home": 1.28,
+        "draw": 4.85,
+        "away": 7.1
       },
       "handicap": {
         "line": "-1",
-        "home": 2,
+        "home": 1.95,
         "draw": 3.6,
-        "away": 2.85
+        "away": 2.95
       },
       "moreMarkets": {
         "status": "available",
@@ -1023,7 +1023,7 @@
       "homeRank": "18",
       "homeZh": "坎布尔",
       "awayZh": "费耶诺德",
-      "awayRank": "8",
+      "awayRank": "6",
       "hda": {
         "home": 10.5,
         "draw": 6.4,
@@ -1037,7 +1037,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[18] 荷甲 坎布尔  VS  费耶诺德 荷甲 [8]",
+        "title": "[18] 荷甲 坎布尔  VS  费耶诺德 荷甲 [6]",
         "scoreOdds": {
           "1:0": 35,
           "2:0": 85,
@@ -1098,10 +1098,10 @@
       "matchNo": "7015",
       "league": "西甲",
       "time": "23:00",
-      "homeRank": "3",
+      "homeRank": "4",
       "homeZh": "马竞",
       "awayZh": "比利亚雷",
-      "awayRank": "7",
+      "awayRank": "8",
       "hda": {
         "home": 1.7,
         "draw": 3.55,
@@ -1115,7 +1115,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[3] 西甲 马竞  VS  比利亚雷 西甲 [7]",
+        "title": "[4] 西甲 马竞  VS  比利亚雷 西甲 [8]",
         "scoreOdds": {
           "1:0": 8,
           "2:0": 9,
@@ -1176,10 +1176,10 @@
       "matchNo": "7016",
       "league": "法甲",
       "time": "23:00",
-      "homeRank": "7",
+      "homeRank": "12",
       "homeZh": "勒阿弗尔",
       "awayZh": "摩纳哥",
-      "awayRank": "4",
+      "awayRank": "11",
       "hda": {
         "home": 3.6,
         "draw": 3.5,
@@ -1193,7 +1193,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[7] 法甲 勒阿弗尔  VS  摩纳哥 法甲 [4]",
+        "title": "[12] 法甲 勒阿弗尔  VS  摩纳哥 法甲 [11]",
         "scoreOdds": {
           "1:0": 13,
           "2:0": 23,
@@ -1254,10 +1254,10 @@
       "matchNo": "7017",
       "league": "英超",
       "time": "23:00",
-      "homeRank": "15",
+      "homeRank": "14",
       "homeZh": "纽卡斯尔",
       "awayZh": "利物浦",
-      "awayRank": "13",
+      "awayRank": "12",
       "hda": {
         "home": 3.35,
         "draw": 3.77,
@@ -1271,7 +1271,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[15] 英超 纽卡斯尔  VS  利物浦 英超 [13]",
+        "title": "[14] 英超 纽卡斯尔  VS  利物浦 英超 [12]",
         "scoreOdds": {
           "1:0": 18,
           "2:0": 25,
@@ -1332,7 +1332,7 @@
       "matchNo": "7018",
       "league": "意甲",
       "time": "23:00",
-      "homeRank": "9",
+      "homeRank": "11",
       "homeZh": "弗洛西诺",
       "awayZh": "尤文图斯",
       "awayRank": "12",
@@ -1349,7 +1349,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[9] 意甲 弗洛西诺  VS  尤文图斯 意甲 [12]",
+        "title": "[11] 意甲 弗洛西诺  VS  尤文图斯 意甲 [12]",
         "scoreOdds": {
           "1:0": 17,
           "2:0": 50,
@@ -1410,10 +1410,10 @@
       "matchNo": "7019",
       "league": "意甲",
       "time": "23:00",
-      "homeRank": "20",
+      "homeRank": "17",
       "homeZh": "威尼斯",
       "awayZh": "莱切",
-      "awayRank": "19",
+      "awayRank": "16",
       "hda": {
         "home": 1.92,
         "draw": 3.05,
@@ -1427,7 +1427,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[20] 意甲 威尼斯  VS  莱切 意甲 [19]",
+        "title": "[17] 意甲 威尼斯  VS  莱切 意甲 [16]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 8.5,
@@ -1491,7 +1491,7 @@
       "homeRank": "7",
       "homeZh": "圣克拉拉",
       "awayZh": "法马利康",
-      "awayRank": "12",
+      "awayRank": "13",
       "hda": {
         "home": 2.48,
         "draw": 2.83,
@@ -1505,7 +1505,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[7] 葡超 圣克拉拉  VS  法马利康 葡超 [12]",
+        "title": "[7] 葡超 圣克拉拉  VS  法马利康 葡超 [13]",
         "scoreOdds": {
           "1:0": 6.8,
           "2:0": 11.5,
@@ -1569,21 +1569,21 @@
       "homeRank": "19",
       "homeZh": "赫塔费",
       "awayZh": "桑坦德",
-      "awayRank": "6",
+      "awayRank": "7",
       "hda": {
-        "home": 1.93,
-        "draw": 2.88,
-        "away": 3.8
+        "home": 1.98,
+        "draw": 2.84,
+        "away": 3.68
       },
       "handicap": {
         "line": "-1",
-        "home": 4.2,
-        "draw": 3.4,
-        "away": 1.68
+        "home": 4.3,
+        "draw": 3.5,
+        "away": 1.64
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[19] 西甲 赫塔费  VS  桑坦德 西甲 [6]",
+        "title": "[19] 西甲 赫塔费  VS  桑坦德 西甲 [7]",
         "scoreOdds": {
           "1:0": 5.7,
           "2:0": 7.75,
@@ -1628,15 +1628,15 @@
           "7+": 50
         },
         "halfFull": {
-          "胜/胜": 3.25,
-          "胜/平": 17,
-          "胜/负": 40,
-          "平/胜": 4.5,
-          "平/平": 4.2,
-          "平/负": 8.5,
+          "胜/胜": 3.45,
+          "胜/平": 16.5,
+          "胜/负": 38,
+          "平/胜": 4.65,
+          "平/平": 4.1,
+          "平/负": 8.25,
           "负/胜": 26,
-          "负/平": 17,
-          "负/负": 7.25
+          "负/平": 16.5,
+          "负/负": 6.75
         }
       }
     },
@@ -1644,10 +1644,10 @@
       "matchNo": "7022",
       "league": "意甲",
       "time": "23:00",
-      "homeRank": "17",
+      "homeRank": "15",
       "homeZh": "都灵",
       "awayZh": "AC米兰",
-      "awayRank": "1",
+      "awayRank": "6",
       "hda": {
         "home": 4.5,
         "draw": 3.65,
@@ -1661,7 +1661,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[17] 意甲 都灵  VS  AC米兰 意甲 [1]",
+        "title": "[15] 意甲 都灵  VS  AC米兰 意甲 [6]",
         "scoreOdds": {
           "1:0": 12.5,
           "2:0": 26,
@@ -1722,24 +1722,24 @@
       "matchNo": "7023",
       "league": "意甲",
       "time": "23:00",
-      "homeRank": "5",
+      "homeRank": "9",
       "homeZh": "亚特兰大",
       "awayZh": "萨索洛",
-      "awayRank": "15",
+      "awayRank": "14",
       "hda": {
-        "home": 1.43,
-        "draw": 4,
-        "away": 5.55
+        "home": 1.41,
+        "draw": 4.08,
+        "away": 5.7
       },
       "handicap": {
         "line": "-1",
-        "home": 2.42,
+        "home": 2.37,
         "draw": 3.35,
-        "away": 2.4
+        "away": 2.45
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[5] 意甲 亚特兰大  VS  萨索洛 意甲 [15]",
+        "title": "[9] 意甲 亚特兰大  VS  萨索洛 意甲 [14]",
         "scoreOdds": {
           "1:0": 7.5,
           "2:0": 7.5,
@@ -1800,24 +1800,24 @@
       "matchNo": "7024",
       "league": "西甲",
       "time": "23:00",
-      "homeRank": "8",
+      "homeRank": "9",
       "homeZh": "埃尔切",
       "awayZh": "巴萨",
-      "awayRank": "13",
+      "awayRank": "15",
       "hda": {
-        "home": 8.25,
-        "draw": 5.3,
-        "away": 1.22
+        "home": 8.5,
+        "draw": 5.4,
+        "away": 1.21
       },
       "handicap": {
         "line": "+1",
-        "home": 3.35,
-        "draw": 4,
-        "away": 1.72
+        "home": 3.44,
+        "draw": 4.1,
+        "away": 1.68
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[8] 西甲 埃尔切  VS  巴萨 西甲 [13]",
+        "title": "[9] 西甲 埃尔切  VS  巴萨 西甲 [15]",
         "scoreOdds": {
           "1:0": 28,
           "2:0": 65,
@@ -1878,10 +1878,10 @@
       "matchNo": "7025",
       "league": "葡超",
       "time": "23:00",
-      "homeRank": "2",
+      "homeRank": "4",
       "homeZh": "波尔图",
       "awayZh": "阿罗卡",
-      "awayRank": "1",
+      "awayRank": "3",
       "hda": {
         "home": 1.14,
         "draw": 5.95,
@@ -1895,7 +1895,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[2] 葡超 波尔图  VS  阿罗卡 葡超 [1]",
+        "title": "[4] 葡超 波尔图  VS  阿罗卡 葡超 [3]",
         "scoreOdds": {
           "1:0": 7,
           "2:0": 6,
@@ -1961,15 +1961,15 @@
       "awayZh": "纽约城",
       "awayRank": "16",
       "hda": {
-        "home": 2.06,
+        "home": 2.09,
         "draw": 3.45,
-        "away": 2.82
+        "away": 2.77
       },
       "handicap": {
         "line": "-1",
-        "home": 4.15,
-        "draw": 3.85,
-        "away": 1.59
+        "home": 4.25,
+        "draw": 3.9,
+        "away": 1.57
       },
       "moreMarkets": {
         "status": "available",
@@ -2112,7 +2112,7 @@
       "matchNo": "1001",
       "league": "意甲",
       "time": "22:00",
-      "homeRank": "6",
+      "homeRank": "10",
       "homeZh": "博洛尼亚",
       "awayZh": "拉齐奥",
       "awayRank": "13",
@@ -2129,7 +2129,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[6] 意甲 博洛尼亚  VS  拉齐奥 意甲 [13]",
+        "title": "[10] 意甲 博洛尼亚  VS  拉齐奥 意甲 [13]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 9,
@@ -2268,7 +2268,7 @@
       "matchNo": "1004",
       "league": "西甲",
       "time": "22:00",
-      "homeRank": "12",
+      "homeRank": "14",
       "homeZh": "奥萨苏纳",
       "awayZh": "莱万特",
       "awayRank": "20",
@@ -2285,7 +2285,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[12] 西甲 奥萨苏纳  VS  莱万特 西甲 [20]",
+        "title": "[14] 西甲 奥萨苏纳  VS  莱万特 西甲 [20]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 7.75,
@@ -2346,10 +2346,10 @@
       "matchNo": "1006",
       "league": "意甲",
       "time": "22:00",
-      "homeRank": "4",
+      "homeRank": "8",
       "homeZh": "罗马",
       "awayZh": "佛罗伦萨",
-      "awayRank": "3",
+      "awayRank": "7",
       "hda": {
         "home": 1.52,
         "draw": 3.6,
@@ -2363,7 +2363,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[4] 意甲 罗马  VS  佛罗伦萨 意甲 [3]",
+        "title": "[8] 意甲 罗马  VS  佛罗伦萨 意甲 [7]",
         "scoreOdds": {
           "1:0": 6.7,
           "2:0": 7.5,
@@ -2427,7 +2427,7 @@
       "homeRank": "13",
       "homeZh": "兰斯",
       "awayZh": "阿纳西",
-      "awayRank": "3",
+      "awayRank": "4",
       "hda": {
         "home": 1.65,
         "draw": 3.35,
@@ -2441,7 +2441,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[13] 法乙 兰斯  VS  阿纳西 法乙 [3]",
+        "title": "[13] 法乙 兰斯  VS  阿纳西 法乙 [4]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 7.5,
@@ -2502,10 +2502,10 @@
       "matchNo": "1008",
       "league": "英超",
       "time": "22:00",
-      "homeRank": "10",
+      "homeRank": "11",
       "homeZh": "富勒姆",
       "awayZh": "切尔西",
-      "awayRank": "7",
+      "awayRank": "10",
       "hda": {
         "home": 3.55,
         "draw": 3.52,
@@ -2519,7 +2519,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[10] 英超 富勒姆  VS  切尔西 英超 [7]",
+        "title": "[11] 英超 富勒姆  VS  切尔西 英超 [10]",
         "scoreOdds": {
           "1:0": 14.5,
           "2:0": 23,
@@ -2661,7 +2661,7 @@
       "homeRank": "18",
       "homeZh": "马拉加",
       "awayZh": "拉科",
-      "awayRank": "9",
+      "awayRank": "10",
       "hda": {
         "home": 2.33,
         "draw": 2.8,
@@ -2675,7 +2675,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[18] 西甲 马拉加  VS  拉科 西甲 [9]",
+        "title": "[18] 西甲 马拉加  VS  拉科 西甲 [10]",
         "scoreOdds": {
           "1:0": 6.5,
           "2:0": 10.5,
