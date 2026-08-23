@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-23T07:56:08.804Z",
+  "scrapedAt": "2026-08-23T08:21:49.900Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -89,15 +89,15 @@
       "awayZh": "浦和红钻",
       "awayRank": "19",
       "hda": {
-        "home": 1.73,
-        "draw": 3.3,
-        "away": 4.02
+        "home": 1.71,
+        "draw": 3.35,
+        "away": 4.08
       },
       "handicap": {
         "line": "-1",
-        "home": 3.38,
+        "home": 3.32,
         "draw": 3.45,
-        "away": 1.84
+        "away": 1.86
       },
       "moreMarkets": {
         "status": "available",
@@ -120,12 +120,12 @@
           "1:1": 6.5,
           "2:2": 14,
           "3:3": 70,
-          "平其他": 300,
+          "平其他": 250,
           "0:1": 11,
           "0:2": 22,
           "1:2": 13.5,
           "0:3": 65,
-          "1:3": 35,
+          "1:3": 36,
           "2:3": 45,
           "0:4": 200,
           "1:4": 100,
@@ -527,11 +527,11 @@
         },
         "totalGoals": {
           "0球": 24,
-          "1球": 7.25,
-          "2球": 4.5,
+          "1球": 7.5,
+          "2球": 4.6,
           "3球": 3.4,
-          "4球": 4.3,
-          "5球": 7.35,
+          "4球": 4.1,
+          "5球": 7.4,
           "6球": 13.5,
           "7+": 15.5
         },
@@ -1650,8 +1650,8 @@
       "awayRank": "6",
       "hda": {
         "home": 4.25,
-        "draw": 3.48,
-        "away": 1.65
+        "draw": 3.39,
+        "away": 1.67
       },
       "handicap": {
         "line": "+1",
@@ -1956,10 +1956,10 @@
       "matchNo": "7026",
       "league": "美职",
       "time": "23:00",
-      "homeRank": "8",
+      "homeRank": "7",
       "homeZh": "新英格兰",
       "awayZh": "纽约城",
-      "awayRank": "16",
+      "awayRank": "18",
       "hda": {
         "home": 2.09,
         "draw": 3.45,
@@ -1973,7 +1973,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[8] 美职联 新英格兰  VS  纽约城 美职联 [16]",
+        "title": "[7] 美职联 新英格兰  VS  纽约城 美职联 [18]",
         "scoreOdds": {
           "1:0": 10,
           "2:0": 12.5,
@@ -2045,8 +2045,8 @@
       },
       "handicap": {
         "line": "-1",
-        "home": 3.3,
-        "draw": 3.3,
+        "home": 3.42,
+        "draw": 3.2,
         "away": 1.91
       },
       "moreMarkets": {
