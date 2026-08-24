@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-24T12:54:57.016Z",
+  "scrapedAt": "2026-08-24T13:44:08.793Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -401,15 +401,15 @@
       "awayZh": "佛罗伦萨",
       "awayRank": "10",
       "hda": {
-        "home": 1.54,
+        "home": 1.56,
         "draw": 3.55,
-        "away": 5.05
+        "away": 4.85
       },
       "handicap": {
         "line": "-1",
-        "home": 2.75,
+        "home": 2.9,
         "draw": 3.3,
-        "away": 2.16
+        "away": 2.08
       },
       "moreMarkets": {
         "status": "available",
@@ -557,15 +557,15 @@
       "awayZh": "切尔西",
       "awayRank": "11",
       "hda": {
-        "home": 3.86,
-        "draw": 3.5,
-        "away": 1.71
+        "home": 3.9,
+        "draw": 3.55,
+        "away": 1.69
       },
       "handicap": {
         "line": "+1",
-        "home": 1.88,
+        "home": 1.9,
         "draw": 3.35,
-        "away": 3.35
+        "away": 3.3
       },
       "moreMarkets": {
         "status": "available",
@@ -607,11 +607,11 @@
           "0球": 14,
           "1球": 5.75,
           "2球": 3.85,
-          "3球": 3.4,
+          "3球": 3.3,
           "4球": 4.7,
-          "5球": 10,
-          "6球": 18,
-          "7+": 27
+          "5球": 10.5,
+          "6球": 19,
+          "7+": 28
         },
         "halfFull": {
           "胜/胜": 6.7,
@@ -741,14 +741,14 @@
           "5:2": 450,
           "胜其他": 175,
           "0:0": 8,
-          "1:1": 5.4,
-          "2:2": 16,
-          "3:3": 100,
-          "平其他": 500,
-          "0:1": 8,
-          "0:2": 14,
-          "1:2": 10,
-          "0:3": 38,
+          "1:1": 5,
+          "2:2": 15,
+          "3:3": 80,
+          "平其他": 400,
+          "0:1": 8.5,
+          "0:2": 16,
+          "1:2": 10.5,
+          "0:3": 39,
           "1:3": 28,
           "2:3": 50,
           "0:4": 100,
