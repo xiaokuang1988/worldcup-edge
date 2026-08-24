@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T11:59:45.976Z",
+  "generatedAt": "2026-08-24T12:54:57.016Z",
   "sourcePolicy": "Fact-first snapshot from the user-provided kt.xiaodianhuo.com page. It stores visible match numbers, teams, kickoff times, hda odds, and handicap odds. It is not a direct official API and must not be treated as guaranteed realtime.",
   "ktSourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "retrievalMethod": "local Chrome rendered DOM",
@@ -758,8 +758,8 @@
           },
           "handicap": {
             "line": "-1",
-            "home": 2.69,
-            "draw": 3.4,
+            "home": 2.75,
+            "draw": 3.3,
             "away": 2.16
           },
           "impliedProbabilities": {
@@ -891,9 +891,9 @@
           },
           "handicap": {
             "line": "-1",
-            "home": 3.08,
+            "home": 3.18,
             "draw": 3.25,
-            "away": 2.01
+            "away": 1.97
           },
           "impliedProbabilities": {
             "主胜": 54.7,
@@ -1068,12 +1068,12 @@
           },
           "totalGoals": {
             "0球": 14,
-            "1球": 5.6,
+            "1球": 5.75,
             "2球": 3.85,
-            "3球": 3.5,
-            "4球": 4.8,
-            "5球": 9.5,
-            "6球": 17,
+            "3球": 3.4,
+            "4球": 4.7,
+            "5球": 10,
+            "6球": 18,
             "7+": 27
           },
           "halfFull": {
@@ -1405,7 +1405,7 @@
           "official": 76,
           "attack": 77,
           "defense": 70,
-          "volatility": 50
+          "volatility": 51
         },
         "reasons": [
           "已从你提供的 kt.xiaodianhuo.com 竞彩页面读取当前比赛和赔率。",
@@ -1417,9 +1417,9 @@
           "source": "kt.xiaodianhuo.com rendered page",
           "kickoff": "巴甲 22:00",
           "hda": {
-            "home": 2.2,
-            "draw": 2.95,
-            "away": 2.98
+            "home": 2.21,
+            "draw": 2.9,
+            "away": 3.02
           },
           "handicap": {
             "line": "-1",
@@ -1428,9 +1428,9 @@
             "away": 1.52
           },
           "impliedProbabilities": {
-            "主胜": 40.3,
-            "平": 30,
-            "客胜": 29.7
+            "主胜": 40.1,
+            "平": 30.6,
+            "客胜": 29.3
           },
           "scoreOdds": {
             "1:0": 7.25,
