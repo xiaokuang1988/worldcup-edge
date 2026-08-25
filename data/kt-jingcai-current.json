@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-25T05:02:55.581Z",
+  "scrapedAt": "2026-08-25T05:42:18.147Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -89,15 +89,15 @@
       "awayZh": "浦项制铁",
       "awayRank": "7",
       "hda": {
-        "home": 2.18,
+        "home": 2.13,
         "draw": 2.98,
-        "away": 2.98
+        "away": 3.08
       },
       "handicap": {
         "line": "-1",
-        "home": 5,
-        "draw": 3.7,
-        "away": 1.52
+        "home": 4.75,
+        "draw": 3.65,
+        "away": 1.55
       },
       "moreMarkets": {
         "status": "available",
@@ -294,12 +294,12 @@
         "totalGoals": {
           "0球": 10,
           "1球": 4.8,
-          "2球": 3.25,
-          "3球": 3.8,
+          "2球": 3.2,
+          "3球": 3.75,
           "4球": 6,
-          "5球": 12,
-          "6球": 23,
-          "7+": 32
+          "5球": 12.5,
+          "6球": 24,
+          "7+": 35
         },
         "halfFull": {
           "胜/胜": 4.65,
