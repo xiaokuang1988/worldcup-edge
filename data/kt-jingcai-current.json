@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-25T07:12:15.135Z",
+  "scrapedAt": "2026-08-25T08:00:40.377Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -217,11 +217,11 @@
           "0球": 40,
           "1球": 10,
           "2球": 5.6,
-          "3球": 4.1,
-          "4球": 4.2,
+          "3球": 4,
+          "4球": 4.1,
           "5球": 5.5,
-          "6球": 8.5,
-          "7+": 8.5
+          "6球": 8.75,
+          "7+": 9
         },
         "halfFull": {
           "胜/胜": 18,
@@ -557,15 +557,15 @@
       "awayZh": "布伦特",
       "awayRank": "3",
       "hda": {
-        "home": 4.15,
-        "draw": 3.7,
-        "away": 1.62
+        "home": 4.02,
+        "draw": 3.65,
+        "away": 1.65
       },
       "handicap": {
         "line": "+1",
-        "home": 1.98,
-        "draw": 3.5,
-        "away": 2.95
+        "home": 1.94,
+        "draw": 3.55,
+        "away": 3.02
       },
       "moreMarkets": {
         "status": "available",
