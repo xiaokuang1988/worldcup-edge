@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-25T03:41:50.895Z",
+  "scrapedAt": "2026-08-25T04:25:05.826Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -11,15 +11,15 @@
       "awayZh": "全北现代",
       "awayRank": "3",
       "hda": {
-        "home": 2.92,
+        "home": 3.02,
         "draw": 3.15,
-        "away": 2.13
+        "away": 2.08
       },
       "handicap": {
         "line": "+1",
-        "home": 1.55,
-        "draw": 3.8,
-        "away": 4.55
+        "home": 1.58,
+        "draw": 3.75,
+        "away": 4.35
       },
       "moreMarkets": {
         "status": "available",
@@ -323,15 +323,15 @@
       "awayZh": "凯尔特人",
       "awayRank": "-",
       "hda": {
-        "home": 1.84,
+        "home": 1.8,
         "draw": 3.7,
-        "away": 3.17
+        "away": 3.3
       },
       "handicap": {
         "line": "-1",
-        "home": 3.45,
+        "home": 3.25,
         "draw": 3.75,
-        "away": 1.75
+        "away": 1.8
       },
       "moreMarkets": {
         "status": "available",
@@ -449,10 +449,10 @@
         },
         "totalGoals": {
           "0球": 33,
-          "1球": 9.75,
-          "2球": 5.5,
+          "1球": 10,
+          "2球": 5.6,
           "3球": 3.95,
-          "4球": 4.25,
+          "4球": 4.15,
           "5球": 5.5,
           "6球": 8.75,
           "7+": 9.5
