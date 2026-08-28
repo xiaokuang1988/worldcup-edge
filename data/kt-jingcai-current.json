@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-08-28T14:46:36.186Z",
+  "scrapedAt": "2026-08-28T23:43:56.839Z",
   "sourceUrl": "https://kt.xiaodianhuo.com//50/jingcai/result_RasPf.html?station_id=1161761&station_uuid=776e9nbt0usl8g1626932057&channel_type=sharelink&channel_sub_type=jczq&channel_sub_id=",
   "matches": [
     {
@@ -1647,7 +1647,7 @@
       "homeRank": "20",
       "homeZh": "皇家社会",
       "awayZh": "西班牙人",
-      "awayRank": "8",
+      "awayRank": "9",
       "hda": {
         "home": 1.83,
         "draw": 3.3,
@@ -1661,7 +1661,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[20] 西甲 皇家社会  VS  西班牙人 西甲 [8]",
+        "title": "[20] 西甲 皇家社会  VS  西班牙人 西甲 [9]",
         "scoreOdds": {
           "1:0": 7.5,
           "2:0": 9,
@@ -2190,10 +2190,10 @@
       "matchNo": "7004",
       "league": "德乙",
       "time": "19:30",
-      "homeRank": "13",
+      "homeRank": "14",
       "homeZh": "圣保利",
       "awayZh": "凯泽",
-      "awayRank": "14",
+      "awayRank": "15",
       "hda": {
         "home": 1.72,
         "draw": 3.6,
@@ -2207,7 +2207,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[13] 德乙 圣保利  VS  凯泽 德乙 [14]",
+        "title": "[14] 德乙 圣保利  VS  凯泽 德乙 [15]",
         "scoreOdds": {
           "1:0": 9,
           "2:0": 9.5,
@@ -2736,7 +2736,7 @@
       "matchNo": "7017",
       "league": "西甲",
       "time": "23:00",
-      "homeRank": "11",
+      "homeRank": "12",
       "homeZh": "拉科",
       "awayZh": "巴伦西亚",
       "awayRank": "15",
@@ -2909,7 +2909,7 @@
       },
       "moreMarkets": {
         "status": "available",
-        "title": "[11] 西甲 拉科  VS  巴伦西亚 西甲 [15]",
+        "title": "[12] 西甲 拉科  VS  巴伦西亚 西甲 [15]",
         "scoreOdds": {
           "1:0": 6.75,
           "2:0": 11,
